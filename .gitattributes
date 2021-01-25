@@ -1,0 +1,6 @@
+.html filter=lfs diff=lfs merge=lfs -text
+.jpeg
+git[[:space:]]lfs[[:space:]]migrate[[:space:]]import[[:space:]]--everything[[:space:]]--include=.jpeg
+git[[:space:]]lfs[[:space:]]migrate[[:space:]]import[[:space:]]--everything[[:space:]]--include=.jpeg filter=lfs diff=lfs merge=lfs -text
+.Rmd filter=lfs diff=lfs merge=lfs -text
+*.html filter=lfs diff=lfs merge=lfs -text
