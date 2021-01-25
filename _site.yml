@@ -16,4 +16,4 @@ navbar:
     - icon: fa fa-twitter
       href: https://www.twitter.com/kaija_bean
 output: distill::distill_article
-theme: "kaijatheme.css"
+theme: kaijatheme.css
