@@ -4,8 +4,6 @@ description: |
   Here is a description for my website. Here is more.
 output_dir: "_site"
 navbar:
-  logo:
-    - image: woodpeckerIcon.png
   right:
     - text: "About"
       href: index.html
