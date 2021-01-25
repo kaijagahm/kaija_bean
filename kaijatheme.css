@@ -10,8 +10,8 @@
 
 /* Optional: embed custom fonts here with `@import`          */
 /* This must remain at the top of this file.                 */
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap');
+@import url(https://fonts.googleapis.com/css2?family=Nanum+Gothic');
+@import url('https://fonts.googleapis.com/css2?family=Cutive+Mono');
 
 
 html {
