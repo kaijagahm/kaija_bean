@@ -89,6 +89,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 <meta property="description" itemprop="description" content="How I built this website using {distill}"/>
 
+<link rel="canonical" href="https://kaijagahm.netlify.app/posts/2021-01-25-building-a-distill-website/"/>
+<link rel="icon" type="image/jpeg" href="../../woodpeckerIcon.jpg"/>
 
 <!--  https://schema.org/Article -->
 <meta property="article:published" itemprop="datePublished" content="2021-01-25"/>
@@ -99,19 +101,29 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <meta property="og:title" content="Kaija Gahm: Building a Distill Website"/>
 <meta property="og:type" content="article"/>
 <meta property="og:description" content="How I built this website using {distill}"/>
+<meta property="og:url" content="https://kaijagahm.netlify.app/posts/2021-01-25-building-a-distill-website/"/>
+<meta property="og:image" content="https://kaijagahm.netlify.app/posts/2021-01-25-building-a-distill-website/woodpecker.jpg"/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:site_name" content="Kaija Gahm"/>
 
 <!--  https://dev.twitter.com/cards/types/summary -->
-<meta property="twitter:card" content="summary"/>
+<meta property="twitter:card" content="summary_large_image"/>
 <meta property="twitter:title" content="Kaija Gahm: Building a Distill Website"/>
 <meta property="twitter:description" content="How I built this website using {distill}"/>
+<meta property="twitter:url" content="https://kaijagahm.netlify.app/posts/2021-01-25-building-a-distill-website/"/>
+<meta property="twitter:image" content="https://kaijagahm.netlify.app/posts/2021-01-25-building-a-distill-website/woodpecker.jpg"/>
 
+<!--  https://scholar.google.com/intl/en/scholar/inclusion.html#indexing -->
+<meta name="citation_title" content="Kaija Gahm: Building a Distill Website"/>
+<meta name="citation_fulltext_html_url" content="https://kaijagahm.netlify.app/posts/2021-01-25-building-a-distill-website/"/>
+<meta name="citation_online_date" content="2021/01/25"/>
+<meta name="citation_publication_date" content="2021/01/25"/>
+<meta name="citation_author" content="Kaija Gahm"/>
 <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
 <script type="text/json" id="radix-rmarkdown-metadata">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","preview"]}},"value":[{"type":"character","attributes":{},"value":["Building a Distill Website"]},{"type":"character","attributes":{},"value":["How I built this website using {distill}"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Kaija Gahm"]}]}]},{"type":"character","attributes":{},"value":["01-25-2021"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"character","attributes":{},"value":["woodpecker.jpg"]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","preview","citation_url","canonical_url"]}},"value":[{"type":"character","attributes":{},"value":["Building a Distill Website"]},{"type":"character","attributes":{},"value":["How I built this website using {distill}"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Kaija Gahm"]}]}]},{"type":"character","attributes":{},"value":["01-25-2021"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"character","attributes":{},"value":["woodpecker.jpg"]},{"type":"character","attributes":{},"value":["https://kaijagahm.netlify.app/posts/2021-01-25-building-a-distill-website/"]},{"type":"character","attributes":{},"value":["https://kaijagahm.netlify.app/posts/2021-01-25-building-a-distill-website/"]}]}
 </script>
 <!--/radix_placeholder_rmarkdown_metadata-->
   
@@ -2141,8 +2153,8 @@ html {
   --aside-size:      12px;
   --fig-cap-size:    13px;
   /*-- Main font colors --*/
-  --title-color:     #13182A; /*-- Dark blue-black --*/
-  --header-color:    #13182A;
+  --title-color:     #8A0519; /*-- Dark red --*/
+  --header-color:    #B2061F; /*-- Dark blue-black --*/
   --body-color:      #13182A;
   --aside-color:     #13182A;
   --fig-cap-color:   #13182A;
@@ -2156,23 +2168,24 @@ html {
 /*-- ARTICLE METADATA --*/
 d-byline {
   --heading-size:    0.6rem;
-  --heading-color:   rgba(0, 0, 0, 0.5);
+  --heading-color:   #8A0519;
   --body-size:       0.8rem;
-  --body-color:      rgba(0, 0, 0, 0.8);
+  --body-color:      #13182A;
 }
 
 /*-- ARTICLE TABLE OF CONTENTS --*/
 .d-contents {
   --heading-size:    18px;
+  --heading-color:   #8A0519;
   --contents-size:   13px;
 }
 
 /*-- ARTICLE APPENDIX --*/
 d-appendix {
   --heading-size:    15px;
-  --heading-color:   rgba(0, 0, 0, 0.65);
+  --heading-color:   #8A0519;
   --text-size:       0.8em;
-  --text-color:      rgba(0, 0, 0, 0.5);
+  --text-color:      #13182A;
 }
 
 /*-- WEBSITE HEADER + FOOTER --*/
@@ -2384,7 +2397,7 @@ d-appendix d-footnote-list a.footnote-backlink {
 <input id="distill-search" class="nav-search hidden" type="text" placeholder="Search..."/>
 </div>
 <div class="nav-right">
-<a href="../../index.html">About</a>
+<a href="../../index.html">Home</a>
 <a href="../../blog.html">Blog: woodpeckR</a>
 <a href="https://github.com/kaijagahm">
 <i class="fa fa-github" aria-hidden="true"></i>
@@ -2430,7 +2443,20 @@ d-appendix d-footnote-list a.footnote-backlink {
 <!--radix_placeholder_site_after_body-->
 <!--/radix_placeholder_site_after_body-->
 <!--radix_placeholder_appendices-->
-<div class="appendix-bottom"></div>
+<div class="appendix-bottom">
+  <h3 id="updates-and-corrections">Corrections</h3>
+  <p>If you see mistakes or want to suggest changes, please <a href="https://github.com/kaijagahm/kaija_bean/issues/new">create an issue</a> on the source repository.</p>
+  <h3 id="citation">Citation</h3>
+  <p>For attribution, please cite this work as</p>
+  <pre class="citation-appendix short">Gahm (2021, Jan. 25). Kaija Gahm: Building a Distill Website. Retrieved from https://kaijagahm.netlify.app/posts/2021-01-25-building-a-distill-website/</pre>
+  <p>BibTeX citation</p>
+  <pre class="citation-appendix long">@misc{gahm2021building,
+  author = {Gahm, Kaija},
+  title = {Kaija Gahm: Building a Distill Website},
+  url = {https://kaijagahm.netlify.app/posts/2021-01-25-building-a-distill-website/},
+  year = {2021}
+}</pre>
+</div>
 <!--/radix_placeholder_appendices-->
 <!--radix_placeholder_navigation_after_body-->
 <!--/radix_placeholder_navigation_after_body-->
