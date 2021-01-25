@@ -3,6 +3,9 @@ title: "Kaija Gahm"
 description: |
   Here is a description for my website. Here is more.
 output_dir: "_site"
+base_url: https://kaijagahm.netlify.app/
+repository_url: https://github.com/kaijagahm/kaija_bean
+favicon: woodpeckerIcon.jpg
 navbar:
   right:
     - text: "About"
