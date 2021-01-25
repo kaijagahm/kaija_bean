@@ -10,7 +10,8 @@
 
 /* Optional: embed custom fonts here with `@import`          */
 /* This must remain at the top of this file.                 */
-
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap');
 
 
 html {
@@ -27,10 +28,10 @@ html {
   --aside-color:     #13182A;
   --fig-cap-color:   #13182A;
   /*-- Specify custom fonts ~~~ must be imported above   --*/
-  --heading-font:    sans-serif;
-  --mono-font:       monospace;
-  --body-font:       sans-serif;
-  --navbar-font:     sans-serif;  /* websites + blogs only */
+  --heading-font: "Nanum Gothic", sans-serif;
+  --mono-font: "Cutive Mono", monospace;
+  --body-font: "Nanum Gothic", sans-serif;
+  --navbar-font: "Nanum Gothic", sans-serif;  /* websites + blogs only */
 }
 
 /*-- ARTICLE METADATA --*/
