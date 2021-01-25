@@ -1,14 +1,33 @@
 ---
 title: "Kaija Gahm"
-description: |
-  Here is a description of my website.
+image: "peony.jpeg"
+links:
+  - label: LinkedIn
+    url: "https://www.linkedin.com/in/kaija-gahm-205890167"
+  - label: Twitter
+    url: "https://twitter.com/kaija_bean"
+  - label: GitHub
+    url: "https://github.com/kaijagahm"
+  - label: Email
+    url: "mailto:kaija.gahm@aya.yale.edu"
+output:
+  postcards::trestles
 site: distill::distill_website
+theme: kaijatheme.css
 ---
+ 
+## Bio
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-```
+Here is my bio
 
-![](peony.jpeg)
+## Education
 
-## About me:
+**Yale University** | New Haven, CT
+
+B.S. in Ecology & Evolutionary Biology | August 2016 - May 2020
+
+## Experience
+
+**Cary Institute of Ecosystem Studies** | Database Specialist | June 2020 - Present
+
+**Yale Grammatical Diversity Project** | Research Assistant | September 2018 - Present
