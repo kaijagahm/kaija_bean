@@ -1,0 +1,13 @@
+{
+  "articles": [
+    {
+      "path": "index.html",
+      "title": "Kaija Gahm",
+      "description": "Here is a description of my website.\n",
+      "author": [],
+      "contents": "\n\nAbout me:\n\n\n\n",
+      "last_modified": "2021-01-25T17:15:07-05:00"
+    }
+  ],
+  "collections": ["posts/posts.json"]
+}
