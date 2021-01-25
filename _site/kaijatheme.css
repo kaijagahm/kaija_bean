@@ -22,8 +22,8 @@ html {
   --aside-size:      12px;
   --fig-cap-size:    13px;
   /*-- Main font colors --*/
-  --title-color:     #13182A; /*-- Dark blue-black --*/
-  --header-color:    #13182A;
+  --title-color:     #8A0519; /*-- Dark red --*/
+  --header-color:    #B2061F; /*-- Dark blue-black --*/
   --body-color:      #13182A;
   --aside-color:     #13182A;
   --fig-cap-color:   #13182A;
@@ -37,23 +37,24 @@ html {
 /*-- ARTICLE METADATA --*/
 d-byline {
   --heading-size:    0.6rem;
-  --heading-color:   rgba(0, 0, 0, 0.5);
+  --heading-color:   #8A0519;
   --body-size:       0.8rem;
-  --body-color:      rgba(0, 0, 0, 0.8);
+  --body-color:      #13182A;
 }
 
 /*-- ARTICLE TABLE OF CONTENTS --*/
 .d-contents {
   --heading-size:    18px;
+  --heading-color:   #8A0519;
   --contents-size:   13px;
 }
 
 /*-- ARTICLE APPENDIX --*/
 d-appendix {
   --heading-size:    15px;
-  --heading-color:   rgba(0, 0, 0, 0.65);
+  --heading-color:   #8A0519;
   --text-size:       0.8em;
-  --text-color:      rgba(0, 0, 0, 0.5);
+  --text-color:      #13182A;
 }
 
 /*-- WEBSITE HEADER + FOOTER --*/
