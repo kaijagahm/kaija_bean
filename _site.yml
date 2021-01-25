@@ -1,7 +1,7 @@
 name: "website"
 title: "Kaija Gahm"
 description: |
-  Here is a description for my website.
+  Here is a description for my website. Here is more.
 output_dir: "_site"
 navbar:
   logo:
