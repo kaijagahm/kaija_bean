@@ -8,7 +8,7 @@ repository_url: https://github.com/kaijagahm/kaija_bean
 favicon: woodpeckerIcon.jpg
 navbar:
   right:
-    - text: "About"
+    - text: "Home"
       href: index.html
     - text: "Blog: woodpeckR"
       href: blog.html
