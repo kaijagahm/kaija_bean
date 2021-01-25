@@ -1,0 +1,14 @@
+---
+title: "Kaija Gahm"
+description: |
+  Here is a description of my website.
+site: distill::distill_website
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+![](peony.jpeg)
+
+## About me:
