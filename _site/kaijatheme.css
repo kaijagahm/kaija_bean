@@ -1,0 +1,126 @@
+
+/* base variables */
+
+/* Edit the CSS properties in this file to create a custom
+   Distill theme. Only edit values in the right column
+   for each row; values shown are the CSS defaults.
+   To return any property to the default,
+   you may set its value to: unset
+   All rows must end with a semi-colon.                      */
+
+/* Optional: embed custom fonts here with `@import`          */
+/* This must remain at the top of this file.                 */
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding');
+
+
+html {
+  /*-- Main font sizes --*/
+  --title-size:      50px;
+  --body-size:       1.06rem;
+  --code-size:       14px;
+  --aside-size:      12px;
+  --fig-cap-size:    13px;
+  /*-- Main font colors --*/
+  --title-color:     #8A0519; /*-- Dark red --*/
+  --header-color:    #B2061F;
+  --body-color:      #13182A;
+  --aside-color:     #13182A;
+  --fig-cap-color:   #13182A;
+  /*-- Specify custom fonts ~~~ must be imported above   --*/
+  --heading-font:    "Nanum Myeongjo", serif;
+  --mono-font:       "Nanum Gothic Coding", monospace;
+  --body-font:       "Nanum Gothic", sans-serif;
+  --navbar-font:     "Nanum Gothic", sans-serif;
+}
+
+/*-- ARTICLE METADATA --*/
+d-byline {
+  --heading-size:    0.6rem;
+  --heading-color:   #8A0519;
+  --body-size:       0.8rem;
+  --body-color:      #13182A;
+}
+
+/* Postcard main text */
+div#content p {
+color: #13182A;
+}
+
+/* Postcard list items */
+.list-inline-item {
+color: #13182A;
+}
+
+/* Postcard headers */
+h1, h2 {
+  color: #8A0519;
+}
+
+/* Postcard links */
+#content a {
+  color: #8A0519;
+}
+
+/* mouse over link */
+#content a:hover {
+  color: #8A0519;
+}
+
+/* selected link */
+#content a:active {
+  color: #8A0519;
+}
+
+/* visited link */
+#content a:visited {
+  color: #8A0519;
+}
+
+/*-- ARTICLE TABLE OF CONTENTS --*/
+.d-contents {
+  --heading-size:    18px;
+  --heading-color:   #8A0519;
+  --contents-size:   13px;
+}
+
+/*-- ARTICLE APPENDIX --*/
+d-appendix {
+  --heading-size:    15px;
+  --heading-color:   #8A0519;
+  --text-size:       0.8em;
+  --text-color:      #13182A;
+}
+
+/*-- WEBSITE HEADER + FOOTER --*/
+/* These properties only apply to Distill sites and blogs  */
+
+.distill-site-header {
+  --title-size:       18px;
+  --text-color:       #F5F5F5; /* whitish */
+  --text-size:        15px;
+  --hover-color:      #E0E0E0; /* gray, slightly darker than white */
+  --bkgd-color:       #232843; /* medium gray/blue */
+}
+
+.distill-site-footer {
+  --text-color:       #F5F5F5;
+  --text-size:        15px;
+  --hover-color:      #E0E0E0;
+  --bkgd-color:       #232843;
+}
+
+/*-- Additional custom styles --*/
+/* Add any additional CSS rules below                      */
+/* Change bullets */
+ul > li::marker {
+  font-size: 1.125em;
+  color: #8A0519;
+}
+
+/* Change link appearance */
+d-article a {
+  border-bottom: 2px solid #8A0519;
+  text-decoration: none;
+}

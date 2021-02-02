@@ -1,0 +1,21 @@
+[
+  {
+    "path": "projects/2021-01-29-ygdp-dashboard/",
+    "title": "YGDP Dashboard",
+    "description": "Creating an interactive tool for exploring dialect variation in U.S. English",
+    "author": [
+      {
+        "name": "Kaija Gahm",
+        "url": {
+          "https://kaijagahm.shinyapps.io/ygdpDashboard/": {}
+        }
+      }
+    ],
+    "date": "2021-01-29",
+    "categories": [],
+    "contents": "\nHere is some text about the YGDP Dashboard.\n\n\nknitr::include_app(\"https://kaijagahm.shinyapps.io/ygdpDashboard/\", height = \"600px\")\n\n\n\n\n\n\n\n\n",
+    "preview": {},
+    "last_modified": "2021-02-01T20:57:52-05:00",
+    "input_file": {}
+  }
+]

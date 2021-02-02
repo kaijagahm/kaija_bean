@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" version="1.0">
+  <url>
+    <loc>https://kaijagahm.netlify.app/blog.html</loc>
+    <lastmod>2021-01-25T16:15:48-05:00</lastmod>
+  </url>
+  <url>
+    <loc>https://kaijagahm.netlify.app/</loc>
+    <lastmod>2021-02-01T20:51:05-05:00</lastmod>
+  </url>
+  <url>
+    <loc>https://kaijagahm.netlify.app/projects.html</loc>
+    <lastmod>2021-01-29T17:33:10-05:00</lastmod>
+  </url>
+  <url>
+    <loc>https://kaijagahm.netlify.app/posts/2021-01-25-building-a-distill-website/</loc>
+    <lastmod>2021-01-29T18:32:16-05:00</lastmod>
+  </url>
+  <url>
+    <loc>https://kaijagahm.netlify.app/projects/2021-01-29-ygdp-dashboard/</loc>
+    <lastmod>2021-02-01T20:57:52-05:00</lastmod>
+  </url>
+</urlset>
