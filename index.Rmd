@@ -17,7 +17,8 @@ site: distill::distill_website
 
 ## Bio
 
-I am a biologist and data scientist. I did my B.S. in E&EB at Yale, where I studied physiological tradeoffs in wood frog tadpoles (see a talk [here](https://drive.google.com/file/d/1S57rDgoKSm0I4ssGYlKlMgnDmXNs58aR/view?usp=sharing)). In Fall 2021, I hope to start a graduate program in ecology/evolution, where I will use data-centric methods to study animal movement ecology and social behavior. 
+I am a biologist and data scientist. I did my B.S. in E&EB at Yale, where I studied physiological tradeoffs in wood frog tadpoles ([talk](https://drive.google.com/file/d/1S57rDgoKSm0I4ssGYlKlMgnDmXNs58aR/view?usp=sharing) | `r xfun::embed_file(text = "paper", 'Gahm_etal_2020.pdf')
+`). In Fall 2021, I hope to start a graduate program in ecology/evolution, where I will use data-centric methods to study animal movement ecology and social behavior. 
 
 Currently, I'm working with the Cary Institute to manage a relational database and improve data-management workflows. I've applied a lot of the same ideas to my work with a linguistics [research group](https://ygdp.yale.edu) at Yale, where I built a relational database and an interactive Shiny dashboard to make it easier for researchers and the public to explore the project's findings. 
 
