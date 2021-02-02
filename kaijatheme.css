@@ -24,7 +24,7 @@ html {
   --fig-cap-size:    13px;
   /*-- Main font colors --*/
   --title-color:     #8A0519; /*-- Dark red --*/
-  --header-color:    #8A0519;
+  --header-color:    #B2061F;
   --body-color:      #13182A;
   --aside-color:     #13182A;
   --fig-cap-color:   #13182A;
@@ -59,22 +59,22 @@ h1, h2 {
 }
 
 /* Postcard links */
-a {
+#content a {
   color: #8A0519;
 }
 
 /* mouse over link */
-a:hover {
+#content a:hover {
   color: #8A0519;
 }
 
 /* selected link */
-a:active {
+#content a:active {
   color: #8A0519;
 }
 
 /* visited link */
-a:visited {
+#content a:visited {
   color: #8A0519;
 }
 

@@ -1,23 +1,18 @@
 ---
 title: "YGDP Dashboard"
 description: |
-  A short description of the post.
+  Creating an interactive tool for exploring dialect variation in U.S. English
 author:
   - name: Kaija Gahm
-    url: {}
+    url: {https://kaijagahm.shinyapps.io/ygdpDashboard/}
 date: 01-29-2021
 output:
   distill::distill_article:
     self_contained: false
 ---
 
+Here is some text about the YGDP Dashboard.
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+```{r}
+knitr::include_app("https://kaijagahm.shinyapps.io/ygdpDashboard/", height = "600px")
 ```
-
-Distill is a publication format for scientific and technical writing, native to the web.
-
-Learn more about using Distill at <https://rstudio.github.io/distill>.
-
-
