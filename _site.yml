@@ -10,6 +10,8 @@ navbar:
   right:
     - text: "Home"
       href: index.html
+    - text: "Projects"
+      href: projects.html
     - text: "Blog: woodpeckR"
       href: blog.html
     - icon: fa fa-github
