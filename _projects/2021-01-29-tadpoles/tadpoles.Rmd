@@ -52,7 +52,7 @@ For a while, we've wondered why we see this pattern. Why don't the Fire tadpoles
 That's where my study comes in. It turns out, growing fast comes with a cost in burst swimming speed! If you're a tadpole, you might get bigger faster, but if you also swim more slowly than your slower-growing peers, you're at risk of getting gobbled up by a predator. If that happens, all that growing would be for nothing.
 
 ### Paper
-My collaborators and I published this work, and if you want to read more, you can `r `xfun::embed_file(text = "download the paper", 'Gahm_etal_2020.pdf')`. But I hope my description is a little easier to get through than the paper itself.
+My collaborators and I published this work, and if you want to read more, you can `r xfun::embed_file(text = "download the paper", 'Gahm_etal_2020.pdf')`. But I hope my description is a little easier to get through than the paper itself.
 
 If you want a more detailed summary of the paper, with reference to each of its figures, Andis did a great job explaining it in [his blog post](https://www.azandisresearch.com/2020/12/24/hot-competition-and-tadpole-olympics/).
 
@@ -61,7 +61,7 @@ If you want to learn more about my work and would prefer to see a video of a tal
 
 <iframe width="720" height="480" src="tadpoleOlympics.mp4" align="middle" frameborder="0" allowfullscreen></iframe>
 
-### Acknowledgements and Reflections
+### Acknowledgements and reflections
 This work was made possible with the tremendous support of the [Skelly Lab](https://campuspress.yale.edu/skellylab/) in the [Yale School of the Environment](https://environment.yale.edu/). Andis Arietta, in particular, was a great mentor and collaborator. You should check out his research on [his website](https://www.azandisresearch.com/) and [follow him](https://twitter.com/azandisarietta) on Twitter.
 
 Thanks to Kirby Broderick and Simon Stump for help with the MATLAB code I wrote to analyze all my tadpole videos. Thanks to Joaquin Bellomio for help ground-truthing videos, and to Adriana Rubinstein and David Skelly for assistance in the lab.
