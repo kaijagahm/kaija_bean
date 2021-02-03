@@ -1,14 +1,22 @@
 ---
 title: "YGDP Dashboard"
 description: |
+<<<<<<< HEAD
   From June through December 2020, I taught myself Shiny and ended up creating a pretty complicated interactive dashboard for exploring dialect variation across the US. Here's a bit about my experience using Shiny, as well as the app itself for you to play around with.
 author:
   - name: Kaija Gahm
     url: {}
+=======
+  Creating an interactive tool for exploring dialect variation in U.S. English
+author:
+  - name: Kaija Gahm
+    url: {https://kaijagahm.shinyapps.io/ygdpDashboard/}
+>>>>>>> aeed6f84ae3282f8aeb5485532cc4dbe917f19d1
 date: 01-29-2021
 output:
   distill::distill_article:
     self_contained: false
+<<<<<<< HEAD
 preview: hexMap.png
 ---
 
@@ -21,3 +29,12 @@ I had heard about R Shiny, but I had never created a Shiny app. In the spring of
 From June through December 2020, I dove in headfirst. I created a couple simple Shiny apps as practice, but then I set about developing a pretty complicated Shiny dashboard. I've always found that the best way to learn a new tool is to plunge in and use it, learning as you go. Learning Shiny was the ultimate baptism by fire. I think I started trying to create hierarchical `selectInput`s by about day 2, when I was still far from understanding the fundamentals of Shiny's inputs and outputs. Next came the dashboard layout, which I achieved using `shinydashboard` and eventually `shinydashboardPlus`. I learned to insert a map using `leaflet`, another package I had never dabbled in.
 
 <iframe src="https://kaijagahm.shinyapps.io/ygdpDashboard/" class="l-screen-inset shaded" height="650px" border="none"></iframe>
+=======
+---
+
+Here is some text about the YGDP Dashboard.
+
+```{r}
+knitr::include_app("https://kaijagahm.shinyapps.io/ygdpDashboard/", height = "600px")
+```
+>>>>>>> aeed6f84ae3282f8aeb5485532cc4dbe917f19d1
