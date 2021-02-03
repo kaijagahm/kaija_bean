@@ -22,8 +22,4 @@ knitr::opts_chunk$set(echo = FALSE)
 xfun::embed_file(text = "Download paper", 'Gahm_etal_2020.pdf')
 ```
 
-<iframe width="720" height="480" src="kaija_gahm.mp4" align="middle" frameborder="0" allowfullscreen></iframe>
-=======
-Distill is a publication format for scientific and technical writing, native to the web.
-
-Learn more about using Distill at <https://rstudio.github.io/distill>.
+<iframe width="720" height="480" src="tadpoleOlympics.mp4" align="middle" frameborder="0" allowfullscreen></iframe>
