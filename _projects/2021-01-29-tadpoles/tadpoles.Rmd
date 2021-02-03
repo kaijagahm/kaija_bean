@@ -9,7 +9,7 @@ date: 01-29-2021
 output:
   distill::distill_article:
     self_contained: false
-preview: tadpole.jpg
+preview: tadpole.png
 ---
 
 
