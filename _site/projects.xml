@@ -14,12 +14,22 @@
     <generator>Distill</generator>
     <lastBuildDate>Fri, 29 Jan 2021 00:00:00 +0000</lastBuildDate>
     <item>
+      <title>Tadpoles</title>
+      <dc:creator>Kaija Gahm</dc:creator>
+      <link>https://kaijagahm.netlify.app/projects/2021-01-29-tadpoles</link>
+      <description>For my B.S. thesis project at Yale, I measured how fast wood frog tadpoles swim in response to a simulated predator attack, and how that swimming speed relates to their developmental rate. It turns out that developing fast comes with a performance cost, and that tradeoff might help to explain some of the patterns we've observed in wood frogs' developmental rates in the past.</description>
+      <guid>https://kaijagahm.netlify.app/projects/2021-01-29-tadpoles</guid>
+      <pubDate>Fri, 29 Jan 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://kaijagahm.netlify.app/projects/2021-01-29-tadpoles/tadpole.jpg" medium="image" type="image/jpeg"/>
+    </item>
+    <item>
       <title>YGDP Dashboard</title>
       <dc:creator>Kaija Gahm</dc:creator>
       <link>https://kaijagahm.netlify.app/projects/2021-01-29-ygdp-dashboard</link>
-      <description>Creating an interactive tool for exploring dialect variation in U.S. English</description>
+      <description>From June through December 2020, I taught myself Shiny and ended up creating a pretty complicated interactive dashboard for exploring dialect variation across the US. Here's a bit about my experience using Shiny, as well as the app itself for you to play around with.</description>
       <guid>https://kaijagahm.netlify.app/projects/2021-01-29-ygdp-dashboard</guid>
       <pubDate>Fri, 29 Jan 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://kaijagahm.netlify.app/projects/2021-01-29-ygdp-dashboard/hexMap.png" medium="image" type="image/png" width="1434" height="810"/>
     </item>
   </channel>
 </rss>
