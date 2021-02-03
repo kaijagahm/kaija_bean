@@ -2,7 +2,7 @@
   {
     "path": "projects/2021-01-29-tadpoles/",
     "title": "Tadpoles",
-    "description": "For my B.S. thesis project at Yale, I measured how fast wood frog tadpoles swim in response to a simulated predator attack, and how that swimming speed relates to their developmental rate. It turns out that developing fast comes with a performance cost, and that tradeoff might help to explain some of the patterns we've observed in wood frogs' developmental rates in the past.",
+    "description": "For my B.S. thesis project at Yale, I measured how fast wood frog tadpoles swim in response to a simulated predator attack, and how that swimming speed relates to their developmental rate. It turns out that developing fast comes with a performance cost, and that tradeoff might help to explain some of the patterns we've observed in wood frogs' developmental rates in the past.\nA short description of the post.",
     "author": [
       {
         "name": "Kaija Gahm",
@@ -11,10 +11,12 @@
     ],
     "date": "2021-01-29",
     "categories": [],
-    "contents": "\n\nDownload paper\n\n\n\n\n\n\n",
-    "preview": "projects/2021-01-29-tadpoles/tadpole.jpg",
-    "last_modified": "2021-02-02T21:31:53-05:00",
-    "input_file": {}
+    "contents": "\n\nDownload paper\n\n\nDistill is a publication format for scientific and technical writing, native to the web.\nLearn more about using Distill at https://rstudio.github.io/distill.\n\n\n\n",
+    "preview": "projects/2021-01-29-tadpoles/tadpole.png",
+    "last_modified": "2021-02-02T21:37:24-05:00",
+    "input_file": {},
+    "preview_width": 4061,
+    "preview_height": 1643
   },
   {
     "path": "projects/2021-01-29-ygdp-dashboard/",
@@ -30,9 +32,9 @@
     ],
     "date": "2021-01-29",
     "categories": [],
-    "contents": "\nThe Yale Grammatical Diversity Project (YGDP) has been collecting survey data about syntax diversity in U.S. English for over five years.\nIn 2019, I started working with the YGDP to pull together and organize their survey data. One of our primary goals was to make our findings easily accessible and explorable for anyone who might be interested.\nI had heard about R Shiny, but I had never created a Shiny app. In the spring of 2020, I talked to Jim Wood, one of the YGDP’s supervisors, about the possibility of developing a Shiny app to display the YGDP’s findings in a colorful, interactive way. Jim was excited about the idea, even though I had been very clear that I’d be starting absolutely from scratch and learning Shiny along the way.\nFrom June through December 2020, I dove in headfirst. I created a couple simple Shiny apps as practice, but then I set about developing a pretty complicated Shiny dashboard. I’ve always found that the best way to learn a new tool is to plunge in and use it, learning as you go. Learning Shiny was the ultimate baptism by fire. I think I started trying to create hierarchical selectInputs by about day 2, when I was still far from understanding the fundamentals of Shiny’s inputs and outputs. Next came the dashboard layout, which I achieved using shinydashboard and eventually shinydashboardPlus. I learned to insert a map using leaflet, another package I had never dabbled in.\n\n\n\n\n\n",
+    "contents": "\nThe Yale Grammatical Diversity Project (YGDP) has been collecting survey data about syntax diversity in U.S. English for over five years.\nIn 2019, I started working with the YGDP to pull together and organize their survey data. One of our primary goals was to make our findings easily accessible and explorable for anyone who might be interested.\nI had heard about R Shiny, but I had never created a Shiny app. In the spring of 2020, I talked to Jim Wood, one of the YGDP’s supervisors, about the possibility of developing a Shiny app to display the YGDP’s findings in a colorful, interactive way. Jim was excited about the idea, even though I had been very clear that I’d be starting absolutely from scratch and learning Shiny along the way.\nFrom June through December 2020, I dove in headfirst. I created a couple simple Shiny apps as practice, but then I set about developing a pretty complicated Shiny dashboard. I’ve always found that the best way to learn a new tool is to plunge in and use it, learning as you go. Learning Shiny was the ultimate baptism by fire. I think I started trying to create hierarchical selectInputs by about day 2, when I was still far from understanding the fundamentals of Shiny’s inputs and outputs. Next came the dashboard layout, which I achieved using shinydashboard and eventually shinydashboardPlus. I learned to insert a map using leaflet, another package I had never dabbled in.\n\nHere is some text about the YGDP Dashboard.\n\n\nknitr::include_app(\"https://kaijagahm.shinyapps.io/ygdpDashboard/\", height = \"600px\")\n\n\n\n\n\n\n\n\n",
     "preview": "projects/2021-01-29-ygdp-dashboard/hexMap.png",
-    "last_modified": "2021-02-02T21:31:49-05:00",
+    "last_modified": "2021-02-02T21:37:37-05:00",
     "input_file": {},
     "preview_width": 1434,
     "preview_height": 810

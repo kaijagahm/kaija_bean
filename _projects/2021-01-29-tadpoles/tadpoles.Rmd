@@ -2,6 +2,7 @@
 title: "Tadpoles"
 description: |
   For my B.S. thesis project at Yale, I measured how fast wood frog tadpoles swim in response to a simulated predator attack, and how that swimming speed relates to their developmental rate. It turns out that developing fast comes with a performance cost, and that tradeoff might help to explain some of the patterns we've observed in wood frogs' developmental rates in the past.
+  A short description of the post.
 author:
   - name: Kaija Gahm
     url: {}
@@ -9,9 +10,8 @@ date: 01-29-2021
 output:
   distill::distill_article:
     self_contained: false
-preview: tadpole.jpg
+preview: tadpole.png
 ---
-
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
@@ -23,3 +23,7 @@ xfun::embed_file(text = "Download paper", 'Gahm_etal_2020.pdf')
 ```
 
 <iframe width="720" height="480" src="kaija_gahm.mp4" align="middle" frameborder="0" allowfullscreen></iframe>
+=======
+Distill is a publication format for scientific and technical writing, native to the web.
+
+Learn more about using Distill at <https://rstudio.github.io/distill>.
