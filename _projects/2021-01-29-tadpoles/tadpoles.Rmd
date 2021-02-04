@@ -59,7 +59,9 @@ If you want a more detailed summary of the paper, with reference to each of its 
 ### Talk
 If you want to learn more about my work and would prefer to see a video of a talk I gave, aimed at a more general audience than the published paper, you can watch it below. This talk was given as part of the 2020 end-of-year E&EB Senior Symposium, which I organized as a remote event due to the COVID-19 pandemic.
 
-<iframe width="720" height="480" src="tadpoleOlympics.mp4" align="middle" frameborder="0" allowfullscreen></iframe>
+<video width="700" height="400" controls>
+<source src="tadpoleOlympics.mp4" type="video/mp4">
+</video>
 
 ### Acknowledgements and reflections
 This work was made possible with the tremendous support of the [Skelly Lab](https://campuspress.yale.edu/skellylab/) in the [Yale School of the Environment](https://environment.yale.edu/). Andis Arietta, in particular, was a great mentor and collaborator. You should check out his research on [his website](https://www.azandisresearch.com/) and [follow him](https://twitter.com/azandisarietta) on Twitter.
