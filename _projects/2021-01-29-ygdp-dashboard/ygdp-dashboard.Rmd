@@ -47,6 +47,6 @@ From June through December 2020, I dove in headfirst. I created a couple simple 
 
 The dashboard is still evolving, but here is the current version. I'm immensely proud of how far I've come with Shiny, and I'm really excited about how this dashboard will allow the YGDP, and the general public, to explore the linguistic survey data in great detail.
 
-<iframe src="https://kaijagahm.shinyapps.io/ygdpDashboard/" class="l-screen-inset shaded" height="650px" border="none"></iframe>
+<!-- <iframe src="https://kaijagahm.shinyapps.io/ygdpDashboard/" class="l-screen-inset shaded" height="650px" border="none"></iframe> -->
 
 If you have questions about this work, please feel free to get in touch. If you want to suggest an improvement or change to the dashboard, or to report a bug or file a pull request, head over to the [github page](https://github.com/kaijagahm/ygdpDashboard) for the project. I'll be leaving the project shortly, so I'm not sure how actively the dashboard will be maintained, but suggestions are certainly welcome.
