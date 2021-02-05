@@ -12,7 +12,16 @@
       <link>https://kaijagahm.netlify.app/</link>
     </image>
     <generator>Distill</generator>
-    <lastBuildDate>Fri, 29 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 05 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>YGDP Dashboard</title>
+      <dc:creator>Kaija Gahm</dc:creator>
+      <link>https://kaijagahm.netlify.app/projects/2021-02-05-ygdp-dashboard</link>
+      <description>From June through December 2020, I taught myself Shiny and ended up creating a pretty complicated interactive dashboard for exploring dialect variation across the US. Here's a bit about my experience using Shiny, as well as the app itself for you to play around with.</description>
+      <guid>https://kaijagahm.netlify.app/projects/2021-02-05-ygdp-dashboard</guid>
+      <pubDate>Fri, 05 Feb 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://kaijagahm.netlify.app/projects/2021-02-05-ygdp-dashboard/hexMap.png" medium="image" type="image/png" width="1434" height="810"/>
+    </item>
     <item>
       <title>The Tadpole Olympics</title>
       <dc:creator>Kaija Gahm</dc:creator>
@@ -22,15 +31,6 @@ A short description of the post.</description>
       <guid>https://kaijagahm.netlify.app/projects/2021-01-29-tadpoles</guid>
       <pubDate>Fri, 29 Jan 2021 00:00:00 +0000</pubDate>
       <media:content url="https://kaijagahm.netlify.app/projects/2021-01-29-tadpoles/tadpole.png" medium="image" type="image/png" width="1421" height="575"/>
-    </item>
-    <item>
-      <title>YGDP Dashboard</title>
-      <dc:creator>Kaija Gahm</dc:creator>
-      <link>https://kaijagahm.netlify.app/projects/2021-01-29-ygdp-dashboard</link>
-      <description>From June through December 2020, I taught myself Shiny and ended up creating a pretty complicated interactive dashboard for exploring dialect variation across the US. Here's a bit about my experience using Shiny, as well as the app itself for you to play around with.</description>
-      <guid>https://kaijagahm.netlify.app/projects/2021-01-29-ygdp-dashboard</guid>
-      <pubDate>Fri, 29 Jan 2021 00:00:00 +0000</pubDate>
-      <media:content url="https://kaijagahm.netlify.app/projects/2021-01-29-ygdp-dashboard/hexMap.png" medium="image" type="image/png" width="1434" height="810"/>
     </item>
   </channel>
 </rss>
