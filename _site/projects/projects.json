@@ -1,5 +1,24 @@
 [
   {
+    "path": "projects/2021-02-05-ygdp-dashboard/",
+    "title": "YGDP Dashboard",
+    "description": "From June through December 2020, I taught myself Shiny and ended up creating a pretty complicated interactive dashboard for exploring dialect variation across the US. Here's a bit about my experience using Shiny, as well as the app itself for you to play around with.",
+    "author": [
+      {
+        "name": "Kaija Gahm",
+        "url": {}
+      }
+    ],
+    "date": "2021-02-05",
+    "categories": [],
+    "contents": "\nA map showing interpolated ratings data for the sentence “Here’s you some money.” A rating of 1 is “totally unacceptable sentence, even in casual conversation”, while 5 is “totally acceptable sentence.”Studying language across the US\nThe Yale Grammatical Diversity Project (YGDP) has been collecting survey data about syntax diversity in U.S. English for over five years.\nYou can read about the YGDP’s work here, but in a nutshell:\nWe put out surveys online to learn about people’s dialects across the United States\nWe ask survey participants to judge whether test sentences, such as “Here’s you a piece of pizza”, seem acceptable in casual conversation.\nWe’re not interested in “proper” or “correct” English–we want to know how people actually talk in real life across the country.\n(If you want to learn about the survey and data analysis methods in great detail, check out the comprehensive mapbook that we published earlier this year.)\nIn the past, there has been a lot of research into regional language diversity, but a lot of it has focused on lexical (words, vocabulary) diversity. A great example of that is the New York Times dialect quiz, which asks questions like “What do you call it when rain falls while the sun is shining?”, with answers ranging from “sunshower” to “the wolf is giving birth”.\nThe YGDP focuses more on syntactic (“grammatical”; related to syntax) diversity. So, they want to know how people put sentences together, not necessarily which words they use.\nThe Scots Syntax Atlas has done some great work along these lines in Scotland. The YGDP’s methods are a little different, but they’re asking the same types of questions about grammatical variation.\nI’m actually not a linguist, so I’m not going to explain the research in detail. To learn more about the YGDP’s research, you can check out their website. Head over to the grammatical phenomena pages to learn more about constructions like “All the further”, “Done my homework”, and “Come with”.\nData work\nIn 2019, I started working with the YGDP to pull together and organize their survey data. One of our primary goals was to make our findings easily accessible and explorable for anyone who might be interested.\nI had heard about R Shiny, but I had never created a Shiny app. In the spring of 2020, I talked to Jim Wood, one of the YGDP’s supervisors, about the possibility of developing a Shiny app to display the YGDP’s findings in a colorful, interactive way. Jim was excited about the idea, even though I had been very clear that I’d be starting absolutely from scratch and learning Shiny along the way.\nFrom June through December 2020, I dove in headfirst. I created a couple simple Shiny apps as practice, but then I set about developing a pretty complicated Shiny dashboard. I’ve always found that the best way to learn a new tool is to plunge in and use it, learning as you go. Learning Shiny was the ultimate baptism by fire. I think I started trying to create hierarchical selectInputs by about day 2, when I was still far from understanding the fundamentals of Shiny’s inputs and outputs. Next came the dashboard layout, which I achieved using shinydashboard and eventually shinydashboardPlus. I learned to insert a map using leaflet, another package I had never dabbled in.\nHierarchical selectInputs: the choices in the “Sentence 1” menu depend on the selection in “Survey”.A map made with the leaflet packageThe dashboard is still evolving, but here is the current version. I’m immensely proud of how far I’ve come with Shiny, and I’m really excited about how this dashboard will allow the YGDP, and the general public, to explore the linguistic survey data in great detail.\n\n\nIf you have questions about this work, please feel free to get in touch. If you want to suggest an improvement or change to the dashboard, or to report a bug or file a pull request, head over to the github page for the project. I’ll be leaving the project shortly, so I’m not sure how actively the dashboard will be maintained, but suggestions are certainly welcome.\n\n\n\n",
+    "preview": "projects/2021-02-05-ygdp-dashboard/hexMap.png",
+    "last_modified": "2021-02-05T10:57:16-05:00",
+    "input_file": {},
+    "preview_width": 1434,
+    "preview_height": 810
+  },
+  {
     "path": "projects/2021-01-29-tadpoles/",
     "title": "The Tadpole Olympics",
     "description": "For my B.S. thesis project at Yale, I measured how fast wood frog tadpoles swim in response to a simulated predator attack, and how that swimming speed relates to their developmental rate. It turns out that developing fast comes with a performance cost, and that tradeoff might help to explain some of the patterns we've observed in wood frogs' developmental rates in the past.\nA short description of the post.",
@@ -17,24 +36,5 @@
     "input_file": {},
     "preview_width": 1421,
     "preview_height": 575
-  },
-  {
-    "path": "projects/2021-01-29-ygdp-dashboard/",
-    "title": "YGDP Dashboard",
-    "description": "From June through December 2020, I taught myself Shiny and ended up creating a pretty complicated interactive dashboard for exploring dialect variation across the US. Here's a bit about my experience using Shiny, as well as the app itself for you to play around with.",
-    "author": [
-      {
-        "name": "Kaija Gahm",
-        "url": {}
-      }
-    ],
-    "date": "2021-01-29",
-    "categories": [],
-    "contents": "\n\nStudying language across the US\nThe Yale Grammatical Diversity Project (YGDP) has been collecting survey data about syntax diversity in U.S. English for over five years.\nYou can read about the YGDP’s work here, but in a nutshell:\nWe put out surveys online to learn about people’s dialects across the United States\nWe ask survey participants to judge whether test sentences, such as “Here’s you a piece of pizza”, seem acceptable in casual conversation.\nWe’re not interested in “proper” or “correct” English–we want to know how people actually talk in real life across the country.\n(If you want to learn about the survey and data analysis methods in great detail, check out the comprehensive mapbook that we published earlier this year.)\nIn the past, there has been a lot of research into regional language diversity, but a lot of it has focused on lexical (words, vocabulary) diversity. A great example of that is the New York Times dialect quiz, which asks questions like “What do you call it when rain falls while the sun is shining?”, with answers ranging from “sunshower” to “the wolf is giving birth”.\nThe YGDP focuses more on syntactic (“grammatical”; related to syntax) diversity. So, they want to know how people put sentences together, not necessarily which words they use.\nThe Scots Syntax Atlas has done some great work along these lines in Scotland. The YGDP’s methods are a little different, but they’re asking the same types of questions about grammatical variation.\nI’m actually not a linguist, so I’m not going to explain the research in detail. To learn more about the YGDP’s research, you can check out their website. Head over to the grammatical phenomena pages to learn more about constructions like “All the further”, “Done my homework”, and “Come with”.\nData work\nIn 2019, I started working with the YGDP to pull together and organize their survey data. One of our primary goals was to make our findings easily accessible and explorable for anyone who might be interested.\nI had heard about R Shiny, but I had never created a Shiny app. In the spring of 2020, I talked to Jim Wood, one of the YGDP’s supervisors, about the possibility of developing a Shiny app to display the YGDP’s findings in a colorful, interactive way. Jim was excited about the idea, even though I had been very clear that I’d be starting absolutely from scratch and learning Shiny along the way.\nFrom June through December 2020, I dove in headfirst. I created a couple simple Shiny apps as practice, but then I set about developing a pretty complicated Shiny dashboard. I’ve always found that the best way to learn a new tool is to plunge in and use it, learning as you go. Learning Shiny was the ultimate baptism by fire. I think I started trying to create hierarchical selectInputs by about day 2, when I was still far from understanding the fundamentals of Shiny’s inputs and outputs. Next came the dashboard layout, which I achieved using shinydashboard and eventually shinydashboardPlus. I learned to insert a map using leaflet, another package I had never dabbled in.\n\n\nThe dashboard is still evolving, but here is the current version. I’m immensely proud of how far I’ve come with Shiny, and I’m really excited about how this dashboard will allow the YGDP, and the general public, to explore the linguistic survey data in great detail.\n\n\nIf you have questions about this work, please feel free to get in touch. If you want to suggest an improvement or change to the dashboard, or to report a bug or file a pull request, head over to the github page for the project. I’ll be leaving the project shortly, so I’m not sure how actively the dashboard will be maintained, but suggestions are certainly welcome.\n\n\n\n",
-    "preview": "projects/2021-01-29-ygdp-dashboard/hexMap.png",
-    "last_modified": "2021-02-05T10:44:03-05:00",
-    "input_file": {},
-    "preview_width": 1434,
-    "preview_height": 810
   }
 ]

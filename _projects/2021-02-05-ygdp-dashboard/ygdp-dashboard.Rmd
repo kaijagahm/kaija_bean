@@ -4,13 +4,19 @@ description: |
   From June through December 2020, I taught myself Shiny and ended up creating a pretty complicated interactive dashboard for exploring dialect variation across the US. Here's a bit about my experience using Shiny, as well as the app itself for you to play around with.
 author:
   - name: Kaija Gahm
-date: 01-29-2021
+    url: {}
+date: 02-05-2021
 output:
   distill::distill_article:
     self_contained: false
 preview: hexMap.png
 ---
-<!-- ![A map showing interpolated ratings data for the sentence "Here's you some money." A rating of 1 is "totally unacceptable sentence, even in casual conversation", while 5 is "totally acceptable sentence."](hexMap.png) -->
+
+```{r include = F}
+library(xfun)
+```
+
+![A map showing interpolated ratings data for the sentence "Here's you some money." A rating of 1 is "totally unacceptable sentence, even in casual conversation", while 5 is "totally acceptable sentence."](hexMap.png)
 
 ### Studying language across the US
 The Yale Grammatical Diversity Project (YGDP) has been collecting survey data about syntax diversity in U.S. English for over five years.
@@ -23,7 +29,7 @@ You can read about the YGDP's work [here](https://ygdp.yale.edu), but in a nutsh
 
 - We're not interested in "proper" or "correct" English--we want to know how people actually talk in real life across the country.
 
-- (If you want to learn about the survey and data analysis methods in great detail, check out the `r xfun::embed_file(text = "comprehensive mapbook", 'woodEtAl_20_Mapbook-of-Sy.pdf')` that we published earlier this year.)
+- (If you want to learn about the survey and data analysis methods in great detail, check out the [comprehensive mapbook](https://ling.auf.net/lingbuzz/005277) that we published earlier this year.)
 
 In the past, there has been a lot of research into regional language diversity, but a lot of it has focused on **lexical** (words, vocabulary) diversity. A great example of that is the [New York Times dialect quiz](https://www.nytimes.com/interactive/2014/upshot/dialect-quiz-map.html), which asks questions like "What do you call it when rain falls while the sun is shining?", with answers ranging from "sunshower" to "the wolf is giving birth".
 
@@ -40,9 +46,9 @@ I had heard about R Shiny, but I had never created a Shiny app. In the spring of
 
 From June through December 2020, I dove in headfirst. I created a couple simple Shiny apps as practice, but then I set about developing a pretty complicated Shiny dashboard. I've always found that the best way to learn a new tool is to plunge in and use it, learning as you go. Learning Shiny was the ultimate baptism by fire. I think I started trying to create hierarchical `selectInput`s by about day 2, when I was still far from understanding the fundamentals of Shiny's inputs and outputs. Next came the dashboard layout, which I achieved using `shinydashboard` and eventually `shinydashboardPlus`. I learned to insert a map using `leaflet`, another package I had never dabbled in.
 
-<!-- ![Hierarchical selectInputs: the choices in the "Sentence 1" menu depend on the selection in "Survey".](hierarchicalSelect.png){#hierarchicalSelect .class height=50% width=50%} -->
+![Hierarchical selectInputs: the choices in the "Sentence 1" menu depend on the selection in "Survey".](hierarchicalSelect.png){#hierarchicalSelect .class height=50% width=50%}
 
-<!-- ![A map made with the `leaflet` package](leaflet.png) -->
+![A map made with the `leaflet` package](leaflet.png)
 
 The dashboard is still evolving, but here is the current version. I'm immensely proud of how far I've come with Shiny, and I'm really excited about how this dashboard will allow the YGDP, and the general public, to explore the linguistic survey data in great detail.
 
