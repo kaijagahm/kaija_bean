@@ -12,15 +12,15 @@
       <link>https://kaijagahm.netlify.app/</link>
     </image>
     <generator>Distill</generator>
-    <lastBuildDate>Mon, 25 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 05 Feb 2021 00:00:00 +0000</lastBuildDate>
     <item>
-      <title>Building a Distill Website</title>
+      <title>%$%: upping your pipe game</title>
       <dc:creator>Kaija Gahm</dc:creator>
-      <link>https://kaijagahm.netlify.app/posts/2021-01-25-building-a-distill-website</link>
-      <description>How I built this website using {distill}</description>
-      <guid>https://kaijagahm.netlify.app/posts/2021-01-25-building-a-distill-website</guid>
-      <pubDate>Mon, 25 Jan 2021 00:00:00 +0000</pubDate>
-      <media:content url="https://kaijagahm.netlify.app/posts/2021-01-25-building-a-distill-website/woodpecker.jpg" medium="image" type="image/jpeg"/>
+      <link>https://kaijagahm.netlify.app/posts/2021-02-05-upping-your-pipe-game</link>
+      <description>I love the `magrittr`/`dplyr` pipe: `%&gt;%`. But it's meant to work with `tidyverse` functions, and it doesn't always work well with base R functions that take a single data frame column as input. Here, I use data about my friends' pets to explain how a different `magrittr` pipe, `%$%`, solves that problem.</description>
+      <guid>https://kaijagahm.netlify.app/posts/2021-02-05-upping-your-pipe-game</guid>
+      <pubDate>Fri, 05 Feb 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://kaijagahm.netlify.app/posts/2021-02-05-upping-your-pipe-game/magrittr.jpg" medium="image" type="image/jpeg"/>
     </item>
   </channel>
 </rss>
