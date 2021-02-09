@@ -1,0 +1,132 @@
+---
+title: "%$%: upping your pipe game"
+description: |
+  I love the `magrittr`/`dplyr` pipe: `%>%`. But it's meant to work with `tidyverse` functions, and it doesn't always work well with base R functions that take a single data frame column as input. Here, I use data about my friends' pets to explain how a different `magrittr` pipe, `%$%`, solves that problem.
+author:
+  - name: Kaija Gahm
+    url: {}
+date: 02-10-2021
+output:
+  distill::distill_article:
+    self_contained: false
+    highlight: kate
+preview: magrittr.jpg
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(tidy.opts=list(width.cutoff=70), tidy=F)
+```
+
+```{r echo = F}
+knitr::include_graphics("magrittr.jpg")
+```
+
+*This post has been slightly modified from its original form on [woodpeckR](https://thewoodpeckr.wordpress.com/2020/02/10/upping-your-pipe-game/).*
+
+## Problem
+
+What do I do when %>% doesn't work?
+
+## Context
+
+I love the `%>%` pipe. Originally from `magrittr`, it's now characteristic of most `tidyverse` code. Using `%>%` has revolutionized how I write code in R. But sometimes the basic pipe falls short.
+
+`table()` is one of my favorite functions for exploring data in R: it creates a frequency table of values in a vector. I use `table()` to do sanity checks on my data, make sure that all factor levels are present, and generally get a sense of how my observations are distributed.
+
+A while back, though, I noticed that `table()` didn't play nice with the `%>%` pipe.
+
+I've collected some data on my friends' pets. Here it is (using pseudonyms, in case anyone has a secret pet they don't want the world to know about...).
+
+```{r echo = F, fig.cap = "This is one of the cats in the data frame below. She would like to hold your hand.", out.width="150%"}
+knitr::include_graphics("milge.jpg")
+```
+
+```{r}
+# Load magrittr
+library(magrittr)
+library(dplyr)
+
+# Create data
+pets <- data.frame(
+  friend = c("Mark", "Mark", "Kyle", "Kyle", "Miranda", "Kayla", 
+             "Kayla", "Kayla", "Adriana", "Adriana", "Alex", "Randy", "Nancy"), 
+  pet = c("cat", "cat", "cat", "cat", "cat", "dog", "cat", "lizard", 
+          "cat", "cat", "dog", "dog", "woodpecker"), 
+  main_pet_color = c("brown", "brown", "multi", "multi", "brown", 
+                     "brown", "brown", "orange", "black", "white", 
+                     "multi", "white", "multi")) 
+
+# Look at the data
+pets
+```
+
+Unsurprisingly, it looks like there are a lot of cats and dogs! There are also a lot of brown pets and a lot of multicolored ones. Let's say I want to see a frequency table of the pet colors. I know that I can do this with `table()`, like so:  
+
+```{r echo = T}
+# Make a frequency table of pet colors
+table(pets$main_pet_color)
+```
+
+But if I want to use tidy syntax, I might try to do it this way instead:
+
+```{r error = TRUE, echo = T}
+pets %>%
+  table(main_pet_color)
+```
+
+What's up with this? The syntax should work. pet is definitely a valid variable name in the data frame pets, and if I had used a different function, like `arrange()`, I would have had no problems:
+
+```{r}
+# Arrange the data frame by pet color
+pets %>% arrange(main_pet_color) # works fine!
+```
+
+So why doesn't this work with `table()`?? This problem has driven me crazy on several occasions. I always ended up reverting back to the `table(pets$main_pet_color)` syntax, but I was not happy about it.
+
+Turns out, there's a simple fix.
+
+## Solution
+
+Introducing... a new pipe! `%$%` is called the "exposition pipe," according to the magrittr package documentation, and it's basically the tidy version of the `with()` function, which I wrote about previously.
+
+If we simply swap out `%>%` for `%$%` in our failed code above, it works!
+
+```{r}
+# Make a frequency table of pet colors
+pets %$% table(main_pet_color)
+```
+
+**Important note: Make sure you have `magrittr` loaded if you want to use this pipe. `dplyr` includes the basic `%>%`, but not the other `magrittr` pipes.**
+
+## Why it works
+
+The traditional pipe, `%>%`, works by passing a data frame or tibble into the next function. But that only works if the function you're piping to is set up to take a data frame/tibble as an argument!
+
+Functions in the `tidyverse`, like `arrange()`, are set up to take this kind of argument, so that piping works seamlessly. But many base R functions take vectors as inputs instead.
+
+That's the case with `table()`. When we write `table(pets$main_pet_color)`, the argument `pets$main_pet_color` is a vector:
+
+```{r}
+# This returns a vector
+pets$main_pet_color
+```
+
+When we try to pass pets into `table()` with the pipe, `table()` expects a vector but gets a data frame instead, and it throws an error.
+
+The `%$%` pipe "exposes" the column names of the data frame to the function you're piping to, allowing that function to make sense of the data frame that is passed to it.
+
+### Outcome
+
+The exposition pipe is great for integrating non-tidyverse functions into a tidy workflow. The outcome for me is that I can finally make frequency tables to my heart's content, without "code switching" back from tidy to base R syntax. Of course, the downside is that you do have to install `magrittr`, which is sometimes an extra dependency that I don't want to deal with. But it's nice to have the option!
+
+```{r fig.cap = "Congrats, you made it to the end! Here are some more cats for you.", echo = F}
+knitr::include_graphics("kitties.jpg")
+```
+
+### Resources
+
+`magrittr` has a couple other pipes, too: `%T%` and `%<>%`. The package also has some nice aliases for basic arithmetic functions that allow them to be incorporated into a chain of pipes. To read more about these magrittr options, scroll to the bottom of the [`magrittr` vignette](https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html).
+
+Note: The image at the top of this post was modified from the `magrittr` documentation.
+
