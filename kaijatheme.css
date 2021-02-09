@@ -12,7 +12,7 @@
 /* This must remain at the top of this file.                 */
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo');
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic');
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro');
 
 
 html {
@@ -30,7 +30,7 @@ html {
   --fig-cap-color:   #13182A;
   /*-- Specify custom fonts ~~~ must be imported above   --*/
   --heading-font:    "Nanum Myeongjo", serif;
-  --mono-font:       "Nanum Gothic Coding", monospace;
+  --mono-font:       "Source Code Pro", monospace;
   --body-font:       "Nanum Gothic", sans-serif;
   --navbar-font:     "Nanum Gothic", sans-serif;
 }
