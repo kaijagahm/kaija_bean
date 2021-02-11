@@ -1,0 +1,129 @@
+---
+title: "Where are my NA's?"
+description: |
+  I wrote a function to summarize how many NA's are in each column of a data frame. Preview image by Allison Horst, https://github.com/allisonhorst.
+author:
+  - name: Kaija Gahm
+    url: {}
+date: 07-06-2018
+output:
+  distill::distill_article:
+    self_contained: false
+    highlight: kate
+preview: naniar.jpg
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r echo = F, fig.cap = "Artwork by Allison Horst, https://github.com/allisonhorst/stats-illustrations."}
+knitr::include_graphics("naniar.jpg")
+```
+
+*This post has been slightly modified from its original form on [woodpeckR](https://thewoodpeckr.wordpress.com/2018/07/06/the-journey-begins/).*
+
+### Problem
+
+How can I (quickly and intuitively) figure out how many `NA`’s are in my dataset and which columns they’re in?
+
+### Context
+
+When I tried to run PCA (Principal Components Analysis) on some USGS fish sampling data, I noticed that I had a bunch of missing values. PCA needs complete observations, so this was a problem.
+
+One option would have been to remove any observations with missing values from my data set:
+
+```{r}
+# Select only "complete" rows from the data frame `df`  
+# noNAs <- df[complete.cases(df),]
+```
+
+The problem was, I had over 30 variables and who knows how many missing values. The data frame had only ~2000 observations. By using only complete cases, I might lose a lot of observations and reduce my sample size by a huge amount.
+
+In fact, I pretty often find myself in this situation. It would be really nice to have a quick way to see where those `NA` values are located so I can get a better sense of my dataset and figure out how to move forward.
+
+### Solution
+
+Write a loop that tells us how many `NA`’s are in each column.
+
+First, let’s create a sample data frame and call it `sample.df`:
+
+```{r echo = T}
+# Create the data frame
+sample.df <- data.frame(
+     site = 1:4, 
+     temp = c(10, 15, 13, NA), 
+     depth = c(1.1, NA, 2.0, NA)
+)
+
+# Show the data frame
+sample.df
+```
+
+Loop through the columns and print out the number of `NA`’s:
+
+```{r}
+# Create a vector full of NA's, the same length as the number of columns in sample.df
+na.vec <- rep(NA, ncol(sample.df))
+
+# Loop through the columns and fill na.vec
+for(i in 1:ncol(sample.df)){
+     na.vec[i] <- sum(is.na(sample.df[,i]))
+}
+
+# Take a look at na.vec
+na.vec
+```
+
+Now we can see that there are 0 `NA`’s in the first column, 1 `NA` in the second column, and 2 `NA`’s in the third column.
+
+But if you have 30 columns, it’s a pain to map those numbers to the column names. So let’s do better. Instead of just printing the numbers of `NA`’s in a vector, we’ll put them in a data frame along with the names of the columns.
+
+```{r}
+# Create a data frame
+na.df <- data.frame(
+     Column = names(sample.df),
+     num.nas = NA
+)
+
+# Loop through the columns of sample.df and fill na.df
+for(i in 1:ncol(sample.df)){
+     na.df$num.nas[i] <- sum(is.na(sample.df[,i]))
+}
+
+# Take a look at na.df
+na.df
+```
+
+So much better!
+
+Once you get used to it, this is a quick loop to write. But I got sick of re-creating this process every time, so I wrote a function called locate.nas. Feel free to use it:
+
+```{r}
+#Locate NA's: produces a data frame with column names and number of na's
+locate.nas <- function(df){
+  na.df <- data.frame(
+    colname = names(df),
+    nas = NA
+  )
+  
+  for(i in 1:ncol(df)){
+    na.df$nas[i] <- sum(is.na(df[,i]))
+  }
+  return(na.df)
+}
+```
+
+### Outcome
+
+A quick look at the distribution of missing values (`NA`’s) in my data frame turned up an obvious pattern. I checked the sampling protocol and saw that certain variables had only been measured for lotic areas (moving water), while others had only been measured for lentic areas (still water). Since every observation point was in either a lotic or a lentic area, filtering out incomplete observations would have left me with no data at all.
+
+By adding an indicator variable for lotic/lentic area, I could sort out my data and run PCA separately. Or I could remove the variables measured for only one area. Problem solved.
+
+### Resources
+- [`locate_nas` function](https://raw.githubusercontent.com/kaijagahm/general/master/locate.nas.txt)
+
+- There's also a whole package that makes dealing with NA's easier. I didn't know about it when I originally wrote this post, but I've since discovered it, and you should check it out! It's called `naniar`, and you can find it [here](https://cran.r-project.org/web/packages/naniar/vignettes/getting-started-w-naniar.html)
+
+
+

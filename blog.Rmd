@@ -1,4 +1,10 @@
 ---
-title: "Blog"
+title: "woodpeckR: coding, one acorn at a time"
 listing: posts
 ---
+
+<!-- <br> -->
+
+<!-- ```{r echo = F, fig.align='center', out.width = "500%", align='left'} -->
+<!-- knitr::include_graphics("acornsBanner.jpg") -->
+<!-- ``` -->

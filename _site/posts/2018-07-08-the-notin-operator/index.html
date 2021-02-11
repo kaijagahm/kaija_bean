@@ -88,54 +88,48 @@ code span.wa { color: #bf0303; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-<title>Kaija Gahm: Loading packages efficiently</title>
+<title>Kaija Gahm: The %notin% operator</title>
 
-<meta property="description" itemprop="description" content="A trick I sometimes use to load a whole bunch of packages for every script in a project, while saving myself some typing. (Preview image from https://towardsdatascience.com/a-comprehensive-list-of-handy-r-packages-e85dad294b3d)"/>
+<meta property="description" itemprop="description" content="Why is negating `%in%` such a pain?"/>
 
-<link rel="canonical" href="https://kaijagahm.netlify.app/posts/2019-10-12-loading-packages-efficiently/"/>
+<link rel="canonical" href="https://kaijagahm.netlify.app/posts/2018-07-08-the-notin-operator/"/>
 <link rel="icon" type="image/jpeg" href="../../woodpeckerIcon.jpg"/>
 
 <!--  https://schema.org/Article -->
-<meta property="article:published" itemprop="datePublished" content="2019-10-12"/>
-<meta property="article:created" itemprop="dateCreated" content="2019-10-12"/>
+<meta property="article:published" itemprop="datePublished" content="2018-07-08"/>
+<meta property="article:created" itemprop="dateCreated" content="2018-07-08"/>
 <meta name="article:author" content="Kaija Gahm"/>
 
 <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-<meta property="og:title" content="Kaija Gahm: Loading packages efficiently"/>
+<meta property="og:title" content="Kaija Gahm: The %notin% operator"/>
 <meta property="og:type" content="article"/>
-<meta property="og:description" content="A trick I sometimes use to load a whole bunch of packages for every script in a project, while saving myself some typing. (Preview image from https://towardsdatascience.com/a-comprehensive-list-of-handy-r-packages-e85dad294b3d)"/>
-<meta property="og:url" content="https://kaijagahm.netlify.app/posts/2019-10-12-loading-packages-efficiently/"/>
-<meta property="og:image" content="https://kaijagahm.netlify.app/posts/2019-10-12-loading-packages-efficiently/pkgs.png"/>
-<meta property="og:image:width" content="1097"/>
-<meta property="og:image:height" content="233"/>
+<meta property="og:description" content="Why is negating `%in%` such a pain?"/>
+<meta property="og:url" content="https://kaijagahm.netlify.app/posts/2018-07-08-the-notin-operator/"/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:site_name" content="Kaija Gahm"/>
 
 <!--  https://dev.twitter.com/cards/types/summary -->
-<meta property="twitter:card" content="summary_large_image"/>
-<meta property="twitter:title" content="Kaija Gahm: Loading packages efficiently"/>
-<meta property="twitter:description" content="A trick I sometimes use to load a whole bunch of packages for every script in a project, while saving myself some typing. (Preview image from https://towardsdatascience.com/a-comprehensive-list-of-handy-r-packages-e85dad294b3d)"/>
-<meta property="twitter:url" content="https://kaijagahm.netlify.app/posts/2019-10-12-loading-packages-efficiently/"/>
-<meta property="twitter:image" content="https://kaijagahm.netlify.app/posts/2019-10-12-loading-packages-efficiently/pkgs.png"/>
-<meta property="twitter:image:width" content="1097"/>
-<meta property="twitter:image:height" content="233"/>
+<meta property="twitter:card" content="summary"/>
+<meta property="twitter:title" content="Kaija Gahm: The %notin% operator"/>
+<meta property="twitter:description" content="Why is negating `%in%` such a pain?"/>
+<meta property="twitter:url" content="https://kaijagahm.netlify.app/posts/2018-07-08-the-notin-operator/"/>
 
 <!--  https://scholar.google.com/intl/en/scholar/inclusion.html#indexing -->
-<meta name="citation_title" content="Kaija Gahm: Loading packages efficiently"/>
-<meta name="citation_fulltext_html_url" content="https://kaijagahm.netlify.app/posts/2019-10-12-loading-packages-efficiently/"/>
-<meta name="citation_online_date" content="2019/10/12"/>
-<meta name="citation_publication_date" content="2019/10/12"/>
+<meta name="citation_title" content="Kaija Gahm: The %notin% operator"/>
+<meta name="citation_fulltext_html_url" content="https://kaijagahm.netlify.app/posts/2018-07-08-the-notin-operator/"/>
+<meta name="citation_online_date" content="2018/07/08"/>
+<meta name="citation_publication_date" content="2018/07/08"/>
 <meta name="citation_author" content="Kaija Gahm"/>
 <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
 <script type="text/json" id="radix-rmarkdown-metadata">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","preview","citation_url","canonical_url"]}},"value":[{"type":"character","attributes":{},"value":["Loading packages efficiently"]},{"type":"character","attributes":{},"value":["A trick I sometimes use to load a whole bunch of packages for every script in a project, while saving myself some typing. (Preview image from https://towardsdatascience.com/a-comprehensive-list-of-handy-r-packages-e85dad294b3d)"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Kaija Gahm"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":[]}},"value":[]}]}]},{"type":"character","attributes":{},"value":["10-12-2019"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","highlight"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["kate"]}]}]},{"type":"character","attributes":{},"value":["pkgs.png"]},{"type":"character","attributes":{},"value":["https://kaijagahm.netlify.app/posts/2019-10-12-loading-packages-efficiently/"]},{"type":"character","attributes":{},"value":["https://kaijagahm.netlify.app/posts/2019-10-12-loading-packages-efficiently/"]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","citation_url","canonical_url"]}},"value":[{"type":"character","attributes":{},"value":["The %notin% operator"]},{"type":"character","attributes":{},"value":["Why is negating `%in%` such a pain?"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Kaija Gahm"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":[]}},"value":[]}]}]},{"type":"character","attributes":{},"value":["07-08-2018"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","highlight"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["kate"]}]}]},{"type":"character","attributes":{},"value":["https://kaijagahm.netlify.app/posts/2018-07-08-the-notin-operator/"]},{"type":"character","attributes":{},"value":["https://kaijagahm.netlify.app/posts/2018-07-08-the-notin-operator/"]}]}
 </script>
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["files.png","libraries.png","loading-packages-efficiently_files/anchor-4.2.2/anchor.min.js","loading-packages-efficiently_files/bowser-1.9.3/bowser.min.js","loading-packages-efficiently_files/distill-2.2.21/template.v2.js","loading-packages-efficiently_files/header-attrs-2.6.6/header-attrs.js","loading-packages-efficiently_files/jquery-1.11.3/jquery.min.js","loading-packages-efficiently_files/popper-2.6.0/popper.min.js","loading-packages-efficiently_files/tippy-6.2.7/tippy-bundle.umd.min.js","loading-packages-efficiently_files/tippy-6.2.7/tippy-light-border.css","loading-packages-efficiently_files/tippy-6.2.7/tippy.css","loading-packages-efficiently_files/tippy-6.2.7/tippy.umd.min.js","loading-packages-efficiently_files/webcomponents-2.0.0/webcomponents.js","pkgs.png","source.png"]}
+  {"type":"character","attributes":{},"value":["the-notin-operator_files/anchor-4.2.2/anchor.min.js","the-notin-operator_files/bowser-1.9.3/bowser.min.js","the-notin-operator_files/distill-2.2.21/template.v2.js","the-notin-operator_files/header-attrs-2.6.6/header-attrs.js","the-notin-operator_files/jquery-1.11.3/jquery.min.js","the-notin-operator_files/popper-2.6.0/popper.min.js","the-notin-operator_files/tippy-6.2.7/tippy-bundle.umd.min.js","the-notin-operator_files/tippy-6.2.7/tippy-light-border.css","the-notin-operator_files/tippy-6.2.7/tippy.css","the-notin-operator_files/tippy-6.2.7/tippy.umd.min.js","the-notin-operator_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 <meta name="distill:offset" content="../.."/>
@@ -2438,7 +2432,7 @@ d-appendix d-footnote-list a.footnote-backlink {
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Loading packages efficiently","description":"A trick I sometimes use to load a whole bunch of packages for every script in a project, while saving myself some typing. (Preview image from https://towardsdatascience.com/a-comprehensive-list-of-handy-r-packages-e85dad294b3d)","authors":[{"author":"Kaija Gahm","authorURL":{},"affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2019-10-12T00:00:00.000+00:00","citationText":"Gahm, 2019"}
+{"title":"The %notin% operator","description":"Why is negating `%in%` such a pain?","authors":[{"author":"Kaija Gahm","authorURL":{},"affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2018-07-08T00:00:00.000+00:00","citationText":"Gahm, 2018"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2471,48 +2465,81 @@ d-appendix d-footnote-list a.footnote-backlink {
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Loading packages efficiently</h1>
+<h1>The %notin% operator</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>A trick I sometimes use to load a whole bunch of packages for every script in a project, while saving myself some typing. (Preview image from <a href="https://towardsdatascience.com/a-comprehensive-list-of-handy-r-packages-e85dad294b3d" class="uri">https://towardsdatascience.com/a-comprehensive-list-of-handy-r-packages-e85dad294b3d</a>)</p></p>
+<p><p>Why is negating <code>%in%</code> such a pain?</p></p>
 </div>
 
 <div class="d-byline">
   Kaija Gahm true 
   
-<br/>10-12-2019
+<br/>07-08-2018
 </div>
 
 <div class="d-article">
-<div class="layout-chunk" data-layout="l-body">
-<div class="figure"><span id="fig:unnamed-chunk-1"></span>
-<img src="pkgs.png" alt="Image from [towards data science](https://towardsdatascience.com/a-comprehensive-list-of-handy-r-packages-e85dad294b3d)" width="130%" />
-<p class="caption">
-Figure 1: Image from <a href="https://towardsdatascience.com/a-comprehensive-list-of-handy-r-packages-e85dad294b3d">towards data science</a>
-</p>
-</div>
-</div>
-<p><em>This post has been slightly modified from its original form on <a href="https://thewoodpeckr.wordpress.com/2019/10/12/loading-packages-efficiently/">woodpeckR</a>.</em></p>
+<p><em>This post has been slightly modified from its original form on <a href="https://thewoodpeckr.wordpress.com/2018/07/08/notin/">woodpeckR</a>.</em></p>
 <h3 id="problem">Problem</h3>
-<p>Especially in a project with many different scripts, it can be challenging to keep track of all the packages you need to load. It’s also easy to lose track of whether or not you’ve incorporated package loading into the script itself until you switch to a new computer or restart R and all of a sudden, your packages need to be re-loaded.</p>
+<p>I keep forgetting how to select all elements of an object <em>except</em> a few, by name. I get the <code>!</code> operator confused with the <code>-</code> operator, and I find both of them less than intuitive to use. How can I negate the <code>%in%</code> operator?</p>
 <h3 id="context">Context</h3>
-<p>When I was first starting out in R, I learned quickly to load packages all together at the top of a script, not along the way as I needed them. But it took a while, until I started using R Projects, before I decided to centralize package loading above the script level. I was sick of having to deal with loading the right packages at the right times, so I decided to just streamline the whole thing.</p>
+<p>I have a data frame called <code>electrofishing</code> that contains observations from a fish sampling survey. One column, <code>stratum</code>, gives the aquatic habitat type of the sampling site. I’d like to exclude observations sampled in the “Tailwater Zone” or “Impounded-Offshore” aquatic habitats.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>electrofishing</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>stratum <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Tailwater Zone"</span>, <span class='st'>"Tailwater Zone"</span>, <span class='st'>"Impounded"</span>, <span class='st'>"Main Channel Border"</span>, <span class='st'>"Side Channel"</span>, <span class='st'>"Impounded-Offshore"</span>, <span class='st'>"Side Channel"</span><span class='op'>)</span>, 
+                             idx <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>7</span><span class='op'>)</span>
+
+<span class='va'>electrofishing</span>
+</code></pre>
+</div>
+<pre><code>              stratum idx
+1      Tailwater Zone   1
+2      Tailwater Zone   2
+3           Impounded   3
+4 Main Channel Border   4
+5        Side Channel   5
+6  Impounded-Offshore   6
+7        Side Channel   7</code></pre>
+</div>
+<p>My instinct would be to do this:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>electrofishing <span class="ot">&lt;-</span> electrofishing[electrofishing<span class="sc">$</span>stratum <span class="sc">!%in%</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                                   <span class="fu">c</span>(<span class="st">&quot;Tailwater Zone&quot;</span>, <span class="st">&quot;Impounded-Offshore&quot;</span>),]</span></code></pre></div>
+<pre><code>Error: &lt;text&gt;:1:57: unexpected &#39;!&#39;
+1: electrofishing &lt;- electrofishing[electrofishing$stratum !
+                                                            ^</code></pre>
+</div>
+<p>But that doesn’t work. You can’t negate the <code>%in%</code> operator directly. Instead, you have to wrap the <code>%in%</code> statement in parentheses and negate the entire statement, returning the opposite of the original boolean vector:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>electrofishing</span> <span class='op'>&lt;-</span> <span class='va'>electrofishing</span><span class='op'>[</span><span class='op'>!</span><span class='op'>(</span><span class='va'>electrofishing</span><span class='op'>$</span><span class='va'>stratum</span> <span class='op'>%in%</span> 
+                                     <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Tailwater Zone"</span>, <span class='st'>"Impounded-Offshore"</span><span class='op'>)</span><span class='op'>)</span>,<span class='op'>]</span>
+</code></pre>
+</div>
+</div>
+<p>I’m not saying this doesn’t make sense, but I can never remember it. My English-speaking brain would much rather say “rows whose stratum is <strong>not</strong> included in c(”Tailwater Zone“,”Impounded-Offshore“)” than “<strong>not</strong> rows whose stratum is included in c(”Tailwater Zone“,”Impounded-Offshore“)”.</p>
 <h3 id="solution">Solution</h3>
-<p>Make a separate R script, called “libraries.R” or “packages.R” or something. Keep it consistent. Mine is always called “libraries,” and I keep it in my project folder.</p>
+<p>Luckily, it’s pretty easy to negate <code>%in%</code> and create a <code>%notin%</code> operator. I credit this answer to user “catastrophic-failure” on <a href="https://stackoverflow.com/questions/38351820/negation-of-in-in-r">this</a> Stack Overflow question.</p>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="files.png" width="150%" /></p>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>`%notin%`</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/funprog.html'>Negate</a></span><span class='op'>(</span><span class='va'>`%in%`</span><span class='op'>)</span>
+</code></pre>
 </div>
-<p>The script looks something like this (individual packages may vary, of course):</p>
-<div class="layout-chunk" data-layout="l-body">
-<p><img src="libraries.png" width="150%" /></p>
 </div>
-<p>Then, at the top of each analysis script, I can simply source the libraries script, and all the libraries I need load automatically.</p>
-<div class="layout-chunk" data-layout="l-body">
-<p><img src="source.png" width="150%" /></p>
-</div>
+<p>I didn’t even know that the <code>Negate</code> function existed. The more you know.</p>
 <h3 id="outcome">Outcome</h3>
-<p>I can easily load libraries in the context of a single R Project, keep track of which ones are loaded, and not have to worry about making my scripts look messy with a whole chunk of <code>library()</code> commands at the top of each one. It’s also straightforward to pop open the “libraries” script whenever I want to add a new package or delete one.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>I know there are lots of ways to negate selections in R. <code>dplyr</code> has <code>select()</code> and <code>filter()</code> functions that are easier to use with <code>-c()</code>. Or I could just learn to throw a <code>!</code> in front of my <code>%in%</code> statements. But <code>%notin%</code> seems a little more intuitive.</p>
+<p>Now it’s straightforward to select these rows from my data frame.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>electrofishing</span> <span class='op'>&lt;-</span> <span class='va'>electrofishing</span><span class='op'>[</span><span class='va'>electrofishing</span><span class='op'>$</span><span class='va'>stratum</span> <span class='op'>%notin%</span> 
+                                   <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Tailwater Zone"</span>, <span class='st'>"Impounded-Offshore"</span><span class='op'>)</span>,<span class='op'>]</span>
+</code></pre>
+</div>
+</div>
+<h3 id="resources">Resources</h3>
+<p><a href="https://stackoverflow.com/questions/38351820/negation-of-in-in-r">https://stackoverflow.com/questions/38351820/negation-of-in-in-r</a></p>
+<p><a href="http://r.789695.n4.nabble.com/in-operator-NOT-IN-td3506655.html">This one</a> does a good job of explaining why <code>!%in%</code> doesn’t work.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
@@ -2529,13 +2556,13 @@ Figure 1: Image from <a href="https://towardsdatascience.com/a-comprehensive-lis
   <p>If you see mistakes or want to suggest changes, please <a href="https://github.com/kaijagahm/kaija_bean/issues/new">create an issue</a> on the source repository.</p>
   <h3 id="citation">Citation</h3>
   <p>For attribution, please cite this work as</p>
-  <pre class="citation-appendix short">Gahm (2019, Oct. 12). Kaija Gahm: Loading packages efficiently. Retrieved from https://kaijagahm.netlify.app/posts/2019-10-12-loading-packages-efficiently/</pre>
+  <pre class="citation-appendix short">Gahm (2018, July 8). Kaija Gahm: The %notin% operator. Retrieved from https://kaijagahm.netlify.app/posts/2018-07-08-the-notin-operator/</pre>
   <p>BibTeX citation</p>
-  <pre class="citation-appendix long">@misc{gahm2019loading,
+  <pre class="citation-appendix long">@misc{gahm2018the,
   author = {Gahm, Kaija},
-  title = {Kaija Gahm: Loading packages efficiently},
-  url = {https://kaijagahm.netlify.app/posts/2019-10-12-loading-packages-efficiently/},
-  year = {2019}
+  title = {Kaija Gahm: The %notin% operator},
+  url = {https://kaijagahm.netlify.app/posts/2018-07-08-the-notin-operator/},
+  year = {2018}
 }</pre>
 </div>
 <!--/radix_placeholder_appendices-->

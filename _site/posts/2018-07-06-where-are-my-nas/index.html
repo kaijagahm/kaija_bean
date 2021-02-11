@@ -88,54 +88,50 @@ code span.wa { color: #bf0303; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-<title>Kaija Gahm: Loading packages efficiently</title>
+<title>Kaija Gahm: Where are my NA's?</title>
 
-<meta property="description" itemprop="description" content="A trick I sometimes use to load a whole bunch of packages for every script in a project, while saving myself some typing. (Preview image from https://towardsdatascience.com/a-comprehensive-list-of-handy-r-packages-e85dad294b3d)"/>
+<meta property="description" itemprop="description" content="I wrote a function to summarize how many `NA`&#39;s are in each column of a data frame. Preview image by Allison Horst, https://github.com/allisonhorst."/>
 
-<link rel="canonical" href="https://kaijagahm.netlify.app/posts/2019-10-12-loading-packages-efficiently/"/>
+<link rel="canonical" href="https://kaijagahm.netlify.app/posts/2018-07-06-where-are-my-nas/"/>
 <link rel="icon" type="image/jpeg" href="../../woodpeckerIcon.jpg"/>
 
 <!--  https://schema.org/Article -->
-<meta property="article:published" itemprop="datePublished" content="2019-10-12"/>
-<meta property="article:created" itemprop="dateCreated" content="2019-10-12"/>
+<meta property="article:published" itemprop="datePublished" content="2018-07-06"/>
+<meta property="article:created" itemprop="dateCreated" content="2018-07-06"/>
 <meta name="article:author" content="Kaija Gahm"/>
 
 <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-<meta property="og:title" content="Kaija Gahm: Loading packages efficiently"/>
+<meta property="og:title" content="Kaija Gahm: Where are my NA&#39;s?"/>
 <meta property="og:type" content="article"/>
-<meta property="og:description" content="A trick I sometimes use to load a whole bunch of packages for every script in a project, while saving myself some typing. (Preview image from https://towardsdatascience.com/a-comprehensive-list-of-handy-r-packages-e85dad294b3d)"/>
-<meta property="og:url" content="https://kaijagahm.netlify.app/posts/2019-10-12-loading-packages-efficiently/"/>
-<meta property="og:image" content="https://kaijagahm.netlify.app/posts/2019-10-12-loading-packages-efficiently/pkgs.png"/>
-<meta property="og:image:width" content="1097"/>
-<meta property="og:image:height" content="233"/>
+<meta property="og:description" content="I wrote a function to summarize how many `NA`&#39;s are in each column of a data frame. Preview image by Allison Horst, https://github.com/allisonhorst."/>
+<meta property="og:url" content="https://kaijagahm.netlify.app/posts/2018-07-06-where-are-my-nas/"/>
+<meta property="og:image" content="https://kaijagahm.netlify.app/posts/2018-07-06-where-are-my-nas/naniar.jpg"/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:site_name" content="Kaija Gahm"/>
 
 <!--  https://dev.twitter.com/cards/types/summary -->
 <meta property="twitter:card" content="summary_large_image"/>
-<meta property="twitter:title" content="Kaija Gahm: Loading packages efficiently"/>
-<meta property="twitter:description" content="A trick I sometimes use to load a whole bunch of packages for every script in a project, while saving myself some typing. (Preview image from https://towardsdatascience.com/a-comprehensive-list-of-handy-r-packages-e85dad294b3d)"/>
-<meta property="twitter:url" content="https://kaijagahm.netlify.app/posts/2019-10-12-loading-packages-efficiently/"/>
-<meta property="twitter:image" content="https://kaijagahm.netlify.app/posts/2019-10-12-loading-packages-efficiently/pkgs.png"/>
-<meta property="twitter:image:width" content="1097"/>
-<meta property="twitter:image:height" content="233"/>
+<meta property="twitter:title" content="Kaija Gahm: Where are my NA&#39;s?"/>
+<meta property="twitter:description" content="I wrote a function to summarize how many `NA`&#39;s are in each column of a data frame. Preview image by Allison Horst, https://github.com/allisonhorst."/>
+<meta property="twitter:url" content="https://kaijagahm.netlify.app/posts/2018-07-06-where-are-my-nas/"/>
+<meta property="twitter:image" content="https://kaijagahm.netlify.app/posts/2018-07-06-where-are-my-nas/naniar.jpg"/>
 
 <!--  https://scholar.google.com/intl/en/scholar/inclusion.html#indexing -->
-<meta name="citation_title" content="Kaija Gahm: Loading packages efficiently"/>
-<meta name="citation_fulltext_html_url" content="https://kaijagahm.netlify.app/posts/2019-10-12-loading-packages-efficiently/"/>
-<meta name="citation_online_date" content="2019/10/12"/>
-<meta name="citation_publication_date" content="2019/10/12"/>
+<meta name="citation_title" content="Kaija Gahm: Where are my NA&#39;s?"/>
+<meta name="citation_fulltext_html_url" content="https://kaijagahm.netlify.app/posts/2018-07-06-where-are-my-nas/"/>
+<meta name="citation_online_date" content="2018/07/06"/>
+<meta name="citation_publication_date" content="2018/07/06"/>
 <meta name="citation_author" content="Kaija Gahm"/>
 <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
 <script type="text/json" id="radix-rmarkdown-metadata">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","preview","citation_url","canonical_url"]}},"value":[{"type":"character","attributes":{},"value":["Loading packages efficiently"]},{"type":"character","attributes":{},"value":["A trick I sometimes use to load a whole bunch of packages for every script in a project, while saving myself some typing. (Preview image from https://towardsdatascience.com/a-comprehensive-list-of-handy-r-packages-e85dad294b3d)"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Kaija Gahm"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":[]}},"value":[]}]}]},{"type":"character","attributes":{},"value":["10-12-2019"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","highlight"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["kate"]}]}]},{"type":"character","attributes":{},"value":["pkgs.png"]},{"type":"character","attributes":{},"value":["https://kaijagahm.netlify.app/posts/2019-10-12-loading-packages-efficiently/"]},{"type":"character","attributes":{},"value":["https://kaijagahm.netlify.app/posts/2019-10-12-loading-packages-efficiently/"]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","preview","citation_url","canonical_url"]}},"value":[{"type":"character","attributes":{},"value":["Where are my NA's?"]},{"type":"character","attributes":{},"value":["I wrote a function to summarize how many `NA`'s are in each column of a data frame. Preview image by Allison Horst, https://github.com/allisonhorst."]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Kaija Gahm"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":[]}},"value":[]}]}]},{"type":"character","attributes":{},"value":["07-06-2018"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","highlight"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["kate"]}]}]},{"type":"character","attributes":{},"value":["naniar.jpg"]},{"type":"character","attributes":{},"value":["https://kaijagahm.netlify.app/posts/2018-07-06-where-are-my-nas/"]},{"type":"character","attributes":{},"value":["https://kaijagahm.netlify.app/posts/2018-07-06-where-are-my-nas/"]}]}
 </script>
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["files.png","libraries.png","loading-packages-efficiently_files/anchor-4.2.2/anchor.min.js","loading-packages-efficiently_files/bowser-1.9.3/bowser.min.js","loading-packages-efficiently_files/distill-2.2.21/template.v2.js","loading-packages-efficiently_files/header-attrs-2.6.6/header-attrs.js","loading-packages-efficiently_files/jquery-1.11.3/jquery.min.js","loading-packages-efficiently_files/popper-2.6.0/popper.min.js","loading-packages-efficiently_files/tippy-6.2.7/tippy-bundle.umd.min.js","loading-packages-efficiently_files/tippy-6.2.7/tippy-light-border.css","loading-packages-efficiently_files/tippy-6.2.7/tippy.css","loading-packages-efficiently_files/tippy-6.2.7/tippy.umd.min.js","loading-packages-efficiently_files/webcomponents-2.0.0/webcomponents.js","pkgs.png","source.png"]}
+  {"type":"character","attributes":{},"value":["naniar.jpg","where-are-my-nas_files/anchor-4.2.2/anchor.min.js","where-are-my-nas_files/bowser-1.9.3/bowser.min.js","where-are-my-nas_files/distill-2.2.21/template.v2.js","where-are-my-nas_files/header-attrs-2.6.6/header-attrs.js","where-are-my-nas_files/jquery-1.11.3/jquery.min.js","where-are-my-nas_files/popper-2.6.0/popper.min.js","where-are-my-nas_files/tippy-6.2.7/tippy-bundle.umd.min.js","where-are-my-nas_files/tippy-6.2.7/tippy-light-border.css","where-are-my-nas_files/tippy-6.2.7/tippy.css","where-are-my-nas_files/tippy-6.2.7/tippy.umd.min.js","where-are-my-nas_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 <meta name="distill:offset" content="../.."/>
@@ -2438,7 +2434,7 @@ d-appendix d-footnote-list a.footnote-backlink {
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Loading packages efficiently","description":"A trick I sometimes use to load a whole bunch of packages for every script in a project, while saving myself some typing. (Preview image from https://towardsdatascience.com/a-comprehensive-list-of-handy-r-packages-e85dad294b3d)","authors":[{"author":"Kaija Gahm","authorURL":{},"affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2019-10-12T00:00:00.000+00:00","citationText":"Gahm, 2019"}
+{"title":"Where are my NA's?","description":"I wrote a function to summarize how many `NA`'s are in each column of a data frame. Preview image by Allison Horst, https://github.com/allisonhorst.","authors":[{"author":"Kaija Gahm","authorURL":{},"affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2018-07-06T00:00:00.000+00:00","citationText":"Gahm, 2018"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2471,48 +2467,133 @@ d-appendix d-footnote-list a.footnote-backlink {
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Loading packages efficiently</h1>
+<h1>Where are my NA’s?</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>A trick I sometimes use to load a whole bunch of packages for every script in a project, while saving myself some typing. (Preview image from <a href="https://towardsdatascience.com/a-comprehensive-list-of-handy-r-packages-e85dad294b3d" class="uri">https://towardsdatascience.com/a-comprehensive-list-of-handy-r-packages-e85dad294b3d</a>)</p></p>
+<p><p>I wrote a function to summarize how many <code>NA</code>’s are in each column of a data frame. Preview image by Allison Horst, <a href="https://github.com/allisonhorst" class="uri">https://github.com/allisonhorst</a>.</p></p>
 </div>
 
 <div class="d-byline">
   Kaija Gahm true 
   
-<br/>10-12-2019
+<br/>07-06-2018
 </div>
 
 <div class="d-article">
 <div class="layout-chunk" data-layout="l-body">
 <div class="figure"><span id="fig:unnamed-chunk-1"></span>
-<img src="pkgs.png" alt="Image from [towards data science](https://towardsdatascience.com/a-comprehensive-list-of-handy-r-packages-e85dad294b3d)" width="130%" />
+<img src="naniar.jpg" alt="Artwork by Allison Horst, https://github.com/allisonhorst/stats-illustrations." width="790" />
 <p class="caption">
-Figure 1: Image from <a href="https://towardsdatascience.com/a-comprehensive-list-of-handy-r-packages-e85dad294b3d">towards data science</a>
+Figure 1: Artwork by Allison Horst, <a href="https://github.com/allisonhorst/stats-illustrations" class="uri">https://github.com/allisonhorst/stats-illustrations</a>.
 </p>
 </div>
 </div>
-<p><em>This post has been slightly modified from its original form on <a href="https://thewoodpeckr.wordpress.com/2019/10/12/loading-packages-efficiently/">woodpeckR</a>.</em></p>
+<p><em>This post has been slightly modified from its original form on <a href="https://thewoodpeckr.wordpress.com/2018/07/06/the-journey-begins/">woodpeckR</a>.</em></p>
 <h3 id="problem">Problem</h3>
-<p>Especially in a project with many different scripts, it can be challenging to keep track of all the packages you need to load. It’s also easy to lose track of whether or not you’ve incorporated package loading into the script itself until you switch to a new computer or restart R and all of a sudden, your packages need to be re-loaded.</p>
+<p>How can I (quickly and intuitively) figure out how many <code>NA</code>’s are in my dataset and which columns they’re in?</p>
 <h3 id="context">Context</h3>
-<p>When I was first starting out in R, I learned quickly to load packages all together at the top of a script, not along the way as I needed them. But it took a while, until I started using R Projects, before I decided to centralize package loading above the script level. I was sick of having to deal with loading the right packages at the right times, so I decided to just streamline the whole thing.</p>
+<p>When I tried to run PCA (Principal Components Analysis) on some USGS fish sampling data, I noticed that I had a bunch of missing values. PCA needs complete observations, so this was a problem.</p>
+<p>One option would have been to remove any observations with missing values from my data set:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Select only "complete" rows from the data frame `df`  </span>
+<span class='co'># noNAs &lt;- df[complete.cases(df),]</span>
+</code></pre>
+</div>
+</div>
+<p>The problem was, I had over 30 variables and who knows how many missing values. The data frame had only ~2000 observations. By using only complete cases, I might lose a lot of observations and reduce my sample size by a huge amount.</p>
+<p>In fact, I pretty often find myself in this situation. It would be really nice to have a quick way to see where those <code>NA</code> values are located so I can get a better sense of my dataset and figure out how to move forward.</p>
 <h3 id="solution">Solution</h3>
-<p>Make a separate R script, called “libraries.R” or “packages.R” or something. Keep it consistent. Mine is always called “libraries,” and I keep it in my project folder.</p>
+<p>Write a loop that tells us how many <code>NA</code>’s are in each column.</p>
+<p>First, let’s create a sample data frame and call it <code>sample.df</code>:</p>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="files.png" width="150%" /></p>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Create the data frame</span>
+<span class='va'>sample.df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
+     site <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span>, 
+     temp <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>10</span>, <span class='fl'>15</span>, <span class='fl'>13</span>, <span class='cn'>NA</span><span class='op'>)</span>, 
+     depth <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1.1</span>, <span class='cn'>NA</span>, <span class='fl'>2.0</span>, <span class='cn'>NA</span><span class='op'>)</span>
+<span class='op'>)</span>
+
+<span class='co'># Show the data frame</span>
+<span class='va'>sample.df</span>
+</code></pre>
 </div>
-<p>The script looks something like this (individual packages may vary, of course):</p>
-<div class="layout-chunk" data-layout="l-body">
-<p><img src="libraries.png" width="150%" /></p>
+<pre><code>  site temp depth
+1    1   10   1.1
+2    2   15    NA
+3    3   13   2.0
+4    4   NA    NA</code></pre>
 </div>
-<p>Then, at the top of each analysis script, I can simply source the libraries script, and all the libraries I need load automatically.</p>
+<p>Loop through the columns and print out the number of <code>NA</code>’s:</p>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="source.png" width="150%" /></p>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Create a vector full of NA's, the same length as the number of columns in sample.df</span>
+<span class='va'>na.vec</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='cn'>NA</span>, <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span><span class='op'>(</span><span class='va'>sample.df</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='co'># Loop through the columns and fill na.vec</span>
+<span class='kw'>for</span><span class='op'>(</span><span class='va'>i</span> <span class='kw'>in</span> <span class='fl'>1</span><span class='op'>:</span><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span><span class='op'>(</span><span class='va'>sample.df</span><span class='op'>)</span><span class='op'>)</span><span class='op'>{</span>
+     <span class='va'>na.vec</span><span class='op'>[</span><span class='va'>i</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='va'>sample.df</span><span class='op'>[</span>,<span class='va'>i</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>}</span>
+
+<span class='co'># Take a look at na.vec</span>
+<span class='va'>na.vec</span>
+</code></pre>
+</div>
+<pre><code>[1] 0 1 2</code></pre>
+</div>
+<p>Now we can see that there are 0 <code>NA</code>’s in the first column, 1 <code>NA</code> in the second column, and 2 <code>NA</code>’s in the third column.</p>
+<p>But if you have 30 columns, it’s a pain to map those numbers to the column names. So let’s do better. Instead of just printing the numbers of <code>NA</code>’s in a vector, we’ll put them in a data frame along with the names of the columns.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Create a data frame</span>
+<span class='va'>na.df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
+     Column <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>sample.df</span><span class='op'>)</span>,
+     num.nas <span class='op'>=</span> <span class='cn'>NA</span>
+<span class='op'>)</span>
+
+<span class='co'># Loop through the columns of sample.df and fill na.df</span>
+<span class='kw'>for</span><span class='op'>(</span><span class='va'>i</span> <span class='kw'>in</span> <span class='fl'>1</span><span class='op'>:</span><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span><span class='op'>(</span><span class='va'>sample.df</span><span class='op'>)</span><span class='op'>)</span><span class='op'>{</span>
+     <span class='va'>na.df</span><span class='op'>$</span><span class='va'>num.nas</span><span class='op'>[</span><span class='va'>i</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='va'>sample.df</span><span class='op'>[</span>,<span class='va'>i</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>}</span>
+
+<span class='co'># Take a look at na.df</span>
+<span class='va'>na.df</span>
+</code></pre>
+</div>
+<pre><code>  Column num.nas
+1   site       0
+2   temp       1
+3  depth       2</code></pre>
+</div>
+<p>So much better!</p>
+<p>Once you get used to it, this is a quick loop to write. But I got sick of re-creating this process every time, so I wrote a function called locate.nas. Feel free to use it:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'>#Locate NA's: produces a data frame with column names and number of na's</span>
+<span class='va'>locate.nas</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span><span class='op'>{</span>
+  <span class='va'>na.df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
+    colname <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span>,
+    nas <span class='op'>=</span> <span class='cn'>NA</span>
+  <span class='op'>)</span>
+  
+  <span class='kw'>for</span><span class='op'>(</span><span class='va'>i</span> <span class='kw'>in</span> <span class='fl'>1</span><span class='op'>:</span><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span><span class='op'>)</span><span class='op'>{</span>
+    <span class='va'>na.df</span><span class='op'>$</span><span class='va'>nas</span><span class='op'>[</span><span class='va'>i</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='va'>df</span><span class='op'>[</span>,<span class='va'>i</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='op'>}</span>
+  <span class='kw'><a href='https://rdrr.io/r/base/function.html'>return</a></span><span class='op'>(</span><span class='va'>na.df</span><span class='op'>)</span>
+<span class='op'>}</span>
+</code></pre>
+</div>
 </div>
 <h3 id="outcome">Outcome</h3>
-<p>I can easily load libraries in the context of a single R Project, keep track of which ones are loaded, and not have to worry about making my scripts look messy with a whole chunk of <code>library()</code> commands at the top of each one. It’s also straightforward to pop open the “libraries” script whenever I want to add a new package or delete one.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>A quick look at the distribution of missing values (<code>NA</code>’s) in my data frame turned up an obvious pattern. I checked the sampling protocol and saw that certain variables had only been measured for lotic areas (moving water), while others had only been measured for lentic areas (still water). Since every observation point was in either a lotic or a lentic area, filtering out incomplete observations would have left me with no data at all.</p>
+<p>By adding an indicator variable for lotic/lentic area, I could sort out my data and run PCA separately. Or I could remove the variables measured for only one area. Problem solved.</p>
+<h3 id="resources">Resources</h3>
+<ul>
+<li><p><a href="https://raw.githubusercontent.com/kaijagahm/general/master/locate.nas.txt"><code>locate_nas</code> function</a></p></li>
+<li><p>There’s also a whole package that makes dealing with NA’s easier. I didn’t know about it when I originally wrote this post, but I’ve since discovered it, and you should check it out! It’s called <code>naniar</code>, and you can find it <a href="https://cran.r-project.org/web/packages/naniar/vignettes/getting-started-w-naniar.html">here</a></p></li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
@@ -2529,13 +2610,13 @@ Figure 1: Image from <a href="https://towardsdatascience.com/a-comprehensive-lis
   <p>If you see mistakes or want to suggest changes, please <a href="https://github.com/kaijagahm/kaija_bean/issues/new">create an issue</a> on the source repository.</p>
   <h3 id="citation">Citation</h3>
   <p>For attribution, please cite this work as</p>
-  <pre class="citation-appendix short">Gahm (2019, Oct. 12). Kaija Gahm: Loading packages efficiently. Retrieved from https://kaijagahm.netlify.app/posts/2019-10-12-loading-packages-efficiently/</pre>
+  <pre class="citation-appendix short">Gahm (2018, July 6). Kaija Gahm: Where are my NA's?. Retrieved from https://kaijagahm.netlify.app/posts/2018-07-06-where-are-my-nas/</pre>
   <p>BibTeX citation</p>
-  <pre class="citation-appendix long">@misc{gahm2019loading,
+  <pre class="citation-appendix long">@misc{gahm2018where,
   author = {Gahm, Kaija},
-  title = {Kaija Gahm: Loading packages efficiently},
-  url = {https://kaijagahm.netlify.app/posts/2019-10-12-loading-packages-efficiently/},
-  year = {2019}
+  title = {Kaija Gahm: Where are my NA's?},
+  url = {https://kaijagahm.netlify.app/posts/2018-07-06-where-are-my-nas/},
+  year = {2018}
 }</pre>
 </div>
 <!--/radix_placeholder_appendices-->

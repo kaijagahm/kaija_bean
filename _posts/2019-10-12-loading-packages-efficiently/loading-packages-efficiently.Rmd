@@ -1,7 +1,7 @@
 ---
 title: "Loading packages efficiently"
 description: |
-  A trick I sometimes use to load a whole bunch of packages for every script in a project, while saving myself some typing. (Preview image from [towards data science](https://towardsdatascience.com/a-comprehensive-list-of-handy-r-packages-e85dad294b3d))
+  A trick I sometimes use to load a whole bunch of packages for every script in a project, while saving myself some typing. (Preview image from https://towardsdatascience.com/a-comprehensive-list-of-handy-r-packages-e85dad294b3d)
 author:
   - name: Kaija Gahm
     url: {}

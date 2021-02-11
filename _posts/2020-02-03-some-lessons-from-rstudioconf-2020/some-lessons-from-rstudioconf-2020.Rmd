@@ -1,7 +1,7 @@
 ---
-title: "Some lessons from `rstudio::conf` 2020"
+title: "Some lessons from rstudio::conf 2020"
 description: |
-  Some of my thoughts about R and the R community after attending the 2020 `rstudio::conf` in San Francisco.
+  Some of my thoughts about R and the R community after attending the 2020 rstudio::conf in San Francisco.
 author:
   - name: Kaija Gahm
     url: {}
