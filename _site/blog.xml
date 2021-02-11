@@ -23,10 +23,10 @@
       <media:content url="https://kaijagahm.netlify.app/posts/2020-02-10-upping-your-pipe-game/magrittr.jpg" medium="image" type="image/jpeg"/>
     </item>
     <item>
-      <title>Some lessons from `rstudio::conf` 2020</title>
+      <title>Some lessons from rstudio::conf 2020</title>
       <dc:creator>Kaija Gahm</dc:creator>
       <link>https://kaijagahm.netlify.app/posts/2020-02-03-some-lessons-from-rstudioconf-2020</link>
-      <description>Some of my thoughts about R and the R community after attending the 2020 `rstudio::conf` in San Francisco.</description>
+      <description>Some of my thoughts about R and the R community after attending the 2020 rstudio::conf in San Francisco.</description>
       <guid>https://kaijagahm.netlify.app/posts/2020-02-03-some-lessons-from-rstudioconf-2020</guid>
       <pubDate>Mon, 03 Feb 2020 00:00:00 +0000</pubDate>
       <media:content url="https://kaijagahm.netlify.app/posts/2020-02-03-some-lessons-from-rstudioconf-2020/rstudioconf2020.png" medium="image" type="image/png" width="1796" height="766"/>
@@ -35,10 +35,27 @@
       <title>Loading packages efficiently</title>
       <dc:creator>Kaija Gahm</dc:creator>
       <link>https://kaijagahm.netlify.app/posts/2019-10-12-loading-packages-efficiently</link>
-      <description>A trick I sometimes use to load a whole bunch of packages for every script in a project, while saving myself some typing. (Preview image from [towards data science](https://towardsdatascience.com/a-comprehensive-list-of-handy-r-packages-e85dad294b3d))</description>
+      <description>A trick I sometimes use to load a whole bunch of packages for every script in a project, while saving myself some typing. (Preview image from https://towardsdatascience.com/a-comprehensive-list-of-handy-r-packages-e85dad294b3d)</description>
       <guid>https://kaijagahm.netlify.app/posts/2019-10-12-loading-packages-efficiently</guid>
       <pubDate>Sat, 12 Oct 2019 00:00:00 +0000</pubDate>
       <media:content url="https://kaijagahm.netlify.app/posts/2019-10-12-loading-packages-efficiently/pkgs.png" medium="image" type="image/png" width="1097" height="233"/>
+    </item>
+    <item>
+      <title>The %notin% operator</title>
+      <dc:creator>Kaija Gahm</dc:creator>
+      <link>https://kaijagahm.netlify.app/posts/2018-07-08-the-notin-operator</link>
+      <description>Why is negating `%in%` such a pain?</description>
+      <guid>https://kaijagahm.netlify.app/posts/2018-07-08-the-notin-operator</guid>
+      <pubDate>Sun, 08 Jul 2018 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Where are my NA's?</title>
+      <dc:creator>Kaija Gahm</dc:creator>
+      <link>https://kaijagahm.netlify.app/posts/2018-07-06-where-are-my-nas</link>
+      <description>I wrote a function to summarize how many `NA`'s are in each column of a data frame. Preview image by Allison Horst, https://github.com/allisonhorst.</description>
+      <guid>https://kaijagahm.netlify.app/posts/2018-07-06-where-are-my-nas</guid>
+      <pubDate>Fri, 06 Jul 2018 00:00:00 +0000</pubDate>
+      <media:content url="https://kaijagahm.netlify.app/posts/2018-07-06-where-are-my-nas/naniar.jpg" medium="image" type="image/jpeg"/>
     </item>
   </channel>
 </rss>

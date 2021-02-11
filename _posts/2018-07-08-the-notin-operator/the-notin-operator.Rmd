@@ -1,0 +1,78 @@
+---
+title: "The %notin% operator"
+description: |
+  Why is negating `%in%` such a pain?
+author:
+  - name: Kaija Gahm
+    url: {}
+date: 07-08-2018
+output:
+  distill::distill_article:
+    self_contained: false
+    highlight: kate
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+*This post has been slightly modified from its original form on [woodpeckR](https://thewoodpeckr.wordpress.com/2018/07/08/notin/).*
+
+### Problem
+
+I keep forgetting how to select all elements of an object *except* a few, by name. I get the `!` operator confused with the `-` operator, and I find both of them less than intuitive to use. How can I negate the `%in%` operator?
+
+### Context
+
+I have a data frame called `electrofishing` that contains observations from a fish sampling survey. One column, `stratum`, gives the aquatic habitat type of the sampling site. I'd like to exclude observations sampled in the "Tailwater Zone" or "Impounded-Offshore" aquatic habitats.
+
+```{r}
+electrofishing <- data.frame(stratum = c("Tailwater Zone", "Tailwater Zone", "Impounded", "Main Channel Border", "Side Channel", "Impounded-Offshore", "Side Channel"), 
+                             idx = 1:7)
+
+electrofishing
+```
+
+My instinct would be to do this:
+
+```{r error = T}
+electrofishing <- electrofishing[electrofishing$stratum !%in% 
+                                   c("Tailwater Zone", "Impounded-Offshore"),]
+```
+
+But that doesn't work. You can't negate the `%in%` operator directly. Instead, you have to wrap the `%in%` statement in parentheses and negate the entire statement, returning the opposite of the original boolean vector:
+
+```{r}
+electrofishing <- electrofishing[!(electrofishing$stratum %in% 
+                                     c("Tailwater Zone", "Impounded-Offshore")),]
+```
+
+
+I'm not saying this doesn't make sense, but I can never remember it. My English-speaking brain would much rather say "rows whose stratum is **not** included in c("Tailwater Zone", "Impounded-Offshore")" than "**not** rows whose stratum is included in c("Tailwater Zone", "Impounded-Offshore")".
+
+### Solution
+
+Luckily, it's pretty easy to negate `%in%` and create a `%notin%` operator. I credit this answer to user "catastrophic-failure" on [this](https://stackoverflow.com/questions/38351820/negation-of-in-in-r) Stack Overflow question.
+
+```{r}
+`%notin%` <- Negate(`%in%`)
+```
+
+I didn't even know that the `Negate` function existed. The more you know.
+
+### Outcome
+
+I know there are lots of ways to negate selections in R. `dplyr` has `select()` and `filter()` functions that are easier to use with `-c()`. Or I could just learn to throw a `!` in front of my `%in%` statements. But `%notin%` seems a little more intuitive.
+
+Now it's straightforward to select these rows from my data frame.
+
+```{r}
+electrofishing <- electrofishing[electrofishing$stratum %notin% 
+                                   c("Tailwater Zone", "Impounded-Offshore"),]
+```
+
+### Resources
+
+[https://stackoverflow.com/questions/38351820/negation-of-in-in-r](https://stackoverflow.com/questions/38351820/negation-of-in-in-r)
+
+[This one](http://r.789695.n4.nabble.com/in-operator-NOT-IN-td3506655.html) does a good job of explaining why `!%in%` doesn't work.
