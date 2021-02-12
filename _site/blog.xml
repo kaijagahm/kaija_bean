@@ -41,6 +41,14 @@
       <media:content url="https://kaijagahm.netlify.app/posts/2019-10-12-loading-packages-efficiently/pkgs.png" medium="image" type="image/png" width="1097" height="233"/>
     </item>
     <item>
+      <title>Changing individual column names</title>
+      <dc:creator>Kaija Gahm</dc:creator>
+      <link>https://kaijagahm.netlify.app/posts/2018-07-11-changing-individual-column-names</link>
+      <description>How to rename individual columns in a data frame, based on the previous names and without using previous names.</description>
+      <guid>https://kaijagahm.netlify.app/posts/2018-07-11-changing-individual-column-names</guid>
+      <pubDate>Wed, 11 Jul 2018 00:00:00 +0000</pubDate>
+    </item>
+    <item>
       <title>The %notin% operator</title>
       <dc:creator>Kaija Gahm</dc:creator>
       <link>https://kaijagahm.netlify.app/posts/2018-07-08-the-notin-operator</link>
