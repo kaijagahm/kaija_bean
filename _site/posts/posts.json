@@ -55,6 +55,23 @@
     "preview_height": 233
   },
   {
+    "path": "posts/2018-07-22-proptable/",
+    "title": "prop.table()",
+    "description": "A short description of the post.",
+    "author": [
+      {
+        "name": "Kaija Gahm",
+        "url": {}
+      }
+    ],
+    "date": "2018-07-22",
+    "categories": [],
+    "contents": "\nProblem\nHow can I convert a frequency table into proportions?\nContext\nThis is a continuation of the data manipulation discussed in the with() post. I had just finished making a table\n\n\n# Load data from GitHub\npolygon <- read.csv(\"https://tinyurl.com/rta6hkbo\")\n\n# Two-way table by pool and revetment\nwith(polygon, table(revetment, pool))\n\n\n         pool\nrevetment   4   8  13\n        0  71 199 103\n        1  57  53  44\n\nWhat if I want to see this table broken down by proportion of polygons, not counts?\nSolution\nThe prop.table() function will do this nicely.\n\n\nlibrary(dplyr)\n\nprop <- with(polygon, table(revetment, pool)) %>% \n  prop.table()\n\nprop\n\n\n         pool\nrevetment          4          8         13\n        0 0.13472486 0.37760911 0.19544592\n        1 0.10815939 0.10056926 0.08349146\n\nBy default, the proportions are calculated over the entire table. So each cell represents the proportion of all polygons that are in that pool with that value of revetment. The whole table sums to 1.\nIf you want proportions across rows or down columns, all you need to do is add the margin = argument.\nmargin = 1 sums across rows. Each row sums to 1. This would answer the question, “What proportion of the polygons [with, or without] revetment are located in each of the three pools?”\n\n\nprop.1 <- with(polygon, table(revetment, pool)) %>% \n  prop.table(margin = 1)\n\nprop.1\n\n\n         pool\nrevetment         4         8        13\n        0 0.1903485 0.5335121 0.2761394\n        1 0.3701299 0.3441558 0.2857143\n\nmargin = 2 sums down columns. Each column sums to 1. This would answer the question, \"What proportion of the polygons in [pool] have revetment? (or, what proportion don’t have revetment?)\n\n\nprop.2 <- with(polygon, table(revetment, pool)) %>% \n  prop.table(margin = 2)\n\nprop.2\n\n\n         pool\nrevetment         4         8        13\n        0 0.5546875 0.7896825 0.7006803\n        1 0.4453125 0.2103175 0.2993197\n\nOutcome\nHandy function for creating proportion tables.\n\n\n\n",
+    "preview": {},
+    "last_modified": "2021-02-11T20:15:06-05:00",
+    "input_file": {}
+  },
+  {
     "path": "posts/2018-07-20-with/",
     "title": "with()",
     "description": "A brief introduction to the with() function",
