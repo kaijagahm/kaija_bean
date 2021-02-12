@@ -1,0 +1,546 @@
+---
+title: "Changing individual column names"
+description: |
+  How to rename individual columns in a data frame, based on the previous names and without using previous names.
+author:
+  - name: Kaija Gahm
+    url: {}
+date: 07-11-2018
+output:
+  distill::distill_article:
+    self_contained: false
+    highlight: kate
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+*This post has been slightly modified from its original form on [woodpeckR](https://thewoodpeckr.wordpress.com/2018/07/12/changing-individual-column-names/).*
+
+### Problem
+
+How do I change the name of just one column in a data frame?
+
+### Context
+
+This is a simple one that keeps coming up. Sometimes, whoever put together my data decided to capitalize the first letter of some column names and not others. Sometimes I've merged several data frames together and I need to distinguish the columns from each other.
+
+Say my data frame is `p8_0` and I'd like to change the column `Area` to `area`.
+
+In the past, I've done this in one of two ways. Either I change all of the column names at once (if all of them need to be changed), or I use numerical column indexing. The latter makes a lot more sense if I have a lot of columns to deal with, but it means I have to know the number of the column whose name I have to change.
+
+To find this out, I first have to look at all of the column names. Okay, no problem.
+
+```{r echo = F}
+p8_0 <- data.frame("FID" = NA,
+                   "Join_Count" = NA,
+                   "TARGET_FID" = NA,
+                   "Field1" = NA,
+                   "barcode" = NA,
+                   "stratum" = NA,
+                   "lcode" = NA,
+                   "sdate" = NA,
+                   "utm_e" = NA,
+                   "utm_n" = NA,
+                   "snag" = NA,
+                   "OBJECTID" = NA,
+                   "uniq_id" = NA,
+                   "aa_num" = NA,
+                   "AQUA_CODE" = NA,
+                   "AQUA_DESC" = NA,
+                   "pool" = NA,
+                   "Area" = NA,
+                   "Perimeter" = NA,
+                   "bath_pct" = NA,
+                   "max_depth" = NA,
+                   "avg_depth" = NA,
+                   "sd_depth" = NA,
+                   "tot_vol" = NA,
+                   "area_gt50" = NA,
+                   "area_gt100" = NA,
+                   "area_gt200" = NA,
+                   "area_gt300" = NA,
+                   "avg_fetch" = NA,
+                   "shoreline_density_index" = NA,
+                   "econ" = NA,
+                   "sill" = NA,
+                   "min_rm" = NA,
+                   "max_rm" = NA,
+                   "len_met" = NA,
+                   "len_prm_lotic" = NA,
+                   "pct_prm_lotic" = NA,
+                   "num_lotic_outl" = NA,
+                   "len_prm_lentic" = NA,
+                   "pct_prm_lentic" = NA,
+                   "num_lentic_outl" = NA,
+                   "pct_aqveg" = NA,
+                   "pct_opwat" = NA,
+                   "len_terr" = NA,
+                   "pct_terr" = NA,
+                   "pct_aq" = NA,
+                   "len_wetf" = NA,
+                   "pct_prm_wetf" = NA,
+                   "pct_terr_shore_wetf" = NA,
+                   "len_wd" = NA,
+                   "wdl_p_m2" = NA,
+                   "num_wd" = NA,
+                   "scour_wd" = NA,
+                   "psco_wd" = NA,
+                   "len_revln" = NA,
+                   "rev_p_m2" = NA,
+                   "num_rev" = NA,
+                   "pct_terr_shore_rev" = NA,
+                   "pct_prm_rev" = NA,
+                   "area_tpi1" = NA,
+                   "pct_tpi1" = NA,
+                   "area_tpi2" = NA,
+                   "pct_tpi2" = NA,
+                   "area_tpi3" = NA,
+                   "pct_tpi3" = NA,
+                   "area_tpi4" = NA,
+                   "pct_tpi4" = NA,
+                   "sinuosity" = NA,
+                   "year_phot" = NA,
+                   "NEAR_TERR_FID" = NA,
+                   "NEAR_TERR_DIST" = NA,
+                   "NEAR_TERR_CLASS_31" = NA,
+                   "NEAR_TERR_CLASS_15" = NA,
+                   "NEAR_TERR_CLASS_7" = NA,
+                   "NEAR_TERR_CLASS_31_N" = NA,
+                   "NEAR_TERR_CLASS_15_N" = NA,
+                   "NEAR_TERR_CLASS_7_N" = NA,
+                   "NEAR_TERR_HEIGHT_N" = NA,
+                   "NEAR_FOREST_FID" = NA,
+                   "NEAR_FOREST_DIST" = NA,
+                   "NEAR_FOREST_CLASS_31" = NA,
+                   "NEAR_FOREST_CLASS_15" = NA,
+                   "NEAR_FOREST_CLASS_7" = NA,
+                   "NEAR_FOREST_CLASS_31_N" = NA,
+                   "NEAR_FOREST_CLASS_15_N" = NA,
+                   "NEAR_FOREST_CLASS_7_N" = NA,
+                   "NEAR_FOREST_HEIGHT_N" = NA,
+                   "year.p" = NA,
+                   "depth.p" = NA,
+                   "current.p" = NA,
+                   "gear.p" = NA,
+                   "stageht.p" = NA,
+                   "substrt.p" = NA,
+                   "wingdike.p" = NA,
+                   "riprap.p" = NA,
+                   "trib.p" = NA,
+                   "snagyn" = NA,
+                   "area_le50" = NA,
+                   "area_le100" = NA,
+                   "area_le200" = NA,
+                   "area_le300" = NA,
+                   "pct_area_le100" = NA,
+                   "pct_area_le50" = NA,
+                   "pct_area_le200" = NA,
+                   "pct_area_le300" = NA,
+                   "stratum_name" = NA)
+```
+
+```{r}
+# See column names and numerical indices
+names(p8_0)
+```
+
+Okay, yes problem.
+
+It’s not that hard to see that `Area` is the 18th column. But there are a bunch of columns that start with `NEAR_TERR_` and `NEAR_FOREST_` that would be easy to confuse. And what if I later modify my data cleaning script, insert new columns, and mess up the numerical indexing?
+
+### Solution
+
+The first solution I came up with is simple but pretty clunky. At least it solves the problem of numerical indices getting misaligned. And if you mistype the column name or try to change the name of a column that doesn’t exist, it doesn’t throw an error.
+
+```{r}
+# Change "Area" column name to "area"
+names(p8_0)[names(p8_0) == "Area"] <- "area"
+```
+
+This works well, but it gets annoying if you have more than one column name to change. Every column requires typing `names(p8_0)` twice, and that adds up to a lot of lines of code.
+
+To no one’s surprise, `dplyr` has a more elegant solution, using the `rename` function.
+
+```{r echo = F}
+p8_0 <- data.frame("FID" = NA,
+                   "Join_Count" = NA,
+                   "TARGET_FID" = NA,
+                   "Field1" = NA,
+                   "barcode" = NA,
+                   "stratum" = NA,
+                   "lcode" = NA,
+                   "sdate" = NA,
+                   "utm_e" = NA,
+                   "utm_n" = NA,
+                   "snag" = NA,
+                   "OBJECTID" = NA,
+                   "uniq_id" = NA,
+                   "aa_num" = NA,
+                   "AQUA_CODE" = NA,
+                   "AQUA_DESC" = NA,
+                   "pool" = NA,
+                   "Area" = NA,
+                   "Perimeter" = NA,
+                   "bath_pct" = NA,
+                   "max_depth" = NA,
+                   "avg_depth" = NA,
+                   "sd_depth" = NA,
+                   "tot_vol" = NA,
+                   "area_gt50" = NA,
+                   "area_gt100" = NA,
+                   "area_gt200" = NA,
+                   "area_gt300" = NA,
+                   "avg_fetch" = NA,
+                   "shoreline_density_index" = NA,
+                   "econ" = NA,
+                   "sill" = NA,
+                   "min_rm" = NA,
+                   "max_rm" = NA,
+                   "len_met" = NA,
+                   "len_prm_lotic" = NA,
+                   "pct_prm_lotic" = NA,
+                   "num_lotic_outl" = NA,
+                   "len_prm_lentic" = NA,
+                   "pct_prm_lentic" = NA,
+                   "num_lentic_outl" = NA,
+                   "pct_aqveg" = NA,
+                   "pct_opwat" = NA,
+                   "len_terr" = NA,
+                   "pct_terr" = NA,
+                   "pct_aq" = NA,
+                   "len_wetf" = NA,
+                   "pct_prm_wetf" = NA,
+                   "pct_terr_shore_wetf" = NA,
+                   "len_wd" = NA,
+                   "wdl_p_m2" = NA,
+                   "num_wd" = NA,
+                   "scour_wd" = NA,
+                   "psco_wd" = NA,
+                   "len_revln" = NA,
+                   "rev_p_m2" = NA,
+                   "num_rev" = NA,
+                   "pct_terr_shore_rev" = NA,
+                   "pct_prm_rev" = NA,
+                   "area_tpi1" = NA,
+                   "pct_tpi1" = NA,
+                   "area_tpi2" = NA,
+                   "pct_tpi2" = NA,
+                   "area_tpi3" = NA,
+                   "pct_tpi3" = NA,
+                   "area_tpi4" = NA,
+                   "pct_tpi4" = NA,
+                   "sinuosity" = NA,
+                   "year_phot" = NA,
+                   "NEAR_TERR_FID" = NA,
+                   "NEAR_TERR_DIST" = NA,
+                   "NEAR_TERR_CLASS_31" = NA,
+                   "NEAR_TERR_CLASS_15" = NA,
+                   "NEAR_TERR_CLASS_7" = NA,
+                   "NEAR_TERR_CLASS_31_N" = NA,
+                   "NEAR_TERR_CLASS_15_N" = NA,
+                   "NEAR_TERR_CLASS_7_N" = NA,
+                   "NEAR_TERR_HEIGHT_N" = NA,
+                   "NEAR_FOREST_FID" = NA,
+                   "NEAR_FOREST_DIST" = NA,
+                   "NEAR_FOREST_CLASS_31" = NA,
+                   "NEAR_FOREST_CLASS_15" = NA,
+                   "NEAR_FOREST_CLASS_7" = NA,
+                   "NEAR_FOREST_CLASS_31_N" = NA,
+                   "NEAR_FOREST_CLASS_15_N" = NA,
+                   "NEAR_FOREST_CLASS_7_N" = NA,
+                   "NEAR_FOREST_HEIGHT_N" = NA,
+                   "year.p" = NA,
+                   "depth.p" = NA,
+                   "current.p" = NA,
+                   "gear.p" = NA,
+                   "stageht.p" = NA,
+                   "substrt.p" = NA,
+                   "wingdike.p" = NA,
+                   "riprap.p" = NA,
+                   "trib.p" = NA,
+                   "snagyn" = NA,
+                   "area_le50" = NA,
+                   "area_le100" = NA,
+                   "area_le200" = NA,
+                   "area_le300" = NA,
+                   "pct_area_le100" = NA,
+                   "pct_area_le50" = NA,
+                   "pct_area_le200" = NA,
+                   "pct_area_le300" = NA,
+                   "stratum_name" = NA)
+```
+
+```{r}
+# Load dplyr 
+library(dplyr) 
+
+# Rename variable (new name first) 
+p8_0 <- p8_0 %>% 
+  rename(area = Area)
+```
+
+A quick note on rename: somewhat counterintuitively, the new name comes before the old name. General example:
+
+```{r}
+# General syntax for rename 
+#df %>% 
+#  rename(newname = oldname)
+```
+
+`rename` saves a whole bunch of keystrokes and also scales very well to multiple columns.
+
+Let’s say I wanted to change `Area` and `Perimeter` to `area` and `perimeter`, respectively, and I also wanted to change the rather clunky `shoreline_density_index` to `sdi.` And while we’re at it, `snagyn`, a factor variable that indicates whether a large piece of wood was present at the site (“yes” or “no”), might be clearer as `snag_yn`, and `sinuosity` could be shortened to `sinu`
+
+Without `dplyr`:
+
+```{r echo = F}
+p8_0 <- data.frame("FID" = NA,
+                   "Join_Count" = NA,
+                   "TARGET_FID" = NA,
+                   "Field1" = NA,
+                   "barcode" = NA,
+                   "stratum" = NA,
+                   "lcode" = NA,
+                   "sdate" = NA,
+                   "utm_e" = NA,
+                   "utm_n" = NA,
+                   "snag" = NA,
+                   "OBJECTID" = NA,
+                   "uniq_id" = NA,
+                   "aa_num" = NA,
+                   "AQUA_CODE" = NA,
+                   "AQUA_DESC" = NA,
+                   "pool" = NA,
+                   "Area" = NA,
+                   "Perimeter" = NA,
+                   "bath_pct" = NA,
+                   "max_depth" = NA,
+                   "avg_depth" = NA,
+                   "sd_depth" = NA,
+                   "tot_vol" = NA,
+                   "area_gt50" = NA,
+                   "area_gt100" = NA,
+                   "area_gt200" = NA,
+                   "area_gt300" = NA,
+                   "avg_fetch" = NA,
+                   "shoreline_density_index" = NA,
+                   "econ" = NA,
+                   "sill" = NA,
+                   "min_rm" = NA,
+                   "max_rm" = NA,
+                   "len_met" = NA,
+                   "len_prm_lotic" = NA,
+                   "pct_prm_lotic" = NA,
+                   "num_lotic_outl" = NA,
+                   "len_prm_lentic" = NA,
+                   "pct_prm_lentic" = NA,
+                   "num_lentic_outl" = NA,
+                   "pct_aqveg" = NA,
+                   "pct_opwat" = NA,
+                   "len_terr" = NA,
+                   "pct_terr" = NA,
+                   "pct_aq" = NA,
+                   "len_wetf" = NA,
+                   "pct_prm_wetf" = NA,
+                   "pct_terr_shore_wetf" = NA,
+                   "len_wd" = NA,
+                   "wdl_p_m2" = NA,
+                   "num_wd" = NA,
+                   "scour_wd" = NA,
+                   "psco_wd" = NA,
+                   "len_revln" = NA,
+                   "rev_p_m2" = NA,
+                   "num_rev" = NA,
+                   "pct_terr_shore_rev" = NA,
+                   "pct_prm_rev" = NA,
+                   "area_tpi1" = NA,
+                   "pct_tpi1" = NA,
+                   "area_tpi2" = NA,
+                   "pct_tpi2" = NA,
+                   "area_tpi3" = NA,
+                   "pct_tpi3" = NA,
+                   "area_tpi4" = NA,
+                   "pct_tpi4" = NA,
+                   "sinuosity" = NA,
+                   "year_phot" = NA,
+                   "NEAR_TERR_FID" = NA,
+                   "NEAR_TERR_DIST" = NA,
+                   "NEAR_TERR_CLASS_31" = NA,
+                   "NEAR_TERR_CLASS_15" = NA,
+                   "NEAR_TERR_CLASS_7" = NA,
+                   "NEAR_TERR_CLASS_31_N" = NA,
+                   "NEAR_TERR_CLASS_15_N" = NA,
+                   "NEAR_TERR_CLASS_7_N" = NA,
+                   "NEAR_TERR_HEIGHT_N" = NA,
+                   "NEAR_FOREST_FID" = NA,
+                   "NEAR_FOREST_DIST" = NA,
+                   "NEAR_FOREST_CLASS_31" = NA,
+                   "NEAR_FOREST_CLASS_15" = NA,
+                   "NEAR_FOREST_CLASS_7" = NA,
+                   "NEAR_FOREST_CLASS_31_N" = NA,
+                   "NEAR_FOREST_CLASS_15_N" = NA,
+                   "NEAR_FOREST_CLASS_7_N" = NA,
+                   "NEAR_FOREST_HEIGHT_N" = NA,
+                   "year.p" = NA,
+                   "depth.p" = NA,
+                   "current.p" = NA,
+                   "gear.p" = NA,
+                   "stageht.p" = NA,
+                   "substrt.p" = NA,
+                   "wingdike.p" = NA,
+                   "riprap.p" = NA,
+                   "trib.p" = NA,
+                   "snagyn" = NA,
+                   "area_le50" = NA,
+                   "area_le100" = NA,
+                   "area_le200" = NA,
+                   "area_le300" = NA,
+                   "pct_area_le100" = NA,
+                   "pct_area_le50" = NA,
+                   "pct_area_le200" = NA,
+                   "pct_area_le300" = NA,
+                   "stratum_name" = NA)
+```
+
+```{r}
+# Change each column name individually
+names(p8_0)[names(p8_0) == "Area"] <- "area"
+names(p8_0)[names(p8_0) == "Perimeter"] <- "perimeter"
+names(p8_0)[names(p8_0) == "shoreline_density_index"] <- "sdi"
+names(p8_0)[names(p8_0) == "snagyn"] <- "snag_yn"
+names(p8_0)[names(p8_0) == "sinuosity"] <- "sinu"
+```
+
+With `dplyr`:
+
+```{r echo = F}
+p8_0 <- data.frame("FID" = NA,
+                   "Join_Count" = NA,
+                   "TARGET_FID" = NA,
+                   "Field1" = NA,
+                   "barcode" = NA,
+                   "stratum" = NA,
+                   "lcode" = NA,
+                   "sdate" = NA,
+                   "utm_e" = NA,
+                   "utm_n" = NA,
+                   "snag" = NA,
+                   "OBJECTID" = NA,
+                   "uniq_id" = NA,
+                   "aa_num" = NA,
+                   "AQUA_CODE" = NA,
+                   "AQUA_DESC" = NA,
+                   "pool" = NA,
+                   "Area" = NA,
+                   "Perimeter" = NA,
+                   "bath_pct" = NA,
+                   "max_depth" = NA,
+                   "avg_depth" = NA,
+                   "sd_depth" = NA,
+                   "tot_vol" = NA,
+                   "area_gt50" = NA,
+                   "area_gt100" = NA,
+                   "area_gt200" = NA,
+                   "area_gt300" = NA,
+                   "avg_fetch" = NA,
+                   "shoreline_density_index" = NA,
+                   "econ" = NA,
+                   "sill" = NA,
+                   "min_rm" = NA,
+                   "max_rm" = NA,
+                   "len_met" = NA,
+                   "len_prm_lotic" = NA,
+                   "pct_prm_lotic" = NA,
+                   "num_lotic_outl" = NA,
+                   "len_prm_lentic" = NA,
+                   "pct_prm_lentic" = NA,
+                   "num_lentic_outl" = NA,
+                   "pct_aqveg" = NA,
+                   "pct_opwat" = NA,
+                   "len_terr" = NA,
+                   "pct_terr" = NA,
+                   "pct_aq" = NA,
+                   "len_wetf" = NA,
+                   "pct_prm_wetf" = NA,
+                   "pct_terr_shore_wetf" = NA,
+                   "len_wd" = NA,
+                   "wdl_p_m2" = NA,
+                   "num_wd" = NA,
+                   "scour_wd" = NA,
+                   "psco_wd" = NA,
+                   "len_revln" = NA,
+                   "rev_p_m2" = NA,
+                   "num_rev" = NA,
+                   "pct_terr_shore_rev" = NA,
+                   "pct_prm_rev" = NA,
+                   "area_tpi1" = NA,
+                   "pct_tpi1" = NA,
+                   "area_tpi2" = NA,
+                   "pct_tpi2" = NA,
+                   "area_tpi3" = NA,
+                   "pct_tpi3" = NA,
+                   "area_tpi4" = NA,
+                   "pct_tpi4" = NA,
+                   "sinuosity" = NA,
+                   "year_phot" = NA,
+                   "NEAR_TERR_FID" = NA,
+                   "NEAR_TERR_DIST" = NA,
+                   "NEAR_TERR_CLASS_31" = NA,
+                   "NEAR_TERR_CLASS_15" = NA,
+                   "NEAR_TERR_CLASS_7" = NA,
+                   "NEAR_TERR_CLASS_31_N" = NA,
+                   "NEAR_TERR_CLASS_15_N" = NA,
+                   "NEAR_TERR_CLASS_7_N" = NA,
+                   "NEAR_TERR_HEIGHT_N" = NA,
+                   "NEAR_FOREST_FID" = NA,
+                   "NEAR_FOREST_DIST" = NA,
+                   "NEAR_FOREST_CLASS_31" = NA,
+                   "NEAR_FOREST_CLASS_15" = NA,
+                   "NEAR_FOREST_CLASS_7" = NA,
+                   "NEAR_FOREST_CLASS_31_N" = NA,
+                   "NEAR_FOREST_CLASS_15_N" = NA,
+                   "NEAR_FOREST_CLASS_7_N" = NA,
+                   "NEAR_FOREST_HEIGHT_N" = NA,
+                   "year.p" = NA,
+                   "depth.p" = NA,
+                   "current.p" = NA,
+                   "gear.p" = NA,
+                   "stageht.p" = NA,
+                   "substrt.p" = NA,
+                   "wingdike.p" = NA,
+                   "riprap.p" = NA,
+                   "trib.p" = NA,
+                   "snagyn" = NA,
+                   "area_le50" = NA,
+                   "area_le100" = NA,
+                   "area_le200" = NA,
+                   "area_le300" = NA,
+                   "pct_area_le100" = NA,
+                   "pct_area_le50" = NA,
+                   "pct_area_le200" = NA,
+                   "pct_area_le300" = NA,
+                   "stratum_name" = NA)
+```
+
+```{r}
+# Change any column names you want to, all at once
+p8_0 <- p8_0 %>% rename(area = Area, 
+                perimeter = Perimeter,
+                sdi = shoreline_density_index, 
+                snag_yn = snagyn,
+                sinu = sinuosity)
+```
+
+So pretty. As an added bonus, you’re saved from both quotation marks and the dreaded double equals sign (!!!).
+
+In case anyone was counting, that’s 102 characters vs. 238 (spaces not included). 116 if you include loading `dplyr`, but you already had it loaded because you’re using it throughout your code, of course.
+
+### Outcome
+
+Now I can rename only the columns I want, by name instead of numerical index, without fear of having to change everything if I insert or delete some columns later on.
+
+### Resources
+More thoughts on changing individual variable names, including a couple other packages if you feel like trying them:
+https://stackoverflow.com/questions/7531868/how-to-rename-a-single-column-in-a-data-frame
