@@ -1,0 +1,102 @@
+---
+title: "with()"
+description: |
+  A brief introduction to the with() function
+author:
+  - name: Kaija Gahm
+    url: {}
+date: 07-20-2018
+output:
+  distill::distill_article:
+    self_contained: false
+    highlight: kate
+preview: NULL
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Problem
+
+Making graphics with base R is annoying for many reasons, but a big one is having to type the name of the data frame over and over again to reference different columns.
+
+### Context
+
+Back to our Mississippi River fish data. I've aggregated my sampling points into polygons, and now I want to explore some of their characteristics. To do that, I'd like to make some tables and plots, and because these are just quick, exploratory plots, I don't feel like dealing with `ggplot`.
+
+Load in the data (accessible on GitHub).
+
+```{r, preview = F}
+# Load data from GitHub
+polygon <- read.csv("https://tinyurl.com/rta6hkbo") 
+
+# Look at what we're dealing with
+dim(polygon) # How big is the data set? 
+head(polygon, 3) # Look at the first few rows
+```
+
+First, I'd like to see how total volume `tot_vol` of the aquatic area scales with its `Area`.
+
+In base R:
+
+```{r eval = F, preview = F}
+# Formula notation
+plot(polygon$tot_vol ~ polygon$Area)
+# OR: 
+
+# Comma notation
+plot(polygon$Area, polygon$tot_vol)
+```
+
+Either way, we get this:
+
+```{r echo = F, preview = F}
+plot(polygon$Area, polygon$tot_vol)
+```
+
+Or a more informative plot, with both variables on a log scale:
+
+```{r, preview = F}
+plot(log(polygon$tot_vol) ~ log(polygon$Area))
+```
+
+This isn't too too clunky, but if the data frame name or column names are long, it can get a little annoying.
+
+### Solution
+
+The `with()` function allows you to specify the data frame your variables are coming from and then reference the variables with respect to the data frame, similar to the `ggplot` argument `data =`. Handy.
+
+```{r, preview = F}
+# Plot using the with() function 
+with(polygon, plot(tot_vol ~ Area))
+```
+
+You can add any other arguments inside of the function, as normal, it's just now wrapped in `with()`.
+
+```{r, preview = F}
+# Log-transform variables and make the points blue dots, because why not?
+with(polygon, plot(log(tot_vol) ~ log(Area), # log-transform 
+                   pch = 20, # dots instead of circles 
+                   col = "blue", # make the dots blue 
+                   main = "Polygon volume by area, log-transformed") # title 
+     )
+```
+
+It's worth noting that this works for other functions besides `plot()`, too. Here's an example with `table()`: let's look at how many sampling polygons include revetment, broken down by navigation pool (area of the river). The data set contains three navigation pools: 4, 8, and 13.
+
+```{r, preview = F}
+# Two-way table by pool and revetment
+with(polygon, table(revetment, pool))
+```
+
+### Outcome
+
+Quick plots and data manipulation made even quicker!
+
+### Resources
+
+Discussion of when to use `with()`:
+https://stackoverflow.com/questions/42283479/when-to-use-with-function-and-why-is-it-good
+

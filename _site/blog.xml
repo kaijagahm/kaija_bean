@@ -41,6 +41,15 @@
       <media:content url="https://kaijagahm.netlify.app/posts/2019-10-12-loading-packages-efficiently/pkgs.png" medium="image" type="image/png" width="1097" height="233"/>
     </item>
     <item>
+      <title>with()</title>
+      <dc:creator>Kaija Gahm</dc:creator>
+      <link>https://kaijagahm.netlify.app/posts/2018-07-20-with</link>
+      <description>A brief introduction to the with() function</description>
+      <guid>https://kaijagahm.netlify.app/posts/2018-07-20-with</guid>
+      <pubDate>Fri, 20 Jul 2018 00:00:00 +0000</pubDate>
+      <media:content url="https://kaijagahm.netlify.app/posts/2018-07-20-with/with_files/figure-html5/unnamed-chunk-3-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
       <title>Changing individual column names</title>
       <dc:creator>Kaija Gahm</dc:creator>
       <link>https://kaijagahm.netlify.app/posts/2018-07-11-changing-individual-column-names</link>
