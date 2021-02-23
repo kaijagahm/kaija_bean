@@ -61,6 +61,3 @@ with(polygon, table(revetment, pool)) %>%
 ### Outcome
 
 Create objects and view them at the same time, while saving some typing. This is also great for use in RMarkdown, because it will print the output below the code chunk without your having to add another line of code.
-
-
-
