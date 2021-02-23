@@ -1,7 +1,7 @@
 ---
 title: "prop.table()"
 description: |
-  Making a frequency table with proportions instead of counts.
+  Making a frequency table with proportions instead of counts. Preview image from https://twitter.com/lyric_rep/status/1010594530435846144.
 author:
   - name: Kaija Gahm
     url: {}
@@ -10,10 +10,15 @@ output:
   distill::distill_article:
     self_contained: false
     highlight: kate
+preview: propTable.jpg
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, echo = F, fig.cap = "Image from https://twitter.com/lyric_rep/status/1010594530435846144"}
+knitr::include_graphics("propTable.jpg")
 ```
 
 *This post has been slightly modified from its original form on [woodpeckR](https://thewoodpeckr.wordpress.com/2018/07/22/prop-table/).*
