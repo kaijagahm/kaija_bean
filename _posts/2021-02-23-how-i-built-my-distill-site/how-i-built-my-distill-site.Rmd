@@ -1,0 +1,33 @@
+---
+title: "How I built my distill site"
+description: |
+  A short description of the post.
+author:
+  - name: Kaija Gahm
+    url: {}
+date: 02-23-2021
+output:
+  distill::distill_article:
+    self_contained: false
+draft: true
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+- Since Distill automatically uses the first plot as a preview image, how do you get rid of the preview image if you don't want one?
+
+Use example of the with() post. I just used a white picture. Kind of hacky, but it works.
+
+- How to change the formatting on the postcard home page
+
+- How to set up a postcard home page
+
+- How to create a post with an older date
+
+- How to include images in your markdown
+
+- Creating a blog when you already have a postcard home page
+
