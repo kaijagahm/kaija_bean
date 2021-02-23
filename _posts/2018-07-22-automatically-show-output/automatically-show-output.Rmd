@@ -17,6 +17,8 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+*This post has been slightly modified from its original form on [woodpeckR](https://thewoodpeckr.wordpress.com/2018/07/22/automatically-show-output/).*
+
 ### Problem
 
 It's annoying to have to type the name of an object I just created in order to print its output.
