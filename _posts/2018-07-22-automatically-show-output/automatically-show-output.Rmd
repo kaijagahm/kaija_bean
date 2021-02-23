@@ -1,0 +1,66 @@
+---
+title: "(Automatically show output)"
+description: |
+  A neat trick with parentheses to print the contents of an object you just created, without running another line of code.
+author:
+  - name: Kaija Gahm
+    url: {}
+date: 07-22-2018
+output:
+  distill::distill_article:
+    self_contained: false
+    highlight: kate
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Problem
+
+It's annoying to have to type the name of an object I just created in order to print its output.
+
+### Context
+
+A certain [lightsaber-wielding stats professor](https://environment.yale.edu/profile/ruening-scherer) of mine liked to point out that R doesn't go out of its way to be helpful. If you write a line of code that creates an object and then run that line of code, there's no message to tell you that the object has been successfully created. R doesn't say "Task complete! What's next?" or otherwise give you any indication that anything has happened. To actually view the object you just created, you have to type its name or run some other command on it.
+
+Once in a while, this lack of transparency can be frustrating. What if I want to save objects and also view them in real time as they are created? Say I've used the handy `prop.table` function to [transform a frequency table into a proportion table](https://kaijagahm.netlify.app/posts/2018-07-22-proptable/). I'd like to be able to view `prop`, `prop.1` and `prop.2` without typing their names and adding extra lines of code.
+
+### Solution
+
+The same lightsaber-wielding stats professor who wished R would be a little more communicative taught me a trick to do just this: encase a command in parentheses to automatically print its output when it runs. Hence,
+
+```{r}
+# Load data from GitHub
+library(dplyr)
+polygon <- read.csv("https://tinyurl.com/rta6hkbo")
+
+(prop <- with(polygon, table(revetment, pool)) 
+ %>% prop.table())
+```
+
+...returns the same thing as leaving out the parentheses and typing the name of the object, `prop`, on a new line:
+ 
+```{r}
+prop <- with(polygon, table(revetment, pool)) %>%
+  prop.table()
+
+prop
+```
+
+Also note that this is different (better) than just running the command without the assignment arrow, like this:
+
+```{r}
+with(polygon, table(revetment, pool)) %>% 
+  prop.table()
+```
+
+...because the above doesn't save the table you created, it just shows it to you once.
+
+### Outcome
+
+Create objects and view them at the same time, while saving some typing. This is also great for use in RMarkdown, because it will print the output below the code chunk without your having to add another line of code.
+
+
+
