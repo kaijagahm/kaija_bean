@@ -41,12 +41,30 @@
       <media:content url="https://kaijagahm.netlify.app/posts/2019-10-12-loading-packages-efficiently/pkgs.png" medium="image" type="image/png" width="1097" height="233"/>
     </item>
     <item>
+      <title>Initializing an empty list</title>
+      <dc:creator>Kaija Gahm</dc:creator>
+      <link>https://kaijagahm.netlify.app/posts/2019-09-13-initializing-an-empty-list</link>
+      <description>When you're using a for loop to fill up a list, sometimes it's a good idea to initialize the list ahead of time, with the right number of elements but with no data. But actually doing this is a little harder than I had anticipated.</description>
+      <guid>https://kaijagahm.netlify.app/posts/2019-09-13-initializing-an-empty-list</guid>
+      <pubDate>Fri, 13 Sep 2019 00:00:00 +0000</pubDate>
+      <media:content url="https://kaijagahm.netlify.app/posts/2019-09-13-initializing-an-empty-list/emptyList.jpg" medium="image" type="image/jpeg"/>
+    </item>
+    <item>
+      <title>(Automatically show output)</title>
+      <dc:creator>Kaija Gahm</dc:creator>
+      <link>https://kaijagahm.netlify.app/posts/2018-07-22-automatically-show-output</link>
+      <description>A neat trick with parentheses to print the contents of an object you just created, without running another line of code.</description>
+      <guid>https://kaijagahm.netlify.app/posts/2018-07-22-automatically-show-output</guid>
+      <pubDate>Sun, 22 Jul 2018 00:00:00 +0000</pubDate>
+    </item>
+    <item>
       <title>prop.table()</title>
       <dc:creator>Kaija Gahm</dc:creator>
       <link>https://kaijagahm.netlify.app/posts/2018-07-22-proptable</link>
-      <description>A short description of the post.</description>
+      <description>Making a frequency table with proportions instead of counts. Preview image from https://twitter.com/lyric_rep/status/1010594530435846144.</description>
       <guid>https://kaijagahm.netlify.app/posts/2018-07-22-proptable</guid>
       <pubDate>Sun, 22 Jul 2018 00:00:00 +0000</pubDate>
+      <media:content url="https://kaijagahm.netlify.app/posts/2018-07-22-proptable/propTable.jpg" medium="image" type="image/jpeg"/>
     </item>
     <item>
       <title>with()</title>
@@ -55,7 +73,7 @@
       <description>A brief introduction to the with() function</description>
       <guid>https://kaijagahm.netlify.app/posts/2018-07-20-with</guid>
       <pubDate>Fri, 20 Jul 2018 00:00:00 +0000</pubDate>
-      <media:content url="https://kaijagahm.netlify.app/posts/2018-07-20-with/with_files/figure-html5/unnamed-chunk-3-1.png" medium="image" type="image/png" width="1248" height="768"/>
+      <media:content url="https://kaijagahm.netlify.app/posts/2018-07-20-with/noPreview.png" medium="image" type="image/png" width="353" height="50"/>
     </item>
     <item>
       <title>Changing individual column names</title>
