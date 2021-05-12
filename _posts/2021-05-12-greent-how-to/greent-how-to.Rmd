@@ -9,6 +9,7 @@ date: 05-12-2021
 output:
   distill::distill_article:
     self_contained: false
+draft: true
 ---
 
 
@@ -248,14 +249,21 @@ If you have git running through RStudio, an easy way to do this is to go up to t
 knitr::include_graphics("gitignore.png")
 ```
 
-Okay, now we need to load the `googlesheets4` and `gargle` packages. `gargle` manages token authentication, and `googlesheets4` is what we'll use to write 
+Okay, now we need to load the `googlesheets4` and `gargle` packages. `gargle` manages token authentication, and `googlesheets4` is what we'll use to write the data to Google Sheets. 
 
 ```{r eval = F}
 library(googlesheets4) # we'll use this for writing to google sheets
 library(gargle) # for authentication/tokens
+```
+
+Next, set some `options()`. You can do this part in the console--it only needs to be done once. You're just telling `gargle` where to save the token that you're about to generate.
+
+```{r}
 options(gargle_oauth_email = "kaija.gahm@aya.yale.edu", # the email I wanted to use for the app
         gargle_oauth_cache = ".secrets") # 
 ```
+
+In order to actually generate a token, type `gs4_auth()` in the console. 
 
 - used [this vignette](https://cran.r-project.org/web/packages/gargle/vignettes/non-interactive-auth.html): specifically, the 'Project-level OAuth cache' section
 - how I created a key for my Google account
