@@ -18,6 +18,7 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = T)
 library(blogdown)
+library(tweetrmd)
 ```
 
 ```{r, echo = F, fig.cap = "The digits 0-9, according to my brain"}
@@ -111,11 +112,15 @@ Building this app was a joyful process because it made me acutely aware of how f
 
 I had never built a Shiny app until July 28th, 2020, when I watched Garrett Grolemund's Shiny tutorial videos and started playing around with a simple app. By chance, the [Palmer penguins dataset](https://allisonhorst.github.io/palmerpenguins/) was up for [Tidy Tuesday](https://github.com/rfordatascience/tidytuesday) that week, so I made a [simple data explorer app](https://kaijagahm.shinyapps.io/ExplorePalmerPenguins/) for that dataset. I was surprised at how easy it was.
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Looks like my first Shiny app using the <a href="https://twitter.com/hashtag/palmer?src=hash&amp;ref_src=twsrc%5Etfw">#palmer</a> was also accidentally my first <a href="https://twitter.com/hashtag/TidyTuesday?src=hash&amp;ref_src=twsrc%5Etfw">#TidyTuesday</a> contribution! The final-ish version is up: <a href="https://t.co/T1Q7IdBD6d">https://t.co/T1Q7IdBD6d</a> <a href="https://t.co/dwu9ToXwRZ">https://t.co/dwu9ToXwRZ</a></p>&mdash; Kaija Gahm (@kaija_bean) <a href="https://twitter.com/kaija_bean/status/1288183052930289666?ref_src=twsrc%5Etfw">July 28, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+```{r echo = F}
+tweetrmd::tweet_screenshot("https://twitter.com/kaija_bean/status/1288183052930289666")
+```
 
 I had started learning Shiny in order to build a much more complicated data explorer app for the Yale Grammatical Diversity Project. I really didn't know what I was getting myself into--I had pitched the idea to my boss at the YGDP with the clear caveat that I had never programmed in Shiny before, ever. But I was confident that I could figure it out. I had yet to encounter a skill in R that I couldn't crack if I put my mind and time to it.
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Today in learning <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> <a href="https://twitter.com/hashtag/shiny?src=hash&amp;ref_src=twsrc%5Etfw">#shiny</a>: got my reactivity to work! <a href="https://t.co/bAWdrFhggz">pic.twitter.com/bAWdrFhggz</a></p>&mdash; Kaija Gahm (@kaija_bean) <a href="https://twitter.com/kaija_bean/status/1290393150100570119?ref_src=twsrc%5Etfw">August 3, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+```{r echo = F}
+tweetrmd::tweet_screenshot("https://twitter.com/kaija_bean/status/1290393150100570119")
+```
 
 "Time" turned into around nine months of programming, debugging, and fiddling. It was a frustrating and at times lonely process, since I had no programmer colleagues to turn to for help and brainstorming. But I eventually produced an app I was proud of; you can read more about it [here](https://kaijagahm.netlify.app/projects/2021-02-05-ygdp-dashboard/) and see the finished app embedded at the bottom of that page or [here](https://ygdp.shinyapps.io/ygdpDashboard).
 
@@ -127,7 +132,9 @@ knitr::include_graphics("dataSavingWorks.png")
 
 I hope it doesn't sound like I'm bragging. I had, at this point, almost a year of 10+ hours a week of Shiny under my belt. But I also want to point out that I didn't really do this alone at all. I have been, as Steph Locke so eloquently put it, "community-taught".
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Instead of referring to myself as self-taught, I&#39;m gonna start referring to myself as community-taught. <br><br>The sites, the blogs, the books, the user groups, the confs, the forums ... all community efforts that I used to learn and advance my programming and data science knowledge.</p>&mdash; Steph Locke (@TheStephLocke) <a href="https://twitter.com/TheStephLocke/status/1214569802804662274?ref_src=twsrc%5Etfw">January 7, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+```{r echo = F}
+tweetrmd::tweet_screenshot("https://twitter.com/TheStephLocke/status/1214569802804662274?ref_src=twsrc%5Etfw")
+```
 
 Part of that is being able to jump into Shiny by watching beautifully thought-out videos like the Garrett Grolemund tutorial I referred to above. Part of that is benefiting from the packages that others before me have developed. For example, [Dean Attali](https://deanattali.com/) does great work in Shiny, and his code literally made this app possible: the color selectors on the main page come from his [`colourpicker`](https://deanattali.com/blog/colourpicker-package/) package, and the contribution form is taken almost verbatim from his [tutorial](https://deanattali.com/2015/06/14/mimicking-Google-form-shiny/) on mimicking a Google form with Shiny.
 
