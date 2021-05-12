@@ -19,25 +19,6 @@
     "preview_height": 750
   },
   {
-    "path": "posts/2021-03-12-a-non-programmers-guide-to-github/",
-    "title": "A non-developer's guide to GitHub",
-    "description": "GitHub is confusing, especially if you're not a developer. Here, I answer some questions that I had when I first approached the site. I hope I can make it a little more understandable for you, too.",
-    "author": [
-      {
-        "name": "Kaija Gahm",
-        "url": {}
-      }
-    ],
-    "date": "2021-03-12",
-    "categories": [],
-    "contents": "\n\n\n\nFigure 1: My 2020 GitHub contributions\n\n\n\nIntroduction\nWhat this post is:\nAn explainer for some of the less intuitive features on the GitHub website. A road map for navigating through someone else’s GitHub repository. What do all the terms mean? What are issues and pull requests and a README? What are all the different tabs and pages? Once you’ve arrived at the main GitHub page for a repository, how do you find your way around and make sense of what you’re seeing?\nWhat this post is NOT:\nA step-by-step guide to using GitHub for your own projects. A lot of great resources already exist for this! If you’re an R user, I would particularly suggest checking out Jenny Bryan’s Happy Git With R.\nOther guides on how to use GitHub: GitHub Guides: Hello World\nAn Intro to Git and GitHub for Beginners\nHow the Heck Do I Use GitHub?\nIntroduction\nGithub is marketed as being for developers - evidence from the webpage\nThe website’s structure is built around what’s best for developers, people who are actively writing, saving, and publishing code/software/apps/programs.\nThis post is for you if:\nYou don’t think of yourself as a developer, and you don’t have a super clear idea of what that word even means.\nYou write some code, but mostly for your own analyses/projects, and you haven’t really tried sharing it.\nYou mostly use other people’s code as fully-formed packages and apps, but maybe you’ve dabbled a bit in using less-polished code from people’s GitHub pages and gotten stuck trying to figure out how to run it.\nPeople have told you you should be putting your code on GitHub, but you’ve poked around and don’t even understand what you’re looking at.\nYou don’t have much computer science (CS) background, so a lot of the terms that get thrown around on GitHub are unfamiliar to you.\nYou got stuck using a package, and while googling the error message, you found your way to a page that looks like this. You want to learn more about the website where you found your answer.\n\n\n\nFigure 2: ‘rJava fails to load’ is the 6th most commented issue on the rstudio GitHub page.\n\n\n\n\nI wrote this post because:\nThe above descriptors used to perfectly describe me. A lot of people come to GitHub from a CS background. I came to GitHub\n\n\n\n",
-    "preview": "posts/2021-03-12-a-non-programmers-guide-to-github/contributions.png",
-    "last_modified": "2021-03-12T18:59:48-05:00",
-    "input_file": {},
-    "preview_width": 1246,
-    "preview_height": 318
-  },
-  {
     "path": "posts/2020-02-10-upping-your-pipe-game/",
     "title": "%$%: upping your pipe game",
     "description": "I love the magrittr/dplyr pipe: %>%. But it's meant to work with tidyverse functions, and it doesn't always work well with base R functions that take a single data frame column as input. Here, I use data about my friends' pets to explain how a different magrittr pipe, %$%, solves that problem.",
