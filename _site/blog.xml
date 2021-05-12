@@ -12,7 +12,25 @@
       <link>https://kaijagahm.netlify.app/</link>
     </image>
     <generator>Distill</generator>
-    <lastBuildDate>Wed, 10 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 09 May 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>greenT: Exploring grapheme-color synesthesia</title>
+      <dc:creator>Kaija Gahm</dc:creator>
+      <link>https://kaijagahm.netlify.app/posts/2021-05-09-greent</link>
+      <description>An introduction to a Shiny app I built to show friends the inner workings of my brain--and some musings on my experience learning Shiny this year.</description>
+      <guid>https://kaijagahm.netlify.app/posts/2021-05-09-greent</guid>
+      <pubDate>Sun, 09 May 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://kaijagahm.netlify.app/posts/2021-05-09-greent/numbers.png" medium="image" type="image/png" width="1500" height="750"/>
+    </item>
+    <item>
+      <title>A non-developer's guide to GitHub</title>
+      <dc:creator>Kaija Gahm</dc:creator>
+      <link>https://kaijagahm.netlify.app/posts/2021-03-12-a-non-programmers-guide-to-github</link>
+      <description>GitHub is confusing, especially if you're not a developer. Here, I answer some questions that I had when I first approached the site. I hope I can make it a little more understandable for you, too.</description>
+      <guid>https://kaijagahm.netlify.app/posts/2021-03-12-a-non-programmers-guide-to-github</guid>
+      <pubDate>Fri, 12 Mar 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://kaijagahm.netlify.app/posts/2021-03-12-a-non-programmers-guide-to-github/contributions.png" medium="image" type="image/png" width="1246" height="318"/>
+    </item>
     <item>
       <title>%$%: upping your pipe game</title>
       <dc:creator>Kaija Gahm</dc:creator>
@@ -32,6 +50,15 @@
       <media:content url="https://kaijagahm.netlify.app/posts/2020-02-03-some-lessons-from-rstudioconf-2020/rstudioconf2020.png" medium="image" type="image/png" width="1796" height="766"/>
     </item>
     <item>
+      <title>If ifelse() had more if's (case_when(), part 2)</title>
+      <dc:creator>Kaija Gahm</dc:creator>
+      <link>https://kaijagahm.netlify.app/posts/2019-11-22-if-ifelse-had-more-ifs-and-an-else</link>
+      <description>In which I learn how to make case_when() behave like a true if/else, including the else part. What happens when you only want to assign particular outcomes to a few cases, without touching the rest? Or if you want to bulk-assign all the unspecified cases to one outcome? The syntax is weird, but it works.</description>
+      <guid>https://kaijagahm.netlify.app/posts/2019-11-22-if-ifelse-had-more-ifs-and-an-else</guid>
+      <pubDate>Fri, 22 Nov 2019 00:00:00 +0000</pubDate>
+      <media:content url="https://kaijagahm.netlify.app/posts/2019-11-22-if-ifelse-had-more-ifs-and-an-else/colorSorter.jpg" medium="image" type="image/jpeg"/>
+    </item>
+    <item>
       <title>Loading packages efficiently</title>
       <dc:creator>Kaija Gahm</dc:creator>
       <link>https://kaijagahm.netlify.app/posts/2019-10-12-loading-packages-efficiently</link>
@@ -39,6 +66,15 @@
       <guid>https://kaijagahm.netlify.app/posts/2019-10-12-loading-packages-efficiently</guid>
       <pubDate>Sat, 12 Oct 2019 00:00:00 +0000</pubDate>
       <media:content url="https://kaijagahm.netlify.app/posts/2019-10-12-loading-packages-efficiently/pkgs.png" medium="image" type="image/png" width="1097" height="233"/>
+    </item>
+    <item>
+      <title>If ifelse() had more if's</title>
+      <dc:creator>Kaija Gahm</dc:creator>
+      <link>https://kaijagahm.netlify.app/posts/2019-10-11-if-ifelse-had-more-ifs</link>
+      <description>In which I discover dplyr's case_when() function, a vectorized version of ifelse().</description>
+      <guid>https://kaijagahm.netlify.app/posts/2019-10-11-if-ifelse-had-more-ifs</guid>
+      <pubDate>Fri, 11 Oct 2019 00:00:00 +0000</pubDate>
+      <media:content url="https://kaijagahm.netlify.app/posts/2019-10-11-if-ifelse-had-more-ifs/colorSorter.jpg" medium="image" type="image/jpeg"/>
     </item>
     <item>
       <title>Initializing an empty list</title>
