@@ -1,7 +1,7 @@
 ---
-title: "How I built my distill site"
+title: "Some tips on building a distill site"
 description: |
-  A short description of the post.
+  Other people have written pretty comprehensive tutorials for setting up a distill site. Here are some shorter question/answer style tips for things I had to figure out how to do when I set up my own site.
 author:
   - name: Kaija Gahm
     url: {}
