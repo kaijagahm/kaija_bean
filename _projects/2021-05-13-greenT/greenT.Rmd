@@ -1,0 +1,44 @@
+---
+title: "greenT: Exploring grapheme-color synesthesia"
+description: |
+  For my whole life, I've associated colors with letters and numbers. This is called grapheme-color synesthesia. For my second major project in Shiny, I built an app to help me explain synesthesia to friends, and to learn more about the experiences of other synesthetes.
+author:
+  - name: Kaija Gahm
+    url: {}
+date: 05-13-2021
+output:
+  distill::distill_article:
+    self_contained: false
+    highlight: kate
+preview: numbers.png
+---
+
+```{r include = F}
+library(knitr)
+```
+
+```{r, echo = F, fig.cap = "The digits 0-9, according to my brain"}
+knitr::include_graphics("numbers.png")
+```
+
+I have what's known as grapheme-color synesthesia. I experience letters and numbers as having colors associated with them. I don't literally see colors floating in the air, but I've consistently associated a color with each letter and number for most of my life.
+
+When I tell my friends about my synesthesia, they want to know what color their name is. I wanted a way to quickly represent any word or words in the colors I see it in. I did a bit of googling to see if anyone had come up with a synesthesia simulator. 
+
+The closest thing I found was Bernadette Sheridan's website [synesthesia.me](https://synesthesia.me/), which did exactly what I wanted to do, but only for Bernadette's own colors! Cool, but not useful to me or to any other synesthetes (like my brother) who might want to show me their own colors.
+
+So, I built [**this app**](https://kaijagahm.shinyapps.io/greenT/). *The source code for the app is [here](https://github.com/kaijagahm/greenT).*
+
+**For a guided tour of the parts of the app, see [this blog post](https://kaijagahm.netlify.app/posts/2021-05-09-greent/)**
+
+**To read an explanation of the code used in the app, see [this blog post](https://kaijagahm.netlify.app/posts/2021-05-12-greent-how-to/)**
+
+This was my second major Shiny project, after [the YGDP Dashboard](https://kaijagahm.netlify.app/projects/2021-02-05-ygdp-dashboard/).
+
+Here's the app, embedded:
+
+<iframe src="https://kaijagahm.shinyapps.io/greenT" class="l-screen-inset shaded" height="650px" border="none"></iframe>
+
+If you have questions about this work, please feel free to get in touch. If you want to suggest an improvement or change to the app, or to report a bug or file a pull request, head over to the [github page](https://github.com/kaijagahm/greenT) for the project.
+
+To read more, make sure to check out my blog posts about this app. [Part 1](https://kaijagahm.netlify.app/posts/2021-05-09-greent/), [Part 2](https://kaijagahm.netlify.app/posts/2021-05-12-greent-how-to/)
