@@ -1,0 +1,1909 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+  <meta name="generator" content="distill" />
+
+  <style type="text/css">
+  /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
+  body {
+    visibility: hidden;
+  }
+  </style>
+
+ <!--radix_placeholder_import_source-->
+ <!--/radix_placeholder_import_source-->
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    background-color: #ffffff;
+    color: #a0a0a0;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
+div.sourceCode
+  { color: #1f1c1b; background-color: #ffffff; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span { color: #1f1c1b; } /* Normal */
+code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
+code span.an { color: #ca60ca; } /* Annotation */
+code span.at { color: #0057ae; } /* Attribute */
+code span.bn { color: #b08000; } /* BaseN */
+code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #924c9d; } /* Char */
+code span.cn { color: #aa5500; } /* Constant */
+code span.co { color: #898887; } /* Comment */
+code span.cv { color: #0095ff; } /* CommentVar */
+code span.do { color: #607880; } /* Documentation */
+code span.dt { color: #0057ae; } /* DataType */
+code span.dv { color: #b08000; } /* DecVal */
+code span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code span.fl { color: #b08000; } /* Float */
+code span.fu { color: #644a9b; } /* Function */
+code span.im { color: #ff5500; } /* Import */
+code span.in { color: #b08000; } /* Information */
+code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code span.op { color: #1f1c1b; } /* Operator */
+code span.ot { color: #006e28; } /* Other */
+code span.pp { color: #006e28; } /* Preprocessor */
+code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
+code span.sc { color: #3daee9; } /* SpecialChar */
+code span.ss { color: #ff5500; } /* SpecialString */
+code span.st { color: #bf0303; } /* String */
+code span.va { color: #0057ae; } /* Variable */
+code span.vs { color: #bf0303; } /* VerbatimString */
+code span.wa { color: #bf0303; } /* Warning */
+</style>
+
+  <!--radix_placeholder_meta_tags-->
+  <title>greenT part 2: Behind the app</title>
+
+  <meta property="description" itemprop="description" content="A more detailed explanation of some of the code that makes the greenT app work."/>
+
+
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2021-05-13"/>
+  <meta property="article:created" itemprop="dateCreated" content="2021-05-13"/>
+  <meta name="article:author" content="Kaija Gahm"/>
+
+  <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
+  <meta property="og:title" content="greenT part 2: Behind the app"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:description" content="A more detailed explanation of some of the code that makes the greenT app work."/>
+  <meta property="og:locale" content="en_US"/>
+
+  <!--  https://dev.twitter.com/cards/types/summary -->
+  <meta property="twitter:card" content="summary"/>
+  <meta property="twitter:title" content="greenT part 2: Behind the app"/>
+  <meta property="twitter:description" content="A more detailed explanation of some of the code that makes the greenT app work."/>
+
+  <!--/radix_placeholder_meta_tags-->
+  <!--radix_placeholder_rmarkdown_metadata-->
+
+  <script type="text/json" id="radix-rmarkdown-metadata">
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","preview","output"]}},"value":[{"type":"character","attributes":{},"value":["greenT part 2: Behind the app"]},{"type":"character","attributes":{},"value":["A more detailed explanation of some of the code that makes the greenT app work.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Kaija Gahm"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":[]}},"value":[]}]}]},{"type":"character","attributes":{},"value":["05-13-2021"]},{"type":"character","attributes":{},"value":["numbers.png"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","highlight","toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["kate"]},{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[4]}]}]}]}
+  </script>
+  <!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["baloo.png","balooURL.png","gitignore.png","greent-how-to_files/anchor-4.2.2/anchor.min.js","greent-how-to_files/bowser-1.9.3/bowser.min.js","greent-how-to_files/distill-2.2.21/template.v2.js","greent-how-to_files/header-attrs-2.8.1/header-attrs.js","greent-how-to_files/jquery-1.11.3/jquery.min.js","greent-how-to_files/popper-2.6.0/popper.min.js","greent-how-to_files/tippy-6.2.7/tippy-bundle.umd.min.js","greent-how-to_files/tippy-6.2.7/tippy-light-border.css","greent-how-to_files/tippy-6.2.7/tippy.css","greent-how-to_files/tippy-6.2.7/tippy.umd.min.js","greent-how-to_files/webcomponents-2.0.0/webcomponents.js","makeSecrets.png","numbers.png","projectLevelOAuth.png"]}
+  </script>
+  <!--radix_placeholder_navigation_in_header-->
+  <!--/radix_placeholder_navigation_in_header-->
+  <!--radix_placeholder_distill-->
+
+  <style type="text/css">
+
+  body {
+    background-color: white;
+  }
+
+  .pandoc-table {
+    width: 100%;
+  }
+
+  .pandoc-table>caption {
+    margin-bottom: 10px;
+  }
+
+  .pandoc-table th:not([align]) {
+    text-align: left;
+  }
+
+  .pagedtable-footer {
+    font-size: 15px;
+  }
+
+  d-byline .byline {
+    grid-template-columns: 2fr 2fr;
+  }
+
+  d-byline .byline h3 {
+    margin-block-start: 1.5em;
+  }
+
+  d-byline .byline .authors-affiliations h3 {
+    margin-block-start: 0.5em;
+  }
+
+  .authors-affiliations .orcid-id {
+    width: 16px;
+    height:16px;
+    margin-left: 4px;
+    margin-right: 4px;
+    vertical-align: middle;
+    padding-bottom: 2px;
+  }
+
+  d-title .dt-tags {
+    margin-top: 1em;
+    grid-column: text;
+  }
+
+  .dt-tags .dt-tag {
+    text-decoration: none;
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0em 0.4em;
+    margin-right: 0.5em;
+    margin-bottom: 0.4em;
+    font-size: 70%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  d-article table.gt_table td,
+  d-article table.gt_table th {
+    border-bottom: none;
+  }
+
+  .html-widget {
+    margin-bottom: 2.0em;
+  }
+
+  .l-screen-inset {
+    padding-right: 16px;
+  }
+
+  .l-screen .caption {
+    margin-left: 10px;
+  }
+
+  .shaded {
+    background: rgb(247, 247, 247);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .shaded .html-widget {
+    margin-bottom: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .shaded .shaded-content {
+    background: white;
+  }
+
+  .text-output {
+    margin-top: 0;
+    line-height: 1.5em;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  d-article {
+    padding-top: 2.5rem;
+    padding-bottom: 30px;
+  }
+
+  d-appendix {
+    padding-top: 30px;
+  }
+
+  d-article>p>img {
+    width: 100%;
+  }
+
+  d-article h2 {
+    margin: 1rem 0 1.5rem 0;
+  }
+
+  d-article h3 {
+    margin-top: 1.5rem;
+  }
+
+  d-article iframe {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 2.0em;
+    width: 100%;
+  }
+
+  /* Tweak code blocks */
+
+  d-article div.sourceCode code,
+  d-article pre code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: auto;
+  }
+
+  d-article div.sourceCode {
+    background-color: white;
+  }
+
+  d-article div.sourceCode pre {
+    padding-left: 10px;
+    font-size: 12px;
+    border-left: 2px solid rgba(0,0,0,0.1);
+  }
+
+  d-article pre {
+    font-size: 12px;
+    color: black;
+    background: none;
+    margin-top: 0;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  d-article pre a {
+    border-bottom: none;
+  }
+
+  d-article pre a:hover {
+    border-bottom: none;
+    text-decoration: underline;
+  }
+
+  d-article details {
+    grid-column: text;
+    margin-bottom: 0.8em;
+  }
+
+  @media(min-width: 768px) {
+
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: visible !important;
+  }
+
+  d-article div.sourceCode pre {
+    padding-left: 18px;
+    font-size: 14px;
+  }
+
+  d-article pre {
+    font-size: 14px;
+  }
+
+  }
+
+  figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  /* CSS for d-contents */
+
+  .d-contents {
+    grid-column: text;
+    color: rgba(0,0,0,0.8);
+    font-size: 0.9em;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+    padding-left: 0.25em;
+    justify-self: start;
+  }
+
+  @media(min-width: 1000px) {
+    .d-contents.d-contents-float {
+      height: 0;
+      grid-column-start: 1;
+      grid-column-end: 4;
+      justify-self: center;
+      padding-right: 3em;
+      padding-left: 2em;
+    }
+  }
+
+  .d-contents nav h3 {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+
+  .d-contents li {
+    list-style-type: none
+  }
+
+  .d-contents nav > ul {
+    padding-left: 0;
+  }
+
+  .d-contents ul {
+    padding-left: 1em
+  }
+
+  .d-contents nav ul li {
+    margin-top: 0.6em;
+    margin-bottom: 0.2em;
+  }
+
+  .d-contents nav a {
+    font-size: 13px;
+    border-bottom: none;
+    text-decoration: none
+    color: rgba(0, 0, 0, 0.8);
+  }
+
+  .d-contents nav a:hover {
+    text-decoration: underline solid rgba(0, 0, 0, 0.6)
+  }
+
+  .d-contents nav > ul > li > a {
+    font-weight: 600;
+  }
+
+  .d-contents nav > ul > li > ul {
+    font-weight: inherit;
+  }
+
+  .d-contents nav > ul > li > ul > li {
+    margin-top: 0.2em;
+  }
+
+
+  .d-contents nav ul {
+    margin-top: 0;
+    margin-bottom: 0.25em;
+  }
+
+  .d-article-with-toc h2:nth-child(2) {
+    margin-top: 0;
+  }
+
+
+  /* Figure */
+
+  .figure {
+    position: relative;
+    margin-bottom: 2.5em;
+    margin-top: 1.5em;
+  }
+
+  .figure img {
+    width: 100%;
+  }
+
+  .figure .caption {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    line-height: 1.5em;
+  }
+
+  .figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  .figure .caption a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .figure .caption b,
+  .figure .caption strong, {
+    font-weight: 600;
+    color: rgba(0, 0, 0, 1.0);
+  }
+
+  /* Citations */
+
+  d-article .citation {
+    color: inherit;
+    cursor: inherit;
+  }
+
+  div.hanging-indent{
+    margin-left: 1em; text-indent: -1em;
+  }
+
+  /* Citation hover box */
+
+  .tippy-box[data-theme~=light-border] {
+    background-color: rgba(250, 250, 250, 0.95);
+  }
+
+  .tippy-content > p {
+    margin-bottom: 0;
+    padding: 2px;
+  }
+
+
+  /* Tweak 1000px media break to show more text */
+
+  @media(min-width: 1000px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 80px [middle-start] 50px [text-start kicker-end] 65px 65px 65px 65px 65px 65px 65px 65px [text-end gutter-start] 65px [middle-end] 65px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 16px;
+    }
+
+    .grid {
+      grid-column-gap: 16px;
+    }
+
+    d-article {
+      font-size: 1.06rem;
+      line-height: 1.7em;
+    }
+    figure .caption, .figure .caption, figure figcaption {
+      font-size: 13px;
+    }
+  }
+
+  @media(min-width: 1180px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 32px;
+    }
+
+    .grid {
+      grid-column-gap: 32px;
+    }
+  }
+
+
+  /* Get the citation styles for the appendix (not auto-injected on render since
+     we do our own rendering of the citation appendix) */
+
+  d-appendix .citation-appendix,
+  .d-appendix .citation-appendix {
+    font-size: 11px;
+    line-height: 15px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    padding-left: 18px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.02);
+    padding: 10px 18px;
+    border-radius: 3px;
+    color: rgba(150, 150, 150, 1);
+    overflow: hidden;
+    margin-top: -12px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  /* Include appendix styles here so they can be overridden */
+
+  d-appendix {
+    contain: layout style;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-top: 60px;
+    margin-bottom: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    color: rgba(0,0,0,0.5);
+    padding-top: 60px;
+    padding-bottom: 48px;
+  }
+
+  d-appendix h3 {
+    grid-column: page-start / text-start;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 1em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.65);
+  }
+
+  d-appendix h3 + * {
+    margin-top: 1em;
+  }
+
+  d-appendix ol {
+    padding: 0 0 0 15px;
+  }
+
+  @media (min-width: 768px) {
+    d-appendix ol {
+      padding: 0 0 0 30px;
+      margin-left: -30px;
+    }
+  }
+
+  d-appendix li {
+    margin-bottom: 1em;
+  }
+
+  d-appendix a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  d-appendix > * {
+    grid-column: text;
+  }
+
+  d-appendix > d-footnote-list,
+  d-appendix > d-citation-list,
+  d-appendix > distill-appendix {
+    grid-column: screen;
+  }
+
+  /* Include footnote styles here so they can be overridden */
+
+  d-footnote-list {
+    contain: layout style;
+  }
+
+  d-footnote-list > * {
+    grid-column: text;
+  }
+
+  d-footnote-list a.footnote-backlink {
+    color: rgba(0,0,0,0.3);
+    padding-left: 0.5em;
+  }
+
+
+
+  /* Anchor.js */
+
+  .anchorjs-link {
+    /*transition: all .25s linear; */
+    text-decoration: none;
+    border-bottom: none;
+  }
+  *:hover > .anchorjs-link {
+    margin-left: -1.125em !important;
+    text-decoration: none;
+    border-bottom: none;
+  }
+
+  /* Social footer */
+
+  .social_footer {
+    margin-top: 30px;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.67);
+  }
+
+  .disqus-comments {
+    margin-right: 30px;
+  }
+
+  .disqus-comment-count {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+
+  #disqus_thread {
+    margin-top: 30px;
+  }
+
+  .article-sharing a {
+    border-bottom: none;
+    margin-right: 8px;
+  }
+
+  .article-sharing a:hover {
+    border-bottom: none;
+  }
+
+  .sidebar-section.subscribe {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+
+  .subscribe p {
+    margin-bottom: 0.5em;
+  }
+
+
+  .article-footer .subscribe {
+    font-size: 15px;
+    margin-top: 45px;
+  }
+
+
+  .sidebar-section.custom {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+
+  .custom p {
+    margin-bottom: 0.5em;
+  }
+
+  /* Styles for listing layout (hide title) */
+  .layout-listing d-title, .layout-listing .d-title {
+    display: none;
+  }
+
+  /* Styles for posts lists (not auto-injected) */
+
+
+  .posts-with-sidebar {
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+
+  .posts-list .description h2,
+  .posts-list .description p {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  .posts-list .description h2 {
+    font-weight: 700;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .posts-list h2.post-tag {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding-bottom: 12px;
+  }
+  .posts-list {
+    margin-top: 60px;
+    margin-bottom: 24px;
+  }
+
+  .posts-list .post-preview {
+    text-decoration: none;
+    overflow: hidden;
+    display: block;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 24px 0;
+  }
+
+  .post-preview-last {
+    border-bottom: none !important;
+  }
+
+  .posts-list .posts-list-caption {
+    grid-column: screen;
+    font-weight: 400;
+  }
+
+  .posts-list .post-preview h2 {
+    margin: 0 0 6px 0;
+    line-height: 1.2em;
+    font-style: normal;
+    font-size: 24px;
+  }
+
+  .posts-list .post-preview p {
+    margin: 0 0 12px 0;
+    line-height: 1.4em;
+    font-size: 16px;
+  }
+
+  .posts-list .post-preview .thumbnail {
+    box-sizing: border-box;
+    margin-bottom: 24px;
+    position: relative;
+    max-width: 500px;
+  }
+  .posts-list .post-preview img {
+    width: 100%;
+    display: block;
+  }
+
+  .posts-list .metadata {
+    font-size: 12px;
+    line-height: 1.4em;
+    margin-bottom: 18px;
+  }
+
+  .posts-list .metadata > * {
+    display: inline-block;
+  }
+
+  .posts-list .metadata .publishedDate {
+    margin-right: 2em;
+  }
+
+  .posts-list .metadata .dt-authors {
+    display: block;
+    margin-top: 0.3em;
+    margin-right: 2em;
+  }
+
+  .posts-list .dt-tags {
+    display: block;
+    line-height: 1em;
+  }
+
+  .posts-list .dt-tags .dt-tag {
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0.3em 0.4em;
+    margin-right: 0.2em;
+    margin-bottom: 0.4em;
+    font-size: 60%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .posts-list img {
+    opacity: 1;
+  }
+
+  .posts-list img[data-src] {
+    opacity: 0;
+  }
+
+  .posts-more {
+    clear: both;
+  }
+
+
+  .posts-sidebar {
+    font-size: 16px;
+  }
+
+  .posts-sidebar h3 {
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  .sidebar-section {
+    margin-bottom: 30px;
+  }
+
+  .categories ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .categories li {
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 0;
+  }
+
+  .categories li>a {
+    border-bottom: none;
+  }
+
+  .categories li>a:hover {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  }
+
+  .categories .active {
+    font-weight: 600;
+  }
+
+  .categories .category-count {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+
+  @media(min-width: 768px) {
+    .posts-list .post-preview h2 {
+      font-size: 26px;
+    }
+    .posts-list .post-preview .thumbnail {
+      float: right;
+      width: 30%;
+      margin-bottom: 0;
+    }
+    .posts-list .post-preview .description {
+      float: left;
+      width: 45%;
+    }
+    .posts-list .post-preview .metadata {
+      float: left;
+      width: 20%;
+      margin-top: 8px;
+    }
+    .posts-list .post-preview p {
+      margin: 0 0 12px 0;
+      line-height: 1.5em;
+      font-size: 16px;
+    }
+    .posts-with-sidebar .posts-list {
+      float: left;
+      width: 75%;
+    }
+    .posts-with-sidebar .posts-sidebar {
+      float: right;
+      width: 20%;
+      margin-top: 60px;
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+  }
+
+
+  /* Improve display for browsers without grid (IE/Edge <= 15) */
+
+  .downlevel {
+    line-height: 1.6em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+  }
+
+  .downlevel .d-title {
+    padding-top: 6rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .downlevel .d-title h1 {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.1em;
+    margin: 0 0 0.5rem;
+  }
+
+  .downlevel .d-title p {
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.55em;
+    margin-top: 0;
+  }
+
+  .downlevel .d-byline {
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    font-size: 0.8rem;
+    line-height: 1.8em;
+  }
+
+  .downlevel .section-separator {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .downlevel .d-article {
+    font-size: 1.06rem;
+    line-height: 1.7em;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+
+
+  .downlevel .d-appendix {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: none;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.5);
+    padding-top: 40px;
+    padding-bottom: 48px;
+  }
+
+  .downlevel .footnotes ol {
+    padding-left: 13px;
+  }
+
+  .downlevel .base-grid,
+  .downlevel .distill-header,
+  .downlevel .d-title,
+  .downlevel .d-abstract,
+  .downlevel .d-article,
+  .downlevel .d-appendix,
+  .downlevel .distill-appendix,
+  .downlevel .d-byline,
+  .downlevel .d-footnote-list,
+  .downlevel .d-citation-list,
+  .downlevel .distill-footer,
+  .downlevel .appendix-bottom,
+  .downlevel .posts-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  @media(min-width: 768px) {
+    .downlevel .base-grid,
+    .downlevel .distill-header,
+    .downlevel .d-title,
+    .downlevel .d-abstract,
+    .downlevel .d-article,
+    .downlevel .d-appendix,
+    .downlevel .distill-appendix,
+    .downlevel .d-byline,
+    .downlevel .d-footnote-list,
+    .downlevel .d-citation-list,
+    .downlevel .distill-footer,
+    .downlevel .appendix-bottom,
+    .downlevel .posts-container {
+    padding-left: 150px;
+    padding-right: 150px;
+    max-width: 900px;
+  }
+  }
+
+  .downlevel pre code {
+    display: block;
+    border-left: 2px solid rgba(0, 0, 0, .1);
+    padding: 0 0 0 20px;
+    font-size: 14px;
+  }
+
+  .downlevel code, .downlevel pre {
+    color: black;
+    background: none;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  .downlevel .posts-list .post-preview {
+    color: inherit;
+  }
+
+
+
+  </style>
+
+  <script type="application/javascript">
+
+  function is_downlevel_browser() {
+    if (bowser.isUnsupportedBrowser({ msie: "12", msedge: "16"},
+                                   window.navigator.userAgent)) {
+      return true;
+    } else {
+      return window.load_distill_framework === undefined;
+    }
+  }
+
+  // show body when load is complete
+  function on_load_complete() {
+
+    // add anchors
+    if (window.anchors) {
+      window.anchors.options.placement = 'left';
+      window.anchors.add('d-article > h2, d-article > h3, d-article > h4, d-article > h5');
+    }
+
+
+    // set body to visible
+    document.body.style.visibility = 'visible';
+
+    // force redraw for leaflet widgets
+    if (window.HTMLWidgets) {
+      var maps = window.HTMLWidgets.findAll(".leaflet");
+      $.each(maps, function(i, el) {
+        var map = this.getMap();
+        map.invalidateSize();
+        map.eachLayer(function(layer) {
+          if (layer instanceof L.TileLayer)
+            layer.redraw();
+        });
+      });
+    }
+
+    // trigger 'shown' so htmlwidgets resize
+    $('d-article').trigger('shown');
+  }
+
+  function init_distill() {
+
+    init_common();
+
+    // create front matter
+    var front_matter = $('<d-front-matter></d-front-matter>');
+    $('#distill-front-matter').wrap(front_matter);
+
+    // create d-title
+    $('.d-title').changeElementType('d-title');
+
+    // create d-byline
+    var byline = $('<d-byline></d-byline>');
+    $('.d-byline').replaceWith(byline);
+
+    // create d-article
+    var article = $('<d-article></d-article>');
+    $('.d-article').wrap(article).children().unwrap();
+
+    // move posts container into article
+    $('.posts-container').appendTo($('d-article'));
+
+    // create d-appendix
+    $('.d-appendix').changeElementType('d-appendix');
+
+    // flag indicating that we have appendix items
+    var appendix = $('.appendix-bottom').children('h3').length > 0;
+
+    // replace footnotes with <d-footnote>
+    $('.footnote-ref').each(function(i, val) {
+      appendix = true;
+      var href = $(this).attr('href');
+      var id = href.replace('#', '');
+      var fn = $('#' + id);
+      var fn_p = $('#' + id + '>p');
+      fn_p.find('.footnote-back').remove();
+      var text = fn_p.html();
+      var dtfn = $('<d-footnote></d-footnote>');
+      dtfn.html(text);
+      $(this).replaceWith(dtfn);
+    });
+    // remove footnotes
+    $('.footnotes').remove();
+
+    // move refs into #references-listing
+    $('#references-listing').replaceWith($('#refs'));
+
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      var id = $(this).attr('id');
+      $('.d-contents a[href="#' + id + '"]').parent().remove();
+      appendix = true;
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('d-appendix'));
+    });
+
+    // show d-appendix if we have appendix content
+    $("d-appendix").css('display', appendix ? 'grid' : 'none');
+
+    // localize layout chunks to just output
+    $('.layout-chunk').each(function(i, val) {
+
+      // capture layout
+      var layout = $(this).attr('data-layout');
+
+      // apply layout to markdown level block elements
+      var elements = $(this).children().not('details, div.sourceCode, pre, script');
+      elements.each(function(i, el) {
+        var layout_div = $('<div class="' + layout + '"></div>');
+        if (layout_div.hasClass('shaded')) {
+          var shaded_content = $('<div class="shaded-content"></div>');
+          $(this).wrap(shaded_content);
+          $(this).parent().wrap(layout_div);
+        } else {
+          $(this).wrap(layout_div);
+        }
+      });
+
+
+      // unwrap the layout-chunk div
+      $(this).children().unwrap();
+    });
+
+    // remove code block used to force  highlighting css
+    $('.distill-force-highlighting-css').parent().remove();
+
+    // remove empty line numbers inserted by pandoc when using a
+    // custom syntax highlighting theme
+    $('code.sourceCode a:empty').remove();
+
+    // load distill framework
+    load_distill_framework();
+
+    // wait for window.distillRunlevel == 4 to do post processing
+    function distill_post_process() {
+
+      if (!window.distillRunlevel || window.distillRunlevel < 4)
+        return;
+
+      // hide author/affiliations entirely if we have no authors
+      var front_matter = JSON.parse($("#distill-front-matter").html());
+      var have_authors = front_matter.authors && front_matter.authors.length > 0;
+      if (!have_authors)
+        $('d-byline').addClass('hidden');
+
+      // article with toc class
+      $('.d-contents').parent().addClass('d-article-with-toc');
+
+      // strip links that point to #
+      $('.authors-affiliations').find('a[href="#"]').removeAttr('href');
+
+      // add orcid ids
+      $('.authors-affiliations').find('.author').each(function(i, el) {
+        var orcid_id = front_matter.authors[i].orcidID;
+        if (orcid_id) {
+          var a = $('<a></a>');
+          a.attr('href', 'https://orcid.org/' + orcid_id);
+          var img = $('<img></img>');
+          img.addClass('orcid-id');
+          img.attr('alt', 'ORCID ID');
+          img.attr('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==');
+          a.append(img);
+          $(this).append(a);
+        }
+      });
+
+      // hide elements of author/affiliations grid that have no value
+      function hide_byline_column(caption) {
+        $('d-byline').find('h3:contains("' + caption + '")').parent().css('visibility', 'hidden');
+      }
+
+      // affiliations
+      var have_affiliations = false;
+      for (var i = 0; i<front_matter.authors.length; ++i) {
+        var author = front_matter.authors[i];
+        if (author.affiliation !== "&nbsp;") {
+          have_affiliations = true;
+          break;
+        }
+      }
+      if (!have_affiliations)
+        $('d-byline').find('h3:contains("Affiliations")').css('visibility', 'hidden');
+
+      // published date
+      if (!front_matter.publishedDate)
+        hide_byline_column("Published");
+
+      // document object identifier
+      var doi = $('d-byline').find('h3:contains("DOI")');
+      var doi_p = doi.next().empty();
+      if (!front_matter.doi) {
+        // if we have a citation and valid citationText then link to that
+        if ($('#citation').length > 0 && front_matter.citationText) {
+          doi.html('Citation');
+          $('<a href="#citation"></a>')
+            .text(front_matter.citationText)
+            .appendTo(doi_p);
+        } else {
+          hide_byline_column("DOI");
+        }
+      } else {
+        $('<a></a>')
+           .attr('href', "https://doi.org/" + front_matter.doi)
+           .html(front_matter.doi)
+           .appendTo(doi_p);
+      }
+
+       // change plural form of authors/affiliations
+      if (front_matter.authors.length === 1) {
+        var grid = $('.authors-affiliations');
+        grid.children('h3:contains("Authors")').text('Author');
+        grid.children('h3:contains("Affiliations")').text('Affiliation');
+      }
+
+      // remove d-appendix and d-footnote-list local styles
+      $('d-appendix > style:first-child').remove();
+      $('d-footnote-list > style:first-child').remove();
+
+      // move appendix-bottom entries to the bottom
+      $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
+      $('.appendix-bottom').remove();
+
+      // hoverable references
+      $('span.citation[data-cites]').each(function() {
+        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+        window.tippy(this, {
+          allowHTML: true,
+          content: refHtml,
+          maxWidth: 500,
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        });
+      });
+
+      // clear polling timer
+      clearInterval(tid);
+
+      // show body now that everything is ready
+      on_load_complete();
+    }
+
+    var tid = setInterval(distill_post_process, 50);
+    distill_post_process();
+
+  }
+
+  function init_downlevel() {
+
+    init_common();
+
+     // insert hr after d-title
+    $('.d-title').after($('<hr class="section-separator"/>'));
+
+    // check if we have authors
+    var front_matter = JSON.parse($("#distill-front-matter").html());
+    var have_authors = front_matter.authors && front_matter.authors.length > 0;
+
+    // manage byline/border
+    if (!have_authors)
+      $('.d-byline').remove();
+    $('.d-byline').after($('<hr class="section-separator"/>'));
+    $('.d-byline a').remove();
+
+    // remove toc
+    $('.d-contents').remove();
+
+    // move appendix elements
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('.d-appendix'));
+    });
+
+
+    // inject headers into references and footnotes
+    var refs_header = $('<h3></h3>');
+    refs_header.text('References');
+    $('#refs').prepend(refs_header);
+
+    var footnotes_header = $('<h3></h3');
+    footnotes_header.text('Footnotes');
+    $('.footnotes').children('hr').first().replaceWith(footnotes_header);
+
+    // move appendix-bottom entries to the bottom
+    $('.appendix-bottom').appendTo('.d-appendix').children().unwrap();
+    $('.appendix-bottom').remove();
+
+    // remove appendix if it's empty
+    if ($('.d-appendix').children().length === 0)
+      $('.d-appendix').remove();
+
+    // prepend separator above appendix
+    $('.d-appendix').before($('<hr class="section-separator" style="clear: both"/>'));
+
+    // trim code
+    $('pre>code').each(function(i, val) {
+      $(this).html($.trim($(this).html()));
+    });
+
+    // move posts-container right before article
+    $('.posts-container').insertBefore($('.d-article'));
+
+    $('body').addClass('downlevel');
+
+    on_load_complete();
+  }
+
+
+  function init_common() {
+
+    // jquery plugin to change element types
+    (function($) {
+      $.fn.changeElementType = function(newType) {
+        var attrs = {};
+
+        $.each(this[0].attributes, function(idx, attr) {
+          attrs[attr.nodeName] = attr.nodeValue;
+        });
+
+        this.replaceWith(function() {
+          return $("<" + newType + "/>", attrs).append($(this).contents());
+        });
+      };
+    })(jQuery);
+
+    // prevent underline for linked images
+    $('a > img').parent().css({'border-bottom' : 'none'});
+
+    // mark non-body figures created by knitr chunks as 100% width
+    $('.layout-chunk').each(function(i, val) {
+      var figures = $(this).find('img, .html-widget');
+      if ($(this).attr('data-layout') !== "l-body") {
+        figures.css('width', '100%');
+      } else {
+        figures.css('max-width', '100%');
+        figures.filter("[width]").each(function(i, val) {
+          var fig = $(this);
+          fig.css('width', fig.attr('width') + 'px');
+        });
+
+      }
+    });
+
+    // auto-append index.html to post-preview links in file: protocol
+    // and in rstudio ide preview
+    $('.post-preview').each(function(i, val) {
+      if (window.location.protocol === "file:")
+        $(this).attr('href', $(this).attr('href') + "index.html");
+    });
+
+    // get rid of index.html references in header
+    if (window.location.protocol !== "file:") {
+      $('.distill-site-header a[href]').each(function(i,val) {
+        $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+      });
+    }
+
+    // add class to pandoc style tables
+    $('tr.header').parent('thead').parent('table').addClass('pandoc-table');
+    $('.kable-table').children('table').addClass('pandoc-table');
+
+    // add figcaption style to table captions
+    $('caption').parent('table').addClass("figcaption");
+
+    // initialize posts list
+    if (window.init_posts_list)
+      window.init_posts_list();
+
+    // implmement disqus comment link
+    $('.disqus-comment-count').click(function() {
+      window.headroom_prevent_pin = true;
+      $('#disqus_thread').toggleClass('hidden');
+      if (!$('#disqus_thread').hasClass('hidden')) {
+        var offset = $(this).offset();
+        $(window).resize();
+        $('html, body').animate({
+          scrollTop: offset.top - 35
+        });
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    if (is_downlevel_browser())
+      init_downlevel();
+    else
+      window.addEventListener('WebComponentsReady', init_distill);
+  });
+
+  </script>
+
+  <!--/radix_placeholder_distill-->
+  <script src="greent-how-to_files/header-attrs-2.8.1/header-attrs.js"></script>
+  <script src="greent-how-to_files/jquery-1.11.3/jquery.min.js"></script>
+  <script src="greent-how-to_files/popper-2.6.0/popper.min.js"></script>
+  <link href="greent-how-to_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="greent-how-to_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="greent-how-to_files/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="greent-how-to_files/anchor-4.2.2/anchor.min.js"></script>
+  <script src="greent-how-to_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="greent-how-to_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="greent-how-to_files/distill-2.2.21/template.v2.js"></script>
+  <!--radix_placeholder_site_in_header-->
+  <!--/radix_placeholder_site_in_header-->
+
+
+</head>
+
+<body>
+
+<!--radix_placeholder_front_matter-->
+
+<script id="distill-front-matter" type="text/json">
+{"title":"greenT part 2: Behind the app","description":"A more detailed explanation of some of the code that makes the greenT app work.","authors":[{"author":"Kaija Gahm","authorURL":{},"affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-05-13T00:00:00.000+00:00","citationText":"Gahm, 2021"}
+</script>
+
+<!--/radix_placeholder_front_matter-->
+<!--radix_placeholder_navigation_before_body-->
+<!--/radix_placeholder_navigation_before_body-->
+<!--radix_placeholder_site_before_body-->
+<!--/radix_placeholder_site_before_body-->
+
+<div class="d-title">
+<h1>greenT part 2: Behind the app</h1>
+<!--radix_placeholder_categories-->
+<!--/radix_placeholder_categories-->
+<p><p>A more detailed explanation of some of the code that makes the greenT app work.</p></p>
+</div>
+
+<div class="d-byline">
+  Kaija Gahm true 
+  
+<br/>05-13-2021
+</div>
+
+<div class="d-article">
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
+<ul>
+<li><a href="#how-did-i">How did I:</a>
+<ul>
+<li><a href="#change-the-font-across-the-entire-app">Change the font across the entire app?</a>
+<ul>
+<li><a href="#getting-the-font">Getting the font</a></li>
+<li><a href="#applying-the-font">Applying the font</a></li>
+</ul></li>
+<li><a href="#make-the-title-and-subtitle-have-two-different-formats">Make the title and subtitle have two different formats?</a></li>
+<li><a href="#plot-the-colored-blocks">Plot the colored blocks?</a>
+<ul>
+<li><a href="#making-the-plot">Making the plot</a></li>
+<li><a href="#conditionally-displaying-letters">Conditionally displaying letters</a></li>
+</ul></li>
+<li><a href="#change-the-color-of-the-ggplot-letters-based-on-the-rectangle-color">Change the color of the ggplot letters based on the rectangle color?</a></li>
+<li><a href="#save-the-rectangle-plot-as-an-image">Save the rectangle plot as an image?</a></li>
+<li><a href="#make-the-contribution-form">Make the contribution form?</a></li>
+<li><a href="#save-the-contributed-data-to-google-drive">Save the contributed data to Google Drive?</a>
+<ul>
+<li><a href="#setup">Setup</a></li>
+<li><a href="#get-a-token">Get a token</a></li>
+<li><a href="#non-interactive-authentication">Non-interactive authentication</a></li>
+<li><a href="#notes-and-caveats">Notes and caveats</a></li>
+</ul></li>
+<li><a href="#work-efficiently-with-all-36-color-selectors">Work efficiently with all 36 color selectors?</a>
+<ul>
+<li><a href="#making-some-vectors">Making some vectors</a></li>
+<li><a href="#example-creating-the-selectors">Example: Creating the selectors</a></li>
+<li><a href="#arranging-the-letters-horizontally">Arranging the letters horizontally</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#get-involved">Get involved</a></li>
+</ul>
+</nav>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure"><span id="fig:unnamed-chunk-1"></span>
+<img src="numbers.png" alt="The digits 0-9, according to my brain" width="750" />
+<p class="caption">
+Figure 1: The digits 0-9, according to my brain
+</p>
+</div>
+</div>
+<p>The other day, I posted an app about grapheme-color synesthesia, called <a href="https://kaijagahm.shinyapps.io/greenT/"><strong>greenT</strong></a>. This is part 2 of a blog post about the app. Part 1 gave an introduction to the who/what/why of the app, and provided a little guided tour through each page and feature. <a href="https://kaijagahm.netlify.app/posts/2021-05-09-greent/">You can read part 1 here</a>.</p>
+<p>This post will go into more detail about some of the code in the app. If you’re interested in Shiny and want to know how I made everything work, this is the post for you. I picked a few features that were the most interesting to me, and/or the ones that I had to do the most independent troubleshooting to figure out. If you have questions about the rest of the app, get in touch via email, Twitter, or GitHub and I’ll do my best to respond!</p>
+<p>Ok, here goes.</p>
+<h2 id="how-did-i">How did I:</h2>
+<p>Here, I’ll discuss some of the app’s parts in more detail, in the spirit of providing ever-more resources for Shiny developers. I’m going to focus on things I struggled with, because most likely, if I didn’t struggle, the answer is available on Google somewhere.</p>
+<p>Of course, you’re also welcome to look at my code, <a href="https://github.com/kaijagahm/greenT">on GitHub</a>. The main scripts are ‘app.R’ (the main app script) and ‘defs.R’ (which defines some supporting functions). Then ‘about.R’ and ‘contribute.R’ just have a lot of long text, to avoid cluttering up the main script with it.</p>
+<h3 id="change-the-font-across-the-entire-app">Change the font across the entire app?</h3>
+<p>Jonathan created a file called ‘tea-style.css’. It lives inside the folder ‘www/’ in the main app directory. The file path written using the <code>here</code> package is <code>here::here("www", "tea-style.css")</code>.</p>
+<h4 id="getting-the-font">Getting the font</h4>
+<p>Inside ‘tea-style.css’, I import the font I want to use, like this:</p>
+<p><code>@import url('https://fonts.Googleapis.com/css2?family=Baloo+2&amp;display=swap');</code></p>
+<p>That URL comes from <a href="https://fonts.Google.com/">Google Fonts</a>, which is where I found Baloo 2, the font that I decided to use. I clicked on it to see the different styles (weights, italic, etc.) and selected the one that I liked by clicking “Select this style” on the right.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure"><span id="fig:unnamed-chunk-2"></span>
+<img src="baloo.png" alt="Choosing a style from the Baloo 2 font" width="899" />
+<p class="caption">
+Figure 2: Choosing a style from the Baloo 2 font
+</p>
+</div>
+</div>
+<p>Clicking that + sign popped open a dialog on the right. I chose the ‘import’ option instead of <code>&lt;link&gt;</code>, and then copied the import code within the <code>&lt;style&gt;</code> tag.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure"><span id="fig:unnamed-chunk-3"></span>
+<img src="balooURL.png" alt="Copying code to import Baloo" width="319" />
+<p class="caption">
+Figure 3: Copying code to import Baloo
+</p>
+</div>
+</div>
+<h4 id="applying-the-font">Applying the font</h4>
+<p>Then, in the same ‘tea-style.css’ file, I added this code:</p>
+<pre><code>* {
+font-family: &#39;Baloo 2&#39;, sans-serif;
+}</code></pre>
+<p>The * tells css to assign that font to <em>all</em> text in the app, not just a particular class of element. The ‘sans-serif’ after the name of the font tells the app to default to a generic sans-serif font if Baloo 2 were to be unavailable. And don’t forget the semicolon at the end of the line!</p>
+<h3 id="make-the-title-and-subtitle-have-two-different-formats">Make the title and subtitle have two different formats?</h3>
+<p>Gooood question. I don’t really know html and css. In this case I kind of Googled around until I found something that worked. And I completely despaired of being able to get the title to be large, so I asked Jonathan, and he showed me where to put the font size. Here’s the relevant code snippet, within the Shiny UI:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Title and subtitle, two different formats</span>
+<span class='fu'>titlePanel</span><span class='op'>(</span><span class='fu'>div</span><span class='op'>(</span><span class='fu'>HTML</span><span class='op'>(</span><span class='st'>"&lt;b style = 'font-size: 30px;'&gt;greenT&lt;/b&gt;&lt;em&gt;&lt;small&gt;
+                    exploring grapheme-color synesthesia&lt;/em&gt;&lt;/small&gt;"</span><span class='op'>)</span><span class='op'>)</span>,
+           <span class='co'># windowTitle controls what shows up on the browser tab</span>
+           windowTitle <span class='op'>=</span> <span class='st'>"greenT"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h3 id="plot-the-colored-blocks">Plot the colored blocks?</h3>
+<p>Just some ggplot magic!</p>
+<h4 id="making-the-plot">Making the plot</h4>
+<p>Here’s the ggplot code that plots the rectangles. If you want to fully understand the data structure that goes into the plot, you’ll have to take a look at the app and trace everything back: <code>rectangleDF()</code> is a reactive expression that depends on all the color inputs and the text that the user enters.</p>
+<p>I use <code>geom_rect</code> to make rectangles, defining their dimensions so that they plot right up against each other. I had to use <code>scale_fill_identity</code> so that the rectangles would be filled with the literal color values included in the input data frame, instead of ggplot’s default behavior, which is to map colors to values based on an external color palette.</p>
+<p><code>theme_void()</code> gave me a totally blank background–no axis labels, no ticks, no nothing. I wanted the plot to read as “an image of colored rectangles”, rather than as “a ggplot”.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Plot color blocks -------------------------------------------------------</span>
+<span class='va'>plotVals</span> <span class='op'>&lt;-</span> <span class='fu'>reactiveValues</span><span class='op'>(</span><span class='op'>)</span> <span class='co'># initialize a reactiveValues object to store the plot object</span>
+<span class='va'>output</span><span class='op'>$</span><span class='va'>colorBlocks</span> <span class='op'>&lt;-</span> <span class='fu'>renderPlot</span><span class='op'>(</span><span class='op'>{</span>
+  <span class='va'>p</span> <span class='op'>&lt;-</span>  <span class='fu'>rectangleDF</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>ggplot</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>geom_rect</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>xmin <span class='op'>=</span> <span class='va'>xmin</span>, xmax <span class='op'>=</span> <span class='va'>xmax</span>,
+                  ymin <span class='op'>=</span> <span class='va'>ymin</span>, ymax <span class='op'>=</span> <span class='va'>ymax</span>, 
+                  fill <span class='op'>=</span> <span class='va'>hex</span><span class='op'>)</span><span class='op'>)</span><span class='op'>+</span> <span class='co'># fill w hex colors</span>
+    <span class='fu'>scale_fill_identity</span><span class='op'>(</span><span class='op'>)</span><span class='op'>+</span> <span class='co'># take the literal hex values as colors, instead of mapping other colors to them.</span>
+    <span class='fu'>theme_void</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> <span class='co'># totally blank background</span>
+    <span class='op'>{</span><span class='kw'>if</span><span class='op'>(</span><span class='va'>input</span><span class='op'>$</span><span class='va'>showLetters</span><span class='op'>)</span><span class='fu'>geom_text</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>xmin</span> <span class='op'>+</span> <span class='fl'>0.5</span>, 
+                                        y <span class='op'>=</span> <span class='va'>ymin</span> <span class='op'>+</span> <span class='fl'>0.3</span>, 
+                                        label <span class='op'>=</span> <span class='va'>grapheme</span>,
+                                        col <span class='op'>=</span> <span class='va'>contrastColor</span><span class='op'>)</span>,
+                                    size <span class='op'>=</span> <span class='fl'>10</span>,
+                                    family <span class='op'>=</span> <span class='st'>"Baloo 2"</span><span class='op'>)</span><span class='op'>}</span><span class='op'>+</span>
+    <span class='fu'>scale_color_identity</span><span class='op'>(</span><span class='op'>)</span>
+  <span class='va'>plotVals</span><span class='op'>$</span><span class='va'>rectanglePlot</span> <span class='op'>&lt;-</span> <span class='va'>p</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>p</span><span class='op'>)</span>
+<span class='op'>}</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h4 id="conditionally-displaying-letters">Conditionally displaying letters</h4>
+<p>Then, I included a conditional layer: only add the letters if the interactive toggle switch is TRUE; otherwise remove the layers. I often find myself wanting to make conditional layers, especially in Shiny, and I can never remember the syntax on the first try. I refer back to Stack Overflow posts like <a href="https://stackoverflow.com/questions/55248191/if-condition-inside-ggplot?noredirect=1&amp;lq=1">this one</a>. Again with the community!</p>
+<p>Note that I was having trouble getting the ggplot to show up until I assigned it to a variable, <code>p</code>, and then included the <code>print(p)</code> statement at the end. Not sure why, but this worked.</p>
+<p>There are two other interesting pieces of code here that work together with other parts of the app:</p>
+<h3 id="change-the-color-of-the-ggplot-letters-based-on-the-rectangle-color">Change the color of the ggplot letters based on the rectangle color?</h3>
+<p>I took the same approach for the text color as for the rectangle background colors. I encoded the text color (either #FFFFFF/white or #OOOOOO/black) in the dynamically-created input data frame (a reactive expression) and then used <code>scale_color_identity()</code> to tell <code>ggplot</code> to use those literal hex values to color each letter, instead of mapping other colors onto them. You can see the <code>scale_color_identity()</code> code in the plot code snippet above.</p>
+<p>The tricky part was dynamically assigning each letter to either white or black based on the chosen background color. I figured I shouldn’t need to reinvent the wheel here. Surely web designers have already figured out how to do this. Once again, I Googled, and I found <a href="https://stackoverflow.com/questions/3942878/how-to-decide-font-color-in-white-or-black-depending-on-background-color">this post</a>, which gives a handy formula for calculating the best contrast color based on the rgb values of the background. The recommended threshold value in that post is 186; I fiddled around and ended up settling on 140 because, I don’t know, it just looked better to me.</p>
+<p>To calculate these colors, I had to convert my color hex codes into individual r, g, and b values, which I did using the <code>col2rgb()</code> function.</p>
+<p>Here’s the full code I used for those color computations. Incidentally, you’ll notice that the reactive expression being calculated here is <code>rectangleDF()</code>, which becomes the input to the plot code I shared above.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Create df input for the ggplot ------------------------------------------</span>
+<span class='va'>rectangleDF</span> <span class='op'>&lt;-</span> <span class='fu'>reactive</span><span class='op'>(</span><span class='op'>{</span>
+  <span class='fu'>req</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/split.html'>split</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>&gt;</span> <span class='fl'>0</span><span class='op'>)</span> <span class='co'># will only work when there is text entered in the box</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>grapheme <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/split.html'>split</a></span><span class='op'>(</span><span class='op'>)</span>,
+             ymin <span class='op'>=</span> <span class='fl'>1</span>,
+             ymax <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>mutate</span><span class='op'>(</span>xmin <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>.</span><span class='op'>)</span>, xmax <span class='op'>=</span> <span class='fl'>2</span><span class='op'>:</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>.</span><span class='op'>)</span><span class='op'>+</span><span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>left_join</span><span class='op'>(</span><span class='fu'>colorsDF</span><span class='op'>(</span><span class='op'>)</span>, by <span class='op'>=</span> <span class='st'>"grapheme"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>mutate</span><span class='op'>(</span>r <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/grDevices/col2rgb.html'>col2rgb</a></span><span class='op'>(</span><span class='va'>hex</span><span class='op'>)</span><span class='op'>[</span><span class='fl'>1</span>,<span class='op'>]</span>,
+           g <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/grDevices/col2rgb.html'>col2rgb</a></span><span class='op'>(</span><span class='va'>hex</span><span class='op'>)</span><span class='op'>[</span><span class='fl'>2</span>,<span class='op'>]</span>,
+           b <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/grDevices/col2rgb.html'>col2rgb</a></span><span class='op'>(</span><span class='va'>hex</span><span class='op'>)</span><span class='op'>[</span><span class='fl'>3</span>,<span class='op'>]</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>mutate</span><span class='op'>(</span>contrastColor <span class='op'>=</span> <span class='fu'>case_when</span><span class='op'>(</span><span class='op'>(</span><span class='va'>r</span><span class='op'>*</span><span class='fl'>0.299</span> <span class='op'>+</span> <span class='va'>g</span><span class='op'>*</span><span class='fl'>0.587</span> <span class='op'>+</span> <span class='va'>b</span><span class='op'>*</span><span class='fl'>0.114</span><span class='op'>)</span> <span class='op'>&gt;</span> 
+                                       <span class='fl'>140</span> <span class='op'>~</span> <span class='st'>"#000000"</span>,
+                                     <span class='cn'>TRUE</span> <span class='op'>~</span> <span class='st'>"#FFFFFF"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>}</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>(I thought about giving line numbers for the code, but I plan to keep editing this app, so the line numbers would keep changing. You can use ctrl+F in the app.R script, though)</p>
+<h3 id="save-the-rectangle-plot-as-an-image">Save the rectangle plot as an image?</h3>
+<p>This part was surprisingly easy, actually! Shiny has a nice <code>downloadHandler()</code> functionality that has two parts: one where you define the content you want to download, and one where you define the (dynamically-created) file name. The syntax is a little weird, so I copied and pasted the code from the Shiny docs and then filled in my parts.</p>
+<p>I’ve reproduced the download code below. The <code>filename</code> function converts the user-entered text to lowercase and replaces all non-alphanumeric characters to underscores, so we get a nice file name consisting of underscore-separated words. Then I append a nicely formatted date.</p>
+<p>Next, I need to define the object to be downloaded–in this case, the rectangle plot. Take a look back at the <code>ggplot</code> code I posted above. You might have been confused by this line, at the top: <code>plotVals &lt;- reactiveValues()</code>; and this line, at the bottom: <code>plotVals$rectanglePlot &lt;- p</code>. What we’re doing there is defining a reactiveValues object that gets updated each time that the ggplot re-renders.</p>
+<p>Now, inside the <code>content</code> function in the downloadHandler, I <code>ggsave()</code> the currently-displayed plot (<code>plotVals$rectanglePlot</code>).</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Download rectangles plot as image ---------------------------------------</span>
+<span class='va'>output</span><span class='op'>$</span><span class='va'>downloadPlot</span> <span class='op'>&lt;-</span> <span class='fu'>downloadHandler</span><span class='op'>(</span>
+  filename <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='op'>)</span><span class='op'>{</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='fu'>str_replace_all</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/chartr.html'>tolower</a></span><span class='op'>(</span><span class='va'>input</span><span class='op'>$</span><span class='va'>displayText</span><span class='op'>)</span>,
+                           <span class='st'>"[^a-z0-9]"</span>, <span class='st'>"_"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+             <span class='fu'>str_replace_all</span><span class='op'>(</span><span class='va'>.</span>, <span class='st'>"_{2,}"</span>, <span class='st'>"_"</span><span class='op'>)</span>, 
+           <span class='st'>"_"</span>,
+           <span class='fu'>dateTimeFormat</span><span class='op'>(</span><span class='op'>)</span>,
+           <span class='st'>'.png'</span><span class='op'>)</span>
+  <span class='op'>}</span>,
+  
+  content <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>file</span><span class='op'>)</span><span class='op'>{</span>
+    <span class='fu'>req</span><span class='op'>(</span><span class='va'>plotVals</span><span class='op'>$</span><span class='va'>rectanglePlot</span><span class='op'>)</span>
+    <span class='fu'>ggsave</span><span class='op'>(</span><span class='va'>file</span>, plot <span class='op'>=</span> <span class='va'>plotVals</span><span class='op'>$</span><span class='va'>rectanglePlot</span>, 
+           device <span class='op'>=</span> <span class='st'>'png'</span>, width <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/split.html'>split</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span><span class='op'>/</span><span class='fl'>2</span>, 
+           height <span class='op'>=</span> <span class='fl'>5</span><span class='op'>/</span><span class='fl'>2</span><span class='op'>)</span>
+  <span class='op'>}</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h3 id="make-the-contribution-form">Make the contribution form?</h3>
+<p>I closely followed <a href="https://deanattali.com/2015/06/14/mimicking-Google-form-shiny/">Dean Attali’s tutorial</a>, in most cases using his code directly. Of course, I wrote my own form questions.</p>
+<p>There are three main differences between my approach and Dean’s.</p>
+<ol type="1">
+<li><p>While Dean collected responses that would be added to an existing data sheet, each as a new line, I wanted to save a whole data frame per response. For that reason, my <code>contributionData()</code> reactive expression does a bunch of data reformatting. In the following code, I bind together the color data that the user has previously entered (co-opting the <code>colorsForExport()</code> reactive expression that I created in order to allow the user to download the color data as a csv) and the responses that the user gave to the demographic questions in the form.</p>
+<p>Of course, this relies on the user having previously entered their color data on the <strong>Explore</strong> page before filling out a form. I added a mandatory <code>checkboxInput</code> with text to this effect.</p>
+<p>I actually don’t love this approach. I think it would be less confusing for the user to have a “mirror” of the <strong>Explore</strong> tab’s color selectors show up on the <strong>Contribute</strong> page, so they could tweak their colors before saving the form. I don’t know if it’s possible to have a single input widget show up in multiple places in a Shiny app (so that changing it in one place will automatically also change it in the other places), and I suspect it’s not.</p>
+<p>So in order to make this work, I would have to program a whole new set of color selectors, and then add some logic that updates each selector in response to a change in its mirror, and vice versa. I’m sure this is possible, but I don’t know how to do it off the top of my head, and I left it out for the sake of time.</p></li>
+<li><p>I added some dynamic question options. I wanted respondents to be able to self-describe their gender identity. Also, for the question at the end about different types of synesthesia, I wanted respondents to be able to include types that I hadn’t listed. I listed most of the major synesthesia types I could find based on my research, but you never know!</p>
+<p>This turned out to be pretty simple, using the <code>uiOutput</code>/<code>renderUI</code> <a href="https://shiny.rstudio.com/tutorial/written-tutorial/lesson4/">pair of functions</a>. Here’s a snippet of code from the UI portion of the form:</p></li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># (more form questions above)</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">radioButtons</span>(<span class="st">&quot;gender&quot;</span>, <span class="fu">labelMandatory</span>(<span class="st">&quot;What is your gender identity?&quot;</span>),</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">&quot;woman&quot;</span>, <span class="st">&quot;non-binary&quot;</span>, </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                         <span class="st">&quot;man&quot;</span>, <span class="st">&quot;prefer not to say&quot;</span>, </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                         <span class="st">&quot;prefer to self-describe (click to add text)&quot;</span>), </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">selected =</span> <span class="fu">character</span>(<span class="dv">0</span>), <span class="at">width =</span> <span class="st">&quot;100%&quot;</span>),</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">uiOutput</span>(<span class="st">&quot;genderSelfDescribe&quot;</span>), <span class="co"># here&#39;s the uiOutput that dynamically generates a new question if the respondent wants to self-describe their gender.</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">radioButtons</span>(<span class="st">&quot;sex&quot;</span>, <span class="fu">labelMandatory</span>(<span class="st">&quot;Sex assigned at birth:&quot;</span>),</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">&quot;female&quot;</span>, <span class="st">&quot;male&quot;</span>, <span class="st">&quot;intersex&quot;</span>, </span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>                         <span class="st">&quot;prefer not to say&quot;</span>), </span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>             <span class="at">selected =</span> <span class="fu">character</span>(<span class="dv">0</span>), <span class="at">width =</span> <span class="st">&quot;100%&quot;</span>),</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># (more form questions below)</span></span></code></pre></div>
+</div>
+<p>Sandwiched between the <code>gender</code> and <code>sex</code> questions, the line <code>uiOutput("genderSelfDescribe")</code> allows a dynamically-generated question to appear if the respondent selects “prefer to self-describe” in the <code>gender</code> question.</p>
+<p>Here’s the code on the server side that makes this possible:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Contribute form -------------------------------------------------------</span>
+<span class='co'># Dynamic options</span>
+<span class='co'>## self-describe gender</span>
+<span class='va'>output</span><span class='op'>$</span><span class='va'>genderSelfDescribe</span> <span class='op'>&lt;-</span> <span class='fu'>renderUI</span><span class='op'>(</span><span class='op'>{</span>
+  <span class='fu'>req</span><span class='op'>(</span><span class='va'>input</span><span class='op'>$</span><span class='va'>gender</span><span class='op'>)</span>
+  <span class='kw'>if</span><span class='op'>(</span><span class='op'>!</span><span class='va'>input</span><span class='op'>$</span><span class='va'>gender</span> <span class='op'>==</span> <span class='st'>"prefer to self-describe (click to add text)"</span><span class='op'>)</span><span class='op'>{</span>
+    <span class='kw'><a href='https://rdrr.io/r/base/function.html'>return</a></span><span class='op'>(</span><span class='cn'>NULL</span><span class='op'>)</span>
+  <span class='op'>}</span><span class='kw'>else</span><span class='op'>{</span>
+    <span class='fu'>textInput</span><span class='op'>(</span><span class='st'>"genderSelfDescribe"</span>, 
+              label <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='st'>""</span><span class='op'>)</span>
+  <span class='op'>}</span>
+<span class='op'>}</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>And then of course, there’s similar code to provide a dynamic option for the free-text synesthesia types question.</p>
+<ol start="3" type="1">
+<li>While Dean’s tutorial describes saving responses using persistent data storage on the server where the Shiny app is hosted, he also points out that this isn’t possible on <a href="shinyapps.io">shinyapps.io</a>. So I decided to use one of the other options that he outlines in <a href="https://deanattali.com/blog/shiny-persistent-data-storage/">the follow-up to the original tutorial</a>: storing the data on Google Drive uisng the <code>Googlesheets4</code> package.</li>
+</ol>
+<h3 id="save-the-contributed-data-to-google-drive">Save the contributed data to Google Drive?</h3>
+<p>It took me a while (lots of trial and error, and lots of Google searches that I can’t reproduce) to figure out how to get the data saving to Google Drive to work.</p>
+<p>Basically, here’s the challenge. In order to read and write to Google Drive, you have to “authenticate”, i.e. “log in” to an account. That makes sense–of course it would be bad if I could make an app that could modify files in some random other person’s account with impunity.</p>
+<p>But, typically when we authenticate Google Drive (or anything else) from an R script, the package does a little “dance” with your web browser. You run the code command to authenticate, and then a browser window pops open and prompts you to enter your password. You do that, and then the code will run back in your RStudio window.</p>
+<p>That setup works fine for interactive programming, but it doesn’t work for a Shiny app. First of all, it would be super annoying for app users to have to deal with a separate browser popup just in order to be able to submit their forms. And more to the point, it wouldn’t help anyway–because they’d have to log into <em>my</em> Google account! So that’s not possible or desirable.</p>
+<p>That means that in order to write data to Google Drive directly from my Shiny app, I’ll have to use “non-interactive authentication” via a secret “token”.</p>
+<p>Here’s how I did that.</p>
+<h4 id="setup">Setup</h4>
+<p>First, I had to authenticate interactively one time, in order to set things up. To do this, I first created a hidden directory inside my main Shiny project and called it “.secrets”. To do this, I opened up the Terminal window inside RStudio. (You can also do this with the Terminal app, or the equivalent, on your computer–it doesn’t have to be through RStudio.)</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure"><span id="fig:unnamed-chunk-10"></span>
+<img src="makeSecrets.png" alt="Making the .secrets directory" width="863" />
+<p class="caption">
+Figure 4: Making the .secrets directory
+</p>
+</div>
+</div>
+<p>First, I checked to make sure I was in the root project directory by typing <code>ls</code> and checking what other files were there. Alternatively, you could print the working directory with <code>pwd</code>.</p>
+<p>Once I determined that I was indeed in the root directory, I typed <code>mkdir .secrets</code>. The <code>.</code> before ‘secrets’ will make the directory hidden.</p>
+<p>Next, <em>and this is important!</em> I hid ‘.secrets’ from being tracked by git. It’s a good idea to do this right at the beginning to make sure you don’t forget. You definitely do not want your private access token to end up on GitHub for all the world to see!</p>
+<p>If you have git running through RStudio, an easy way to do this is to go up to the <strong>git</strong> panel, click the gear icon, and then click “Ignore”. This will open the .gitignore file. Now just add ‘.secrets’ as a new line in the .gitignore file to ignore the entire contents of the secrets directory. If you’re more comfortable using the terminal, you can of course open the .gitignore using <code>nano .gitignore</code> or similar.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure"><span id="fig:unnamed-chunk-11"></span>
+<img src="gitignore.png" alt="Opening the .gitignore file" width="368" />
+<p class="caption">
+Figure 5: Opening the .gitignore file
+</p>
+</div>
+</div>
+<p>Okay, now we need to load the <code>googlesheets4</code> and <code>gargle</code> packages. <code>gargle</code> manages token authentication, and <code>googlesheets4</code> is what we’ll use to write the data to Google Sheets.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/tidyverse/googlesheets4'>googlesheets4</a></span><span class='op'>)</span> <span class='co'># we'll use this for writing to google sheets</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://gargle.r-lib.org'>gargle</a></span><span class='op'>)</span> <span class='co'># for authentication/tokens</span>
+</code></pre>
+</div>
+</div>
+<p>Next, set some <code>options()</code>. You can do this part in the console–it only needs to be done once. You’re just telling <code>gargle</code> where to save the token that you’re about to generate.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/options.html'>options</a></span><span class='op'>(</span>gargle_oauth_email <span class='op'>=</span> <span class='st'>"kaija.gahm@aya.yale.edu"</span>, <span class='co'># the email I wanted to use for the app</span>
+        gargle_oauth_cache <span class='op'>=</span> <span class='st'>".secrets"</span><span class='op'>)</span> <span class='co'># </span>
+</code></pre>
+</div>
+</div>
+<h4 id="get-a-token">Get a token</h4>
+<p>In order to actually generate a token, type <code>gs4_auth()</code> in the console. This should open up a window in your browser that will prompt you to sign in to your Google account. If you, like me, have multiple Google accounts (I have <strong>five</strong> right now), double-check that you’re signing into the same account that you specified in the <code>options()</code> call above. That’s the account whose Drive you’ll be writing to from your app.</p>
+<p>Once you’ve authenticated, you should get a plain-looking screen that tells you the authentication is complete. You can close that window and go back to R now. (This is the auth “dance” I mentioned earlier).</p>
+<p>Now, double-check that your token got added to your ‘.secrets/’ directory. It should get put there automatically because of the options you set. If it didn’t, try re-running the <code>options()</code> code above and re-trying the authentication.</p>
+<p>I checked the contents of the ‘.secrets/’ directory by using the Terminal window in RStudio to navigate into ‘.secrets/’ and then list the files inside.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> .secrets</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
+</div>
+<p>You should see something like <code>nfo674ndu6e8gh50p24q2nm8hk3a6e0k_kaija.gahm@aya.yale.edu</code> (obviously that’s not my real token, but it has the same format–a string of numbers and letters, followed by an underscore and then your email address.)</p>
+<h4 id="non-interactive-authentication">Non-interactive authentication</h4>
+<p>Okay. Now you have a token. Phew! The next step is to set up non-interactive authentication. I did this by following <a href="https://cran.r-project.org/web/packages/gargle/vignettes/non-interactive-auth.html">this vignette</a>. It’s really long. Don’t panic! The section you want is <strong>Project-level OAuth cache</strong>.</p>
+<p>You’ll notice that the first part of this section gives instructions on how to do basically what we just did: create a “.secrets/” directory and use a one-time interactive authentication to store a token in it. Here, they use the <code>googledrive</code> package as an example. My example above used <code>googlesheets4</code> instead, but it’s the same process.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure"><span id="fig:unnamed-chunk-15"></span>
+<img src="projectLevelOAuth.png" alt="My alphabet" width="752" />
+<p class="caption">
+Figure 6: My alphabet
+</p>
+</div>
+</div>
+<p>Now, follow the rest of the steps in this tutorial. They include adding this code at the top of your app, which you’ll see at the top of my own app.R file.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/options.html'>options</a></span><span class='op'>(</span>
+  gargle_oauth_cache <span class='op'>=</span> <span class='st'>".secrets"</span>,
+  gargle_oauth_email <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h4 id="notes-and-caveats">Notes and caveats</h4>
+<p>Note that there are other approaches to non-interactive authentication that use a Google service account. I tried to get this set up and didn’t have any luck–or rather, I got it set up, but then the process of actually <em>accessing</em> the data in a Google service account is complicated and I gave up and followed this tutorial instead with my personal account. For a small, personal app like greenT, that’s fine. If you want to implement something bigger or more sensitive, you should look into that approach. Maybe you’ll succeed where I didn’t. A warning: the Google API website is one of the most confusing sites I’ve ever tried to navigate, and I’m no Luddite.</p>
+<p>One more note on saving the form data to Google Sheets. Ideally, I would want each respondent’s data to be saved as its own sheet, and I’d want those sheets to be stored in a designated folder in my Google Drive. Unfortunately, and counter-intuitively, this turns out to be hard to do.</p>
+<p>The <code>googledrive</code> package in R is designed for interacting with Google Drive file structures, while the <code>googlesheets4</code> package is built to deal with individual Google Sheets files, but not so much with their organization within Google Drive. If you’re used to working with Google spreadsheets stored on Google Drive the normal way (i.e. through the web interface), it’s jarring to have these processes separated.</p>
+<p>I spent a while trying to find the functionality in <code>googlesheets4</code> that would allow me to organize files. Finally, I came across <a href="https://github.com/tidyverse/googlesheets4/issues/111">this issue</a> on the <code>googlesheets4</code> GitHub page, where Jenny Bryan explains the separation of functionality between these two packages. She subsequently wrote a <a href="https://googlesheets4.tidyverse.org/articles/articles/drive-and-sheets.html">vignette</a> on working with the two packages together. I followed the vignette and had a whole nice workflow set up where the data got written to a google sheet that was then moved to a ‘greenT/’ directory I had pre-created on Google Drive. But because both packages had to make calls to the <code>googledrive</code> and <code>googlesheets4</code> API’s, the whole thing was too slow, and the user had to wait an inordinately long time for their form response to submit.</p>
+<p>I’m sure there’s a way to speed this up, but I needed to have it working on a short timeline, so I ended up sticking with individual google sheets for each response, stored in my main Google Drive. Not ideal, but I added a ‘greenT_’ prefix to each file name so at least I’ll be able to find them easily. (Note: the code snippet I’m reproducing here lives in ‘defs.R’ within my app.)</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Function to save form data ----------------------------------------------</span>
+<span class='va'>saveData</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='va'>fileName</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sprintf.html'>sprintf</a></span><span class='op'>(</span><span class='st'>"%s_%s_%s"</span>,
+                      <span class='st'>"greenT"</span>,
+                      <span class='fu'>dateTimeFormat</span><span class='op'>(</span><span class='op'>)</span>,
+                      <span class='fu'>digest</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/digest/man/digest.html'>digest</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span><span class='op'>)</span>
+  
+  <span class='co'># Create an empty spreadsheet</span>
+  <span class='va'>ss</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/googlesheets4/man/gs4_create.html'>gs4_create</a></span><span class='op'>(</span>name <span class='op'>=</span> <span class='va'>fileName</span>,
+                   sheets <span class='op'>=</span> <span class='st'>"data"</span><span class='op'>)</span>
+  
+  <span class='co'># Put the data.frame in the spreadsheet and provide the sheet_id so it can be found</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/googlesheets4/man/sheet_write.html'>sheet_write</a></span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>ss</span>, sheet <span class='op'>=</span> <span class='st'>"data"</span><span class='op'>)</span>
+<span class='op'>}</span>
+</code></pre>
+</div>
+</div>
+<h3 id="work-efficiently-with-all-36-color-selectors">Work efficiently with all 36 color selectors?</h3>
+<p>Since the app requires assigning a color to each letter (26) and digit (10), we have 36 color selectors to deal with, each with its own inputId. I called the letter selectors <code>input$a</code>, <code>input$b</code>, etc., and I called the number selectors <code>input$one</code>, <code>input$two</code> since there are annoying hoops to jump through if you want to make a number into a variable.</p>
+<p>36 is a lot of individual variables to type out. Frustratingly, it’s right on the cusp of what I’m willing to do manually–few enough that manual listing is possible, but enough that it’s a serious pain, especially if you have to list them out more than once.</p>
+<p>Ultimately, then, I opted to deal with the color selectors programmatically. It was a little tricky to figure out, in part because there are three really three different lists of selectors.</p>
+<h4 id="making-some-vectors">Making some vectors</h4>
+<ol type="1">
+<li><p>The inputId’s of the selectors. As I explained above, this is a combination of the letters of the alphabet (lowercase) with the spelled-out digits, “zero” through “nine”.</p></li>
+<li><p>The display names of the selectors. For some arbitrary reason I decided I wanted them to display as uppercase letters and digits. Not sure why I did that. In retrospect, since everything shows up as lowercase in the ggplot, maybe I should have gone with lowercase. But regardless: the display names end up being <code>c(A:Z, 0:9)</code>.</p></li>
+<li><p>The characters that the selectors represent. This is important because I have to compile a data frame of all the selector input colors, to join to a data frame created from the text that the user entered. Since that text gets converted to lowercase, the selector inputs also have to be assigned lowercase letters in order to match up. So for this, we need yet another vector, <code>c(a:z, 0-9)</code>. This is also how I want the characters to print out in the downloadable csv data. Lowercase just seems more standard and appropriate in that case.</p></li>
+</ol>
+<p>Yeah, as I’m typing this I’m realizing that I <em>really</em> should have just combined steps 2 and 3 and gone with lowercase display labels. Oops. <em>Note also: this ignores the possibility that someone might have different colors associated with uppercase and lowercase letters. That isn’t true for me, but it is true for at least one of my testers. Maybe I’ll add that functionality in the future!</em></p>
+<p>Anyway. I went ahead and defined these three vectors in my ‘defs.R’ script, like this:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>inputIds</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>letters</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"zero"</span>, <span class='st'>"one"</span>, <span class='st'>"two"</span>, <span class='st'>"three"</span>, <span class='st'>"four"</span>, <span class='st'>"five"</span>, 
+                         <span class='st'>"six"</span>, <span class='st'>"seven"</span>, <span class='st'>"eight"</span>, <span class='st'>"nine"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>displayNames</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>LETTERS</span>, <span class='fl'>0</span><span class='op'>:</span><span class='fl'>9</span><span class='op'>)</span>
+<span class='va'>charactersOut</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/chartr.html'>tolower</a></span><span class='op'>(</span><span class='va'>displayNames</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>Then, I could use those vectors to operate on all of my inputs at once, using functions like <code>lapply</code> and <code>map2</code>.</p>
+<p>For example, let’s take a look at how I created the individual <code>colourInput</code> objects to display on the main page of the app.</p>
+<h4 id="example-creating-the-selectors">Example: Creating the selectors</h4>
+<p>First, I defined a function, <code>colorInit()</code>:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Function to create inputs -----------------------------------------------</span>
+<span class='va'>colorInit</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span> <span class='op'>=</span> <span class='va'>.x</span>, <span class='va'>y</span> <span class='op'>=</span> <span class='va'>.y</span><span class='op'>)</span><span class='op'>{</span>
+  <span class='fu'>colourpicker</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/colourpicker/man/colourInput.html'>colourInput</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, value <span class='op'>=</span> <span class='fu'>randomColor</span><span class='op'>(</span><span class='op'>)</span>, showColour <span class='op'>=</span> <span class='st'>"background"</span><span class='op'>)</span>
+<span class='op'>}</span>
+</code></pre>
+</div>
+</div>
+<p>The .x and .y are default inputs because I know I’ll be using this function in a call to <code>map2()</code>. <code>value = randomColor()</code> initializes each selector with a random hex code when the app initially loads. And <code>showColour = "background"</code> shows the chosen color as the background of the selector, not as hex code text.</p>
+<p>Now, I can call this function in order to render the <code>colorInput</code>s in the UI. The <code>column()</code> code below had to be repeated 6 times (6 total columns) in the UI. There’s probably a way to streamline even <em>that</em> part of things, but I didn’t mind repeating myself 6 (rather than 36) times, and I didn’t want to write another function.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>fluidRow</span><span class='op'>(</span>
+  <span class='co'># ... (other columns)</span>
+  <span class='fu'>column</span><span class='op'>(</span>width <span class='op'>=</span> <span class='fl'>2</span>,
+         <span class='fu'>purrr</span><span class='fu'>::</span><span class='fu'><a href='https://purrr.tidyverse.org/reference/map2.html'>map2</a></span><span class='op'>(</span>.x <span class='op'>=</span> <span class='fu'>horiz</span><span class='op'>(</span><span class='va'>inputIds</span><span class='op'>)</span><span class='op'>[</span><span class='fl'>7</span><span class='op'>:</span><span class='fl'>12</span><span class='op'>]</span>, 
+                     .y <span class='op'>=</span> <span class='fu'>horiz</span><span class='op'>(</span><span class='va'>displayNames</span><span class='op'>)</span><span class='op'>[</span><span class='fl'>7</span><span class='op'>:</span><span class='fl'>12</span><span class='op'>]</span>, 
+                     <span class='va'>colorInit</span><span class='op'>)</span>
+  <span class='op'>)</span>
+  <span class='co'># ... (more columns)</span>
+<span class='op'>)</span> <span class='co'># 6 columns in total</span>
+</code></pre>
+</div>
+</div>
+<p>So, let’s take a look at this code. First, I’ve created a <code>fluidRow()</code> that will serve as the horizontal strip where all the color inputs are housed in the UI. Because I know I want to lay out the selectors in a 6x6 grid, I create 6 <code>column()</code> definitions, each with width 2 (a width of 12 means “take up the full page”, so dividing that by 6 gives a width of 2 for each column).</p>
+<p>Then, I use <code>map2()</code> to render the inputs. I define two arguments, <code>.x</code> and <code>.y</code>. (Ignore the <code>horiz()</code> function for now–I’ll talk about that in a second.) <code>.x</code> is going to be the inputId’s of the color selectors, so for that I can use <code>inputIds</code>, one of the three vectors I created in the previous step. <code>.y</code> is going to be the labels, or what actually gets displayed next to the selctors. So for that, I can use <code>displayNames</code>, the vector I created that includes capital letters and digits. Finally, <code>colorInit</code> is the <code>.f</code> argument (which I probably should have labeled as such–oops.) So, <code>map2()</code> passes <code>.x</code> and <code>.y</code> into that <code>colorInit()</code> function that I just defined, and for each element of the input vector, it creates a <code>colourInput()</code> object with inputId taken from the <code>.x</code> vector and label taken from the <code>.y</code> vector.</p>
+<h4 id="arranging-the-letters-horizontally">Arranging the letters horizontally</h4>
+<p>Cool, okay. So now let’s talk about the <code>horiz()</code> function, and also those indices <code>[7:12]</code>. The input vectors I created are, naturally, in alphabetical order, from A-Z and then 0-9. But I’m creating my inputs in 6 columns. If I populated the columns in order of that vector (for example, using elements <code>[1:6]</code> for the first column; <code>[7:12]</code> for the second column), I’d end up with the alphabet going down the columns instead of across rows.</p>
+<p>That’s <em>fine</em>, I guess, but I find it more naturally to read left to right, top to bottom (instead of top to bottom, left to right). I want the top left selector to be <code>A</code>, and then the one directly to its right to be <code>B</code>, because I think that’s what the user will expect.</p>
+<p>So, I created a function called <code>horiz()</code>. Here it is:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Function to reorganize the inputs horizontally --------------------------</span>
+<span class='va'>horiz</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>vec</span> <span class='op'>=</span> <span class='va'>inputIds</span>, <span class='va'>nrow</span> <span class='op'>=</span> <span class='fl'>6</span>, <span class='va'>ncol</span> <span class='op'>=</span> <span class='fl'>6</span><span class='op'>)</span><span class='op'>{</span>
+  <span class='va'>mat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='va'>vec</span>, nrow <span class='op'>=</span> <span class='va'>nrow</span>, ncol <span class='op'>=</span> <span class='va'>ncol</span>, byrow <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span>
+  <span class='va'>horizVec</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>mat</span><span class='op'>)</span>
+  <span class='kw'><a href='https://rdrr.io/r/base/function.html'>return</a></span><span class='op'>(</span><span class='va'>horizVec</span><span class='op'>)</span>
+<span class='op'>}</span>
+</code></pre>
+</div>
+</div>
+<p><code>horiz()</code> takes my (alphabetically-ordered) vector as input. It then generates a matrix from that vector, with <code>byrow = T</code> (i.e. laying out the vector in rows, not in columns–the way I want it!). Next, it uses <code>c()</code> to collapse that matrix back down into a vector. Because R works on columns by default, the matrix will be collapsed column-wise, not row-wise. So the vector returned will be <code>c("a", "g", "m", "s", "y", "4", "b", "h", "n", "t")</code>… etc. etc.</p>
+<p>So now, I can use the elements of <em>that</em> vector, 6 at a time, to populate and name the color selectors for each column.</p>
+<p>In the case of the code snippet above that uses <code>map2()</code>, I’m making the second column, so I use elements <code>[7:12]</code> of each transformed vector. <code>horiz(inputIds)[7:12]</code> gives me <code>c("b", "h", "n", "t", "z", "5")</code>, and <code>horiz(displayNames)[7:12]</code> gives me <code>c("B", "H", "N", "T", "Z", "5")</code>.</p>
+<p>You might be wondering why I went to all this trouble. Why not just make the selectors row-wise, instead of column-wise?</p>
+<p>There definitely might be a good way to do this (please share it if you know how!) but I couldn’t figure it out. It’s not trivial to align things using CSS, and I think that’s what I would have had to do in order to ensure equal spacing. I know R and I don’t know CSS, so I ended up going with the R-centric solution. Besides, I got to feel clever writing functions and such.</p>
+<h2 id="get-involved">Get involved</h2>
+<p>That’s it for specific notes on the code for this app! If you’re curious about the rest of the code, please check out the repository, which is publicly available <a href="https://github.com/kaijagahm/greenT">here</a>. If you have specific questions, you can email me, and I’ll try to get back to you (but no promises).</p>
+<p>I also welcome contributions, if you’re interested in making this app better! Go ahead and <a href="https://github.com/kaijagahm/greenT/issues">file an issue</a> or <a href="https://github.com/kaijagahm/greenT/pulls">submit a pull request</a> on GitHub. I’m going to be busy over the coming months and I’m not sure how much time I’ll have to work on this, so I may not be actively responding to issues. But I welcome any and all contributions or ideas for the future.</p>
+<p>If you haven’t already checked out my first blog post about this app, you can read it <a href="https://kaijagahm.netlify.app/posts/2021-05-09-greent/">here</a>. And the app itself lives <a href="https://kaijagahm.shinyapps.io/greenT/">here</a>.</p>
+<p>Thanks for reading.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<!--radix_placeholder_article_footer-->
+<!--/radix_placeholder_article_footer-->
+</div>
+
+<div class="d-appendix">
+</div>
+
+
+<!--radix_placeholder_site_after_body-->
+<!--/radix_placeholder_site_after_body-->
+<!--radix_placeholder_appendices-->
+<div class="appendix-bottom"></div>
+<!--/radix_placeholder_appendices-->
+<!--radix_placeholder_navigation_after_body-->
+<!--/radix_placeholder_navigation_after_body-->
+
+</body>
+
+</html>
