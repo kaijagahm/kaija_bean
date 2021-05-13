@@ -12,7 +12,16 @@
       <link>https://kaijagahm.netlify.app/</link>
     </image>
     <generator>Distill</generator>
-    <lastBuildDate>Sun, 09 May 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 13 May 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>greenT part 2: Behind the app</title>
+      <dc:creator>Kaija Gahm</dc:creator>
+      <link>https://kaijagahm.netlify.app/posts/2021-05-12-greent-how-to</link>
+      <description>A more detailed explanation of some of the code that makes the greenT app work.</description>
+      <guid>https://kaijagahm.netlify.app/posts/2021-05-12-greent-how-to</guid>
+      <pubDate>Thu, 13 May 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://kaijagahm.netlify.app/posts/2021-05-12-greent-how-to/numbers.png" medium="image" type="image/png" width="1500" height="750"/>
+    </item>
     <item>
       <title>greenT: Exploring grapheme-color synesthesia</title>
       <dc:creator>Kaija Gahm</dc:creator>
