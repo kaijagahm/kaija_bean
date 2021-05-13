@@ -141,4 +141,5 @@ Part of that is being able to jump into Shiny by watching beautifully thought-ou
 I had another advantage in developing greenT: [Jonathan Trattner](https://www.jdtrat.com/) collaborated with me during most of the app's development. Even though his time was limited by classes and exams, it was invaluable to be able to ping him on Slack or hop on a video call to discuss something I was stuck on.
 
 ### Behind the app
-Pretty soon, I'll be making another post that goes into more detail on how I accomplished certain things, code-wise, in the app. It was going to be part of this post, but I kept writing and writing and eventually I decided it would be weird to have a combination introducing-my-app and here's-five-different-detailed-tutorials post. So, stay tuned!
+
+If you'd like to read more about the code behind the app, check out [Part 2](https://kaijagahm.netlify.app/posts/2021-05-12-greent-how-to/) of this blog post, where I go into detail on the contribution form, non-interactive Google Sheets authentication, building a dynamic ggplot, programmatically generating color selectors, setting the font, and more.

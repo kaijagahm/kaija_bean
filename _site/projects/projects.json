@@ -1,5 +1,24 @@
 [
   {
+    "path": "projects/2021-05-13-greenT/",
+    "title": "greenT: Exploring grapheme-color synesthesia",
+    "description": "For my whole life, I've associated colors with letters and numbers. This is called grapheme-color synesthesia. For my second major project in Shiny, I built an app to help me explain synesthesia to friends, and to learn more about the experiences of other synesthetes.",
+    "author": [
+      {
+        "name": "Kaija Gahm",
+        "url": {}
+      }
+    ],
+    "date": "2021-05-13",
+    "categories": [],
+    "contents": "\n\n\n\nFigure 1: The digits 0-9, according to my brain\n\n\n\nI have what’s known as grapheme-color synesthesia. I experience letters and numbers as having colors associated with them. I don’t literally see colors floating in the air, but I’ve consistently associated a color with each letter and number for most of my life.\nWhen I tell my friends about my synesthesia, they want to know what color their name is. I wanted a way to quickly represent any word or words in the colors I see it in. I did a bit of googling to see if anyone had come up with a synesthesia simulator.\nThe closest thing I found was Bernadette Sheridan’s website synesthesia.me, which did exactly what I wanted to do, but only for Bernadette’s own colors! Cool, but not useful to me or to any other synesthetes (like my brother) who might want to show me their own colors.\nSo, I built this app. The source code for the app is here.\nFor a guided tour of the parts of the app, see this blog post\nTo read an explanation of the code used in the app, see this blog post\nThis was my second major Shiny project, after the YGDP Dashboard.\nHere’s the app, embedded:\n\n\nIf you have questions about this work, please feel free to get in touch. If you want to suggest an improvement or change to the app, or to report a bug or file a pull request, head over to the github page for the project.\nTo read more, make sure to check out my blog posts about this app. Part 1, Part 2\n\n\n\n",
+    "preview": "projects/2021-05-13-greenT/numbers.png",
+    "last_modified": "2021-05-13T10:30:00-04:00",
+    "input_file": {},
+    "preview_width": 1500,
+    "preview_height": 750
+  },
+  {
     "path": "projects/2021-02-05-ygdp-dashboard/",
     "title": "YGDP Dashboard",
     "description": "From June through December 2020, I taught myself Shiny and ended up creating a pretty complicated interactive dashboard for exploring dialect variation across the US. Here's a bit about my experience using Shiny, as well as the app itself for you to play around with.",

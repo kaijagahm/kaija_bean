@@ -12,7 +12,16 @@
       <link>https://kaijagahm.netlify.app/</link>
     </image>
     <generator>Distill</generator>
-    <lastBuildDate>Fri, 05 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 13 May 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>greenT: Exploring grapheme-color synesthesia</title>
+      <dc:creator>Kaija Gahm</dc:creator>
+      <link>https://kaijagahm.netlify.app/projects/2021-05-13-greenT</link>
+      <description>For my whole life, I've associated colors with letters and numbers. This is called grapheme-color synesthesia. For my second major project in Shiny, I built an app to help me explain synesthesia to friends, and to learn more about the experiences of other synesthetes.</description>
+      <guid>https://kaijagahm.netlify.app/projects/2021-05-13-greenT</guid>
+      <pubDate>Thu, 13 May 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://kaijagahm.netlify.app/projects/2021-05-13-greenT/numbers.png" medium="image" type="image/png" width="1500" height="750"/>
+    </item>
     <item>
       <title>YGDP Dashboard</title>
       <dc:creator>Kaija Gahm</dc:creator>
