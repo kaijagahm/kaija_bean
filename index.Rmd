@@ -1,6 +1,6 @@
 ---
 title: "Kaija Gahm"
-image: "kaijaCircle.png"
+image: "Kaija_Headshot_Final-3.jpg"
 links:
   - label: LinkedIn
     url: "https://www.linkedin.com/in/kaija-gahm-205890167"
