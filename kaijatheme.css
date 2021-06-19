@@ -10,7 +10,7 @@
 
 /* Optional: embed custom fonts here with `@import`          */
 /* This must remain at the top of this file.                 */
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic');
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro');
 
@@ -24,7 +24,7 @@ html {
   --fig-cap-size:    13px;
   /*-- Main font colors --*/
   --title-color:     #8a1950; /*-- Dark magenta --*/
-  --header-color:    #ac397c; /*-- Bright magenta --*/
+  --header-color:    #8a1950; /*-- Dark magenta --*/
   --body-color:      #2b2212; /*-- Dark brown --*/
   --aside-color:     #2b2212; /*-- Dark brown --*/
   --fig-cap-color:   #2b2212; /*-- Dark brown --*/
@@ -38,7 +38,7 @@ html {
 /*-- ARTICLE METADATA --*/
 d-byline {
   --heading-size:    0.6rem;
-  --heading-color:   #ac397c; /*-- Bright magenta --*/
+  --heading-color:   #8a1950; /*-- Dark magenta --*/
   --body-size:       0.8rem;
   --body-color:      #2b2212; /*-- Dark brown --*/
 }
@@ -100,15 +100,15 @@ d-appendix {
   --title-size:       18px;
   --text-color:       #FFFFFF; /* White, same color as background */
   --text-size:        15px;
-  --hover-color:      #E0E0E0; /* gray, slightly darker than white */
-  --bkgd-color:       #647f2f; /* medium green */
+  --hover-color:      #aad06c; /* Light green */
+  --bkgd-color:       #4c6e3e; /* medium green */
 }
 
 .distill-site-footer {
   --text-color:       #FFFFFF; /* White, same color as background */
   --text-size:        15px;
-  --hover-color:      #E0E0E0; /* gray, slightly darker than white */
-  --bkgd-color:       #647f2f; /* medium green */
+  --hover-color:      #aad06c; /* Light green */
+  --bkgd-color:       #4c6e3e; /* medium green */
 }
 
 /*-- Additional custom styles --*/
@@ -121,12 +121,12 @@ ul > li::marker {
 
 /* Change link appearance */
 d-article a {
-  border-bottom: 2px solid #8a1950; /*-- Dark magenta --*/
-  text-decoration: none;
+  color: #8a1950; /*-- Dark magenta --*/
 }
 
 /* Non-postcard links */
 d-article a{
+  border-bottom: 0px;
   color: #8a1950; /*-- Dark magenta --*/
 }
 
@@ -143,4 +143,9 @@ d-article a:active {
 /* visited link */
 d-article a:visited {
   color: #8a1950; /*-- Dark magenta --*/
+}
+
+/* Post descriptions */
+d-article p {
+  color: #2b2212; /*-- Dark brown --*/
 }
