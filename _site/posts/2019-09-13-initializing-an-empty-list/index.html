@@ -2144,7 +2144,7 @@ d-appendix {
 
 /* Optional: embed custom fonts here with `@import`          */
 /* This must remain at the top of this file.                 */
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic');
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro');
 
@@ -2157,11 +2157,11 @@ html {
   --aside-size:      12px;
   --fig-cap-size:    13px;
   /*-- Main font colors --*/
-  --title-color:     #8A0519; /*-- Dark red --*/
-  --header-color:    #B2061F;
-  --body-color:      #13182A;
-  --aside-color:     #13182A;
-  --fig-cap-color:   #13182A;
+  --title-color:     #8a1950; /*-- Dark magenta --*/
+  --header-color:    #8a1950; /*-- Dark magenta --*/
+  --body-color:      #2b2212; /*-- Dark brown --*/
+  --aside-color:     #2b2212; /*-- Dark brown --*/
+  --fig-cap-color:   #2b2212; /*-- Dark brown --*/
   /*-- Specify custom fonts ~~~ must be imported above   --*/
   --heading-font:    "Nanum Myeongjo", serif;
   --mono-font:       "Source Code Pro", monospace;
@@ -2172,59 +2172,59 @@ html {
 /*-- ARTICLE METADATA --*/
 d-byline {
   --heading-size:    0.6rem;
-  --heading-color:   #8A0519;
+  --heading-color:   #8a1950; /*-- Dark magenta --*/
   --body-size:       0.8rem;
-  --body-color:      #13182A;
+  --body-color:      #2b2212; /*-- Dark brown --*/
 }
 
 /* Postcard main text */
 div#content p {
-color: #13182A;
+color: #2b2212; /*-- Dark brown --*/
 }
 
 /* Postcard list items */
 .list-inline-item {
-color: #13182A;
+color: #2b2212; /*-- Dark brown --*/
 }
 
 /* Postcard headers */
 h1, h2 {
-  color: #8A0519;
+  color: #8a1950; /*-- Dark magenta --*/
 }
 
 /* Postcard links */
 #content a {
-  color: #8A0519;
+  color: #8a1950; /*-- Dark magenta --*/
 }
 
 /* mouse over link */
 #content a:hover {
-  color: #8A0519;
+  color: #8a1950; /*-- Dark magenta --*/
 }
 
 /* selected link */
 #content a:active {
-  color: #8A0519;
+  color: #8a1950; /*-- Dark magenta --*/
 }
 
 /* visited link */
 #content a:visited {
-  color: #8A0519;
+  color: #8a1950; /*-- Dark magenta --*/
 }
 
 /*-- ARTICLE TABLE OF CONTENTS --*/
 .d-contents {
   --heading-size:    18px;
-  --heading-color:   #8A0519;
+  --heading-color:   #8a1950; /*-- Dark magenta --*/
   --contents-size:   13px;
 }
 
 /*-- ARTICLE APPENDIX --*/
 d-appendix {
   --heading-size:    15px;
-  --heading-color:   #8A0519;
+  --heading-color:   #8a1950; /*-- Dark magenta --*/
   --text-size:       0.8em;
-  --text-color:      #13182A;
+  --text-color:      #2b2212; /*-- Dark brown --*/
 }
 
 /*-- WEBSITE HEADER + FOOTER --*/
@@ -2232,17 +2232,17 @@ d-appendix {
 
 .distill-site-header {
   --title-size:       18px;
-  --text-color:       #F5F5F5; /* whitish */
+  --text-color:       #FFFFFF; /* White, same color as background */
   --text-size:        15px;
-  --hover-color:      #E0E0E0; /* gray, slightly darker than white */
-  --bkgd-color:       #232843; /* medium gray/blue */
+  --hover-color:      #aad06c; /* Light green */
+  --bkgd-color:       #4c6e3e; /* medium green */
 }
 
 .distill-site-footer {
-  --text-color:       #F5F5F5;
+  --text-color:       #FFFFFF; /* White, same color as background */
   --text-size:        15px;
-  --hover-color:      #E0E0E0;
-  --bkgd-color:       #232843;
+  --hover-color:      #aad06c; /* Light green */
+  --bkgd-color:       #4c6e3e; /* medium green */
 }
 
 /*-- Additional custom styles --*/
@@ -2250,13 +2250,38 @@ d-appendix {
 /* Change bullets */
 ul > li::marker {
   font-size: 1.125em;
-  color: #8A0519;
+  color: #8a1950; /*-- Dark magenta --*/
 }
 
 /* Change link appearance */
 d-article a {
-  border-bottom: 2px solid #8A0519;
-  text-decoration: none;
+  color: #8a1950; /*-- Dark magenta --*/
+}
+
+/* Non-postcard links */
+d-article a{
+  border-bottom: 0px;
+  color: #8a1950; /*-- Dark magenta --*/
+}
+
+/* mouse over link */
+d-article a:hover {
+  color: #8a1950; /*-- Dark magenta --*/
+}
+
+/* selected link */
+d-article a:active {
+  color: #8a1950; /*-- Dark magenta --*/
+}
+
+/* visited link */
+d-article a:visited {
+  color: #8a1950; /*-- Dark magenta --*/
+}
+
+/* Post descriptions */
+d-article p {
+  color: #2b2212; /*-- Dark brown --*/
 }</style>
 <style type="text/css">
 /* base style */
