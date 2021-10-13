@@ -10,6 +10,8 @@ output:
     self_contained: false
     highlight: kate
     fig_caption: false
+    toc: true
+    toc_float: true
 ---
 
 ```{r setup, include=FALSE}
