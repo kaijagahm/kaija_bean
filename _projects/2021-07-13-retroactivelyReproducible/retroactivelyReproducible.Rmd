@@ -12,7 +12,7 @@ output:
     self_contained: false
     highlight: kate
     toc: true
-preview: firstSlide.png
+preview: "slideImages/0001.jpg"
 ---
 
 ```{r setup, include=FALSE}

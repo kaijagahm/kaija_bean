@@ -20,6 +20,7 @@
       <description>A talk I gave at the 2021 SORTEE conference about my experience implementing data management and reproducibility tools retroactively, for an existing project, even if best practices weren’t used from the beginning. I also discuss organizing and making sense of someone else’s analyses when approaching the project as an outsider.</description>
       <guid>https://kaijagahm.netlify.app/projects/2021-07-13-retroactivelyReproducible</guid>
       <pubDate>Tue, 13 Jul 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://kaijagahm.netlify.app/projects/2021-07-13-retroactivelyReproducible/slideImages/0001.jpg" medium="image" type="image/jpeg"/>
     </item>
     <item>
       <title>greenT: Exploring grapheme-color synesthesia</title>
