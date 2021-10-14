@@ -12,7 +12,15 @@
       <link>https://kaijagahm.netlify.app/</link>
     </image>
     <generator>Distill</generator>
-    <lastBuildDate>Thu, 13 May 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 13 Jul 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Retroactively Reproducible: Lessons from a workflow audit</title>
+      <dc:creator>Kaija Gahm</dc:creator>
+      <link>https://kaijagahm.netlify.app/projects/2021-07-13-retroactivelyReproducible</link>
+      <description>A talk I gave at the 2021 SORTEE conference about my experience implementing data management and reproducibility tools retroactively, for an existing project, even if best practices weren’t used from the beginning. I also discuss organizing and making sense of someone else’s analyses when approaching the project as an outsider.</description>
+      <guid>https://kaijagahm.netlify.app/projects/2021-07-13-retroactivelyReproducible</guid>
+      <pubDate>Tue, 13 Jul 2021 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>greenT: Exploring grapheme-color synesthesia</title>
       <dc:creator>Kaija Gahm</dc:creator>

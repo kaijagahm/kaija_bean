@@ -1,0 +1,85 @@
+---
+title: "Retroactively Reproducible: Lessons from a workflow audit"
+description: |
+  A talk I gave at the 2021 SORTEE conference about my experience implementing data management and reproducibility tools retroactively, for an existing project, even if best practices weren’t used from the beginning. I also discuss organizing and making sense of someone else’s analyses when approaching the project as an outsider.
+
+author:
+  - name: Kaija Gahm
+    url: {}
+date: 07-13-2021
+output:
+  distill::distill_article:
+    self_contained: false
+    highlight: kate
+    toc: true
+preview: firstSlide.png
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r echo = FALSE}
+descriptionData <- read.csv("retroactivelyReproducible_slideCaptions.csv")
+fileNames <- list.files(path ="slideImages", 
+                          full.names = T)
+input <- data.frame(slideDescription = descriptionData$description,
+                    slideImage = fileNames)
+```
+
+At the 2021 SORTEE conference this past summer, I gave a talk about my experience conducting a reproducibility audit and cleaning up a colleague's workflow as she prepared to publish her M.S. thesis research.
+
+Here, I'm embedding the video of the talk, and also reproducing it as a blog post (slides and captions) in case you'd rather read than listen/watch.
+
+The slide descriptions are a pretty direct transcription of what I said during the talk, so if the style seems strange for a blog post, that's why.
+
+Scroll down to watch the video!
+
+## Slides and descriptions
+
+```{r echo = FALSE, results = "asis"}
+for(i in seq(nrow(input))){
+  currentSlide <- input[i, ]
+  cat(paste0("![](", currentSlide$slideImage, ")", "\n"))
+  cat(sprintf("%s", currentSlide$slideDescription))
+  cat("<br><br><br>")
+}
+```
+
+## Video
+
+For the conference, I embedded captions in the video using iMovie, which was a pretty clunky process but was all I had access to at the time. There are some glitches and at one point I accidentally inserted the caption for a previous slide. On the whole, I hope the captions are better than nothing.
+
+![](https://youtu.be/cJq2kp114Mg)
+
+## Resources
+
+The resource links from the second to last slide didn't translate well to this format, so here they are:
+
+-   [RStudio interactive tutorials](https://education.rstudio.com/learn/)
+
+-   [Happy Git with R](https://happygitwithr.com/) (Jenny Bryan and Jim Hester)
+
+-   [Project-oriented workflow](https://www.tidyverse.org/blog/2017/12/workflow-vs-script/) with RStudio projects (Jenny Bryan)
+
+-   [Using RStudio projects](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects)
+
+-   Using the [here](https://here.r-lib.org/) package
+
+-   How to use [renv](https://rstudio.github.io/renv/)
+
+-   [Keeping a Paper Trail: Data Management Skills for Reproducible Science ](https://laskowskilab.faculty.ucdavis.edu/2020/08/03/keeping-a-paper-trail-data-management-skills-for-reproducible-science/)(Kate Laskowski)
+
+-   [Make a README](https://www.makeareadme.com/)
+
+-   Get an [embed link](https://webapps.stackexchange.com/questions/14710/is-there-a-way-to-obtain-an-embed-link-for-a-google-drawings) for a Google drawing so you can put it into e.g. a README
+
+-   Using [the \`tree\` command](https://rschu.me/list-a-directory-with-tree-command-on-mac-os-x-3b2d4c4a4827) in the terminal to make a file tree
+
+-   The [document outline](https://blog.rstudio.com/2020/12/02/rstudio-v1-4-preview-little-things/) in RStudio
+
+-   [Headers and comments](https://bookdown.org/yih_huynh/Guide-to-R-Book/r-conventions.html) in RStudio (Y. Wendy Hyunh)
+
+-   [What they forgot to teach you about R](https://rstats.wtf/) (Jenny Bryan and Jim Hester)
+
+Finally, you can download the video and the annotated slides from OSF [here](https://osf.io/xa4uj/).
