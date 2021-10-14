@@ -20,6 +20,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r echo = FALSE}
+library(vembedr)
 descriptionData <- read.csv("retroactivelyReproducible_slideCaptions.csv")
 fileNames <- list.files(path ="slideImages", 
                           full.names = T)
@@ -50,7 +51,7 @@ for(i in seq(nrow(input))){
 
 For the conference, I embedded captions in the video using iMovie, which was a pretty clunky process but was all I had access to at the time. There are some glitches and at one point I accidentally inserted the caption for a previous slide. On the whole, I hope the captions are better than nothing.
 
-![](https://youtu.be/cJq2kp114Mg)
+<iframe width="560" height="450" src="https://www.youtube.com/embed/cJq2kp114Mg" title="Video of the Retroactively Reproducible talk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Resources
 
