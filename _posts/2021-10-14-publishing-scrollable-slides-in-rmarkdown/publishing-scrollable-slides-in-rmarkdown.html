@@ -88,37 +88,37 @@ code span.wa { color: #bf0303; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>Retroactively Reproducible: Lessons from a workflow audit</title>
+  <title>A Semi-Automated Process for Converting Slides to a Blog Post in RMarkdown</title>
 
-  <meta property="description" itemprop="description" content="A talk I gave at the 2021 SORTEE conference about my experience implementing data management and reproducibility tools retroactively, for an existing project, even if best practices weren’t used from the beginning. I also discuss organizing and making sense of someone else’s analyses when approaching the project as an outsider."/>
+  <meta property="description" itemprop="description" content="Recently, I adapted slides from one of my talks into a blog post format, with each slide&#39;s narration transcribed below it. In my experience, people don&#39;t usually post slides this way, and the process of converting a presentation to a blog post wasn&#39;t trivial. Here&#39;s the process I followed--I hope it helps anyone else who would like to do this too."/>
 
 
   <!--  https://schema.org/Article -->
-  <meta property="article:published" itemprop="datePublished" content="2021-07-13"/>
-  <meta property="article:created" itemprop="dateCreated" content="2021-07-13"/>
+  <meta property="article:published" itemprop="datePublished" content="2021-10-14"/>
+  <meta property="article:created" itemprop="dateCreated" content="2021-10-14"/>
   <meta name="article:author" content="Kaija Gahm"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Retroactively Reproducible: Lessons from a workflow audit"/>
+  <meta property="og:title" content="A Semi-Automated Process for Converting Slides to a Blog Post in RMarkdown"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="A talk I gave at the 2021 SORTEE conference about my experience implementing data management and reproducibility tools retroactively, for an existing project, even if best practices weren’t used from the beginning. I also discuss organizing and making sense of someone else’s analyses when approaching the project as an outsider."/>
+  <meta property="og:description" content="Recently, I adapted slides from one of my talks into a blog post format, with each slide&#39;s narration transcribed below it. In my experience, people don&#39;t usually post slides this way, and the process of converting a presentation to a blog post wasn&#39;t trivial. Here&#39;s the process I followed--I hope it helps anyone else who would like to do this too."/>
   <meta property="og:locale" content="en_US"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Retroactively Reproducible: Lessons from a workflow audit"/>
-  <meta property="twitter:description" content="A talk I gave at the 2021 SORTEE conference about my experience implementing data management and reproducibility tools retroactively, for an existing project, even if best practices weren’t used from the beginning. I also discuss organizing and making sense of someone else’s analyses when approaching the project as an outsider."/>
+  <meta property="twitter:title" content="A Semi-Automated Process for Converting Slides to a Blog Post in RMarkdown"/>
+  <meta property="twitter:description" content="Recently, I adapted slides from one of my talks into a blog post format, with each slide&#39;s narration transcribed below it. In my experience, people don&#39;t usually post slides this way, and the process of converting a presentation to a blog post wasn&#39;t trivial. Here&#39;s the process I followed--I hope it helps anyone else who would like to do this too."/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","preview"]}},"value":[{"type":"character","attributes":{},"value":["Retroactively Reproducible: Lessons from a workflow audit"]},{"type":"character","attributes":{},"value":["A talk I gave at the 2021 SORTEE conference about my experience implementing data management and reproducibility tools retroactively, for an existing project, even if best practices weren’t used from the beginning. I also discuss organizing and making sense of someone else’s analyses when approaching the project as an outsider.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Kaija Gahm"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":[]}},"value":[]}]}]},{"type":"character","attributes":{},"value":["07-13-2021"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","highlight","toc"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["kate"]},{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"character","attributes":{},"value":["slideImages/0001.jpg"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["A Semi-Automated Process for Converting Slides to a Blog Post in RMarkdown"]},{"type":"character","attributes":{},"value":["Recently, I adapted slides from one of my talks into a blog post format, with each slide's narration transcribed below it. In my experience, people don't usually post slides this way, and the process of converting a presentation to a blog post wasn't trivial. Here's the process I followed--I hope it helps anyone else who would like to do this too.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Kaija Gahm"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":[]}},"value":[]}]}]},{"type":"character","attributes":{},"value":["10-14-2021"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","highlight","toc"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["kate"]},{"type":"logical","attributes":{},"value":[true]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["retroactivelyReproducible_files/anchor-4.2.2/anchor.min.js","retroactivelyReproducible_files/bowser-1.9.3/bowser.min.js","retroactivelyReproducible_files/distill-2.2.21/template.v2.js","retroactivelyReproducible_files/header-attrs-2.9/header-attrs.js","retroactivelyReproducible_files/jquery-1.11.3/jquery.min.js","retroactivelyReproducible_files/popper-2.6.0/popper.min.js","retroactivelyReproducible_files/tippy-6.2.7/tippy-bundle.umd.min.js","retroactivelyReproducible_files/tippy-6.2.7/tippy-light-border.css","retroactivelyReproducible_files/tippy-6.2.7/tippy.css","retroactivelyReproducible_files/tippy-6.2.7/tippy.umd.min.js","retroactivelyReproducible_files/vembedr-0.1.4/css/vembedr.css","retroactivelyReproducible_files/webcomponents-2.0.0/webcomponents.js","retroactivelyReproducible_slideCaptions.csv","slideImages/0001.jpg","slideImages/0002.jpg","slideImages/0003.jpg","slideImages/0004.jpg","slideImages/0005.jpg","slideImages/0006.jpg","slideImages/0007.jpg","slideImages/0008.jpg","slideImages/0009.jpg","slideImages/0010.jpg","slideImages/0011.jpg","slideImages/0012.jpg","slideImages/0013.jpg","slideImages/0014.jpg","slideImages/0015.jpg","slideImages/0016.jpg","slideImages/0017.jpg","slideImages/0018.jpg","slideImages/0019.jpg","slideImages/0020.jpg","slideImages/0021.jpg","slideImages/0022.jpg","slideImages/0023.jpg","slideImages/0024.jpg","slideImages/0025.jpg","slideImages/0026.jpg","slideImages/0027.jpg","slideImages/0028.jpg","slideImages/0029.jpg","slideImages/0030.jpg"]}
+  {"type":"character","attributes":{},"value":["0005.jpg","captionsSpreadsheet.png","codeChunk.png","googleSlides.png","publishing-scrollable-slides-in-rmarkdown_files/anchor-4.2.2/anchor.min.js","publishing-scrollable-slides-in-rmarkdown_files/bowser-1.9.3/bowser.min.js","publishing-scrollable-slides-in-rmarkdown_files/distill-2.2.21/template.v2.js","publishing-scrollable-slides-in-rmarkdown_files/header-attrs-2.9/header-attrs.js","publishing-scrollable-slides-in-rmarkdown_files/jquery-1.11.3/jquery.min.js","publishing-scrollable-slides-in-rmarkdown_files/popper-2.6.0/popper.min.js","publishing-scrollable-slides-in-rmarkdown_files/tippy-6.2.7/tippy-bundle.umd.min.js","publishing-scrollable-slides-in-rmarkdown_files/tippy-6.2.7/tippy-light-border.css","publishing-scrollable-slides-in-rmarkdown_files/tippy-6.2.7/tippy.css","publishing-scrollable-slides-in-rmarkdown_files/tippy-6.2.7/tippy.umd.min.js","publishing-scrollable-slides-in-rmarkdown_files/webcomponents-2.0.0/webcomponents.js","savingAsPDF.png"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1436,16 +1436,16 @@ code span.wa { color: #bf0303; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="retroactivelyReproducible_files/header-attrs-2.9/header-attrs.js"></script>
-  <script src="retroactivelyReproducible_files/jquery-1.11.3/jquery.min.js"></script>
-  <script src="retroactivelyReproducible_files/popper-2.6.0/popper.min.js"></script>
-  <link href="retroactivelyReproducible_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
-  <link href="retroactivelyReproducible_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
-  <script src="retroactivelyReproducible_files/tippy-6.2.7/tippy.umd.min.js"></script>
-  <script src="retroactivelyReproducible_files/anchor-4.2.2/anchor.min.js"></script>
-  <script src="retroactivelyReproducible_files/bowser-1.9.3/bowser.min.js"></script>
-  <script src="retroactivelyReproducible_files/webcomponents-2.0.0/webcomponents.js"></script>
-  <script src="retroactivelyReproducible_files/distill-2.2.21/template.v2.js"></script>
+  <script src="publishing-scrollable-slides-in-rmarkdown_files/header-attrs-2.9/header-attrs.js"></script>
+  <script src="publishing-scrollable-slides-in-rmarkdown_files/jquery-1.11.3/jquery.min.js"></script>
+  <script src="publishing-scrollable-slides-in-rmarkdown_files/popper-2.6.0/popper.min.js"></script>
+  <link href="publishing-scrollable-slides-in-rmarkdown_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="publishing-scrollable-slides-in-rmarkdown_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="publishing-scrollable-slides-in-rmarkdown_files/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="publishing-scrollable-slides-in-rmarkdown_files/anchor-4.2.2/anchor.min.js"></script>
+  <script src="publishing-scrollable-slides-in-rmarkdown_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="publishing-scrollable-slides-in-rmarkdown_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="publishing-scrollable-slides-in-rmarkdown_files/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
   <!--/radix_placeholder_site_in_header-->
 
@@ -1457,7 +1457,7 @@ code span.wa { color: #bf0303; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Retroactively Reproducible: Lessons from a workflow audit","description":"A talk I gave at the 2021 SORTEE conference about my experience implementing data management and reproducibility tools retroactively, for an existing project, even if best practices weren’t used from the beginning. I also discuss organizing and making sense of someone else’s analyses when approaching the project as an outsider.","authors":[{"author":"Kaija Gahm","authorURL":{},"affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-07-13T00:00:00.000+00:00","citationText":"Gahm, 2021"}
+{"title":"A Semi-Automated Process for Converting Slides to a Blog Post in RMarkdown","description":"Recently, I adapted slides from one of my talks into a blog post format, with each slide's narration transcribed below it. In my experience, people don't usually post slides this way, and the process of converting a presentation to a blog post wasn't trivial. Here's the process I followed--I hope it helps anyone else who would like to do this too.","authors":[{"author":"Kaija Gahm","authorURL":{},"affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-10-14T00:00:00.000+00:00","citationText":"Gahm, 2021"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1467,16 +1467,16 @@ code span.wa { color: #bf0303; } /* Warning */
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Retroactively Reproducible: Lessons from a workflow audit</h1>
+<h1>A Semi-Automated Process for Converting Slides to a Blog Post in RMarkdown</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>A talk I gave at the 2021 SORTEE conference about my experience implementing data management and reproducibility tools retroactively, for an existing project, even if best practices weren’t used from the beginning. I also discuss organizing and making sense of someone else’s analyses when approaching the project as an outsider.</p></p>
+<p><p>Recently, I adapted slides from one of my talks into a blog post format, with each slide’s narration transcribed below it. In my experience, people don’t usually post slides this way, and the process of converting a presentation to a blog post wasn’t trivial. Here’s the process I followed–I hope it helps anyone else who would like to do this too.</p></p>
 </div>
 
 <div class="d-byline">
   Kaija Gahm true 
   
-<br/>07-13-2021
+<br/>10-14-2021
 </div>
 
 <div class="d-article">
@@ -1484,46 +1484,149 @@ code span.wa { color: #bf0303; } /* Warning */
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#slides-and-descriptions">Slides and descriptions</a></li>
-<li><a href="#video">Video</a></li>
-<li><a href="#resources">Resources</a></li>
+<li><a href="#motivation">Motivation</a></li>
+<li><a href="#what-youll-need">What you’ll need</a>
+<ul>
+<li><a href="#a-slide-deck">1. A slide deck</a></li>
+<li><a href="#slide-by-slide-transcriptions-or-captions">2. Slide-by-slide transcriptions or captions</a></li>
+</ul></li>
+<li><a href="#step-by-step">Step by step</a>
+<ul>
+<li><a href="#create-an-rmarkdown-document">1. Create an RMarkdown document</a></li>
+<li><a href="#convert-slides-to-images">2. Convert slides to images</a></li>
+<li><a href="#compile-your-transcription-data">3. Compile your transcription data</a></li>
+<li><a href="#make-the-for-loop">5. Make the for loop</a></li>
+<li><a href="#knit-the-document">6. Knit the document</a></li>
+</ul></li>
+<li><a href="#adding-a-video-of-your-talk">Adding a video of your talk</a>
+<ul>
+<li><a href="#options-for-video-storage">Options for video storage</a></li>
+<li><a href="#embed-the-video">Embed the video</a></li>
+</ul></li>
 </ul>
 </nav>
 </div>
+<h2 id="motivation">Motivation</h2>
+<p>In July 2021, I gave a talk at the inaugural <a href="https://sortee.org/">SORTEE</a> conference, describing my experience auditing colleague’s workflow to improve reproducibility.</p>
+<p>Slides from the talk, along with a video recording, are available on the SORTEE <a href="https://osf.io/xa4uj/">OSF page</a>. But in my experience looking for help and ideas on the internet, it’s often easier to skim a text-based blog post than to watch an entire video.</p>
+<p>It’s become very common to post slides after giving a talk, and I think that’s fantastic. Here are some examples:</p>
+<p><a href="https://ellakaye.rbind.io/talks.html">Ella Kaye</a> | <a href="https://masalmon.eu/talks/">Maëlle Salmon</a> | <a href="https://www.apreshill.com/talk/">Alison Hill</a></p>
+<p>The problem is, my slides are often pretty minimal. I try to communicate my points mainly through images and diagrams. If you weren’t there for the talk, I don’t think you’d get a lot out of looking at my slides by themselves. So when it came time to post my talk and its slides, I wanted some way to convert it into a blog post, without totally reinventing the wheel.</p>
+<figure>
+<img src="0005.jpg" alt="My slides are pretty heavy on diagrams and don’t have a lot of text. Without the context of my narration, you probably wouldn’t really know what’s going on." /><figcaption aria-hidden="true">My slides are pretty heavy on diagrams and don’t have a lot of text. Without the context of my narration, you probably wouldn’t really know what’s going on.</figcaption>
+</figure>
+<p>My goal was to present each slide, followed by a block of text, essentially transcribing what I said during the presentation. I thought that would be easy. It turned out to be… not too hard, but a bit tricky.</p>
+<p><strong>Here, I’ll outline the process that I used to convert my slides into a blog post.</strong> You can read the final post <a href="https://kaijagahm.netlify.app/projects/2021-07-13-retroactivelyreproducible/">here</a>. I hope you find this helpful. If you’ve done a similar thing, feel free to comment with any tips and tricks or lessons learned!</p>
+<h2 id="what-youll-need">What you’ll need</h2>
+<p>This post refers to the process for converting slides to a scrollable RMarkdown document, like <a href="https://kaijagahm.netlify.app/projects/2021-07-13-retroactivelyreproducible/">this</a> post.</p>
+<p>You will need two basic components:</p>
+<h3 id="a-slide-deck">1. A slide deck</h3>
+<p>While I dream of one day becoming proficient in <a href="https://bookdown.org/yihui/rmarkdown/xaringan.html">xaringan</a>, for now I make my presentations in Google Slides, which integrates pretty well into my institution’s Google-based storage system.</p>
+<p>So, after creating my talk, I had a nice slide deck saved as a Google Slides presentation. Yours might be a Powerpoint, a pdf, or some other type of presentation. I won’t speak to the particularities of each type of slide deck, but the important thing is that you need to be able to <strong>convert your slides to a pdf document, one slide per page</strong>. If you can do that, this process will work.</p>
+<figure>
+<img src="googleSlides.png" alt="My slides!" /><figcaption aria-hidden="true">My slides!</figcaption>
+</figure>
+<h3 id="slide-by-slide-transcriptions-or-captions">2. Slide-by-slide transcriptions or captions</h3>
+<p>To display your slides as a scrollable page, with each slide followed by some text, you’ll of course need the text for each slide.</p>
+<p><strong>For this process, I’m assuming that you already know the text you’d like to associate with each slide, up front.</strong></p>
+<p>Why? Well, of course you could insert slides one by one into RMarkdown and then type out the text in the document after each one. But that’s laborious and slow, and it kind of defeats the point of automating the process.</p>
+<p>Instead, I’m assuming that you already have the text written. Examples: - You already had to write down and provide talk <strong>transcripts</strong> for the venue where you presented your talk, and you have them saved somewhere. - You want to take some time to click through each slide and write about it. - You’ve written <strong>presenter notes</strong> in Google Slides/Powerpoint/Keynote/whatever and want to present the notes along with the slides.</p>
+<h2 id="step-by-step">Step by step</h2>
+<p>Okay, armed with your slides and transcripts or text, let’s do this.</p>
+<h3 id="create-an-rmarkdown-document">1. Create an RMarkdown document</h3>
+<p>If you’re publishing your post in Distill, you might want to use <a href="https://rdrr.io/cran/distill/man/create_post.html"><code>distill::create_post()</code></a>.</p>
+<p>Otherwise, just create a regular old RMarkdown document.</p>
+<p>Make sure to take note of where your RMarkdown document lives. You’re going to need to store the materials (slides and captions) in a folder somewhere logical–either in your post folder for Distill, or maybe in a subfolder of your <a href="https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects">RStudio Project</a>. (Consider <a href="https://malco.io/2018/11/05/why-should-i-use-the-here-package-when-i-m-already-using-projects/">pairing this with the <code>here</code> package</a>–it helps get around the weirdness with working directories in RMarkdown.)</p>
+<h3 id="convert-slides-to-images">2. Convert slides to images</h3>
+<p>I got stuck when it came to extracting each slide from Google Slides as an image. Unfortunately, there’s no good way to download Google Slides as individual images. The thought of taking individual screenshots of slides made me want to abandon the whole project.</p>
+<p>Instead, I started by saving the slides to a PDF document. In Google Slides, you can choose <strong>File &gt; Download &gt; PDF Document (.pdf)</strong></p>
+<figure>
+<img src="savingAsPDF.png" alt="Saving a Google Slides presentation as a PDF" /><figcaption aria-hidden="true">Saving a Google Slides presentation as a PDF</figcaption>
+</figure>
+<p>Next, I needed to convert the PDF to a series of images so I could insert them one by one into the RMarkdown document.</p>
+<p>I did this using <a href="https://smallpdf.com/pdf-to-jpg">smallpdf</a> to convert the multi-page PDF to a series of JPG images. (Smallpdf has free features if you create an account or log in using e.g. Google, or there’s a free trial for some of their paid features. Converting a pdf to jpg images seems to be a free feature–I had no problem doing it using my Google account.)</p>
+<p>The images will be saved by default with file names like <code>0001.jpg</code>, in order. Put all of the images into a folder and save it as a subdirectory of your post/project folder, or wherever makes sense in your Project directory. <strong>Make sure they’re in their own folder (no other files), and all in the same place</strong>.</p>
+<h3 id="compile-your-transcription-data">3. Compile your transcription data</h3>
+<p>Now, let’s get your captions or transcripts in a format that will be easy to use. Eventually, we’ll want a CSV or text file with <strong>each slide’s caption in its own row</strong>.</p>
+<p>You can create this file however you want. I made a new document in Google Sheets and copied and pasted my slide transcripts into successive rows from the document in which I had written them.</p>
+<p>I also added an index column for good measure, to keep track of the slide numbers. I wanted to be able to cross-reference the slide image file names with the captions later on, to make sure I’d assigned the right caption to each slide.</p>
+<p>I exported the finished sheet as a csv, so it looked something like this:</p>
 <div class="layout-chunk" data-layout="l-body">
+<p><img src="captionsSpreadsheet.png" width="737" /></p>
+</div>
+<p>A quick note about <strong>line breaks</strong> and <strong>text formatting</strong>:</p>
+<p>Because we’re passing in the caption data from an external spreadsheet, there are limitations to how much text formatting we can apply to them. It would be easier to be able to edit each caption in RMarkdown, with all the formatting possibilities that affords, but doing that makes automation impossible. So I kept my formatting pretty simple.</p>
+<p>If you do want to add formatting, you can use <a href="https://www.w3schools.com/html/html_formatting.asp">html formatting tags</a> to make your text bold, italic, etc. or to insert line breaks.</p>
+<p>For some reason, <code>\n</code> doesn’t work to create a line break in the slide captions. But the html tag <code>&lt;br&gt;</code> does, so I used <code>&lt;br&gt;</code> pretty liberally to break up long, multi-paragraph slide captions. ### 4. Format input data for the for loop</p>
+<p>We’re going to be programmatically inserting each slide, with its caption, into the RMarkdown document. I used a for loop to do this.</p>
+<p>You’re going to need two inputs for the for loop: a vector of <strong>slide image file paths</strong> and a vector of <strong>slide captions</strong>. I chose to combine the two into a single data frame, although you don’t strictly have to do this.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Read in the csv of slide captions</span>
+<span class='va'>descriptionData</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"retroactivelyReproducible_slideCaptions.csv"</span><span class='op'>)</span>
 
+<span class='co'># Create a vector of slide image names by listing the image file paths</span>
+<span class='va'>fileNames</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.files.html'>list.files</a></span><span class='op'>(</span>path <span class='op'>=</span><span class='st'>"slideImages"</span>, 
+                        full.names <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span> <span class='co'># full file paths</span>
+
+<span class='co'># Create a data frame combining the file paths and captions</span>
+<span class='va'>input</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>slideDescription <span class='op'>=</span> <span class='va'>descriptionData</span><span class='op'>$</span><span class='va'>description</span>,
+                    slideImage <span class='op'>=</span> <span class='va'>fileNames</span><span class='op'>)</span>
+</code></pre>
 </div>
-<p>At the 2021 SORTEE conference this past summer, I gave a talk about my experience conducting a reproducibility audit and cleaning up a colleague’s workflow as she prepared to publish her M.S. thesis research.</p>
-<p>Here, I’m embedding the video of the talk, and also reproducing it as a blog post (slides and captions) in case you’d rather read than listen/watch.</p>
-<p>The slide descriptions are a pretty direct transcription of what I said during the talk, so if the style seems strange for a blog post, that’s why.</p>
-<p>Scroll down to watch the video!</p>
-<h2 id="slides-and-descriptions">Slides and descriptions</h2>
+</div>
+<h3 id="make-the-for-loop">5. Make the for loop</h3>
+<p>Next, I used a for loop to combine the data into a dynamically-generated portion of the RMarkdown document. The code I used is adapted from <a href="https://stackoverflow.com/questions/51268623/insert-images-using-knitrinclude-graphics-in-a-for-loop">this StackOverflow post</a>.</p>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="slideImages/0001.jpg" />Hello everyone! Thank you for being here. My name is Kaija Gahm, and I’m a data manager at the Cary Institute of Ecosystem Studies. Late last year, my colleague Chelsea had just finished her Master’s thesis, and my supervisor asked me to help her to organize her code and analysis into a reproducible workflow that we could reference in the manuscript that we were putting together. <br><br> In this talk, I’m going to be speaking about my experience implementing data management and reproducibility tools retroactively, for an existing project, even if best practices weren’t used from the beginning. I’ll also discuss organizing and making sense of someone else’s analyses, approaching the project as an outsider.<br><br><br><img src="slideImages/0002.jpg" />A little bit of background on the project: It consisted of some pretty typical ecological data––measurements of lake dissolved organic carbon, morphometric landmarks of bluegill sunfish, and a bunch of statistical analyses and figures.<br><br><br><img src="slideImages/0003.jpg" />Some of the challenges I knew I was going to face were that the data had largely been edited manually in Excel, or copied and pasted from other files with uncertain origin.<br><br><br><img src="slideImages/0004.jpg" />There were many file versions, and it wasn’t really clear how the data and code tied together.<br><br><br><img src="slideImages/0005.jpg" />The goal of my work was to compile all of this data and code into a reproducible analysis. I knew that we were going to be storing the data on Figshare; all of the analyses would be conducted in RStudio and stored on GitHub. The data and code could be then referenced in the final manuscript.<br><br><br><img src="slideImages/0006.jpg" />To begin my work, I asked Chelsea to start by uploading all of her files to GitHub.<br><br><br><img src="slideImages/0007.jpg" />I think GitHub is a very important tool, not just technically, for version control, but also psychologically. If everything was being version controlled, then I would have the power to edit and delete without being burdened by the idea that I might be deleting something very important. I knew that as long as everything was on GitHub, I could always walk the repository back to its original version.<br><br><br><img src="slideImages/0008.jpg" />My first step in organizing this repository was to set it up as an RStudio Project, which means that it would open a fresh R session for everyone who downloaded the code, and all file paths could be written relative to the root directory. <br><br> I also implemented <code>renv</code>, which is a great package that allows for managing package versions. This was particularly important in the case of this analysis, because some of the code depended on an old version of the <code>geomorph</code> package for analyzing morphometric landmarks. I personally wasn’t very familiar with the package, so even if I had wanted to update the code to the newest version, I wouldn’t really have been able to. Using <code>renv</code> allowed me to run the code with the old version of the package, and it ensures that anyone who wants to run our analysis in the future will be able to restore the packages from the lockfile and immediately proceed without affecting packages on their own computer.<br><br><br><img src="slideImages/0009.jpg" />My next step was to organize the data. <br><br> The first principle is that raw data is sacred and should not be modified. So that means no copying and pasting. <br><br>Derived data should then be fully reproducible and, by extension, disposable. I should be able to just delete all of the derived data, and then recreate it by re-running the scripts in the pipeline. <br><br>Now, that might be a bit of a pain because some of the analyses might take a long time to run, but it would be possible in a fully reproducible analysis. <br><br>And my job approaching this project was to distinguish between data that was raw––like maybe it was created manually or it was exported from a program somewhere else––versus data that could be regenerated from the analysis code.<br><br><br><img src="slideImages/0010.jpg" />This is a list of all the data files that I was originally presented with in the GitHub repository, and it was pretty overwhelming. I had to sort through all of those and figure out which were raw, which were derived, and where they all went in the pipeline.<br><br><br><img src="slideImages/0011.jpg" />And in order to do this, I asked the key question, ‘Where did this come from?’ For each file, I wanted to know, how was it generated? Can I trace the origin of all the files and their columns?<br><br><br><img src="slideImages/0012.jpg" />I started out by making a spreadsheet listing out each file, and this seemed like a good idea at the time, but it ended up being pretty overwhelming, and it was hard for Chelsea to go through and answer my questions, especially because I was attacking all the files at once, without regard for their importance or the order that they might go in. I was just trying to get my head around it.<br><br><br><img src="slideImages/0013.jpg" />Chelsea and I decided that a better approach would be to start with the most recent and up-to-date analysis file; in our case, called ReviewApril2020.<br><br><br><img src="slideImages/0014.jpg" />Then, I could look at all of the data files that were read in as inputs. It was much easier, with this reduced set of files, to determine…<br><br><br><img src="slideImages/0015.jpg" />…which ones were raw data and which ones were derived data. So, my next step was, for each of those derived data files, to figure out how to re-create it from the data in the database, using R scripts, so that the process would be fully reproducible.<br><br><br><img src="slideImages/0016.jpg" />To do that, I created one R script for each of the derived data files, and I used that R script to read in data from the database stored on Figshare and modify it to generate these ‘FINAL’ csv files. In the background, I kept the original data and used it as a comparison, just to make sure I was accurately recreating that original data.<br><br><br><img src="slideImages/0017.jpg" />My next step was to organize the code in the analysis files. I had to start by reorganizing a lot of file paths; they had been written as absolute paths, and I rewrote them as relative paths using the wonderful <code>here</code> package.<br><br><br><img src="slideImages/0018.jpg" />I clarified a lot of the code by renaming the variables with descriptive names and adding clear comments.<br><br><br><img src="slideImages/0019.jpg" />I also organized the code to make sure it was easy to read and follow.<br><br><br><img src="slideImages/0020.jpg" />And to do that, I made heavy use of the outline panel within RStudio, which you can access by clicking on this sort of list icon at the top right corner of the script pane. <br><br>You’ll notice that this ‘Load packages’ header corresponds to a line in this document outline, and that actually happens automatically within RStudio.<br><br><br><img src="slideImages/0021.jpg" />You can create these header lines by clicking Command + Shift + R on a Mac, and they automatically get added to the outlines. <br><br>And then you can also see that I have a lot of packages loaded at the top here, a lot of comments, and everything is just a little bit cleaner and easier to read.<br><br><br><img src="slideImages/0022.jpg" />I wrote a README to document this project, including an abstract to introduce people to the project, instructions for how to download the data from Figshare and how to run the project, restoring all the packages from the <code>renv</code> lock file, and also information about the contributors.<br><br><br><img src="slideImages/0023.jpg" />Finally, I wanted to emphasize that I had to go over the same scripts multiple times, and sometimes doing a first cleanup of the code helped me realize that reorganizing the code in different way would actually be clearer, and so I ended up doing what felt like the same work twice. I think that that re-tidying––it shouldn’t be dismissed as being inefficient or not doing it right the first time, because in my case, I had to take a lot of time to just get my head around how the code was organized before I could make informed decisions about how to clean it up.<br><br><br><img src="slideImages/0024.jpg" />So, I’ve talked about a lot of tools that I used in creating this reproducible pipeline, from Figshare to RStudio and RStudio Projects, GitHub for version control, Google Drawings in my case for creating this flowchart, and <code>renv</code> for organizing packages. And this might be overwhelming if you’ve never used these tools before and it feels like you have a lot of things to learn if you want to start implementing reproducible workflows. <br><br>But I want to emphasize that there are smaller things that you can do to move in the right direction, even if you can’t jump right into using best practices from the get-go.<br><br><br><img src="slideImages/0025.jpg" />For example, don’t be afraid to tell stories with your comments. I like to be very conversational; I like to say ‘Okay, now we’re going to do X’, ‘I noticed this about the output, and that causes me to make this decision about the model’ <br><br>For example here, I wrote, ‘To make these calculations easier, I’m going to….’ do XYZ, and then I have some lines of code. <br><br>Now, you’ll notice here that I only have about four lines of code, and a LOT of lines of comments, and not all of my scripts look like that. But I just want to get the point across that it’s really okay to write essays in your code and to have your code comments be informal, conversational and very descriptive.<br><br><br><img src="slideImages/0026.jpg" />Something that Chelsea did in her raw code files that I found very helpful when I went through and organized them, was to keep track, in the comments, of package versions and decisions that were made in the analyses, and file paths. So for example, I already discussed how we had to use an older version of the package <code>geomorph</code>, and conveniently, Chelsea had recorded the version number of the older version that she was using, so it was much easier for me to then restore that version when I started using <code>renv</code>.<br><br><br><img src="slideImages/0027.jpg" />You’ll notice that this script is far from being perfect; it’s still using absolute file paths, it hasn’t yet been edited to use the <code>here</code> package, but even without using all best practices in reproducibility, just having these introductory comments is really helpful.<br><br><br><img src="slideImages/0028.jpg" />I want to conclude this talk by just emphasizing that we really need to teach workflow in graduate programs, undergraduate programs, whenever we teach coding. I would argue that, for biologists, workflow, organization, and reproducibility are some of the things that take up the greatest proportion of our research time. They are actually more valuable skills sometimes than the actual statistical analysis. They are also not intuitive. <br><br>I think it can be easy, as a student, to assume that if you’re just an organized person, you will magically know how to organize your code. And then it’s easy to get frustrated when that doesn’t come naturally and when no one has really taught you what the best practices are. <br><br>I think this resource, written by Jenny Bryan and Jim Hester, ‘What they forgot to teach you about R’, is a great example of this. This resource focuses on a lot of the workflow tactics that I’ve been talking about here, like a project-oriented workflow, and it’s titled ‘What they forgot to teach you about R’. And I think for many students, that’s exactly true. They do forget to teach you the workflow stuff, and that’s sometimes the most important part.<br><br><br><img src="slideImages/0029.jpg" />Here’s a list of resources that I put together related to the various tools for reproducibility that I’ve talked about in this presentation<br><br><br><img src="slideImages/0030.jpg" />And I would be happy to take any questions at the Q&amp;A session right after this talk. Thank you very much.<br><br><br></p>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Set up a for loop for as many iterations as there are slides</span>
+<span class='kw'>for</span><span class='op'>(</span><span class='va'>i</span> <span class='kw'>in</span> <span class='fl'>1</span><span class='op'>:</span><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>input</span><span class='op'>)</span><span class='op'>)</span><span class='op'>{</span>
+  <span class='co'># For convenience, make a temp object for the current slide</span>
+  <span class='va'>currentSlide</span> <span class='op'>&lt;-</span> <span class='va'>input</span><span class='op'>[</span><span class='va'>i</span>, <span class='op'>]</span> 
+  
+  <span class='co'># Create raw markdown code to insert each image, pasting in the file name</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"![]("</span>, <span class='va'>currentSlide</span><span class='op'>$</span><span class='va'>slideImage</span>, <span class='st'>")"</span><span class='op'>)</span><span class='op'>)</span>
+  
+  <span class='co'># Add the slide description immediately under the image</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='va'>currentSlide</span><span class='op'>$</span><span class='va'>slideDescription</span><span class='op'>)</span>
+  
+  <span class='co'># Add space after the description to differentiate it from the next slide</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='st'>"&lt;br&gt;&lt;br&gt;&lt;br&gt;"</span><span class='op'>)</span>
+<span class='op'>}</span>
+</code></pre>
 </div>
-<h2 id="video">Video</h2>
-<p>For the conference, I embedded captions in the video using iMovie, which was a pretty clunky process but was all I had access to at the time. There are some glitches and at one point I accidentally inserted the caption for a previous slide. On the whole, I hope the captions are better than nothing.</p>
-<iframe width="560" height="450" src="https://www.youtube.com/embed/cJq2kp114Mg" title="Video of the Retroactively Reproducible talk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-</iframe>
-<h2 id="resources">Resources</h2>
-<p>The resource links from the second to last slide didn’t translate well to this format, so here they are:</p>
-<ul>
-<li><p><a href="https://education.rstudio.com/learn/">RStudio interactive tutorials</a></p></li>
-<li><p><a href="https://happygitwithr.com/">Happy Git with R</a> (Jenny Bryan and Jim Hester)</p></li>
-<li><p><a href="https://www.tidyverse.org/blog/2017/12/workflow-vs-script/">Project-oriented workflow</a> with RStudio projects (Jenny Bryan)</p></li>
-<li><p><a href="https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects">Using RStudio projects</a></p></li>
-<li><p>Using the <a href="https://here.r-lib.org/">here</a> package</p></li>
-<li><p>How to use <a href="https://rstudio.github.io/renv/">renv</a></p></li>
-<li><p><a href="https://laskowskilab.faculty.ucdavis.edu/2020/08/03/keeping-a-paper-trail-data-management-skills-for-reproducible-science/">Keeping a Paper Trail: Data Management Skills for Reproducible Science</a>(Kate Laskowski)</p></li>
-<li><p><a href="https://www.makeareadme.com/">Make a README</a></p></li>
-<li><p>Get an <a href="https://webapps.stackexchange.com/questions/14710/is-there-a-way-to-obtain-an-embed-link-for-a-google-drawings">embed link</a> for a Google drawing so you can put it into e.g. a README</p></li>
-<li><p>Using <a href="https://rschu.me/list-a-directory-with-tree-command-on-mac-os-x-3b2d4c4a4827">the `tree` command</a> in the terminal to make a file tree</p></li>
-<li><p>The <a href="https://blog.rstudio.com/2020/12/02/rstudio-v1-4-preview-little-things/">document outline</a> in RStudio</p></li>
-<li><p><a href="https://bookdown.org/yih_huynh/Guide-to-R-Book/r-conventions.html">Headers and comments</a> in RStudio (Y. Wendy Hyunh)</p></li>
-<li><p><a href="https://rstats.wtf/">What they forgot to teach you about R</a> (Jenny Bryan and Jim Hester)</p></li>
-</ul>
-<p>Finally, you can download the video and the annotated slides from OSF <a href="https://osf.io/xa4uj/">here</a>.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+</div>
+<p><strong>Note:</strong> For the code chunk containing this for loop, make sure to set the chunk option <code>results = 'asis'</code>. It’s important to do this because we’re dynamically generating a raw markdown string to insert the images, so we need the results to be evaluated as if they had been typed into RMarkdown by hand. If you don’t set <code>results = 'asis'</code>, then the results will show up as RMarkdown chunk output and none of the formatting will come through.</p>
+<p>Also, set <code>echo = FALSE</code> so that the code itself doesn’t show up.</p>
+<p>So, the final code chunk should look something like this:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="codeChunk.png" width="965" /></p>
+</div>
+<h3 id="knit-the-document">6. Knit the document</h3>
+<p>Be sure to test out this code a few times by knitting the document to make sure it looks good! Adjust the line spacing and other formatting as necessary. I knitted my markdown to html because I was putting it on a Distill site; I’m not sure how well this process would work for a knitted Word or PDF document.</p>
+<p><strong>Note:</strong> Sometimes, the formatting for dynamically-generated markdown like this won’t show up correctly in the html preview of your knitted RMarkdown document. Make sure to open the page in a browser window to see how the final product will actually look.</p>
+<h2 id="adding-a-video-of-your-talk">Adding a video of your talk</h2>
+<p>I was excited that the above process worked for turning a slide deck into a scrollable blog post. But I also wanted to embed the video recording of my talk in the same post so people could access that medium if they preferred.</p>
+<p>A lot has been written about how to embed videos in RMarkdown outputs, but some of the approaches I found didn’t work for me. I don’t quite understand why code that worked for other people failed for me, but here’s what did work:</p>
+<h3 id="options-for-video-storage">Options for video storage</h3>
+<p>You can either store your video locally and embed it similarly to how you’d embed a photo, like <a href="https://stackoverflow.com/questions/43840742/how-to-embed-local-video-in-r-markdown">this</a>. This works best if the file is pretty small, especially if your RMarkdown (like mine) is backed up to a GitHub repository.</p>
+<p>My video was over 100MB, so GitHub wasn’t an easy option. I started looking into alternatives.</p>
+<p>The easiest thing turned out to be to upload the video to YouTube and leave it as “unlisted” (publicly accessible, but not findable in a search–you can only see it if you have access to the direct video link).</p>
+<p>This approach does require that you have a YouTube account, but you can sign up for free through Google. I think YouTube also has some restrictions for how long/how big your videos can be, and what formats are acceptable. Mine was 10 minutes and didn’t need to be high definition, and it was saved as .mp4, so this worked well for me.</p>
+<p>Instructions on how to upload a video to YouTube <a href="https://www.wix.com/blog/2019/02/how-to-upload-video-youtube-guide/">here</a>.</p>
+<p>Next, find the video’s embed link (<a href="https://support.google.com/youtube/answer/171780?hl=en">instructions</a>). Copy that link to your clipboard; you’ll use it in the next code chunk.</p>
+<h3 id="embed-the-video">Embed the video</h3>
+<p>I embedded the video as an iframe in html. The code looked like this, and it can just go in the main body of your RMarkdown document (doesn’t have to be in a code chunk):</p>
+<pre><code>&lt;iframe width=&quot;560&quot; height=&quot;450&quot; src=&quot;https://www.youtube.com/embed/cJq2kp114Mg&quot; 
+title=&quot;Your Title Here&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; 
+autoplay; clipboard-write; encrypted-media; gyroscope; 
+picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;</code></pre>
+<p>Substitute your own video link for the one above, of course.</p>
+<p>Tweak the dimensions of your video until it looks right. 560 by 450 isn’t anything special, it’s just what ended up looking decent for my video.</p>
+<p>There you have it! Again, <a href="https://kaijagahm.netlify.app/projects/2021-07-13-retroactivelyreproducible/">here</a> is the post as it appears in its final form.</p>
+<p>The full code I used to create the post is on my <a href="https://github.com/kaijagahm/kaija_bean/blob/main/_projects/2021-07-13-retroactivelyReproducible/retroactivelyReproducible.Rmd">GitHub</a>.</p>
+<p><strong>Thanks for reading!</strong></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
