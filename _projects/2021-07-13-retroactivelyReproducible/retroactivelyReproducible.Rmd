@@ -20,7 +20,6 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r echo = FALSE}
-library(vembedr)
 descriptionData <- read.csv("retroactivelyReproducible_slideCaptions.csv")
 fileNames <- list.files(path ="slideImages", 
                           full.names = T)
@@ -39,11 +38,11 @@ Scroll down to watch the video!
 ## Slides and descriptions
 
 ```{r echo = FALSE, results = "asis"}
-for(i in seq(nrow(input))){
-  currentSlide <- input[i, ]
-  cat(paste0("![](", currentSlide$slideImage, ")", "\n"))
-  cat(sprintf("%s", currentSlide$slideDescription))
-  cat("<br><br><br>")
+for(i in 1:nrow(input)){
+  currentSlide <- input[i, ] # for convenience, make a temp object with the row corresponding to the current slide
+  cat(paste0("![](", currentSlide$slideImage, ")"))
+  cat(currentSlide$slideDescription)
+  cat("<br><br><br>") # make sure there's plenty of space
 }
 ```
 

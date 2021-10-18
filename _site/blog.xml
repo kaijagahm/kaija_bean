@@ -12,7 +12,16 @@
       <link>https://kaijagahm.netlify.app/</link>
     </image>
     <generator>Distill</generator>
-    <lastBuildDate>Thu, 13 May 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 14 Oct 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>A Semi-Automated Process for Converting Slides to a Blog Post in RMarkdown</title>
+      <dc:creator>Kaija Gahm</dc:creator>
+      <link>https://kaijagahm.netlify.app/posts/2021-10-14-publishing-scrollable-slides-in-rmarkdown</link>
+      <description>Recently, I adapted slides from one of my talks into a blog post format, with each slide's narration transcribed below it. In my experience, people don't usually post slides this way, and the process of converting a presentation to a blog post wasn't trivial. Here's the process I followed--I hope it helps anyone else who would like to do this too.</description>
+      <guid>https://kaijagahm.netlify.app/posts/2021-10-14-publishing-scrollable-slides-in-rmarkdown</guid>
+      <pubDate>Thu, 14 Oct 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://kaijagahm.netlify.app/posts/2021-10-14-publishing-scrollable-slides-in-rmarkdown/captionsSpreadsheet.png" medium="image" type="image/png" width="1474" height="278"/>
+    </item>
     <item>
       <title>greenT part 2: Behind the app</title>
       <dc:creator>Kaija Gahm</dc:creator>
