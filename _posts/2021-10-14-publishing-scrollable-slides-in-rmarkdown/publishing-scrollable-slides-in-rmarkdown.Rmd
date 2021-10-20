@@ -6,7 +6,7 @@ author:
   - name: Kaija Gahm
     url: {}
 date: 10-14-2021
-preview: "googleSlides.png"
+preview: "schematic.jpeg"
 output:
   distill::distill_article:
     self_contained: false
@@ -34,7 +34,9 @@ The problem is, my slides are often pretty minimal. I try to communicate my poin
 
 ![My slides are pretty heavy on diagrams and don't have a lot of text. Without the context of my narration, you probably wouldn't really know what's going on.](0005.jpg)
 
-My goal was to present each slide, followed by a block of text, essentially transcribing what I said during the presentation. 
+My goal was to present each slide, followed by a block of text, essentially transcribing what I said during the presentation.
+
+![The goal: To transform a slide deck to a scrollable blog post where each slide is followed by its caption or transcription](schematic.jpeg)
 
 **Here, I'll outline the process that I used to achieve that format.** I hope you find this helpful. If you've done a similar thing, feel free to comment with any tips and tricks or lessons learned!
 
