@@ -6,7 +6,7 @@ author:
   - name: Kaija Gahm
     url: {}
 date: 10-14-2021
-preview: "0005.jpg"
+preview: "googleSlides.png"
 output:
   distill::distill_article:
     self_contained: false
