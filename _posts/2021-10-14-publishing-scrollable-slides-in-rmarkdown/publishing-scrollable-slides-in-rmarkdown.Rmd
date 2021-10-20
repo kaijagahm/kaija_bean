@@ -22,7 +22,9 @@ knitr::opts_chunk$set(echo = FALSE)
 
 In July 2021, I gave a talk at the inaugural [SORTEE](https://sortee.org/) conference, describing my experience auditing colleague's workflow to improve reproducibility. 
 
-Slides from the talk, along with a video recording, are available on the SORTEE [OSF page](https://osf.io/xa4uj/). But in my experience looking for help and ideas on the internet, it's often easier to skim a text-based blog post than to watch an entire video.
+Recently, I posted my slides [here](https://kaijagahm.netlify.app/projects/2021-07-13-retroactivelyreproducible/) after converting them to a blog post/text format. Converting the slides to a blog post wasn't as easy as I had hoped. In this article, I'll describe how I did it.
+
+Why did I want to do this in the first place? In my experience looking for help and ideas on the internet, it's often easier to skim a text-based blog post than to watch an entire video.
 
 It's become very common to post slides after giving a talk, and I think that's fantastic. Here are some examples: 
 
@@ -32,9 +34,9 @@ The problem is, my slides are often pretty minimal. I try to communicate my poin
 
 ![My slides are pretty heavy on diagrams and don't have a lot of text. Without the context of my narration, you probably wouldn't really know what's going on.](0005.jpg)
 
-My goal was to present each slide, followed by a block of text, essentially transcribing what I said during the presentation. I thought that would be easy. It turned out to be... not too hard, but a bit tricky.
+My goal was to present each slide, followed by a block of text, essentially transcribing what I said during the presentation. 
 
-**Here, I'll outline the process that I used to convert my slides into a blog post.** You can read the final post [here](https://kaijagahm.netlify.app/projects/2021-07-13-retroactivelyreproducible/). I hope you find this helpful. If you've done a similar thing, feel free to comment with any tips and tricks or lessons learned!
+**Here, I'll outline the process that I used to achieve that format.** I hope you find this helpful. If you've done a similar thing, feel free to comment with any tips and tricks or lessons learned!
 
 ## What you'll need
 
