@@ -116,6 +116,7 @@ Because we're passing in the caption data from an external spreadsheet, there ar
 If you do want to add formatting, you can use [html formatting tags](https://www.w3schools.com/html/html_formatting.asp) to make your text bold, italic, etc. or to insert line breaks.
 
 For some reason, `\n` doesn't work to create a line break in the slide captions. But the html tag `<br>` does, so I used `<br>` pretty liberally to break up long, multi-paragraph slide captions. 
+
 ### 4. Format input data for the for loop
 
 We're going to be programmatically inserting each slide, with its caption, into the RMarkdown document. I used a for loop to do this. 

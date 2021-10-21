@@ -2523,6 +2523,7 @@ d-appendix d-footnote-list a.footnote-backlink {
 <li><a href="#create-an-rmarkdown-document">1. Create an RMarkdown document</a></li>
 <li><a href="#convert-slides-to-images">2. Convert slides to images</a></li>
 <li><a href="#compile-your-transcription-data">3. Compile your transcription data</a></li>
+<li><a href="#format-input-data-for-the-for-loop">4. Format input data for the for loop</a></li>
 <li><a href="#make-the-for-loop">5. Make the for loop</a></li>
 <li><a href="#knit-the-document">6. Knit the document</a></li>
 </ul></li>
@@ -2588,7 +2589,8 @@ d-appendix d-footnote-list a.footnote-backlink {
 <p>A quick note about <strong>line breaks</strong> and <strong>text formatting</strong>:</p>
 <p>Because we’re passing in the caption data from an external spreadsheet, there are limitations to how much text formatting we can apply to them. It would be easier to be able to edit each caption in RMarkdown, with all the formatting possibilities that affords, but doing that makes automation impossible. So I kept my formatting pretty simple.</p>
 <p>If you do want to add formatting, you can use <a href="https://www.w3schools.com/html/html_formatting.asp">html formatting tags</a> to make your text bold, italic, etc. or to insert line breaks.</p>
-<p>For some reason, <code>\n</code> doesn’t work to create a line break in the slide captions. But the html tag <code>&lt;br&gt;</code> does, so I used <code>&lt;br&gt;</code> pretty liberally to break up long, multi-paragraph slide captions. ### 4. Format input data for the for loop</p>
+<p>For some reason, <code>\n</code> doesn’t work to create a line break in the slide captions. But the html tag <code>&lt;br&gt;</code> does, so I used <code>&lt;br&gt;</code> pretty liberally to break up long, multi-paragraph slide captions.</p>
+<h3 id="format-input-data-for-the-for-loop">4. Format input data for the for loop</h3>
 <p>We’re going to be programmatically inserting each slide, with its caption, into the RMarkdown document. I used a for loop to do this.</p>
 <p>You’re going to need two inputs for the for loop: a vector of <strong>slide image file paths</strong> and a vector of <strong>slide captions</strong>. I chose to combine the two into a single data frame, although you don’t strictly have to do this.</p>
 <div class="layout-chunk" data-layout="l-body">
