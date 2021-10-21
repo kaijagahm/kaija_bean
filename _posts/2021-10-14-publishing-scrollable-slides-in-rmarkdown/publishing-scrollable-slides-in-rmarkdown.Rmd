@@ -7,6 +7,7 @@ author:
     url: {}
 date: 10-14-2021
 preview: schematic.jpeg
+base_url: kaijagahm.netlify.app
 twitter:
   site: "@kaija_bean"
   creator: "@kaija_bean"
