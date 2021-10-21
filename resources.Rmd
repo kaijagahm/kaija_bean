@@ -110,6 +110,11 @@ Also by Kate Laskowski: [Keeping a Paper Trail: Data Management Skills for Repro
 
 ---
 
+## Utilities
+
+![Twitter card validator](resourcesImages/twitterCardValidator.png){width=80%}
+When I was having trouble getting my links to display the correct preview image on Twitter, [Ijeamaka Anyene](https://ijeamaka-anyene.netlify.app/) referred me to the [Twitter Card Validator](https://cards-dev.twitter.com/validator), where you can test your links' preview images before posting them.
+
 ## Miscellaneous Cool Things on the Internet
 
 ![Ask a Manager](resourcesImages/askAManager.png){width=75%}
