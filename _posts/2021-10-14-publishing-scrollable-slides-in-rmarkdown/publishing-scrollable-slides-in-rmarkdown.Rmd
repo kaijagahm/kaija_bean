@@ -65,8 +65,11 @@ To display your slides as a scrollable page, with each slide followed by some te
 Why? Well, of course you could insert slides one by one into RMarkdown and then type out the text in the document after each one. But that's laborious and slow, and it kind of defeats the point of automating the process. 
 
 Instead, I'm assuming that you already have the text written. Examples:
+
 - You already had to write down and provide talk **transcripts** for the venue where you presented your talk, and you have them saved somewhere.
+
 - You want to take some time to click through each slide and write about it.
+
 - You've written **presenter notes** in Google Slides/Powerpoint/Keynote/whatever and want to present the notes along with the slides.
 
 ## Step by step
