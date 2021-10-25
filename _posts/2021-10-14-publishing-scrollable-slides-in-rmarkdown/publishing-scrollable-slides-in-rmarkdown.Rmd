@@ -98,6 +98,16 @@ I did this using [smallpdf](https://smallpdf.com/pdf-to-jpg) to convert the mult
 
 The images will be saved by default with file names like `0001.jpg`, in order. Put all of the images into a folder and save it as a subdirectory of your post/project folder, or wherever makes sense in your Project directory. **Make sure they're in their own folder (no other files), and all in the same place**.
 
+#### An alternative method for conversion
+
+If you don't want to upload your materials to smallpdf, you can also convert your PDF to images using '[imagemagick](https://imagemagick.org/script/index.php)', a free downloadable command line tool. Download 'imagemagick' [here](https://imagemagick.org/script/download.php). Then you can use this code:
+
+`convert myfilename.pdf myoutputfilename-%04d.jpg`
+
+The `%04d` will create files with four-digit numbers at the end, starting with `myoutputfilename-0000.jpg` and then counting up: `myoutputfilename-0001.jpg`, `myoutputfilename-0002.jpg`, etc.
+
+Thanks to [Darya Vanichkina](https://daryavanichkina.com/) for [contributing](https://github.com/kaijagahm/kaija_bean/issues/1) this method!
+
 ### 3. Compile your transcription data
 
 Now, let's get your captions or transcripts in a format that will be easy to use. Eventually, we'll want a CSV or text file with **each slide's caption in its own row**. 

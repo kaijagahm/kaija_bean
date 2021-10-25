@@ -1559,6 +1559,11 @@ code span.wa { color: #bf0303; } /* Warning */
 <p>Next, I needed to convert the PDF to a series of images so I could insert them one by one into the RMarkdown document.</p>
 <p>I did this using <a href="https://smallpdf.com/pdf-to-jpg">smallpdf</a> to convert the multi-page PDF to a series of JPG images. (Smallpdf has free features if you create an account or log in using e.g. Google, or there’s a free trial for some of their paid features. Converting a pdf to jpg images seems to be a free feature–I had no problem doing it using my Google account.)</p>
 <p>The images will be saved by default with file names like <code>0001.jpg</code>, in order. Put all of the images into a folder and save it as a subdirectory of your post/project folder, or wherever makes sense in your Project directory. <strong>Make sure they’re in their own folder (no other files), and all in the same place</strong>.</p>
+<h4 id="an-alternative-method-for-conversion">An alternative method for conversion</h4>
+<p>If you don’t want to upload your materials to smallpdf, you can also convert your PDF to images using ‘<a href="https://imagemagick.org/script/index.php">imagemagick</a>’, a free downloadable command line tool. Download ‘imagemagick’ <a href="https://imagemagick.org/script/download.php">here</a>. Then you can use this code:</p>
+<p><code>convert myfilename.pdf myoutputfilename-%04d.jpg</code></p>
+<p>The <code>%04d</code> will create files with four-digit numbers at the end, starting with <code>myoutputfilename-0000.jpg</code> and then counting up: <code>myoutputfilename-0001.jpg</code>, <code>myoutputfilename-0002.jpg</code>, etc.</p>
+<p>Thanks to <a href="https://daryavanichkina.com/">Darya Vanichkina</a> for <a href="https://github.com/kaijagahm/kaija_bean/issues/1">contributing</a> this method!</p>
 <h3 id="compile-your-transcription-data">3. Compile your transcription data</h3>
 <p>Now, let’s get your captions or transcripts in a format that will be easy to use. Eventually, we’ll want a CSV or text file with <strong>each slide’s caption in its own row</strong>.</p>
 <p>You can create this file however you want. I made a new document in Google Sheets and copied and pasted my slide transcripts into successive rows from the document in which I had written them.</p>
