@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+  <channel>
+    <title>Kaija Gahm</title>
+    <link>https://kaijagahm.netlify.app/</link>
+    <atom:link href="https://kaijagahm.netlify.app/projects.xml" rel="self" type="application/rss+xml"/>
+    <description>Here is a description for my website. Here is more.
+</description>
+    <image>
+      <title>Kaija Gahm</title>
+      <url>https://kaijagahm.netlify.app/woodpeckerIcon.jpg</url>
+      <link>https://kaijagahm.netlify.app/</link>
+    </image>
+    <generator>Distill</generator>
+    <lastBuildDate>Tue, 13 Jul 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Retroactively Reproducible: Lessons from a workflow audit</title>
+      <dc:creator>Kaija Gahm</dc:creator>
+      <link>https://kaijagahm.netlify.app/projects/2021-07-13-retroactivelyReproducible</link>
+      <description>A talk I gave at the 2021 SORTEE conference about my experience implementing data management and reproducibility tools retroactively, for an existing project, even if best practices weren’t used from the beginning. I also discuss organizing and making sense of someone else’s analyses when approaching the project as an outsider.</description>
+      <guid>https://kaijagahm.netlify.app/projects/2021-07-13-retroactivelyReproducible</guid>
+      <pubDate>Tue, 13 Jul 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://kaijagahm.netlify.app/projects/2021-07-13-retroactivelyReproducible/slideImages/0001.jpg" medium="image" type="image/jpeg"/>
+    </item>
+    <item>
+      <title>greenT: Exploring grapheme-color synesthesia</title>
+      <dc:creator>Kaija Gahm</dc:creator>
+      <link>https://kaijagahm.netlify.app/projects/2021-05-13-greenT</link>
+      <description>For my whole life, I've associated colors with letters and numbers. This is called grapheme-color synesthesia. For my second major project in Shiny, I built an app to help me explain synesthesia to friends, and to learn more about the experiences of other synesthetes.</description>
+      <guid>https://kaijagahm.netlify.app/projects/2021-05-13-greenT</guid>
+      <pubDate>Thu, 13 May 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://kaijagahm.netlify.app/projects/2021-05-13-greenT/numbers.png" medium="image" type="image/png" width="1500" height="750"/>
+    </item>
+    <item>
+      <title>YGDP Dashboard</title>
+      <dc:creator>Kaija Gahm</dc:creator>
+      <link>https://kaijagahm.netlify.app/projects/2021-02-05-ygdp-dashboard</link>
+      <description>From June through December 2020, I taught myself Shiny and ended up creating a pretty complicated interactive dashboard for exploring dialect variation across the US. Here's a bit about my experience using Shiny, as well as the app itself for you to play around with.</description>
+      <guid>https://kaijagahm.netlify.app/projects/2021-02-05-ygdp-dashboard</guid>
+      <pubDate>Fri, 05 Feb 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://kaijagahm.netlify.app/projects/2021-02-05-ygdp-dashboard/hexMap.png" medium="image" type="image/png" width="1434" height="810"/>
+    </item>
+    <item>
+      <title>The Tadpole Olympics</title>
+      <dc:creator>Kaija Gahm</dc:creator>
+      <link>https://kaijagahm.netlify.app/projects/2021-01-29-tadpoles</link>
+      <description>For my B.S. thesis project at Yale, I measured how fast wood frog tadpoles swim in response to a simulated predator attack, and how that swimming speed relates to their developmental rate. It turns out that developing fast comes with a performance cost, and that tradeoff might help to explain some of the patterns we've observed in wood frogs' developmental rates in the past.
+A short description of the post.</description>
+      <guid>https://kaijagahm.netlify.app/projects/2021-01-29-tadpoles</guid>
+      <pubDate>Fri, 29 Jan 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://kaijagahm.netlify.app/projects/2021-01-29-tadpoles/tadpole.png" medium="image" type="image/png" width="1421" height="575"/>
+    </item>
+  </channel>
+</rss>
