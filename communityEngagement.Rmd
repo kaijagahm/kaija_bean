@@ -1,0 +1,59 @@
+---
+title: "Community Engagement"
+base_url: https://kaijagahm.netlify.app/communityEngagement.html
+description: 
+author:
+  - name: Kaija Gahm
+date: "`r Sys.Date()`"
+twitter:
+  creator: "@kaijagahm"
+output: 
+  distill::distill_article:
+    self_contained: false
+    highlight: kate
+    fig_caption: false
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+I've been "[community taught](https://twitter.com/TheStephLocke/status/1214569802804662274)" in R and coding. My [blog](https://kaijagahm.netlify.app/blog.html) is one attempt to give back by writing resources that others might find useful. But I also contribute to the R, coding, and EEB communities through other channels.
+
+![](communityEngagementImages/r4dsHex.png){width="50%"}
+
+### R4DS Slack Workspace
+
+**Mentor** | October 2021 - Present
+
+I hold office hours on Mondays from 5pm-6pm PST. Join the Slack workspace [here](r4ds.io/join).
+
+---
+
+![](communityEngagementImages/HackyHours.png){width="75%"}
+
+### UCLA EEB Hacky Hours
+
+**Contributor** | September 2021 - Present
+
+---
+
+![](communityEngagementImages/sorteeLogo.png)
+
+### SORTEE (Society for Open, Reliable, and Transparent Ecology & Evolutionary Biology)
+
+**Membership Committee** | November 2020 - Present
+
+More info about SORTEE [here](https://www.sortee.org/).
+
+---
+
+![](communityEngagementImages/rstudioCommunity.png)
+
+### RStudio Community
+
+**Contributor** | July 2020 - Present
+
+[Here](https://community.rstudio.com/u/kaijabean/activity/solved) are some of the questions I've helped solve.
