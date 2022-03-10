@@ -2,7 +2,6 @@
 title: "The Tadpole Olympics"
 description: |
   For my B.S. thesis project at Yale, I measured how fast wood frog tadpoles swim in response to a simulated predator attack, and how that swimming speed relates to their developmental rate. It turns out that developing fast comes with a performance cost, and that tradeoff might help to explain some of the patterns we've observed in wood frogs' developmental rates in the past.
-  A short description of the post.
 author:
   - name: Kaija Gahm
     url: {}
