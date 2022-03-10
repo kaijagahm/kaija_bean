@@ -28,11 +28,9 @@ I'm interested in advocating for open and reproducible data science and helping 
 ## Education
 
 **University of California, Los Angeles** | Los Angeles, CA
-
 Ph.D. Student in Ecology & Evolutionary Biology | September 2021 - Present
 
 **Yale University** | New Haven, CT
-
 B.S. in Ecology & Evolutionary Biology | September 2016 - May 2020
 
 ## Work
