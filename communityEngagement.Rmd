@@ -20,7 +20,7 @@ output:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-I've been "[community taught](https://twitter.com/TheStephLocke/status/1214569802804662274)" in R and coding. My [blog](https://kaijagahm.netlify.app/blog.html) is one attempt to give back by writing resources that others might find useful. But I also contribute to the R, coding, and EEB communities through other channels.
+I've been "[community taught](https://twitter.com/TheStephLocke/status/1214569802804662274)" in R and data science. My [blog](https://kaijagahm.netlify.app/blog.html) is one attempt to give back by writing resources that others might find useful. But I also contribute to the R, data science, and EEB communities in other ways.
 
 ### R4DS Slack Workspace
 
