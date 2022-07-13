@@ -23,6 +23,15 @@
       <media:content url="https://kaijagahm.netlify.app/projects/2021-07-13-retroactivelyReproducible/slideImages/0001.jpg" medium="image" type="image/jpeg"/>
     </item>
     <item>
+      <title>Modeling Situation-Specific Effects of Multiple Mortality on Social Network Structure in Griffon Vultures (Gyps fulvus)</title>
+      <dc:creator>Kaija Gahm</dc:creator>
+      <link>https://kaijagahm.netlify.app/projects/2022-07-12-agentBasedModel</link>
+      <description>This is a placeholder page for more information about my agent-based modeling project, ABS 2022.</description>
+      <guid>https://kaijagahm.netlify.app/projects/2022-07-12-agentBasedModel</guid>
+      <pubDate>Tue, 13 Jul 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://kaijagahm.netlify.app/projects/2022-07-12-agentBasedModel/vultureNetwork.png" medium="image" type="image/png" width="1688" height="891"/>
+    </item>
+    <item>
       <title>greenT: Exploring grapheme-color synesthesia</title>
       <dc:creator>Kaija Gahm</dc:creator>
       <link>https://kaijagahm.netlify.app/projects/2021-05-13-greenT</link>
@@ -44,7 +53,8 @@
       <title>The Tadpole Olympics</title>
       <dc:creator>Kaija Gahm</dc:creator>
       <link>https://kaijagahm.netlify.app/projects/2021-01-29-tadpoles</link>
-      <description>For my B.S. thesis project at Yale, I measured how fast wood frog tadpoles swim in response to a simulated predator attack, and how that swimming speed relates to their developmental rate. It turns out that developing fast comes with a performance cost, and that tradeoff might help to explain some of the patterns we've observed in wood frogs' developmental rates in the past.</description>
+      <description>For my B.S. thesis project at Yale, I measured how fast wood frog tadpoles swim in response to a simulated predator attack, and how that swimming speed relates to their developmental rate. It turns out that developing fast comes with a performance cost, and that tradeoff might help to explain some of the patterns we've observed in wood frogs' developmental rates in the past.
+A short description of the post.</description>
       <guid>https://kaijagahm.netlify.app/projects/2021-01-29-tadpoles</guid>
       <pubDate>Fri, 29 Jan 2021 00:00:00 +0000</pubDate>
       <media:content url="https://kaijagahm.netlify.app/projects/2021-01-29-tadpoles/tadpole.png" medium="image" type="image/png" width="1421" height="575"/>
