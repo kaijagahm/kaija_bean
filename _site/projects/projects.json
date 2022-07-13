@@ -17,6 +17,25 @@
     "input_file": {}
   },
   {
+    "path": "projects/2022-07-12-agentBasedModel/",
+    "title": "Modeling Situation-Specific Effects of Multiple Mortality on Social Network Structure in Griffon Vultures (Gyps fulvus)",
+    "description": "This is a placeholder page for more information about my agent-based modeling project, ABS 2022.",
+    "author": [
+      {
+        "name": "Kaija Gahm",
+        "url": {}
+      }
+    ],
+    "date": "2021-07-13",
+    "categories": [],
+    "contents": "\nThe code for the project can be found on GitHub.\n\n\n\n",
+    "preview": "projects/2022-07-12-agentBasedModel/vultureNetwork.png",
+    "last_modified": "2022-07-12T23:13:30-07:00",
+    "input_file": "agentBasedModel.knit.md",
+    "preview_width": 1688,
+    "preview_height": 891
+  },
+  {
     "path": "projects/2021-05-13-greenT/",
     "title": "greenT: Exploring grapheme-color synesthesia",
     "description": "For my whole life, I've associated colors with letters and numbers. This is called grapheme-color synesthesia. For my second major project in Shiny, I built an app to help me explain synesthesia to friends, and to learn more about the experiences of other synesthetes.",

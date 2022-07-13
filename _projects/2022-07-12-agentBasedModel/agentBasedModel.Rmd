@@ -1,0 +1,22 @@
+---
+title: "Modeling Situation-Specific Effects of Multiple Mortality on Social Network Structure in Griffon Vultures (Gyps fulvus)"
+description: |
+  This is a placeholder page for more information about my agent-based modeling project, ABS 2022.
+
+author:
+  - name: Kaija Gahm
+    url: {}
+date: 07-13-2021
+output:
+  distill::distill_article:
+    self_contained: false
+    highlight: kate
+    toc: true
+preview: "vultureNetwork.png"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+The code for the project can be found on [GitHub](https://github.com/kaijagahm/toyModel).

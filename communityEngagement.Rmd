@@ -28,7 +28,7 @@ I've been "[community taught](https://twitter.com/TheStephLocke/status/121456980
 
 **Mentor** | October 2021 - Present
 
-As a mentor, I hold office hours on Wednesdays from 4pm-5pm PST, where I answer people's questions about R. In my responses, I do my best to foster a welcoming environment, talk people through how to create minimal reproducible examples, and use motivating language. It's important to me to contribute to the welcoming R community that I encountered when I first started learning.
+As a mentor, I hold office hours weekly, where I answer people's questions about R. In my responses, I do my best to foster a welcoming environment, talk people through how to create minimal reproducible examples, and use motivating language. It's important to me to contribute to the welcoming R community that I encountered when I first started learning.
 
 Join the Slack workspace [here](r4ds.io/join).
 
@@ -54,7 +54,13 @@ Each week, a group of UCLA grad students, mostly from the EEB department, gather
 
 I became a certified Carpentries Instructor in summer 2021. I taught a modified Data Carpentry workshop at the [2021 SORTEE conference](https://docs.google.com/spreadsheets/d/1VS14jKmCFJoiHFXMZ74qLA-IvwU_A9rn1SSNVGVkdMk/edit), which focused on using Git/GitHub through RStudio.
 
-Currently, I'm working with some of my UCLA Hacky Hours co-organizers to put together [a Software Carpentry workshop](https://ucla-hacky-hours.github.io/2022-04-09-uclaeeb/) for our department in April.
+In April, I taught [a Software Carpentry workshop](https://ucla-hacky-hours.github.io/2022-04-09-uclaeeb/) for our department in April, focusing on the Version Control with Git section.
+
+Upcoming workshops:
+
+[Introduction to R](https://calendar.library.ucla.edu/event/9132353) (UCLA Carpentries Summer Workshops), 2022-06-23
+
+Version Control with Git (2022 SORTEE conference), 2022-07-13
 
 ---
 
