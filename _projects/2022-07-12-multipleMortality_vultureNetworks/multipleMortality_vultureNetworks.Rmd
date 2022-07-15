@@ -24,6 +24,8 @@ library(vultureUtils)
 library(downloadthis)
 ```
 
+## Introduction and Links
+
 This is an overview of my modeling process so far for the vulture multiple mortality project. If you want to see the poster, download it here:
 
 ```{css big-download-button}
@@ -49,6 +51,10 @@ download_file(
   class = "button_large"
 )
 ```
+
+The code for the project so far can be found on [GitHub](<https://github.com/kaijagahm/toyModel>).
+
+Please feel free to contact me by email, on Twitter, etc. if you have any questions or suggestions! Contact links are on the home page of this site.
 
 ## Research Questions
 
