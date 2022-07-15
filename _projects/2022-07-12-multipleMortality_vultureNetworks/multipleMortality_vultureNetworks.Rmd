@@ -17,18 +17,20 @@ bibliography: references.bib
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = TRUE)
 library(move)
 library(tidyverse)
 library(vultureUtils)
 library(downloadthis)
+library(ggraph)
+library(sf)
 ```
 
 ## Introduction and Links
 
 This is an overview of my modeling process so far for the vulture multiple mortality project. If you want to see the poster, download it here:
 
-```{css big-download-button}
+```{css echo = FALSE, big-download-button}
 .button_large {
   font-size: 24px;
 }
@@ -39,7 +41,7 @@ img {
 }
 ```
 
-```{r download-poster}
+```{r echo = FALSE, download-poster}
 download_file(
   path = "ABS2022Poster.pdf",
   output_name = "Gahm_Poster_ABS2022.pdf",
@@ -74,6 +76,119 @@ Social network analysis of GPS-tagged griffon vultures in Israel lets us study t
 
 [![(From Sharma et al. 2022) Social networks across multiple situations. A hypothetical example of social interactions among vultures in different social situations: co-flying in blue, nocturnal ground interactions, (i.e., co-roosting) in green, and diurnal ground interactions (e.g., co-feeding) in yellow. Solid lines within each social situation indicate interactions within the social situation and black-dotted lines between social situations connect occurrences of the same individual. Dashed orange lines connect individuals to food sites to show how spatial proximity can be used to infer social interactions, for example when co-feeding. An aggregate network at the top, in gray, combines all interactions from the different social situations.](networkDiagram.png)](https://www.authorea.com/doi/full/10.22541/au.165107196.66953827/v1)
 
+## Data: A Vulture Co-Feeding Network
+
+The data that I'm basing this model on comes from a GPS-tagged population of griffon vultures in Israel. The species is locally critically endangered [@efrat2020] and is managed by the Israel Nature and Parks Authority (INPA), which runs supplemental feeding stations throughout the country [@spiegel2013]. Israel's griffon vultures live mainly in the Negev and Judean deserts in the south. There is a small population in northeastern Israel and a declining population in the northwest. For this analysis, I restricted the data to the southern population, which is relatively well-mixed and somewhat separated from the northern populations.
+
+As part of a collaborative NSF-BSF project between Orr Spiegel and Noa Pinter-Wollman, nearly 100 vultures have been fitted with GPS transmitters over the past two years. These tags provide location information at 10-minute intervals, with data automatically transmitted to and stored on Movebank. As of 2022, approximately 70% of the griffon population in Israel is tagged. This high coverage of the population means that the majority of a tagged individual's social interactions are with other tagged individuals, allowing us to study social interactions with greater certainty than is possible in many studies of free-ranging animals.
+
+### Preliminary Data Filtering
+
+In addition to restricting the data to only the southern population, I did the following:
+
+-   Geography \| Used a rough geographic mask to include only individuals that spent at least 30% of their GPS-tracked days in Israel, and then to include only locations inside of Israel.
+
+-   Behavioral Situation \| I included only diurnal ground interactions. To do this, I restricted the data to GPS points taken when the bird was moving at a speed of **\< 5 m/s** (a proxy for walking/hopping/standing, versus flying). Because vultures mostly land during the day when they are feeding, I refer to the network created from this data, loosely, as a "co-feeding network." A more accurate term would be an "network of diurnal ground interactions" [@sharma2022a].
+
+### Selecting a Focal Time Period
+
+I wanted to choose a time period to study during which as many tagged individuals as possible were present for the duration of the period. I started by exploring my data.
+
+```{r code_folding = TRUE}
+# Load data, previously downloaded from Movebank and filtered as described above.
+load("data/southernEdges_20200101_20220430.Rda")
+load("data/southernPoints_20200101_20220430.Rda")
+
+## Create a time series graph to see which individuals are present at which times.
+timeseries <- southernPoints_20200101_20220430 %>%
+  sf::st_drop_geometry() %>%
+  dplyr::select(trackId, dateOnly) %>%
+  dplyr::distinct()
+
+# I want to order the individual vultures in the plot by number of data points we have for them.
+order <- timeseries %>%
+  group_by(trackId) %>%
+  summarize(n = n()) %>%
+  arrange(n) %>%
+  pull(trackId)
+
+# Make a plot:
+timeseries %>%
+  mutate(trackId = factor(trackId, levels = order)) %>% # apply the ordering
+  ggplot(aes(x = dateOnly, y = trackId))+
+  geom_point(size = 0.5)+
+  theme_minimal()+
+  ylab("Vulture")+
+  xlab("Date")+
+  theme(axis.text.y = element_text(size = 4)) # teeny tiny vulture IDs because I just want to get the overall picture for now.
+```
+
+Ok, based on this, it looks like we want to restrict the dates to the window between 2020-10-01 and 2021-09-01.
+
+```{r code_folding = TRUE}
+# See what it looks like if we restrict the dates to 2020-10-01 through 2021-09-01
+startDate <- "2020-10-01"
+endDate <- "2021-09-01"
+timeseries %>%
+  filter(dateOnly > lubridate::ymd(startDate) & dateOnly < lubridate::ymd(endDate)) %>%
+  mutate(trackId = factor(trackId, levels = order)) %>%
+  ggplot(aes(x = dateOnly, y = trackId))+
+  geom_point(size = 0.5)+
+  theme_minimal()+
+  ylab("Vulture")+
+  xlab("Date")+
+  theme(axis.text.y = element_text(size = 7))
+```
+Finally, I excluded a few individuals that were observed only at one end of this range. I included only individuals observed both before and after 2021-02-01 in the final data set.
+
+```{r code_folding = TRUE}
+# Exclude a few individuals that were observed only at one end of this range, arbitrarily using February 2021 as the cutoff point
+toKeep <- timeseries %>%
+  group_by(trackId) %>%
+  summarize(min = min(dateOnly),
+            max = max(dateOnly)) %>%
+  filter(min < lubridate::ymd("2021-02-01") & max > lubridate::ymd("2021-02-01")) %>%
+  pull(trackId)
+
+# Get usable edges, removing the individuals that don't fall within those constraints, and removing bad dates.
+toUse <- southernEdges_20200101_20220430 %>%
+  filter(ID1 %in% toKeep | ID2 %in% toKeep,
+         minTimestamp > lubridate::ymd(startDate),
+         maxTimestamp < lubridate::ymd(endDate))
+save(toUse, file = "data/toUse.Rda")
+```
+
+After doing a sensitivity analysis on this data, I opted to create networks aggregated over spans of 5 days. I wanted to capture as much detail as possible in the networks while accounting for the fact that vultures don't feed every day, so networks created for each day ended up being extremely sparse, sometimes including only one or two birds per network.
+
+Here is an animation showing the networks created over time.
+
+```{r, animation.hook="gifski", dev='png', interval = 0.2, code_folding = TRUE}
+# Create networks with 5-day increments, using a custom network creation function. The function code is in the vultureUtils package, which you can find at https://github.com/kaijagahm/vultureUtils.
+realGraphs <- vultureUtils::makeGraphs(edges = toUse, interval = "5 days", 
+                         dateTimeStart = "2020-10-01 00:00:00",
+                         dateTimeEnd = "2021-09-01 11:59:00",
+                         weighted = FALSE, allVertices = TRUE)$graphs
+
+# Create some random coordinates to use, which will be kept consistent throughout the animation:
+coords <- data.frame(name = names(igraph::V(realGraphs[[1]])),
+                     x = rnorm(n = length(igraph::V(realGraphs[[1]]))),
+                     y = rnorm(n = length(igraph::V(realGraphs[[1]]))))
+
+# Create the animation
+for(i in 1:length(realGraphs)){
+  p <- tidygraph::as_tbl_graph(realGraphs[[i]], nodes = coords$name) %>%
+    ggraph(layout = "manual", x = coords$x, y = coords$y)+
+    geom_edge_link()+
+    geom_node_point(size = 4, aes(col = name))+
+    theme_graph()+
+    scale_color_viridis_d()+
+    theme(legend.position = "none")+
+    ggtitle(paste("real networks: days", (i-1)*5+1, "to", i*5))
+  print(p)
+}
+```
+
+
 ## Modeling Approach
 
 To investigate this question, I am building an **agent-based network model**. In my model, nodes in the network represent vultures, and edges represent their interactions. For now, the network is **unweighted** and **undirected**. Each edge is either present (the two individuals did interact in this time step) or absent (the two individuals did not interact in this time step).
@@ -87,3 +202,5 @@ I decided to use a discrete-time model. In each time step, edges are added or lo
 To do this, I assign each edge a history: either **00** (the edge did not exist in either of the previous two time steps), **11** (the edge existed in both of the previous two time steps), **01** (the edge existed only in the most recent time step), or **10** (the edge existed in the second most recent time step but not in the most recent one).
 
 ![A diagram of how the baseline network dynamics work in the model. Edges are added and removed based on the two previous time steps. The arrows show two examples: an edge with history **11** that subsequently disappears, and an edge with history **01** that remains in the current time step.](modelDiagram_baseline.jpg)
+
+In order to pick the probabilities of edges being gained or lost given each of these histories, I took a look at the real data.
