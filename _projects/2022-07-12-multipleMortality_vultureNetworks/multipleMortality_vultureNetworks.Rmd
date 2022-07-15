@@ -1,7 +1,7 @@
 ---
 title: "Modeling Situation-Specific Effects of Multiple Mortality on Social Network Structure in Griffon Vultures (Gyps fulvus)"
 description: |
-  This is a placeholder page for more information about my agent-based modeling project, ABS 2022.
+  This post is a companion to the poster that I presented at ABS 2022, San José, Costa Rica. It contains a bit more information about the project.
 
 author:
   - name: Kaija Gahm
@@ -13,10 +13,71 @@ output:
     highlight: kate
     toc: true
 preview: "vultureNetwork.png"
+bibliography: references.bib
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE)
+library(move)
+library(tidyverse)
+library(vultureUtils)
+library(downloadthis)
 ```
 
-The code for the project can be found on [GitHub](https://github.com/kaijagahm/toyModel).
+This is an overview of my modeling process so far for the vulture multiple mortality project. If you want to see the poster, download it here:
+
+```{css big-download-button}
+.button_large {
+  font-size: 24px;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+```
+
+```{r download-poster}
+download_file(
+  path = "ABS2022Poster.pdf",
+  output_name = "Gahm_Poster_ABS2022.pdf",
+  button_label = "Download the poster",
+  button_type = "danger",
+  has_icon = TRUE,
+  icon = "fa fa-save",
+  self_contained = FALSE,
+  class = "button_large"
+)
+```
+
+## Research Questions
+
+**How long does it take for a social network to recover its structure after the loss of several connected individuals?**
+
+**How does recovery differ between social situations?**
+
+## Background
+
+Eurasian griffon vultures (*Gyps fulvus*) are obligate scavengers [@ruxton2004] and social foragers [@harel2017].
+
+Poisoned carcasses can kill many vultures quickly as they assemble to eat in groups. Poisoning is a major threat to griffon vultures. It is the leading cause of death in the griffon vulture population in Israel [@anglister2022], and also threatens vulture species across the world [@ives2022].
+
+![A Eurasian Griffon Vulture (Gyps fulvus) and an Egyptian Vulture (Neophron percnopterus) feed at a carcass provided at a feeding site in Israel. Photo by Noa Pinter-Wollman.](feedingStationCarcass_pinterWollman.JPG)
+
+Social network analysis of GPS-tagged griffon vultures in Israel lets us study their population social structure. Past work by Nitika Sharma and Noa Pinter-Wollman shows that social networks differ between situations (co-flight, co-feeding, and co-roosting) [@sharma2022].
+
+[![(From Sharma et al. 2022) Social networks across multiple situations. A hypothetical example of social interactions among vultures in different social situations: co-flying in blue, nocturnal ground interactions, (i.e., co-roosting) in green, and diurnal ground interactions (e.g., co-feeding) in yellow. Solid lines within each social situation indicate interactions within the social situation and black-dotted lines between social situations connect occurrences of the same individual. Dashed orange lines connect individuals to food sites to show how spatial proximity can be used to infer social interactions, for example when co-feeding. An aggregate network at the top, in gray, combines all interactions from the different social situations.](networkDiagram.png)](https://www.authorea.com/doi/full/10.22541/au.165107196.66953827/v1)
+
+## Modeling Approach
+
+To investigate this question, I am building an **agent-based network model**. In my model, nodes in the network represent vultures, and edges represent their interactions. For now, the network is **unweighted** and **undirected**. Each edge is either present (the two individuals did interact in this time step) or absent (the two individuals did not interact in this time step).
+
+### Baseline Network Dynamics
+
+Before I can use the model to ask questions about what will happen to the vultures' social structure when nodes are removed, I have to build some baseline network dynamics that roughly approximate what happens in the real data.
+
+I decided to use a discrete-time model. In each time step, edges are added or lost depending on their history in the **previous two time steps**.
+
+To do this, I assign each edge a history: either **00** (the edge did not exist in either of the previous two time steps), **11** (the edge existed in both of the previous two time steps), **01** (the edge existed only in the most recent time step), or **10** (the edge existed in the second most recent time step but not in the most recent one).
+
+![A diagram of how the baseline network dynamics work in the model. Edges are added and removed based on the two previous time steps. The arrows show two examples: an edge with history **11** that subsequently disappears, and an edge with history **01** that remains in the current time step.](modelDiagram_baseline.jpg)
