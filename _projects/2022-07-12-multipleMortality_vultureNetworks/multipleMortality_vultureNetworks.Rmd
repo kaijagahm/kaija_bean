@@ -12,7 +12,8 @@ output:
     self_contained: false
     highlight: kate
     toc: true
-preview: "vultureNetwork.png"
+    toc_depth: 4
+preview: "figs/vultureNetwork.png"
 bibliography: references.bib
 ---
 
@@ -63,11 +64,13 @@ The code for the project so far can be found on [GitHub](https://github.com/kaij
 
 Please feel free to contact me by email, on Twitter, etc. if you have any questions or suggestions! Contact links are on the home page of this site.
 
+*To learn more about the griffon vulture system (and specifically, about the differences between behavioral situations like roosting, feeding, and flying), check out Nitika Sharma's talk on Wednesday, July 20th: "Social situations differ in their contribution to population-level social structure in griffon vultures," at 4:30 pm in Gondola ("Every cloud has a silver lining: Applied Behavior and Conservation").*
+
 ## Research Questions
 
-**How long does it take for a social network to recover its structure after the loss of several connected individuals?**
+*How long does it take for a social network to recover its structure after the loss of several connected individuals?*
 
-**How does recovery differ between social situations?**
+*How does recovery differ between social situations?*
 
 ## Background
 
@@ -91,9 +94,9 @@ As part of a collaborative NSF-BSF project between Orr Spiegel and Noa Pinter-Wo
 
 In addition to restricting the data to only the southern population, I did the following:
 
--   **Geography** \| I used a rough geographic mask to include only individuals that spent at least 30% of their GPS-tracked days in Israel, and then to include only locations inside of Israel.
+-   *Geography* \| I used a rough geographic mask to include only individuals that spent at least 30% of their GPS-tracked days in Israel, and then to include only locations inside of Israel.
 
--   **Behavioral** **Situation** \| I included only diurnal ground interactions. To do this, I restricted the data to GPS points taken when the bird was moving at a speed of **\< 5 m/s** (a proxy for walking/hopping/standing, versus flying). Because vultures mostly land during the day when they are feeding, I refer to the network created from this data, loosely, as a "co-feeding network." A more accurate term would be an "network of diurnal ground interactions".
+-   *Behavioral* *Situation* \| I included only diurnal ground interactions. To do this, I restricted the data to GPS points taken when the bird was moving at a speed of *\< 5 m/s* (a proxy for walking/hopping/standing, versus flying). Because vultures mostly land during the day when they are feeding, I refer to the network created from this data, loosely, as a "co-feeding network." A more accurate term would be an "network of diurnal ground interactions".
 
 ### Selecting a Focal Time Period
 
@@ -166,7 +169,7 @@ save(toUse, file = "data/toUse.Rda")
 
 After doing a sensitivity analysis on this data to explore different time windows, I opted to create networks aggregated over spans of 5 days. I wanted to capture as much detail as possible in the networks while accounting for the fact that vultures don't feed every day, so networks created for each day ended up being extremely sparse, sometimes including only one or two birds per network.
 
-Here is an animation showing the 5-day networks, during the period
+Here is an animation showing the 5-day networks, during the period 2020-10-01 - 2021-09-01
 
 ```{r, animation.hook="gifski", dev='png', interval = 0.2, code_folding = TRUE}
 # Create networks with 5-day increments, using a custom network creation function. The function code is in the vultureUtils package, which you can find at https://github.com/kaijagahm/vultureUtils.
@@ -197,19 +200,19 @@ for(i in 1:length(realGraphs)){
 
 ## Modeling Approach
 
-To investigate this question, I am building an **agent-based network model**. In my model, nodes in the network represent vultures, and edges represent their interactions. For now, the network is **unweighted** and **undirected**. Each edge is either present (the two individuals did interact in this time step) or absent (the two individuals did not interact in this time step).
+To investigate this question, I am building an *agent-based network model*. In my model, nodes in the network represent vultures, and edges represent their interactions. For now, the network is *unweighted* and *undirected*. Each edge is either present (the two individuals did interact in this time step) or absent (the two individuals did not interact in this time step).
 
 ### Baseline Network Dynamics
 
 Before I can use the model to ask questions about what will happen to the vultures' social structure when nodes are removed, I have to build some baseline network dynamics that roughly approximate what happens in the real data.
 
-I decided to use a discrete-time model. In each time step, edges are added or lost depending on their history in the **previous two time steps**.
+I decided to use a discrete-time model. In each time step, edges are added or lost depending on their history in the *previous two time steps*.
 
-To do this, I assign each edge a history: either **00** (the edge did not exist in either of the previous two time steps), **11** (the edge existed in both of the previous two time steps), **01** (the edge existed only in the most recent time step), or **10** (the edge existed in the second most recent time step but not in the most recent one).
+To do this, I assign each edge a history: either *00* (the edge did not exist in either of the previous two time steps), *11* (the edge existed in both of the previous two time steps), *01* (the edge existed only in the most recent time step), or *10* (the edge existed in the second most recent time step but not in the most recent one).
 
-![A diagram of how the baseline network dynamics work in the model. Edges are added and removed based on the two previous time steps. The arrows show two examples: an edge with history **11** that subsequently disappears, and an edge with history **01** that remains in the current time step.](figs/modelDiagram_baseline.jpg)
+![A diagram of how the baseline network dynamics work in the model. Edges are added and removed based on the two previous time steps. The arrows show two examples: an edge with history *11* that subsequently disappears, and an edge with history *01* that remains in the current time step.](figs/modelDiagram_baseline.jpg)
 
-Next, I used the observed co-feeding network data to compute probability distributions for the four probabilities: `add00` (the probability of adding an edge with history **00)**; `add10` (the probability of adding an edge with history **10**); `lose01` (the probability of losing an edge with history **01**); and `lose11` (the probability of losing an edge with history **11**). For each time step in the observed networks, I determined the history of each edge and its fate.
+Next, I used the observed co-feeding network data to compute probability distributions for the four probabilities: `add00` (the probability of adding an edge with history *00)*; `add10` (the probability of adding an edge with history *10*); `lose01` (the probability of losing an edge with history *01*); and `lose11` (the probability of losing an edge with history *11*). For each time step in the observed networks, I determined the history of each edge and its fate.
 
 ```{r code_folding =  TRUE}
 probs <- vultureUtils::computeProbs(graphList = realGraphs) # again, using a function from vultureUtils to compute these probabilities. See https://github.com/kaijagahm/vultureUtils for the code.
@@ -409,6 +412,55 @@ degrees %>%
 
 ...but the distributions still don't look quite the same.
 
+##### 3) Network Animation Comparison
+
+Here is an animation showing the 5-day modeled networks, during the period 2020-10-01 - 2021-09-01
+
+```{r, animation.hook="gifski", dev='png', interval = 0.2, echo = FALSE}
+for(i in 1:length(modelGraphs)){
+  p <- tidygraph::as_tbl_graph(modelGraphs[[i]], nodes = coords$name) %>%
+    ggraph(layout = "manual", x = coords$x, y = coords$y)+
+    geom_edge_link()+
+    geom_node_point(size = 4, aes(col = coords$name))+
+    theme_graph()+
+    scale_color_viridis_d()+
+    theme(legend.position = "none")+
+    ggtitle(paste("model networks: day", i))
+  print(p)
+}
+```
+
+Compare it to the observed network animation we saw before:
+
+```{r, animation.hook="gifski", dev='png', interval = 0.2, code_folding = TRUE}
+# Create networks with 5-day increments, using a custom network creation function. The function code is in the vultureUtils package, which you can find at https://github.com/kaijagahm/vultureUtils.
+realGraphs <- vultureUtils::makeGraphs(edges = toUse, interval = "5 days", 
+                         dateTimeStart = "2020-10-01 00:00:00",
+                         dateTimeEnd = "2021-09-01 11:59:00",
+                         weighted = FALSE, allVertices = TRUE)$graphs
+
+# Create some random coordinates to use, which will be kept consistent throughout the animation:
+coords <- data.frame(name = names(igraph::V(realGraphs[[1]])),
+                     x = rnorm(n = length(igraph::V(realGraphs[[1]]))),
+                     y = rnorm(n = length(igraph::V(realGraphs[[1]]))))
+
+# Create the animation
+for(i in 1:length(realGraphs)){
+  p <- tidygraph::as_tbl_graph(realGraphs[[i]], nodes = coords$name) %>%
+    ggraph(layout = "manual", x = coords$x, y = coords$y)+
+    geom_edge_link()+
+    geom_node_point(size = 4, aes(col = name))+
+    theme_graph()+
+    scale_color_viridis_d()+
+    theme(legend.position = "none")+
+    ggtitle(paste("5-day co-feeding network starting on", 
+                  names(realGraphs)[i]))
+  print(p)
+}
+```
+
+We can clearly see that there is a difference between the observed and modeled networks. The modeled networks are much more uniform and denser than the observed networks. This confirms my findings from looking at the degree distributions.
+
 My conclusion from this is that my baseline model doesn't accurately capture some of the fundamental biology that's going on in the vulture system. I suspect that I need to tweak the assumptions of the model a little bit.
 
 However, I decided that the model captures the network dynamics *well enough* for now--I'm going to move forward with modeling node loss and rewiring. Then I can come back and tweak the baseline dynamics later on.
@@ -417,9 +469,9 @@ However, I decided that the model captures the network dynamics *well enough* fo
 
 Losses of individuals from the population are irregular enough that it is not straightforward to figure out how the vulture social structure behaves following a loss. Therefore, for my initial model, I decided to implement a "second-degree rewiring" model [@farine2021]. Under this model, when a node is lost, there is a higher probability of an edge forming between two individuals that were both connected to the lost individual than between two individuals that were not both connected to the lost individual.
 
-To make it easier to talk about this process, I have decided to refer to nodes either as **bereaved** or **non-bereaved**. A **bereaved** node is one that was directly connected to the lost node. A **non-bereaved** node is one that was not directly connected to the lost node.
+To make it easier to talk about this process, I have decided to refer to nodes either as *bereaved* or *non-bereaved*. A *bereaved* node is one that was directly connected to the lost node. A *non-bereaved* node is one that was not directly connected to the lost node.
 
-![Rewiring after the loss of a single node.](figs/modelDiagram_rewiring.png)
+![Rewiring after the loss of a single node](figs/modelDiagram_rewiring.png)
 
 The idea of second-degree rewiring, by its nature, already takes into account one previous time step. We have to ask whether the nodes were or were not connected to the lost node in the previous time step (bereaved vs. not). We also have to ask whether there is the potential for a new edge to form---i.e. did that edge already exist in the previous time step? When forming new edges, we only need to deal with edges that did not previously exist.
 
@@ -576,7 +628,7 @@ lossInfo_ninedays <- map2(.x = networkSubsets, .y = removedIndivs$trackId, .f = 
 
 I used the information that I collected to answer some questions about how real networks behave when a node is lost.
 
-1.  Is an edge between two bereaved individuals (B-B) more likely to form than an edge between two non-bereaved individuals (N-N) or between a bereaved and a non-bereaved individual (B-N / N-B)? (Note: Because these are undirected networks, I am using B-N and N-B interchangeably here).
+1. Do vulture social networks exhibit second-degree rewiring? In other words: is an edge between two bereaved individuals (B-B) more likely to form than an edge between two non-bereaved individuals (N-N) or between a bereaved and a non-bereaved individual (B-N / N-B)? (Note: Because these are undirected networks, I am using B-N and N-B interchangeably here).
 
 ```{r code_folding = TRUE}
 pForms_9 <- lapply(lossInfo_ninedays, function(x) x$pForm) %>%
@@ -599,9 +651,9 @@ formBereaved <- pForms_9 %>%
         axis.title = element_text(size = 20, face = "bold"))
 formBereaved
 ```
-Interesting! At least in **these seven cases**, second-degree rewiring does not seem to be occurring. If anything, there might be a **lower** probability of forming a B-B edge than a N-B or N-N edge. Keep in mind, though, that these differences are **not** statistically significant, and they are probably not biological significant either, given the absolutely tiny sample size here. But I am definitely going to explore further!
+Interesting! At least in *these seven cases*, second-degree rewiring does not seem to be occurring. If anything, there might be a *lower* probability of forming a B-B edge than a N-B or N-N edge. Keep in mind, though, that these differences are *not* statistically significant, and they are probably not biological significant either, given the absolutely tiny sample size here. But I am definitely going to explore further!
 
-2. Are B-B edges less likely to disappear than N-B or N-N edges?
+2. When vultures lose an individual they previously interacted with, do they more strongly maintain their existing ties, especially when those other ties also experienced a loss? In other words, are B-B edges less likely to disappear than N-B or N-N edges?
 
 ```{r code_folding = TRUE}
 pDisappears_9 <- lapply(lossInfo_ninedays, function(x) x$pDisappear) %>%
@@ -625,9 +677,9 @@ pDisappears_9 %>%
 ```
 There seems to be absolutely no difference in the likelihood of losing an edge between B-B, B-N, and N-N edges.
 
-Okay, so second-degree rewiring might not be occurring here! I've incorporated it into my model, but this preliminary examination of my data tells me that before I get too far into modeling the consequences of **multiple-individual** loss in my model, I need to get a better handle on how the loss of a **single** individual affects the rest of the network. This probably means I'll need to examine much more data, over a larger time span, to tease out any patterns.
+Okay, so second-degree rewiring might not be occurring here! I've incorporated it into my model, but this preliminary examination of my data tells me that before I get too far into modeling the consequences of *multiple-individual* loss in my model, I need to get a better handle on how the loss of a *single* individual affects the rest of the network. This probably means I'll need to examine much more data, over a larger time span, to tease out any patterns.
 
-3. Does history (in the previous time step) make a difference to the likelihood of edges to form?
+3. Are vultures more likely to interact with individuals they have previously interacted with? In other words, does history (in the previous time step) make a difference to the likelihood of edges forming?
 
 ```{r code_folding = TRUE}
 pFormHistories_9 <- lapply(lossInfo_ninedays, function(x) x$pFormHistory) %>%
@@ -652,9 +704,9 @@ formHistory <- pFormHistories_9 %>%
         strip.text.x = element_text(size = 18))
 formHistory
 ```
-Here, the behavior of the network actually does align with my expectations! Edges seem to be more likely to form following a loss if they previously existed before the loss. (Note: this is only focusing on edges that did *not* exist during the lost individual's last present time step. I didn't count edges that were present in all three time steps, since that wouldn't constitute an "addition". In other words, I counted only edges with history **010**).
+Here, the behavior of the network actually does align with my expectations! Edges seem to be more likely to form following a loss if they previously existed before the loss. (Note: this is only focusing on edges that did *not* exist during the lost individual's last present time step. I didn't count edges that were present in all three time steps, since that wouldn't constitute an "addition". In other words, I counted only edges with history *010*).
 
-4. Does history make a difference to the likelihood of edges to disappear?
+4. Are vultures' interaction ties more durable the longer they exist? In other words, does history make a difference to the likelihood of edges to disappear?
 
 ```{r code_folding = TRUE}
 pDisappearHistories_9 <- lapply(lossInfo_ninedays, function(x) x$pDisappearHistory) %>%
@@ -681,4 +733,24 @@ pDisappearHistories_9 %>%
 
 There's no apparent pattern to whether edge history affects the likelihood of an edge disappearing. More investigation is in order here as well, I think.
 
-**Once again, remember that the graphs above are based on a sample size of SEVEN individual losses! They are just suggestions of patterns or lack thereof. I might find totally different patterns when I add more data.**
+*Once again, remember that the graphs above are based on a sample size of SEVEN individual losses! They are just suggestions of patterns or lack thereof. I might find totally different patterns when I add more data.*
+
+## Next Steps
+
+So, what's next? The work presented here is preliminary. I have just dipped my toe into creating an agent-based model, which I will hopefully be able to use in the future to test specific hypotheses about how social structure reacts to the loss of one, or many, individuals. But I have a long way to go.
+
+Here are the next things that I'm going to try as I continue to work on this model.
+
+1. Examine all of my GPS data more deeply to suss out how vulture social networks respond to the loss of a single individual. I'd like to re-do the analyses from the previous section, including more than just 7 individuals. This is challenging because I do not have relatively complete network data for all time periods. But I plan to assess a narrower range of measures, focused solely on the target individual and the connections that it makes with other tagged individuals, across the entire time span of my data.
+
+Doing this will, I hope, allow me to draw stronger conclusions about rewiring behavior in the vulture social networks. Then, I will be able to re-work my model to re-wire itself according to how the social networks really operate.
+
+2. Refine the baseline model behavior to better capture real vulture biology. As I demonstrated, my baseline model does a *fairly* good job at capturing the baseline fluctuations in degree distribution over time. But my modeled networks are still denser and more uniform than the observed social networks. I will consider what mechanisms to add to my model to improve its reflection of vulture behavior.
+
+3. Building on (1), expand the model to allow the loss of *more than one* node at a time. This is critically important, since I am interested in how vulture social networks respond to multiple-mortality events. Unfortunately, I do not have enough data on real multiple-mortality events to explore this question empirically. After determining how the network rewires after the loss of a single individual, I will have to figure out how to define rewiring for multiple individuals.
+
+4. Run the model with multiple-node loss. Examine the recovery time and resilience with different numbers of lost nodes, or with different levels of connection between the lost nodes.
+
+5. Compare recovery time/resilience in different behavioral situations (flying, roosting) as well as overall aggregate network. So far, all of the data I have worked with has been co-feeding data (diurnal ground interactions). I am interested in how post-mortality network dynamics differ between social situations, because differentiating between social situations raises the possibility that some situations could be more resilient than others. This in turn has implications for conservation and management of vultures, as well as broader implications for our understanding of the complexities of social behavior.
+
+Thank you for your interest! If you'd like to talk more about this project, feel free to get in touch with me using any of the methods linked on my home page.
