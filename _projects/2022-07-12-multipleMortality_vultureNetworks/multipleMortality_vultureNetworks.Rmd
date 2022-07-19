@@ -79,7 +79,7 @@ Poisoned carcasses can kill many vultures quickly as they assemble to eat in gro
 
 Social network analysis of GPS-tagged griffon vultures in Israel lets us study their population social structure. Past work by Nitika Sharma and Noa Pinter-Wollman shows that social networks differ between situations (co-flight, co-feeding, and co-roosting) [@sharma2022b].
 
-[![From [@sharma2022b]: Social networks across multiple situations. A hypothetical example of social interactions among vultures in different social situations: co-flying in blue, nocturnal ground interactions, (i.e., co-roosting) in green, and diurnal ground interactions (e.g., co-feeding) in yellow. Solid lines within each social situation indicate interactions within the social situation and black-dotted lines between social situations connect occurrences of the same individual. Dashed orange lines connect individuals to food sites to show how spatial proximity can be used to infer social interactions, for example when co-feeding. An aggregate network at the top, in gray, combines all interactions from the different social situations.](figs/networkDiagram.png)](https://www.authorea.com/doi/full/10.22541/au.165107196.66953827/v1)
+[![From : Social networks across multiple situations. A hypothetical example of social interactions among vultures in different social situations: co-flying in blue, nocturnal ground interactions, (i.e., co-roosting) in green, and diurnal ground interactions (e.g., co-feeding) in yellow. Solid lines within each social situation indicate interactions within the social situation and black-dotted lines between social situations connect occurrences of the same individual. Dashed orange lines connect individuals to food sites to show how spatial proximity can be used to infer social interactions, for example when co-feeding. An aggregate network at the top, in gray, combines all interactions from the different social situations.](figs/networkDiagram.png)](https://www.authorea.com/doi/full/10.22541/au.165107196.66953827/v1)
 
 ## Data: A Vulture Co-Feeding Network
 
@@ -359,6 +359,8 @@ degrees <- bind_rows(degrees_real, degrees_model) %>%
 # Visualize degree distributions
 degrees %>%
   mutate(timestep = as.factor(timestep)) %>%
+  mutate(type = case_when(type == "model" ~ "Model",
+                          type == "real" ~ "Observed")) %>%
   ggplot(aes(x = degree, col = timestep))+
   geom_density()+
   facet_wrap(~type)+
@@ -368,8 +370,12 @@ degrees %>%
 
 ##### 2) Degree Over Time
 
-```{r code_folding = TRUE}
+How does the network's degree distribution change over the course of the baseline network simulation?
+
+```{r code_folding = TRUE, message = FALSE}
 degreePlot <- degrees %>%
+  mutate(type = case_when(type == "model" ~ "Model",
+                          type == "real" ~ "Observed")) %>%
   ggplot(aes(x = timestep, y = degree))+
   geom_point(alpha = 0.2) +
   geom_smooth()+
@@ -379,8 +385,9 @@ degreePlot <- degrees %>%
   ylab("Degree")+
   xlab("Timestep")+
   theme(axis.text = element_text(size = 16),
-        axis.title = element_text(size = 18, face = "bold"),
-        strip.text.x = element_blank())
+        axis.title = element_text(size = 18, face = "bold"))
+
+degreePlot
 ```
 
 We seem to have a lot more disconnected individuals (individuals with degree 0) in the observed networks than in the modeled networks.
@@ -389,6 +396,8 @@ Removing the individuals with degree 0 gives us a slightly better match:
 
 ```{r code_folding = TRUE}
 degrees %>%
+  mutate(type = case_when(type == "model" ~ "Model",
+                          type == "real" ~ "Observed")) %>%
   filter(degree > 0) %>%
   ggplot(aes(x = timestep, y = degree))+
   geom_point(alpha = 0.2) +
@@ -398,12 +407,278 @@ degrees %>%
   theme(legend.position = "none")
 ```
 
+...but the distributions still don't look quite the same.
 
+My conclusion from this is that my baseline model doesn't accurately capture some of the fundamental biology that's going on in the vulture system. I suspect that I need to tweak the assumptions of the model a little bit.
+
+However, I decided that the model captures the network dynamics *well enough* for now--I'm going to move forward with modeling node loss and rewiring. Then I can come back and tweak the baseline dynamics later on.
 
 ### Node Removal and Rewiring
 
-Losses of individuals from the population are irregular enough that it is not straightforward to figure out how the vulture social structure behaves following a loss. Therefore, for my intiial model, I 
+Losses of individuals from the population are irregular enough that it is not straightforward to figure out how the vulture social structure behaves following a loss. Therefore, for my initial model, I decided to implement a "second-degree rewiring" model [@farine2021]. Under this model, when a node is lost, there is a higher probability of an edge forming between two individuals that were both connected to the lost individual than between two individuals that were not both connected to the lost individual.
 
+To make it easier to talk about this process, I have decided to refer to nodes either as **bereaved** or **non-bereaved**. A **bereaved** node is one that was directly connected to the lost node. A **non-bereaved** node is one that was not directly connected to the lost node.
 
+![Rewiring after the loss of a single node.](figs/modelDiagram_rewiring.png)
 
+The idea of second-degree rewiring, by its nature, already takes into account one previous time step. We have to ask whether the nodes were or were not connected to the lost node in the previous time step (bereaved vs. not). We also have to ask whether there is the potential for a new edge to form---i.e. did that edge already exist in the previous time step? When forming new edges, we only need to deal with edges that did not previously exist.
 
+To match the baseline network dynamics, I wanted to incorporate another time step of history: two steps before the focal node is lost. So, for each potential edge, I multiplied its probability of being formed by a constant 1.2 if the edge existed in the previous time step. If it didn't exist in the previous time step, I did not modify the probability. Then I restricted probabilities to the range [0, 1] and used those proabilities to determine whether the edge formed or not.
+
+#### Validation
+
+It is harder to compare network behavior following the loss of a node to the real data, because real instances of loss are often not clear-cut. Loss of a vulture from our dataset can also have many underlying causes.
+
+-   GPS tag fell off or stopped working. I would perceive a loss, but the bird would continue its behavior and interactions unobserved.
+
+-   The individual flew out of the study area, maybe to return later, maybe not. I have so far restricted this analysis to an area that roughly encompasses Israel. It is possible for griffons to make longer forays, though this is not common [@nathan2012].
+
+-   The individual died. This is the case that I'm most interested in studying. But even here, the cause of death could affect post-mortality network dynamics. For example, other vultures might react differently to expected deaths than to sudden ones [@shizuka2020].
+
+As a preliminary investigation, I decided to lump all lost nodes together regardless of the cause, just to *begin* exploring the real dynamics of node loss in this system.
+
+I made a timeline plot of the individuals in the population during the time frame that I was studying, to determine which individuals were lost during that time window.
+
+```{r code_folding = TRUE}
+# For each individual, get nEdges and the end date
+indivsSummary <- toUse %>%
+  mutate(pair = paste(ID1, ID2)) %>%
+  pivot_longer(cols = c("ID1", "ID2"), values_to = "trackId") %>% # pivot to long so we can sort by individual, but still only listing the edges in one direction.
+  group_by(trackId) %>%
+  summarize(nEdges = n(),
+            firstDate = min(lubridate::date(minTimestamp), na.rm = FALSE),
+            lastDate = max(lubridate::date(maxTimestamp), na.rm = FALSE))
+
+# Plot the durations as segments
+timeline <- indivsSummary %>%
+  ggplot()+
+  geom_segment(aes(x = firstDate, xend = lastDate, y = trackId, yend = trackId))+
+  geom_point(aes(x = firstDate, y = trackId), color = "skyblue", size=2 )+
+  geom_point(aes(x = lastDate, y = trackId), color = "firebrick", size=2 )+
+  theme_minimal()+
+  xlab("Date")+
+  ylab("Vulture")+
+  theme(panel.grid.major.y = element_blank(),
+        panel.grid.minor.y = element_blank(),
+        axis.title.y = element_text(size = 18, face = "bold"),
+        axis.title.x = element_text(size = 18, face = "bold"),
+        axis.text.x = element_text(size = 16))
+
+timeline
+```
+
+This plot showed me that during the target time period, eight individuals were lost considerably before the end of the time period (not counting T25b, which was not lost long enough before the end of the time period to examine the network dynamics following the loss). Of these eight individuals, I excluded J30w, which was lost mere days after appearing for the first time. This left me with seven individuals whose losses I could examine: T85w, J36w, A09w, A04w, A76w, A13w, and T77w.
+
+For each of these lost individuals, I obtained information about its first and last date present in the dataset. Then I created a subset of the networks, containing only the time steps immediately before and after the loss.
+
+For this examination, I used networks aggregated over 9 day windows instead of 5 day windows. Because the observed networks are incredibly sparse (as I discovered when I compared them to the modeled networks), in most cases the bereaved nodes formed no edges at all in the 5 days following the loss of the focal individual---because most nodes formed no edges at all. I wasn't able to get meaningful comparisons between the edge-formation rates of bereaved and non-bereaved nodes with a 5 day window.
+
+I do recognize that using a 9 day window means that my findings here are not directly applicable to the modeled networks constructed with a 5 day window. But my findings here are no more than suggestive anyway, since I have so few individuals. I am treating this as a purely exploratory phase of examining the data. Once I have modified the base model to more closely approximate the real data, I will look into changing the time windows used.
+
+So, first, I took network subsets immediately before and after the loss of each individual. Then, I used these subsets to compute, for bereaved and non-bereaved individuals, the probability of gaining and losing edges with other bereaved and non-bereaved individuals. I also took into account the history of the edges in the second-to-last time step containing the about-to-be-lost individual, to see whether edge history affected the likelihood of gaining/losing an edge following the loss of a node.
+
+```{r code_folding = TRUE, message = FALSE}
+removedIndivs <- indivsSummary %>%
+  filter(trackId %in% c("T85w", "J36w", "A09w", "A04w", "A76w", "A13w", "T77w"))
+
+# Get network subsets for each individual: immediately before and after the loss.
+ninedays <- vultureUtils::makeGraphs(edges = toUse, interval = "9 days", 
+                         dateTimeStart = "2020-10-01 00:00:00",
+                         dateTimeEnd = "2021-09-01 11:59:00",
+                         weighted = FALSE, allVertices = TRUE)$graphs
+ninedays_reduced <- lapply(ninedays, function(x){
+  delete.vertices(x, degree(x) < 1)
+})
+earlyDates <- lubridate::ymd(names(ninedays_reduced)) # looking at reduced networks to only include nodes involved in edges.
+networkSubsets <- vector(mode = "list", length = nrow(removedIndivs))
+for(i in 1:length(networkSubsets)){
+  removed <- removedIndivs$trackId[i]
+  
+  lastSlice <- lapply(ninedays_reduced, function(x){
+    removed %in% names(V(x))
+  }) %>%
+    unlist() %>%
+    which() %>%
+    max()
+  
+  networkSubsets[[i]] <- ninedays[(lastSlice-1):(lastSlice+1)] # subsetting from ninedays, not ninedays_reduced, here, because we want to have all the vertices.
+}
+
+# Define a function to examine the networks before and after the loss and compute the proportions of edges formed/lost between individuals, taking into account their history and bereavement status.
+examineLoss <- function(dat, removed){
+  whichRemoved <- which(names(V(dat[[1]])) == removed)
+  
+  # Convert networks to adjacency matrices
+  adjMatrices <- lapply(dat, function(x){
+    igraph::get.adjacency(x) %>%
+      as.matrix()
+  })
+  
+  # Get names of bereaved and non-bereaved nodes
+  edges <- adjMatrices[[1]][whichRemoved,]
+  bereaved <- names(which(edges == 1))
+  non.bereaved <- names(which(edges == 0))
+  
+  # Make an edge list
+  el <- expand.grid(names(edges), names(edges)) %>%
+    mutate(across(.cols = c(Var1, Var2), as.character)) %>%
+    filter(Var1 != removed,
+           Var2 != removed) %>%
+    mutate(prev = ifelse(get.edge.ids(graph = dat[[1]], vp = c(Var1, Var2), directed = FALSE) > 0, 1, 0),
+           cur = ifelse(get.edge.ids(graph = dat[[2]], vp = c(Var1, Var2), directed = FALSE) > 0, 1, 0),
+           after = ifelse(get.edge.ids(graph = dat[[3]], vp = c(Var1, Var2), directed = FALSE) > 0, 1, 0),
+           category = case_when(Var1 %in% bereaved & Var2 %in% bereaved ~ "bb",
+                                (Var1 %in% bereaved & Var2 %in% non.bereaved) | 
+                                  (Var2 %in% bereaved & Var1 %in% non.bereaved) ~ "bn",
+                                Var1 %in% non.bereaved & Var2 %in% non.bereaved ~ "nn",
+                                TRUE ~ NA_character_))
+  
+  # Are bb edges more likely to form than nb or nn edges?
+  pForm <- el %>%
+    filter(cur == 0) %>%
+    group_by(category) %>%
+    summarize(nPotential = n(),
+              nFormed = sum(after == 1),
+              pForm = nFormed/nPotential)
+  
+  # Are bb edges less likely to disappear than nb or nn edges?
+  pDisappear <- el %>%
+    filter(cur == 1) %>%
+    group_by(category) %>%
+    summarize(n = n(),
+              nDisappeared = sum(after == 0),
+              pDisappear = nDisappeared/n)
+  
+  # Are bb edges with a history more likely to form than bb edges without a history?
+  pFormHistory <- el %>%
+    filter(cur == 0) %>%
+    group_by(category, prev) %>%
+    summarize(nPotential = n(),
+              nFormed = sum(after == 1),
+              pForm = nFormed/nPotential)
+  
+  # Are bb edges with a history less likely to be lost than bb edges without a history?
+  pDisappearHistory <- el %>%
+    filter(cur == 1) %>%
+    group_by(category, prev) %>%
+    summarize(nPotential = n(),
+              nDisappeared = sum(after == 0),
+              pDisappear = nDisappeared/nPotential)
+  
+  return(list("pForm" = pForm, "pDisappear" = pDisappear, "pFormHistory" = pFormHistory, "pDisappearHistory"= pDisappearHistory, "el" = el))
+}
+
+# Apply the function to the network subsets:
+lossInfo_ninedays <- map2(.x = networkSubsets, .y = removedIndivs$trackId, .f = function(.x, .y){
+  examineLoss(dat = .x, removed = .y)
+})
+```
+
+I used the information that I collected to answer some questions about how real networks behave when a node is lost.
+
+1.  Is an edge between two bereaved individuals (B-B) more likely to form than an edge between two non-bereaved individuals (N-N) or between a bereaved and a non-bereaved individual (B-N / N-B)? (Note: Because these are undirected networks, I am using B-N and N-B interchangeably here).
+
+```{r code_folding = TRUE}
+pForms_9 <- lapply(lossInfo_ninedays, function(x) x$pForm) %>%
+  setNames(., nm = removedIndivs$trackId) %>%
+  data.table::rbindlist(idcol = "lostIndiv")
+
+formBereaved <- pForms_9 %>%
+  mutate(category = case_when(category == "bb" ~ "B-B",
+                              category == "bn" ~ "B-N",
+                              category == "nn" ~ "N-N")) %>%
+  mutate(category = factor(category, levels = c("B-B", "B-N", "N-N"))) %>%
+  ggplot(aes(x = category, y = pForm, fill = category))+
+  geom_boxplot()+
+  theme_minimal()+
+  scale_fill_manual(values = c("red", "purple", "blue"))+
+  ylab("P(add)")+
+  xlab("Bereaved")+
+  theme(legend.position = "none",
+        axis.text = element_text(size = 18),
+        axis.title = element_text(size = 20, face = "bold"))
+formBereaved
+```
+Interesting! At least in **these seven cases**, second-degree rewiring does not seem to be occurring. If anything, there might be a **lower** probability of forming a B-B edge than a N-B or N-N edge. Keep in mind, though, that these differences are **not** statistically significant, and they are probably not biological significant either, given the absolutely tiny sample size here. But I am definitely going to explore further!
+
+2. Are B-B edges less likely to disappear than N-B or N-N edges?
+
+```{r code_folding = TRUE}
+pDisappears_9 <- lapply(lossInfo_ninedays, function(x) x$pDisappear) %>%
+  setNames(., nm = removedIndivs$trackId) %>%
+  data.table::rbindlist(idcol = "lostIndiv")
+
+pDisappears_9 %>%
+  mutate(category = case_when(category == "bb" ~ "B-B",
+                              category == "bn" ~ "B-N",
+                              category == "nn" ~ "N-N")) %>%
+  mutate(category = factor(category, levels = c("B-B", "B-N", "N-N"))) %>%
+  ggplot(aes(x = category, y = pDisappear, fill = category))+
+  geom_boxplot()+
+  theme_minimal()+
+  scale_fill_manual(values = c("red", "purple", "blue"))+
+  ylab("P(lose)")+
+  xlab("Bereaved")+
+  theme(legend.position = "none",
+        axis.text = element_text(size = 18),
+        axis.title = element_text(size = 20, face = "bold"))
+```
+There seems to be absolutely no difference in the likelihood of losing an edge between B-B, B-N, and N-N edges.
+
+Okay, so second-degree rewiring might not be occurring here! I've incorporated it into my model, but this preliminary examination of my data tells me that before I get too far into modeling the consequences of **multiple-individual** loss in my model, I need to get a better handle on how the loss of a **single** individual affects the rest of the network. This probably means I'll need to examine much more data, over a larger time span, to tease out any patterns.
+
+3. Does history (in the previous time step) make a difference to the likelihood of edges to form?
+
+```{r code_folding = TRUE}
+pFormHistories_9 <- lapply(lossInfo_ninedays, function(x) x$pFormHistory) %>%
+  setNames(., nm = removedIndivs$trackId) %>%
+  data.table::rbindlist(idcol = "lostIndiv")
+
+formHistory <- pFormHistories_9 %>%
+  mutate(category = case_when(category == "bb" ~ "B-B",
+                              category == "bn" ~ "B-N",
+                              category == "nn" ~ "N-N")) %>%
+  mutate(category = factor(category, levels = c("B-B", "B-N", "N-N"))) %>%
+  ggplot(aes(x = factor(prev), y = pForm))+
+  geom_boxplot(aes(fill = factor(prev)))+
+  scale_fill_manual(values = c("grey", "white"))+
+  facet_wrap(~category)+
+  theme_minimal()+
+  ylab("P(add)")+
+  xlab("Edge history")+
+  theme(legend.position = "none",
+        axis.text = element_text(size = 18),
+        axis.title = element_text(size = 20, face = "bold"),
+        strip.text.x = element_text(size = 18))
+formHistory
+```
+Here, the behavior of the network actually does align with my expectations! Edges seem to be more likely to form following a loss if they previously existed before the loss. (Note: this is only focusing on edges that did *not* exist during the lost individual's last present time step. I didn't count edges that were present in all three time steps, since that wouldn't constitute an "addition". In other words, I counted only edges with history **010**).
+
+4. Does history make a difference to the likelihood of edges to disappear?
+
+```{r code_folding = TRUE}
+pDisappearHistories_9 <- lapply(lossInfo_ninedays, function(x) x$pDisappearHistory) %>%
+  setNames(., nm = removedIndivs$trackId) %>%
+  data.table::rbindlist(idcol = "lostIndiv")
+
+pDisappearHistories_9 %>%
+  mutate(category = case_when(category == "bb" ~ "B-B",
+                              category == "bn" ~ "B-N",
+                              category == "nn" ~ "N-N")) %>%
+  mutate(category = factor(category, levels = c("B-B", "B-N", "N-N"))) %>%
+  ggplot(aes(x = factor(prev), y = pDisappear))+
+  geom_boxplot(aes(fill = factor(prev)))+
+  scale_fill_manual(values = c("grey", "white"))+
+  facet_wrap(~category)+
+  theme_minimal()+
+  ylab("P(lose)")+
+  xlab("Edge history")+
+  theme(legend.position = "none",
+        axis.text = element_text(size = 18),
+        axis.title = element_text(size = 20, face = "bold"),
+        strip.text.x = element_text(size = 18))
+```
+
+There's no apparent pattern to whether edge history affects the likelihood of an edge disappearing. More investigation is in order here as well, I think.
+
+**Once again, remember that the graphs above are based on a sample size of SEVEN individual losses! They are just suggestions of patterns or lack thereof. I might find totally different patterns when I add more data.**
