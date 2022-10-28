@@ -88,6 +88,7 @@ code span.vs { color: #bf0303; } /* VerbatimString */
 code span.wa { color: #bf0303; } /* Warning */
 </style>
 
+
   <!--radix_placeholder_meta_tags-->
   <title>Some Data Frame and Matrix Tricks</title>
 
@@ -114,12 +115,12 @@ code span.wa { color: #bf0303; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","preview","output"]}},"value":[{"type":"character","attributes":{},"value":["Some Data Frame and Matrix Tricks"]},{"type":"character","attributes":{},"value":["Notes on drop = FALSE, arr.ind = TRUE, and indexing a matrix with pairs of coordinates. In other words: a tidyverse native learns some things about base R.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Kaija Gahm"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":[]}},"value":[]}]}]},{"type":"character","attributes":{},"value":["06-17-2022"]},{"type":"character","attributes":{},"value":["matrix.png"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","highlight","toc"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["kate"]},{"type":"logical","attributes":{},"value":[true]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","preview","output","draft"]}},"value":[{"type":"character","attributes":{},"value":["Some Data Frame and Matrix Tricks"]},{"type":"character","attributes":{},"value":["Notes on drop = FALSE, arr.ind = TRUE, and indexing a matrix with pairs of coordinates. In other words: a tidyverse native learns some things about base R.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Kaija Gahm"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":[]}},"value":[]}]}]},{"type":"character","attributes":{},"value":["06-17-2022"]},{"type":"character","attributes":{},"value":["matrix.png"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","highlight","toc"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["kate"]},{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"logical","attributes":{},"value":[true]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["matrix.png","network.png","some-data-frame-and-matrix-tricks_files/figure-html5/unnamed-chunk-4-1.png"]}
+  {"type":"character","attributes":{},"value":["drop=TRUE.jpg","matrix.png","network.png","some-data-frame-and-matrix-tricks_files/anchor-4.2.2/anchor.min.js","some-data-frame-and-matrix-tricks_files/bowser-1.9.3/bowser.min.js","some-data-frame-and-matrix-tricks_files/distill-2.2.21/template.v2.js","some-data-frame-and-matrix-tricks_files/figure-html5/unnamed-chunk-4-1.png","some-data-frame-and-matrix-tricks_files/header-attrs-2.14/header-attrs.js","some-data-frame-and-matrix-tricks_files/jquery-3.6.0/jquery-3.6.0.js","some-data-frame-and-matrix-tricks_files/jquery-3.6.0/jquery-3.6.0.min.js","some-data-frame-and-matrix-tricks_files/jquery-3.6.0/jquery-3.6.0.min.map","some-data-frame-and-matrix-tricks_files/popper-2.6.0/popper.min.js","some-data-frame-and-matrix-tricks_files/tippy-6.2.7/tippy-bundle.umd.min.js","some-data-frame-and-matrix-tricks_files/tippy-6.2.7/tippy-light-border.css","some-data-frame-and-matrix-tricks_files/tippy-6.2.7/tippy.css","some-data-frame-and-matrix-tricks_files/tippy-6.2.7/tippy.umd.min.js","some-data-frame-and-matrix-tricks_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -190,6 +191,7 @@ code span.wa { color: #bf0303; } /* Warning */
   d-article table.gt_table td,
   d-article table.gt_table th {
     border-bottom: none;
+    font-size: 100%;
   }
 
   .html-widget {
@@ -431,10 +433,6 @@ code span.wa { color: #bf0303; } /* Warning */
     position: relative;
     margin-bottom: 2.5em;
     margin-top: 1.5em;
-  }
-
-  .figure img {
-    width: 100%;
   }
 
   .figure .caption {
@@ -1266,7 +1264,22 @@ code span.wa { color: #bf0303; } /* Warning */
 
       // hoverable references
       $('span.citation[data-cites]').each(function() {
-        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+        const citeChild = $(this).children()[0]
+        // Do not process if @xyz has been used without escaping and without bibliography activated
+        // https://github.com/rstudio/distill/issues/466
+        if (citeChild === undefined) return true
+
+        if (citeChild.nodeName == "D-FOOTNOTE") {
+          var fn = citeChild
+          $(this).html(fn.shadowRoot.querySelector("sup"))
+          $(this).id = fn.id
+          fn.remove()
+        }
+        var refs = $(this).attr('data-cites').split(" ");
+        var refHtml = refs.map(function(ref) {
+          // Could use CSS.escape too here, we insure backward compatibility in navigator
+          return "<p>" + $('div[id="ref-' + ref + '"]').html() + "</p>";
+        }).join("\n");
         window.tippy(this, {
           allowHTML: true,
           content: refHtml,
@@ -1277,6 +1290,31 @@ code span.wa { color: #bf0303; } /* Warning */
           placement: 'bottom-start'
         });
       });
+
+      // fix footnotes in tables (#411)
+      // replacing broken distill.pub feature
+      $('table d-footnote').each(function() {
+        // we replace internal showAtNode methode which is triggered when hovering a footnote
+        this.hoverBox.showAtNode = function(node) {
+          // ported from https://github.com/distillpub/template/pull/105/files
+          calcOffset = function(elem) {
+              let x = elem.offsetLeft;
+              let y = elem.offsetTop;
+              // Traverse upwards until an `absolute` element is found or `elem`
+              // becomes null.
+              while (elem = elem.offsetParent && elem.style.position != 'absolute') {
+                  x += elem.offsetLeft;
+                  y += elem.offsetTop;
+              }
+
+              return { left: x, top: y };
+          }
+          // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetTop
+          const bbox = node.getBoundingClientRect();
+          const offset = calcOffset(node);
+          this.show([offset.left + bbox.width, offset.top + bbox.height]);
+        }
+      })
 
       // clear polling timer
       clearInterval(tid);
@@ -1376,6 +1414,8 @@ code span.wa { color: #bf0303; } /* Warning */
     // mark non-body figures created by knitr chunks as 100% width
     $('.layout-chunk').each(function(i, val) {
       var figures = $(this).find('img, .html-widget');
+      // ignore leaflet img layers (#106)
+      figures = figures.filter(':not(img[class*="leaflet"])')
       if ($(this).attr('data-layout') !== "l-body") {
         figures.css('width', '100%');
       } else {
@@ -1398,7 +1438,7 @@ code span.wa { color: #bf0303; } /* Warning */
     // get rid of index.html references in header
     if (window.location.protocol !== "file:") {
       $('.distill-site-header a[href]').each(function(i,val) {
-        $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+        $(this).attr('href', $(this).attr('href').replace(/^index[.]html/, "./"));
       });
     }
 
@@ -1437,7 +1477,7 @@ code span.wa { color: #bf0303; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="some-data-frame-and-matrix-tricks_files/header-attrs-2.14/header-attrs.js"></script>
+  <script src="some-data-frame-and-matrix-tricks_files/header-attrs-2.17/header-attrs.js"></script>
   <script src="some-data-frame-and-matrix-tricks_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
   <script src="some-data-frame-and-matrix-tricks_files/popper-2.6.0/popper.min.js"></script>
   <link href="some-data-frame-and-matrix-tricks_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
@@ -1458,7 +1498,7 @@ code span.wa { color: #bf0303; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Some Data Frame and Matrix Tricks","description":"Notes on drop = FALSE, arr.ind = TRUE, and indexing a matrix with pairs of coordinates. In other words: a tidyverse native learns some things about base R.","authors":[{"author":"Kaija Gahm","authorURL":{},"affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-06-17T00:00:00.000+00:00","citationText":"Gahm, 2022"}
+{"title":"Some Data Frame and Matrix Tricks","description":"Notes on drop = FALSE, arr.ind = TRUE, and indexing a matrix with pairs of coordinates. In other words: a tidyverse native learns some things about base R.","authors":[{"author":"Kaija Gahm","authorURL":{},"affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-06-17T00:00:00.000-07:00","citationText":"Gahm, 2022"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1471,9 +1511,7 @@ code span.wa { color: #bf0303; } /* Warning */
 <h1>Some Data Frame and Matrix Tricks</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>Notes on drop = FALSE, arr.ind = TRUE, and indexing a matrix with
-pairs of coordinates. In other words: a tidyverse native learns some
-things about base R.</p></p>
+<p><p>Notes on drop = FALSE, arr.ind = TRUE, and indexing a matrix with pairs of coordinates. In other words: a tidyverse native learns some things about base R.</p></p>
 </div>
 
 <div class="d-byline">
@@ -1487,7 +1525,8 @@ things about base R.</p></p>
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#background">Background</a></li>
+<li><a href="#background" id="toc-background">Background</a></li>
+<li><a href="#xxx-need-to-re-write-this-using-a-matrix-not-a-data-frame.-data-frame-is-a-special-case-of-a-matrix-because-when-you-subset-just-one-row-of-a-data-frame-you-dont-get-a-vector.-you-only-get-a-vector-if-you-subset-one-column.-for-a-matrix-taking-either-dimension-will-give-a-vector." id="toc-xxx-need-to-re-write-this-using-a-matrix-not-a-data-frame.-data-frame-is-a-special-case-of-a-matrix-because-when-you-subset-just-one-row-of-a-data-frame-you-dont-get-a-vector.-you-only-get-a-vector-if-you-subset-one-column.-for-a-matrix-taking-either-dimension-will-give-a-vector.">XXX need to re-write this, using a matrix, not a data frame. Data frame is a special case of a matrix, because when you subset just one ROW of a data frame, you don’t get a vector. You only get a vector if you subset one COLUMN. For a matrix, taking either dimension will give a vector.</a></li>
 </ul>
 </nav>
 </div>
@@ -1495,63 +1534,85 @@ things about base R.</p></p>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-1"></span>
 <img src="network.png" alt="Turns out that when you're making networks, sometimes base R is the way to go." width="413" />
 <p class="caption">
-Figure 1: Turns out that when you’re making networks,
-sometimes base R is the way to go.
+Figure 1: Turns out that when you’re making networks, sometimes base R is the way to go.
 </p>
 </div>
 </div>
 <h3 id="background">Background</h3>
-<p>I’m a big tidyverse fan. The tidy approach fits well with how I think
-about things, and I find it more readable than base R. I learned base
-first, but because I don’t use it all the time, there are a lot of
-tricks that I never really got under my belt.</p>
-<p>But recently, I’ve been working on modeling some social networks, and
-most of my model code is written in base R. In part, this is because
-I’ve been drawing inspiration from some of <a
-href="https://onlinelibrary.wiley.com/doi/abs/10.1111/1365-2656.13140">Damien
-Farine’s code</a>, which happens to be written mostly in base.</p>
-<p>(<em>Side note: There are many great packages for working with
-networks, and <code>tidygraph</code> gives a tidyverse framework for
-network analysis. I love tidygraph! But this particular piece of code
-that I’m writing is happier in base R.</em>)</p>
-<p>Through reading this code, I’ve picked up a couple useful tricks for
-working with matrices and data frames. They’re basic, in the sense that
-they involve functions I use all the time. But sometimes even the most
-common functions have cool extra arguments that are worth
-highlighting.</p>
+<p>I’m a big tidyverse fan. The tidy approach fits well with how I think about things, and I find it more readable than base R. I learned base first, but because I don’t use it all the time, there are a lot of tricks that I never really got under my belt.</p>
+<p>But recently, I’ve been working on modeling some social networks, and most of my model code is written in base R. In part, this is because I’ve been drawing inspiration from some of <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/1365-2656.13140">Damien Farine’s code</a>, which happens to be written mostly in base.</p>
+<p>(<em>Side note: There are many great packages for working with networks, and <code>tidygraph</code> gives a tidyverse framework for network analysis. I love tidygraph! But this particular piece of code that I’m writing is happier in base R.</em>)</p>
+<p>Through reading this code, I’ve picked up a couple useful tricks for working with matrices and data frames. They’re basic, in the sense that they involve functions I use all the time. But sometimes even the most common functions have cool extra arguments that are worth highlighting.</p>
 <p>I’m going to talk about three tricks here:</p>
-<p><strong>1. <code>drop = FALSE</code> (in square-bracket data frame
-indexing)</strong></p>
-<p><strong>2. <code>arr.ind = TRUE</code> (when using
-<code>which()</code> on a matrix/array)</strong></p>
-<p><strong>3. Indexing a matrix using a matrix/data frame containing
-coordinate pairs</strong></p>
+<p><strong>1. <code>drop = FALSE</code> (in square-bracket data frame indexing)</strong></p>
+<p><strong>2. <code>arr.ind = TRUE</code> (when using <code>which()</code> on a matrix/array)</strong></p>
+<p><strong>3. Indexing a matrix using a matrix/data frame containing coordinate pairs</strong></p>
+<h4 id="drop-false">1. <code>drop = FALSE</code></h4>
+<h5 id="context">Context</h5>
+<p>So, even the most ardently pro-tidyverse among us are probably familiar with square-bracket indexing for data frames. Let’s use the <code>mtcars</code> dataset as an example.</p>
 <div class="layout-chunk" data-layout="l-body">
-
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>)</span></span></code></pre>
 </div>
+<pre><code>                   mpg cyl disp  hp drat    wt  qsec vs am gear carb
+Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
+</div>
+<p>We can use square brackets to index <code>mtcars</code>, subsetting particular rows and columns. For example, let’s say I wanted to get the third row, and columns 1 through 4.</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre><code>  id species    island bill_length_mm bill_depth_mm flipper_length_mm
-1  1  Adelie Torgersen           39.1          18.7               181
-2  2  Adelie Torgersen           39.5          17.4               186
-3  3  Adelie Torgersen           40.3          18.0               195
-4  4  Adelie Torgersen             NA            NA                NA
-5  5  Adelie Torgersen           36.7          19.3               193
-6  6  Adelie Torgersen           39.3          20.6               190
-  body_mass_g    sex year       PC1       PC2         PC3        PC4
-1        3750   male 2007 -452.0232 13.336636 -1.14798019 -0.3534919
-2        3800 female 2007 -401.9500  9.152694  0.09037342 -1.0483310
-3        3250 female 2007 -951.7409 -8.261476  2.35184450  0.8417657
-4          NA   &lt;NA&gt; 2007        NA        NA          NA         NA
-5        3450 female 2007 -751.8127 -1.975922  4.81117040  2.1800839
-6        3650   male 2007 -551.8746  3.343783  1.11849344  2.7060578</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>subset</span> <span class='op'>&lt;-</span> <span class='va'>mtcars</span><span class='op'>[</span><span class='fl'>3</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span><span class='op'>]</span></span>
+<span><span class='va'>subset</span></span></code></pre>
 </div>
-After running the PCA, I make a plot of the 2nd and 3rd principal
-components that looks like this:
+<pre><code>            mpg cyl disp hp
+Datsun 710 22.8   4  108 93</code></pre>
+</div>
+<p>When we subset a data frame, we get another data frame.</p>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="some-data-frame-and-matrix-tricks_files/figure-html5/unnamed-chunk-4-1.png" width="624" /></p>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>)</span></span></code></pre>
 </div>
-<div class="sourceCode" id="cb2"><pre
-class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<pre><code>[1] &quot;data.frame&quot;</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span><span class='op'>(</span><span class='va'>subset</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>[1] &quot;data.frame&quot;</code></pre>
+</div>
+<p>But if you think back to your first ever R lesson, you might remember that data frames are made up of vectors. Specifically, each <em>column</em> of a data frame is a vector.</p>
+<p>So, what happens when the subsetting that we’re doing returns only a single column of the data frame?</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>justOneColumn</span> <span class='op'>&lt;-</span> <span class='va'>mtcars</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>]</span></span>
+<span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>[1] &quot;data.frame&quot;</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span><span class='op'>(</span><span class='va'>justOneColumn</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>[1] &quot;numeric&quot;</code></pre>
+</div>
+<h5 id="problem">Problem</h5>
+<p>When we pull out just a single column of the data frame, the resulting subset isn’t a data frame anymore. It’s a vector–in this case, a numeric vector.</p>
+<p>Okay, but why should we care? Being able to pull out a vector is really useful… most of the time. It starts to be a problem if you’re writing a function, or a script that will be used over and over on different inputs. If part of your function subsets a data frame and passes that subset into another function, that second function might <em>require</em> its input to be a data frame (as opposed to a vector).</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-6"></span>
+<img src="drop=TRUE.jpg" alt="The second function fails when it doesn't get the right input type" width="1116" />
+<p class="caption">
+Figure 2: The second function fails when it doesn’t get the right input type
+</p>
+</div>
+</div>
+<p>One way to tackle a problem like this is to incorporate robust unit checks into your functions (I recommend the package <a href="https://mllg.github.io/checkmate/"><code>checkmate</code></a> for this–it’s very easy to use!) You can make sure the downstream function fails if its input isn’t a data frame.</p>
+<h5 id="solution">Solution</h5>
+<p>But you can prevent this problem before it occurs by incorporating the <code>drop = FALSE</code> argument into your subsetting.</p>
+<p>When you use square brackets to subset an array (or data frame, or matrix), the default is <code>drop = TRUE</code>. This means that if your subsetting results in an array that can be represented with fewer dimensions than the original, any extra dimensions will be dropped.</p>
+<h1 id="xxx-need-to-re-write-this-using-a-matrix-not-a-data-frame.-data-frame-is-a-special-case-of-a-matrix-because-when-you-subset-just-one-row-of-a-data-frame-you-dont-get-a-vector.-you-only-get-a-vector-if-you-subset-one-column.-for-a-matrix-taking-either-dimension-will-give-a-vector.">XXX need to re-write this, using a matrix, not a data frame. Data frame is a special case of a matrix, because when you subset just one ROW of a data frame, you don’t get a vector. You only get a vector if you subset one COLUMN. For a matrix, taking either dimension will give a vector.</h1>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

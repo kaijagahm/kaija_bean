@@ -1,24 +1,5 @@
 [
   {
-    "path": "posts/2022-06-17-some-data-frame-and-matrix-tricks/",
-    "title": "Some Data Frame and Matrix Tricks",
-    "description": "Notes on drop = FALSE, arr.ind = TRUE, and indexing a matrix with pairs of coordinates. In other words: a tidyverse native learns some things about base R.",
-    "author": [
-      {
-        "name": "Kaija Gahm",
-        "url": {}
-      }
-    ],
-    "date": "2022-06-17",
-    "categories": [],
-    "contents": "\n\nContents\nBackground\n\n\n\n\nFigure 1: Turns out that when you’re making networks,\nsometimes base R is the way to go.\n\n\n\nBackground\nI’m a big tidyverse fan. The tidy approach fits well with how I think\nabout things, and I find it more readable than base R. I learned base\nfirst, but because I don’t use it all the time, there are a lot of\ntricks that I never really got under my belt.\nBut recently, I’ve been working on modeling some social networks, and\nmost of my model code is written in base R. In part, this is because\nI’ve been drawing inspiration from some of Damien\nFarine’s code, which happens to be written mostly in base.\n(Side note: There are many great packages for working with\nnetworks, and tidygraph gives a tidyverse framework for\nnetwork analysis. I love tidygraph! But this particular piece of code\nthat I’m writing is happier in base R.)\nThrough reading this code, I’ve picked up a couple useful tricks for\nworking with matrices and data frames. They’re basic, in the sense that\nthey involve functions I use all the time. But sometimes even the most\ncommon functions have cool extra arguments that are worth\nhighlighting.\nI’m going to talk about three tricks here:\n1. drop = FALSE (in square-bracket data frame\nindexing)\n2. arr.ind = TRUE (when using\nwhich() on a matrix/array)\n3. Indexing a matrix using a matrix/data frame containing\ncoordinate pairs\n\n\n\n\n  id species    island bill_length_mm bill_depth_mm flipper_length_mm\n1  1  Adelie Torgersen           39.1          18.7               181\n2  2  Adelie Torgersen           39.5          17.4               186\n3  3  Adelie Torgersen           40.3          18.0               195\n4  4  Adelie Torgersen             NA            NA                NA\n5  5  Adelie Torgersen           36.7          19.3               193\n6  6  Adelie Torgersen           39.3          20.6               190\n  body_mass_g    sex year       PC1       PC2         PC3        PC4\n1        3750   male 2007 -452.0232 13.336636 -1.14798019 -0.3534919\n2        3800 female 2007 -401.9500  9.152694  0.09037342 -1.0483310\n3        3250 female 2007 -951.7409 -8.261476  2.35184450  0.8417657\n4          NA   <NA> 2007        NA        NA          NA         NA\n5        3450 female 2007 -751.8127 -1.975922  4.81117040  2.1800839\n6        3650   male 2007 -551.8746  3.343783  1.11849344  2.7060578\n\nAfter running the PCA, I make a plot of the 2nd and 3rd principal\ncomponents that looks like this:\n\n\n\n\n\n\n",
-    "preview": "posts/2022-06-17-some-data-frame-and-matrix-tricks/matrix.png",
-    "last_modified": "2022-06-17T15:58:25-07:00",
-    "input_file": {},
-    "preview_width": 1592,
-    "preview_height": 966
-  },
-  {
     "path": "posts/2021-10-14-publishing-scrollable-slides-in-rmarkdown/",
     "title": "A Semi-Automated Process for Converting Slides to a Blog Post in RMarkdown",
     "description": "Recently, I adapted slides from one of my talks into a blog post format, with each slide's narration transcribed below it. In my experience, people don't usually post slides this way, and the process of converting a presentation to a blog post wasn't trivial. Here's the process I followed--I hope it helps anyone else who would like to do this too.",
