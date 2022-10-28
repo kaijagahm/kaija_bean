@@ -23,7 +23,7 @@ I am a biologist and data scientist. Currently, I'm studying vultures' social an
 I did my B.S. in E&EB at Yale, where I studied physiological tradeoffs in wood frog tadpoles ([talk](https://drive.google.com/file/d/1S57rDgoKSm0I4ssGYlKlMgnDmXNs58aR/view?usp=sharing) | `r xfun::embed_file(text = "paper", 'Gahm_etal_2020.pdf')
 `). 
 
-I'm interested in advocating for open and reproducible data science and helping others to apply these ideas to their own work. I'm on the Board of Directors for [SORTEE](https://sortee.org/). On this blog, I describe some of my own insights in (hopefully!) friendly language.
+I'm interested in advocating for open and reproducible data science and helping others to apply these ideas to their own work. I'm on the Board of Directors for [SORTEE](https://sortee.org/). On this site, I also describe some of my own insights in (hopefully!) friendly language.
 
 ## Education
 
