@@ -424,8 +424,7 @@ for(i in 1:length(modelGraphs)){
     geom_node_point(size = 4, aes(col = coords$name))+
     theme_graph()+
     scale_color_viridis_d()+
-    theme(legend.position = "none")+
-    ggtitle(paste("model networks: day", i))
+    theme(legend.position = "none")
   print(p)
 }
 ```
@@ -452,9 +451,7 @@ for(i in 1:length(realGraphs)){
     geom_node_point(size = 4, aes(col = name))+
     theme_graph()+
     scale_color_viridis_d()+
-    theme(legend.position = "none")+
-    ggtitle(paste("5-day co-feeding network starting on", 
-                  names(realGraphs)[i]))
+    theme(legend.position = "none")
   print(p)
 }
 ```
