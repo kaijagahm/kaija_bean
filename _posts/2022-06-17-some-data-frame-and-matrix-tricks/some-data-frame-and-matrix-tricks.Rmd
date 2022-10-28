@@ -12,6 +12,7 @@ output:
     self_contained: false
     highlight: kate
     toc: true
+draft: true
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)

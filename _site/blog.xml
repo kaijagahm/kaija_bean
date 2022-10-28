@@ -12,16 +12,7 @@
       <link>https://kaijagahm.netlify.app/</link>
     </image>
     <generator>Distill</generator>
-    <lastBuildDate>Fri, 17 Jun 2022 00:00:00 +0000</lastBuildDate>
-    <item>
-      <title>Some Data Frame and Matrix Tricks</title>
-      <dc:creator>Kaija Gahm</dc:creator>
-      <link>https://kaijagahm.netlify.app/posts/2022-06-17-some-data-frame-and-matrix-tricks</link>
-      <description>Notes on drop = FALSE, arr.ind = TRUE, and indexing a matrix with pairs of coordinates. In other words: a tidyverse native learns some things about base R.</description>
-      <guid>https://kaijagahm.netlify.app/posts/2022-06-17-some-data-frame-and-matrix-tricks</guid>
-      <pubDate>Fri, 17 Jun 2022 00:00:00 +0000</pubDate>
-      <media:content url="https://kaijagahm.netlify.app/posts/2022-06-17-some-data-frame-and-matrix-tricks/matrix.png" medium="image" type="image/png" width="1592" height="966"/>
-    </item>
+    <lastBuildDate>Thu, 14 Oct 2021 00:00:00 +0000</lastBuildDate>
     <item>
       <title>A Semi-Automated Process for Converting Slides to a Blog Post in RMarkdown</title>
       <dc:creator>Kaija Gahm</dc:creator>
