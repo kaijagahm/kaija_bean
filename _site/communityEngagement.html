@@ -88,6 +88,7 @@ code span.vs { color: #bf0303; } /* VerbatimString */
 code span.wa { color: #bf0303; } /* Warning */
 </style>
 
+
   <!--radix_placeholder_meta_tags-->
   <title>Kaija Gahm: Community Engagement</title>
 
@@ -95,8 +96,8 @@ code span.wa { color: #bf0303; } /* Warning */
   <link rel="icon" type="image/jpeg" href="woodpeckerIcon.jpg"/>
 
   <!--  https://schema.org/Article -->
-  <meta property="article:published" itemprop="datePublished" content="2022-07-19"/>
-  <meta property="article:created" itemprop="dateCreated" content="2022-07-19"/>
+  <meta property="article:published" itemprop="datePublished" content="2023-01-30"/>
+  <meta property="article:created" itemprop="dateCreated" content="2023-01-30"/>
   <meta name="article:author" content="Kaija Gahm"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
@@ -114,7 +115,7 @@ code span.wa { color: #bf0303; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","base_url","description","author","date","twitter","output"]}},"value":[{"type":"character","attributes":{},"value":["Community Engagement"]},{"type":"character","attributes":{},"value":["https://kaijagahm.netlify.app/communityEngagement.html"]},{"type":"NULL"},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Kaija Gahm"]}]}]},{"type":"character","attributes":{},"value":["2022-07-19"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["creator"]}},"value":[{"type":"character","attributes":{},"value":["@kaijagahm"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","highlight","fig_caption","toc","toc_float"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["kate"]},{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","base_url","description","author","date","twitter","output"]}},"value":[{"type":"character","attributes":{},"value":["Community Engagement"]},{"type":"character","attributes":{},"value":["https://kaijagahm.netlify.app/communityEngagement.html"]},{"type":"NULL"},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Kaija Gahm"]}]}]},{"type":"character","attributes":{},"value":["2023-01-30"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["creator"]}},"value":[{"type":"character","attributes":{},"value":["@kaijagahm"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","highlight","fig_caption","toc","toc_float"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["kate"]},{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -792,6 +793,7 @@ code span.wa { color: #bf0303; } /* Warning */
   d-article table.gt_table td,
   d-article table.gt_table th {
     border-bottom: none;
+    font-size: 100%;
   }
 
   .html-widget {
@@ -1033,10 +1035,6 @@ code span.wa { color: #bf0303; } /* Warning */
     position: relative;
     margin-bottom: 2.5em;
     margin-top: 1.5em;
-  }
-
-  .figure img {
-    width: 100%;
   }
 
   .figure .caption {
@@ -1868,7 +1866,22 @@ code span.wa { color: #bf0303; } /* Warning */
 
       // hoverable references
       $('span.citation[data-cites]').each(function() {
-        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+        const citeChild = $(this).children()[0]
+        // Do not process if @xyz has been used without escaping and without bibliography activated
+        // https://github.com/rstudio/distill/issues/466
+        if (citeChild === undefined) return true
+
+        if (citeChild.nodeName == "D-FOOTNOTE") {
+          var fn = citeChild
+          $(this).html(fn.shadowRoot.querySelector("sup"))
+          $(this).id = fn.id
+          fn.remove()
+        }
+        var refs = $(this).attr('data-cites').split(" ");
+        var refHtml = refs.map(function(ref) {
+          // Could use CSS.escape too here, we insure backward compatibility in navigator
+          return "<p>" + $('div[id="ref-' + ref + '"]').html() + "</p>";
+        }).join("\n");
         window.tippy(this, {
           allowHTML: true,
           content: refHtml,
@@ -1879,6 +1892,31 @@ code span.wa { color: #bf0303; } /* Warning */
           placement: 'bottom-start'
         });
       });
+
+      // fix footnotes in tables (#411)
+      // replacing broken distill.pub feature
+      $('table d-footnote').each(function() {
+        // we replace internal showAtNode methode which is triggered when hovering a footnote
+        this.hoverBox.showAtNode = function(node) {
+          // ported from https://github.com/distillpub/template/pull/105/files
+          calcOffset = function(elem) {
+              let x = elem.offsetLeft;
+              let y = elem.offsetTop;
+              // Traverse upwards until an `absolute` element is found or `elem`
+              // becomes null.
+              while (elem = elem.offsetParent && elem.style.position != 'absolute') {
+                  x += elem.offsetLeft;
+                  y += elem.offsetTop;
+              }
+
+              return { left: x, top: y };
+          }
+          // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetTop
+          const bbox = node.getBoundingClientRect();
+          const offset = calcOffset(node);
+          this.show([offset.left + bbox.width, offset.top + bbox.height]);
+        }
+      })
 
       // clear polling timer
       clearInterval(tid);
@@ -1978,6 +2016,8 @@ code span.wa { color: #bf0303; } /* Warning */
     // mark non-body figures created by knitr chunks as 100% width
     $('.layout-chunk').each(function(i, val) {
       var figures = $(this).find('img, .html-widget');
+      // ignore leaflet img layers (#106)
+      figures = figures.filter(':not(img[class*="leaflet"])')
       if ($(this).attr('data-layout') !== "l-body") {
         figures.css('width', '100%');
       } else {
@@ -2000,7 +2040,7 @@ code span.wa { color: #bf0303; } /* Warning */
     // get rid of index.html references in header
     if (window.location.protocol !== "file:") {
       $('.distill-site-header a[href]').each(function(i,val) {
-        $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+        $(this).attr('href', $(this).attr('href').replace(/^index[.]html/, "./"));
       });
     }
 
@@ -2422,7 +2462,7 @@ code span.wa { color: #bf0303; } /* Warning */
     color: var(--hover-color, white);
   }</style>
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.17/header-attrs.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2442,7 +2482,7 @@ code span.wa { color: #bf0303; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Community Engagement","authors":[{"author":"Kaija Gahm","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-07-19T00:00:00.000+00:00","citationText":"Gahm, 2022"}
+{"title":"Community Engagement","authors":[{"author":"Kaija Gahm","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2023-01-30T00:00:00.000-08:00","citationText":"Gahm, 2023"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2486,7 +2526,7 @@ code span.wa { color: #bf0303; } /* Warning */
 <div class="d-byline">
   Kaija Gahm  
   
-<br/>2022-07-19
+<br/>2023-01-30
 </div>
 
 <div class="d-article">
@@ -2494,91 +2534,49 @@ code span.wa { color: #bf0303; } /* Warning */
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#r4ds-slack-workspace">R4DS Slack Workspace</a></li>
-<li><a href="#ucla-eeb-hacky-hours">UCLA EEB Hacky Hours</a></li>
-<li><a href="#the-carpentries">The Carpentries</a></li>
-<li><a
-href="#sortee-society-for-open-reliable-and-transparent-ecology-evolutionary-biology">SORTEE
-(Society for Open, Reliable, and Transparent Ecology &amp; Evolutionary
-Biology)</a></li>
-<li><a href="#rstudio-community">RStudio Community</a></li>
+<li><a href="#sortee-society-for-open-reliable-and-transparent-ecology-evolutionary-biology" id="toc-sortee-society-for-open-reliable-and-transparent-ecology-evolutionary-biology">SORTEE (Society for Open, Reliable, and Transparent Ecology &amp; Evolutionary Biology)</a></li>
+<li><a href="#ucla-eeb-hacky-hours" id="toc-ucla-eeb-hacky-hours">UCLA EEB Hacky Hours</a></li>
+<li><a href="#the-carpentries" id="toc-the-carpentries">The Carpentries</a></li>
+<li><a href="#r4ds-slack-workspace" id="toc-r4ds-slack-workspace">R4DS Slack Workspace</a></li>
+<li><a href="#rstudio-community" id="toc-rstudio-community">RStudio Community</a></li>
 </ul>
 </nav>
 </div>
-<p>I’ve been “<a
-href="https://twitter.com/TheStephLocke/status/1214569802804662274">community
-taught</a>” in R and data science. My <a
-href="https://kaijagahm.netlify.app/blog.html">blog</a> is one attempt
-to give back by writing resources that others might find useful. But I
-also contribute to the R, data science, and EEB communities in other
-ways.</p>
-<h3 id="r4ds-slack-workspace">R4DS Slack Workspace</h3>
-<p><img src="communityEngagementImages/r4dsHex.png"
-style="width:40.0%" /></p>
-<p><strong>Mentor</strong> | October 2021 - Present</p>
-<p>As a mentor, I hold office hours weekly, where I answer people’s
-questions about R. In my responses, I do my best to foster a welcoming
-environment, talk people through how to create minimal reproducible
-examples, and use motivating language. It’s important to me to
-contribute to the welcoming R community that I encountered when I first
-started learning.</p>
-<p>Join the Slack workspace <a href="r4ds.io/join">here</a>.</p>
+<p>I’ve been “<a href="https://twitter.com/TheStephLocke/status/1214569802804662274">community taught</a>” in R and data science. My <a href="https://kaijagahm.netlify.app/blog.html">blog</a> is one attempt to give back by writing resources that others might find useful. But I also contribute to the R, data science, and EEB communities in other ways.</p>
+<h3 id="sortee-society-for-open-reliable-and-transparent-ecology-evolutionary-biology">SORTEE (Society for Open, Reliable, and Transparent Ecology &amp; Evolutionary Biology)</h3>
+<p><img src="communityEngagementImages/sorteeLogo.png" /></p>
+<p><strong>Board of Directors</strong> | January 2022 - Present</p>
+<p><strong>Education &amp; Outreach Committee</strong> | January 2023 - Present</p>
+<p><strong>Membership Committee</strong> | November 2020 - December 2021</p>
+<p>On the Board of Directors, I’ve been involved in getting our membership database up and running, as well as guiding the organization into its second year of existence. On the Education &amp; Outreach Committee, I will help advocate for open science practices and develop/promote resources for researchers who are interested in implementing them. On the Membership Committee, I was in charge of getting to know our current members and recruiting others.</p>
+<p>More info about SORTEE <a href="https://www.sortee.org/">here</a>.</p>
 <hr />
 <h3 id="ucla-eeb-hacky-hours">UCLA EEB Hacky Hours</h3>
-<p><img src="communityEngagementImages/HackyHours.png"
-style="width:75.0%" /></p>
-<p><strong>Organizing Committee</strong> | January 2022 - Present</p>
+<p><img src="communityEngagementImages/HackyHours.png" style="width:75.0%" /></p>
+<p><strong>Organizer</strong> | January 2022 - Present</p>
 <p><strong>Contributor</strong> | September - December 2021</p>
-<p>Each week, a group of UCLA grad students, mostly from the EEB
-department, gathers to discuss coding challenges, provide a supportive
-workspace, and teach each other new tricks. I’m part of the organizing
-team at Hacky Hours, so I mentor students who show up to the co-working
-space and help organize mini-workshops for the participants.</p>
+<p>Each week, a group of UCLA grad students, mostly from the EEB department, gathers to discuss coding challenges, provide a supportive workspace, and teach each other new tricks. I’m part of the organizing team at Hacky Hours, so I mentor students who show up to the co-working space and help organize mini-workshops for the participants.</p>
 <hr />
 <h3 id="the-carpentries">The Carpentries</h3>
 <p><img src="communityEngagementImages/theCarpentries.png" /></p>
 <p><strong>Certified Instructor</strong> | June 2021 - Present</p>
-<p>I became a certified Carpentries Instructor in summer 2021. I taught
-a modified Data Carpentry workshop at the <a
-href="https://docs.google.com/spreadsheets/d/1VS14jKmCFJoiHFXMZ74qLA-IvwU_A9rn1SSNVGVkdMk/edit">2021
-SORTEE conference</a>, which focused on using Git/GitHub through
-RStudio.</p>
-<p>In April, I taught <a
-href="https://ucla-hacky-hours.github.io/2022-04-09-uclaeeb/">a Software
-Carpentry workshop</a> for our department in April, focusing on the
-Version Control with Git section.</p>
+<p>I became a certified Carpentries Instructor in summer 2021. I taught a modified Data Carpentry workshop at the <a href="https://docs.google.com/spreadsheets/d/1VS14jKmCFJoiHFXMZ74qLA-IvwU_A9rn1SSNVGVkdMk/edit">2021 SORTEE conference</a>, which focused on using Git/GitHub through RStudio.</p>
+<p>In April, I taught <a href="https://ucla-hacky-hours.github.io/2022-04-09-uclaeeb/">a Software Carpentry workshop</a> for our department in April, focusing on the Version Control with Git section.</p>
 <p>Upcoming workshops:</p>
-<p><a
-href="https://calendar.library.ucla.edu/event/9132353">Introduction to
-R</a> (UCLA Carpentries Summer Workshops), 2022-06-23</p>
+<p><a href="https://calendar.library.ucla.edu/event/9132353">Introduction to R</a> (UCLA Carpentries Summer Workshops), 2022-06-23</p>
 <p>Version Control with Git (2022 SORTEE conference), 2022-07-13</p>
 <hr />
-<h3
-id="sortee-society-for-open-reliable-and-transparent-ecology-evolutionary-biology">SORTEE
-(Society for Open, Reliable, and Transparent Ecology &amp; Evolutionary
-Biology)</h3>
-<p><img src="communityEngagementImages/sorteeLogo.png" /></p>
-<p><strong>Board of Directors</strong> | January 2022 - Present</p>
-<p><strong>Membership Committee</strong> | November 2020 - December
-2021</p>
-<p>On the Board of Directors, I’ve been involved in getting our
-membership database up and running, as well as guiding the organization
-into its second year of existence. On the Membership Committee, I’m in
-charge of getting to know our current members and recruiting others.</p>
-<p>More info about SORTEE <a
-href="https://www.sortee.org/">here</a>.</p>
+<h3 id="r4ds-slack-workspace">R4DS Slack Workspace</h3>
+<p><img src="communityEngagementImages/r4dsHex.png" style="width:40.0%" /></p>
+<p><strong>Mentor</strong> | October 2021 - August 2022</p>
+<p>As a mentor, I held office hours weekly, where I answered people’s questions about R. In my responses, I did my best to foster a welcoming environment, talked people through how to create minimal reproducible examples, and used motivating language. It’s important to me to contribute to the welcoming R community that I encountered when I first started learning. This year, I haven’t been as active in R4DS, but I still contribute occasionally to the community!</p>
+<p>Join the Slack workspace <a href="r4ds.io/join">here</a>.</p>
 <hr />
 <h3 id="rstudio-community">RStudio Community</h3>
 <p><img src="communityEngagementImages/rstudioCommunity.png" /></p>
 <p><strong>Contributor</strong> | July 2020 - Present</p>
-<p>When I got started with R, I found RStudio Community to be a much
-more welcoming forum for asking questions than StackOverflow. When I
-have the time, I contribute to answering questions in RStudio Community,
-as thanks for all the help I’ve received there. <a
-href="https://community.rstudio.com/u/kaijabean/activity">Here</a> is my
-activity on the site.</p>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>When I got started with R, I found RStudio Community to be a much more welcoming forum for asking questions than StackOverflow. When I have the time, I contribute to answering questions in RStudio Community, as thanks for all the help I’ve received there. <a href="https://community.rstudio.com/u/kaijabean/activity">Here</a> is my activity on the site.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
