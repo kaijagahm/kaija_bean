@@ -22,15 +22,19 @@ knitr::opts_chunk$set(echo = FALSE)
 
 I've been "[community taught](https://twitter.com/TheStephLocke/status/1214569802804662274)" in R and data science. My [blog](https://kaijagahm.netlify.app/blog.html) is one attempt to give back by writing resources that others might find useful. But I also contribute to the R, data science, and EEB communities in other ways.
 
-### R4DS Slack Workspace
+### SORTEE (Society for Open, Reliable, and Transparent Ecology & Evolutionary Biology)
 
-![](communityEngagementImages/r4dsHex.png){width="40%"}
+![](communityEngagementImages/sorteeLogo.png)
 
-**Mentor** | October 2021 - Present
+**Board of Directors** | January 2022 - Present
 
-As a mentor, I hold office hours weekly, where I answer people's questions about R. In my responses, I do my best to foster a welcoming environment, talk people through how to create minimal reproducible examples, and use motivating language. It's important to me to contribute to the welcoming R community that I encountered when I first started learning.
+**Education & Outreach Committee** | January 2023 - Present
 
-Join the Slack workspace [here](r4ds.io/join).
+**Membership Committee** | November 2020 - December 2021
+
+On the Board of Directors, I've been involved in getting our membership database up and running, as well as guiding the organization into its second year of existence. On the Education & Outreach Committee, I will help advocate for open science practices and develop/promote resources for researchers who are interested in implementing them. On the Membership Committee, I was in charge of getting to know our current members and recruiting others.
+
+More info about SORTEE [here](https://www.sortee.org/).
 
 ---
 
@@ -38,7 +42,7 @@ Join the Slack workspace [here](r4ds.io/join).
 
 ![](communityEngagementImages/HackyHours.png){width="75%"}
 
-**Organizing Committee** | January 2022 - Present
+**Organizer** | January 2022 - Present
 
 **Contributor** | September - December 2021
 
@@ -64,19 +68,18 @@ Version Control with Git (2022 SORTEE conference), 2022-07-13
 
 ---
 
-### SORTEE (Society for Open, Reliable, and Transparent Ecology & Evolutionary Biology)
+### R4DS Slack Workspace
 
-![](communityEngagementImages/sorteeLogo.png)
+![](communityEngagementImages/r4dsHex.png){width="40%"}
 
-**Board of Directors** | January 2022 - Present
+**Mentor** | October 2021 - August 2022
 
-**Membership Committee** | November 2020 - December 2021
+As a mentor, I held office hours weekly, where I answered people's questions about R. In my responses, I did my best to foster a welcoming environment, talked people through how to create minimal reproducible examples, and used motivating language. It's important to me to contribute to the welcoming R community that I encountered when I first started learning. This year, I haven't been as active in R4DS, but I still contribute occasionally to the community!
 
-On the Board of Directors, I've been involved in getting our membership database up and running, as well as guiding the organization into its second year of existence. On the Membership Committee, I'm in charge of getting to know our current members and recruiting others.
-
-More info about SORTEE [here](https://www.sortee.org/).
+Join the Slack workspace [here](r4ds.io/join).
 
 ---
+
 
 ### RStudio Community
 
