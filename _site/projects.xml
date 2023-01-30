@@ -12,16 +12,7 @@
       <link>https://kaijagahm.netlify.app/</link>
     </image>
     <generator>Distill</generator>
-    <lastBuildDate>Wed, 13 Jul 2022 00:00:00 +0000</lastBuildDate>
-    <item>
-      <title>Modeling Situation-Specific Effects of Multiple Mortality on Social Network Structure in Griffon Vultures (Gyps fulvus)</title>
-      <dc:creator>Kaija Gahm</dc:creator>
-      <link>https://kaijagahm.netlify.app/projects/2022-07-12-multipleMortality_vultureNetworks</link>
-      <description>This post is a companion to the poster that I presented at ABS 2022, San José, Costa Rica. It contains a bit more information about the project.</description>
-      <guid>https://kaijagahm.netlify.app/projects/2022-07-12-multipleMortality_vultureNetworks</guid>
-      <pubDate>Wed, 13 Jul 2022 00:00:00 +0000</pubDate>
-      <media:content url="https://kaijagahm.netlify.app/projects/2022-07-12-multipleMortality_vultureNetworks/figs/vultureNetwork.png" medium="image" type="image/png" width="1688" height="891"/>
-    </item>
+    <lastBuildDate>Wed, 27 Oct 2021 00:00:00 +0000</lastBuildDate>
     <item>
       <title>Retroactively Reproducible: Lessons from a workflow audit</title>
       <dc:creator>Kaija Gahm</dc:creator>
