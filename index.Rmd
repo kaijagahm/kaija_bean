@@ -18,28 +18,30 @@ site: distill::distill_website
 
 ## Bio
 
-I am a biologist and data scientist. Currently, I'm studying vultures' social and spatial networks in [Noa Pinter-Wollman's lab](https://pinterwollmanlab.eeb.ucla.edu/). Previously, I worked with the Cary Institute to manage a relational database and improve data-management workflows. I also applied many of the same ideas to my work with a linguistics [research group](https://ygdp.yale.edu) at Yale, where I built a relational database and an interactive Shiny dashboard to make it easier for researchers and the public to explore the project's findings.
+I am a biologist and data scientist. Currently, I'm studying the social behavior and movement ecology of griffon vultures in the [Pinter-Wollman Lab](https://pinterwollmanlab.eeb.ucla.edu/). Previously, I was a data manager at the Cary Institute and a research assistant with the [Yale Grammatical Diversity Project](https://ygdp.yale.edu/). I've written about my work with each of these organizations: [Cary](https://kaijagahm.netlify.app/projects/2021-07-13-retroactivelyreproducible/) \| [YGDP](https://kaijagahm.netlify.app/projects/2021-02-05-ygdp-dashboard/).
 
-I did my B.S. in E&EB at Yale, where I studied physiological tradeoffs in wood frog tadpoles ([talk](https://drive.google.com/file/d/1S57rDgoKSm0I4ssGYlKlMgnDmXNs58aR/view?usp=sharing) | `r xfun::embed_file(text = "paper", 'Gahm_etal_2020.pdf')
-`). 
+I did my B.S. in EEB at Yale, where I studied physiological tradeoffs in wood frog tadpoles ([talk](https://drive.google.com/file/d/1S57rDgoKSm0I4ssGYlKlMgnDmXNs58aR/view?usp=sharing) \| `r xfun::embed_file(text = "paper", 'Gahm_etal_2020.pdf')`).
 
-I'm interested in advocating for open and reproducible data science and helping others to apply these ideas to their own work. I'm on the Board of Directors for [SORTEE](https://sortee.org/). On this site, I also describe some of my own insights in (hopefully!) friendly language.
+I'm interested in advocating for open and reproducible data science and helping others to apply these ideas to their own work. I run "Hacky Hours" at UCLA, and I'm on the Board of Directors for [SORTEE](https://sortee.org/). On this site, I also describe some of my own insights in (hopefully!) friendly language.
+
+## CV
+
+You can download a recent copy of my CV `r xfun::embed_file(text = "here", 'Gahm_CV_April2023.pdf')`.
 
 ## Education
 
-**University of California, Los Angeles** | Los Angeles, CA
-Ph.D. Student in Ecology & Evolutionary Biology | September 2021 - Present
+**University of California, Los Angeles** \| Los Angeles, CA Ph.D. Student in Ecology & Evolutionary Biology \| September 2021 - Present. NSF Graduate Research Fellow 2023; UCLA Graduate Dean's Research Fellow 2021.
 
-**Yale University** | New Haven, CT
-B.S. in Ecology & Evolutionary Biology | September 2016 - May 2020
+**Yale University** \| New Haven, CT B.S. in Ecology & Evolutionary Biology \| September 2016 - May 2020
 
 ## Work
 
-**Cary Institute of Ecosystem Studies** | Database Specialist | June 2020 - August 2021
+**Cary Institute of Ecosystem Studies** \| Database Specialist \| June 2020 - August 2021
 
-**Yale Grammatical Diversity Project** | Research Assistant | September 2018 - March 2021
+**Yale Grammatical Diversity Project** \| Research Assistant \| September 2018 - March 2021
 
-**Yale Peabody Museum of Natural History** | Student Museum Assistant (Entomology) | September 2016 - May 2020
+**Yale Peabody Museum of Natural History** \| Student Museum Assistant (Entomology) \| September 2016 - May 2020
 
 ## Contact
+
 I'd love to hear from you! You can find me online using the links to the left, or email me at **kaija.gahm\@aya.yale.edu**.
