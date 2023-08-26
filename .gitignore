@@ -4,3 +4,5 @@
 .Ruserdata
 .DS_Store
 tripReportBBT.Rmd
+.rbuildignore
+_site/tripReportBBT.html
